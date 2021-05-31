@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/admin/DayEditorValidationForm.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/admin/DayEditorValidationForm.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component, PropTypes } from 'react'
+import { Editor } from 'react-draft-wysiwyg'
+// import Editor from '../Editor'
+import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import * as actions from '../../actions'
+import draftToHtml from 'draftjs-to-html'
+import RadioProfile from '../componentKit/RadioProfile'
+import { Field, FieldArray, reduxForm } from 'redux-form'
+import InputProfile from '../componentKit/InputProfile'
+import Calendar from './Calendar'
+import MenuButton from '../componentKit/MenuButton'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import moment from 'moment'
+import cookie from 'react-cookie'
+import { api } from '../../config.js'
+import Modal from 'boron/FadeModal'
+import CSSModules from 'react-css-modules'
+import styles from './dayEditorValidationForm.css'
+import { programsData } from '../../utils/data'
+
+let contentStyle = {
+  borderRadius: '18px',
+  padding: '30px'
+}
+
+const renderExercises = ({ fields, change, meta: { touched, error } }) => {
+  return (
+  &lt;ul>
+    &lt;h4>Упражнения:&lt;/h4>
+    {fields.map((exercise, index) => (
+      &lt;li key={index}>
+        &lt;br/>
+        &lt;div className={styles.gender}>
+          &lt;div className={styles.low}>{index + 1}-е упражение &lt;/div>
+          &lt;span className={styles.baseTableBtnDel}>
+            &lt;svg className={styles.svgIcoTrash} onClick={() => fields.remove(index)}>
+              &lt;use xlinkHref="#ico-trash">&lt;/use>
+            &lt;/svg>
+          &lt;/span>
+        &lt;/div>
+        &lt;Field
+          id="select"
+          name={`${exercise}.exerciseType`}
+          component="select"
+          onChange={() => {
+            document.getElementById('select').blur();
+          }}
+        >
+          &lt;option value="0">Видео&lt;/option>
+          &lt;option value="1">Текст&lt;/option>
+          &lt;option value="2">Фото&lt;/option>
+        &lt;/Field>
+        &lt;br/>
+        &lt;br/>
+        &lt;Field name={`${exercise}.count`} placeholder="Количество раз" component={InputProfile} />
+        &lt;Field name={`${exercise}.description`} placeholder="Описание упражения" component={InputProfile} />
+        {fields.get(index).exerciseType === '2'
+          ? &lt;div>
+            &lt;span className={styles.uploadGalleryItemInner}>
+              &lt;input type="file" accept="image/*" className={styles.uploadFileInput} onChange={input => {
+                const { target } = input
+                if (target.files &amp;&amp; target.files[0]) {
+                  var reader = new FileReader()
+
+                  reader.onload = e => {
+                    const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                    const name = target.files[0].name
+                    const payload = {
+                      authToken: cookie.load('token'),
+                      data: {
+                        name,
+                        content
+                      }
+                    }
+
+                    const headers = {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                    }
+
+                    return fetch(`${api}/data/file-upload`, {
+                      headers,
+                      method: 'POST',
+                      body: JSON.stringify(payload)
+                    })
+                    .then(response => response.json())
+                    .then(json => {
+                      change(`${exercise}.video`, `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, ''))
+                    })
+                  }
+
+                  reader.readAsDataURL(target.files[0])
+                }
+              }}/>
+            &lt;/span>
+
+            &lt;br/>
+            &lt;br/>
+
+            &lt;Field name={`${exercise}.video`} placeholder="Фото" component={InputProfile} />
+          &lt;/div>
+          : &lt;Field name={`${exercise}.video`} placeholder="Ссылка на youtube/Текст описания" component={InputProfile} />
+        }
+      &lt;/li>
+    ))}
+    &lt;li>
+      &lt;a href='#' onClick={e => {
+        e.preventDefault()
+        fields.push({})
+      }}>Добавить&lt;/a>
+    &lt;/li>
+  &lt;/ul>
+)}
+
+const renderTasks = ({ fields, change, meta: { error } }) => (
+  &lt;ul>
+    {fields.map((task, index) => (
+      &lt;li key={index}>
+        &lt;br/>
+        &lt;div className={styles.gender}>
+          &lt;h4 className={styles.low}>Задание - {index + 1}:&lt;/h4>
+          &lt;span className={styles.baseTableBtnDel}>
+            &lt;svg className={styles.svgIcoTrash} onClick={() => fields.remove(index)}>
+              &lt;use xlinkHref="#ico-trash">&lt;/use>
+            &lt;/svg>
+          &lt;/span>
+        &lt;/div>
+        &lt;br/>
+        &lt;div className={styles.gender}>
+          &lt;p className={styles.genderTitle}>Пол&lt;/p>
+          &lt;Field name={`${task}.gender`} value="male" type='radio' title="Мужчина" id={`gender${index}[1]`} component={RadioProfile} />
+          &lt;Field name={`${task}.gender`} value="female" type='radio' title="Женщина" id={`gender${index}[2]`} component={RadioProfile} />
+        &lt;/div>
+        &lt;br/>
+        &lt;Field name={`${task}.name`} placeholder="Название" component={InputProfile} />
+        &lt;Field name={`${task}.description`} placeholder="Описание" component={InputProfile} />
+        &lt;FieldArray name={`${task}.exercises`} change={change} component={renderExercises} />
+      &lt;/li>
+    ))}
+    &lt;li>
+      &lt;br/>
+      &lt;button type="button" className={styles.btnPrimary} onClick={() => fields.push({})}>Добавить задание&lt;/button>
+    &lt;/li>
+  &lt;/ul>
+)
+
+const renderPollFields = ({ fields, meta: { error } }) => (
+  &lt;ul>
+    &lt;h4>Варианты опроса:&lt;/h4>
+    &lt;br/>
+    {fields.map((field, index) => (
+      &lt;li key={index}>
+        &lt;div className={styles.grid}>
+          &lt;div className={styles.gridCellLayout66}>
+            &lt;Field name={`${field}.name`} placeholder="Название" component={InputProfile} />
+          &lt;/div>
+          &lt;div className={styles.gridCellLayout33}>
+            &lt;span className={styles.baseTableBtnDel}>
+              &lt;svg className={styles.svgIcoTrash} onClick={() => fields.remove(index)}>
+                &lt;use xlinkHref="#ico-trash">&lt;/use>
+              &lt;/svg>
+            &lt;/span>
+          &lt;/div>
+        &lt;/div>
+      &lt;/li>
+    ))}
+    &lt;li>
+      &lt;br/>
+      &lt;a href='#' onClick={e => {
+        e.preventDefault()
+        fields.push({})
+      }}>Добавить&lt;/a>
+    &lt;/li>
+  &lt;/ul>
+)
+/**
+ *  Компонент DayEditorValidationForm.
+ *  Используется для формы редактора в админке
+ *
+ */
+class DayEditorValidationForm extends Component {
+  /**
+   * @memberof DayEditorValidationForm
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {func} propTypes.reset Очистка календаря
+   * @prop {func} propTypes.change Выбор программы
+   * @prop {object} propTypes.calendar Объект данных для рендеринга календаря
+   * @prop {bool} propTypes.hideCreatePoll Показать или скрыть опрос
+   *
+   * */
+  static propTypes = {
+    reset: PropTypes.func.isRequired,
+    change: PropTypes.func.isRequired,
+    calendar: PropTypes.object.isRequired,
+    hideCreatePoll: PropTypes.bool.isRequired
+  }
+  constructor(props) {
+    super()
+
+    this.state = {
+      isVideo: false
+    }
+  }
+
+  onEditorChange = (editorContent) => {
+    const { dispatch } = this.props
+    dispatch({ type: 'CONTENT', content: editorContent })
+    dispatch({ type: 'DAY_INTRO', intro: draftToHtml(editorContent) })
+  }
+
+  uploadImageCallBack(file) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest()
+      xhr.open('POST', 'https://api.imgur.com/3/image')
+      xhr.setRequestHeader('Authorization', 'Client-ID 8d26ccd12712fca')
+      const data = new FormData()
+      data.append('image', file)
+      xhr.send(data)
+      xhr.addEventListener('load', () => {
+        const response = JSON.parse(xhr.responseText)
+        resolve(response)
+      })
+      xhr.addEventListener('error', () => {
+        const error = JSON.parse(xhr.responseText)
+        reject(error)
+      })
+    })
+  }
+
+  componentDidMount() {
+    const { change, programs, dispatch } = this.props
+    change('programTasks', programs)
+    dispatch({ type: 'ISVIDEO', value: false })
+  }
+
+  onChangeIsVideo() {
+    const {isVideo, dispatch} = this.props
+    dispatch({ type: 'ISVIDEO', value: !isVideo })
+  }
+
+  render() {
+    const { reset, hideCreatePoll, handleSubmit, onSubmit, dispatch, calendar,
+      change, date, programs, programShow, selectedDays, editor, dayId, isVideo,
+      editorMin } = this.props
+
+    const handleDateChange = date => {
+      dispatch({ type: 'CONTENT_RESET' })
+      dispatch({ type: 'DAY_INTRO_RESET' })
+      dispatch({ type: 'EDITOR_RESET' })
+      dispatch({ type: 'CONTENT_MIN_RESET' })
+      dispatch({ type: 'DAY_INTRO_MIN_RESET' })
+      dispatch({ type: 'EDITOR_MIN_RESET' })
+      dispatch({ type: 'DAY_ID', id: '-' })
+      change('programTasks', programs)
+      dispatch({ type: 'PROGRAM_SHOW', programShow: 0 })
+      dispatch({ type: 'DAY_DATE', date: date })
+      dispatch(actions.fetchDaysIfNeeded(selectedDays))
+    }
+
+    return (
+      &lt;form onSubmit={handleSubmit(onSubmit)} className={styles.grid}>
+        &lt;div className={styles.gridCellLayoutMenu14}>
+          &lt;div className={styles.gridLayoutMenuInner}>
+            &lt;div className={styles.gridCellLayout66}>
+              &lt;ul className={styles.mainNav}>
+                &lt;li className={styles.mainNavItem}>
+                  &lt;MenuButton onClick={() => {
+                    dispatch({ type: 'CONTENT_RESET' })
+                    dispatch({ type: 'DAY_INTRO_RESET' })
+                    dispatch({ type: 'EDITOR_RESET' })
+                    dispatch({ type: 'CONTENT_MIN_RESET' })
+                    dispatch({ type: 'DAY_INTRO_MIN_RESET' })
+                    dispatch({ type: 'EDITOR_MIN_RESET' })
+                    dispatch({ type: 'DAY_ID', id: '-' })
+                    change('programTasks', [])
+                    dispatch({ type: 'ISVIDEO', value: false })
+                    dispatch({ type: 'PROGRAM_SHOW', programShow: programsData.hero })
+                    dispatch(actions.fetchDaysIfNeeded(selectedDays))
+                  }} icon="ico-m-book">
+                    #Я ГЕРОЙ
+                  &lt;/MenuButton>
+                &lt;/li>
+                &lt;li className={styles.mainNavItem}>
+                  &lt;MenuButton onClick={() => {
+                    dispatch({ type: 'CONTENT_RESET' })
+                    dispatch({ type: 'DAY_INTRO_RESET' })
+                    dispatch({ type: 'EDITOR_RESET' })
+                    dispatch({ type: 'CONTENT_MIN_RESET' })
+                    dispatch({ type: 'DAY_INTRO_MIN_RESET' })
+                    dispatch({ type: 'EDITOR_MIN_RESET' })
+                    dispatch({ type: 'DAY_ID', id: '-' })
+                    dispatch({ type: 'ISVIDEO', value: false })
+                    change('programTasks', [])
+                    dispatch({ type: 'PROGRAM_SHOW', programShow: programsData.mommy })
+                    dispatch(actions.fetchDaysIfNeeded(selectedDays))
+                  }} icon="ico-m-book">
+                    #МАМА МОЖЕТ
+                  &lt;/MenuButton>
+                &lt;/li>
+                &lt;li className={styles.mainNavItem}>
+                  &lt;MenuButton onClick={() => {
+                    dispatch({ type: 'CONTENT_RESET' })
+                    dispatch({ type: 'DAY_INTRO_RESET' })
+                    dispatch({ type: 'EDITOR_RESET' })
+                    dispatch({ type: 'CONTENT_MIN_RESET' })
+                    dispatch({ type: 'DAY_INTRO_MIN_RESET' })
+                    dispatch({ type: 'EDITOR_MIN_RESET' })
+                    dispatch({ type: 'DAY_ID', id: '-' })
+                    dispatch({ type: 'ISVIDEO', value: false })
+                    change('programTasks', [])
+                    dispatch({ type: 'PROGRAM_SHOW', programShow: programsData.extreme })
+                    dispatch(actions.fetchDaysIfNeeded(selectedDays))
+                  }} icon="ico-m-book">
+                    #ЭКСТРЕМАЛЬНАЯ СУШКА
+                  &lt;/MenuButton>
+                &lt;/li>
+                &lt;li className={styles.mainNavItem}>
+                  &lt;MenuButton onClick={() => {
+                    browserHistory.push('/userReports/pendingProfiles')
+                  }} icon="ico-m-tasks">Отчеты&lt;/MenuButton>
+                &lt;/li>
+                &lt;li className={styles.mainNavItem}>
+                  &lt;MenuButton onClick={() => {
+                    browserHistory.push('/superadmin/food')
+                  }} icon="ico-m-food">Питание&lt;/MenuButton>
+                &lt;/li>
+                &lt;li className={styles.mainNavItem}>
+                  &lt;MenuButton onClick={() => {
+                    browserHistory.push('/superadmin/photos')
+                    dispatch({
+                      type: 'SELECT_PHOTO_FAQ',
+                      value:'UserPhotoCaptionMan'
+                     })
+                  }} icon="ico-m-faq">Инструкция фото - М&lt;/MenuButton>
+                &lt;/li>
+                &lt;li className={styles.mainNavItem}>
+                  &lt;MenuButton onClick={() => {
+                    browserHistory.push('/superadmin/photosWoman')
+                    dispatch({
+                      type: 'SELECT_PHOTO_FAQ',
+                      value:'UserPhotoCaptionWoman'
+                     })
+                  }} icon="ico-m-faq">Инструкция фото - Ж&lt;/MenuButton>
+                &lt;/li>
+              &lt;/ul>
+            &lt;/div>
+            &lt;div className={styles.gridCellLayout33}>
+              &lt;ul className={styles.minCalendar}>
+                {calendar &amp;&amp; calendar.map((field, index) => (
+
+                  &lt;li key={index}>
+                    &lt;Calendar onClick={() => {
+                      reset()
+
+                      dispatch({ type: 'DAY_ID', id: calendar[index].id })
+                      dispatch({ type: 'ISVIDEO', value: calendar[index].isVideo })
+                      change('customName', field.intro[0].customName)
+                      change('customIcon', field.intro[0].customIcon)
+                      const intro = calendar[index].intro.find(i => i.program === programShow)
+                      dispatch({ type: 'EDITOR', editor: JSON.parse(intro.intro), index: 0 })
+                      dispatch({ type: 'EDITOR_MIN', editor: JSON.parse(intro.introMin), index: 0 })
+                      const programTask = calendar[index].programTasks.find(p => p.program === programShow)
+                      dispatch({ type: 'DAY_DATE', date: moment(date, 'YYYY-MM-DD') })
+                      change('customIcon', calendar[index].customIcon)
+                      change('tasks', programTask
+                        ? programTask.tasks.map((task) => {
+                          task.exercises = task.exercises.map((exercise) => {
+                            exercise.exerciseType += ''
+                            return exercise
+                          })
+                          return task
+                        })
+                        : []
+                      )
+
+                      if (calendar[index].poll &amp;&amp; calendar[index].poll.description) {
+                        dispatch({ type: 'HIDE_POLL', hideCreatePoll: true })
+                        change('poll.description', calendar[index].poll.description)
+                        change('poll.fields', calendar[index].poll.fields)
+                      } else {
+                        dispatch({ type: 'HIDE_POLL', hideCreatePoll: false })
+                      }
+                    }}
+                    onTrashClick={() => {
+                      this.refs[`deleteModal${index}`].show()
+                    }}
+                    key={index}
+                    number={field.id}
+                    date={field.date}
+                  >
+                    {moment(field.date).format('DDddd')}
+                  &lt;/Calendar>
+                    &lt;Modal ref={`deleteModal${index}`} contentStyle={contentStyle}>
+                      &lt;h2>Хотите удалить запись?&lt;/h2>
+                      &lt;br/>
+                      &lt;button className={styles.btnAction} onClick={() => {
+                        const payload = {
+                          authToken: cookie.load('token'),
+                          data: {
+                            id: field.id
+                          }
+                        }
+
+                        const headers = {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json'
+                        }
+
+                        const method = 'POST'
+                        return fetch(`${api}/data/adminday-delete`, {
+                          headers,
+                          method,
+                          body: JSON.stringify(payload)
+                        })
+                        .then(response => response.json())
+                        .then(json => {
+                          if (json.errorCode === 1) {
+                            dispatch(actions.fetchDaysIfNeeded(selectedDays))
+                          }
+                        })
+                      }}>
+                        Удалить
+                      &lt;/button>
+                    &lt;/Modal>
+                  &lt;/li>
+                ))}
+              &lt;/ul>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+        &lt;div className={styles.gridCellLayoutContentPocket34}>
+          &lt;div className={styles.stageBoxSmallPadding}>
+            &lt;div className={styles.grid}>
+              &lt;div className={styles.deskGridCell12Mb30}>
+                &lt;button type className={styles.btnPrimary}>
+                  Сохранить
+                &lt;/button>
+              &lt;/div>
+            &lt;/div>
+
+            &lt;h2 className='h2'>Id: {dayId} Program: {programShow}&lt;/h2>
+            &lt;span>Дата:&lt;/span>
+            &lt;div className="divider" />
+            &lt;DatePicker selected={date} onChange={handleDateChange} />
+            &lt;br/>
+            &lt;br/>
+
+            {/* &lt;Field name="program" id="program" options={[
+              { name: '#Я ГЕРОЙ', value: '1'},
+              { name: '#МАМА МОЖЕТ', value: '2' },
+              { name: '#ЭКСТРЕМАЛЬНАЯ СУШКА', value: '3' },
+            ]} component={SelectProgram} /> */}
+
+            {/* &lt;FieldArray name='programTasks' component={renderPrograms} /> */}
+            &lt;br/>
+            &lt;div className={styles.grid}>
+              &lt;div className={styles.gridCellLayout50}>
+                &lt;Field name='customName' placeholder="Название дня" component={InputProfile}/>
+              &lt;/div>
+              &lt;div className={styles.gridCellLayout50}>
+                &lt;Field name='customIcon' placeholder="Выберите иконку" component={InputProfile} />
+              &lt;/div>
+
+              &lt;div className={styles.gridCellLayoutIsVideo50}>
+                &lt;div className={styles.isVideoBox}>
+
+                &lt;/div>
+
+                &lt;label htmlFor="isVideo" className={styles.isVideoLabel}>
+                  &lt;input id="isVideo" type="checkbox"
+                         onChange={this.onChangeIsVideo.bind(this)}
+                         checked={isVideo}/>
+                  Ссылка на видео&lt;/label>
+              &lt;/div>
+
+            &lt;/div>
+
+            &lt;h2 className='h2'>Кратко&lt;/h2>
+            {editorMin
+              ? &lt;div className='home-root'>
+                &lt;Editor
+                  toolbarClassName="home-toolbar"
+                  wrapperClassName="home-wrapper"
+                  editorClassName="home-editor"
+                  placeholder="Вставьте текст..."
+                  onChange={(editorContent) => {
+                    const { dispatch } = this.props
+                    dispatch({ type: 'CONTENT_MIN', content: editorContent, index: 0 })
+                    dispatch({ type: 'DAY_INTRO_MIN', intro: draftToHtml(editorContent), index: 0 })
+                  }}
+                  contentState={editorMin[0]}
+                  uploadCallback={this.uploadImageCallBack}
+                />
+              &lt;/div>
+              : &lt;div className='home-root'>
+                &lt;Editor
+                  toolbarClassName="home-toolbar"
+                  wrapperClassName="home-wrapper"
+                  editorClassName="home-editor"
+                  placeholder="Вставьте текст..."
+                  onChange={(editorContent) => {
+                    const { dispatch } = this.props
+                    dispatch({ type: 'CONTENT_MIN', content: editorContent, index: 0 })
+                    dispatch({ type: 'DAY_INTRO_MIN', intro: draftToHtml(editorContent), index: 0 })
+                  }}
+                  uploadCallback={this.uploadImageCallBack}
+                />
+              &lt;/div>
+            }
+
+            &lt;br/>
+            &lt;h2 className='h2'>Подробно&lt;/h2>
+            {editor
+              ? &lt;div className='home-root'>
+                &lt;Editor
+                  toolbarClassName="home-toolbar"
+                  wrapperClassName="home-wrapper"
+                  editorClassName="home-editor"
+                  placeholder="Вставьте текст..."
+                  onChange={(editorContent) => {
+                    const { dispatch } = this.props
+                    dispatch({ type: 'CONTENT', content: editorContent, index: 0 })
+                    dispatch({ type: 'DAY_INTRO', intro: draftToHtml(editorContent), index: 0 })
+                  }}
+                  contentState={editor[0]}
+                  uploadCallback={this.uploadImageCallBack}
+                />
+              &lt;/div>
+              : &lt;div className='home-root'>
+                &lt;Editor
+                  toolbarClassName="home-toolbar"
+                  wrapperClassName="home-wrapper"
+                  editorClassName="home-editor"
+                  placeholder="Вставьте текст..."
+                  onChange={(editorContent) => {
+                    const { dispatch } = this.props
+                    dispatch({ type: 'CONTENT', content: editorContent, index: 0 })
+                    dispatch({ type: 'DAY_INTRO', intro: draftToHtml(editorContent), index: 0 })
+                  }}
+                  uploadCallback={this.uploadImageCallBack}
+                />
+              &lt;/div>
+            }
+
+            &lt;br/>
+            &lt;br/>
+
+            &lt;FieldArray name='tasks' change={change} component={renderTasks} />
+
+            &lt;br/>
+            &lt;button type="button" className={styles.btnSecondary} onClick={() => {
+              dispatch({ type: 'HIDE_POLL', hideCreatePoll: !hideCreatePoll })
+            }}>
+              {!hideCreatePoll ? 'Добавить опрос' : 'Убрать опрос' }
+            &lt;/button>
+            {hideCreatePoll &amp;&amp;
+              &lt;div>
+                &lt;br/>
+                &lt;Field name='poll.description' placeholder="Описание опроса" component={InputProfile} />
+                &lt;FieldArray name='poll.fields' component={renderPollFields} />
+              &lt;/div>
+            }
+          &lt;/div>
+        &lt;/div>
+      &lt;/form>
+    )
+  }
+}
+
+DayEditorValidationForm = reduxForm({
+  form: 'dayEditor',
+  fields: ['tasks', 'customName', 'customIcon']
+})(DayEditorValidationForm)
+
+const mapStateToProps = state => {
+  const { selectedDays, selectedPrograms, recivedPrograms, hidePoll, programShow, dayId, isVideo } = state
+  const { programs } = recivedPrograms[selectedPrograms] || []
+  return {
+    hideCreatePoll: hidePoll,
+    programShow,
+    dayId,
+    isVideo,
+    programs,
+    selectedDays
+  }
+}
+
+DayEditorValidationForm = connect(
+  mapStateToProps
+)(DayEditorValidationForm)
+
+export default CSSModules(DayEditorValidationForm, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

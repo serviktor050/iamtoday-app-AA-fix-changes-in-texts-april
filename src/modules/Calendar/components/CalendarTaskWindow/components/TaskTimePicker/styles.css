@@ -1,0 +1,30 @@
+.newTask__dateInputs_wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.newTask__dateInput_label {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2C2F33;
+}
+
+.newTask__dateInput {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 48%;
+  border-radius: 2px;
+}
+
+.newTask__dateInput_error {
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  font-size: 8px;
+  color: red;
+  text-align: right;
+  transform: translate(0, 100%);
+}

@@ -1,0 +1,184 @@
+$task-geometry: 52px;
+
+.task {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 4px;
+
+      .task__content {
+        margin-bottom: 20px;
+      }
+    }
+
+    &--active {
+      .task__num {
+        color: $c-secondary;
+      }
+    }
+
+  }
+
+  &__header {
+    display: flex;
+  }
+
+  &__header-inner {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: $base-radius;
+    border: 1px solid $c-border;
+
+    @include av-mq(portable) {
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: $c-l-gray;
+    }
+
+    &:active {
+      background-color: darken($c-l-gray, 3%);
+    }
+  }
+
+  &__num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    font-family: $f-headline;
+    font-weight: 700;
+    font-size: $fz-h3;
+    color: $c-l-blue;
+    width: $task-geometry;
+    height: $task-geometry;
+    margin-right: 20px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 1px;
+      height: $task-geometry;
+      background-color: $c-border;
+      position: absolute;
+      left: $task-geometry;
+      top: 0;
+      bottom: 0;
+    }
+
+    span {
+      text-align: center;
+      line-height: 1;
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+    color: $c-secondary;
+    line-height: 1.2;
+    padding: 6px 0;
+
+    @include av-mq(portable) {
+      
+    }
+
+    @include av-mq(desk) {
+      font-size: $fz-h4;
+    }
+  }
+
+  &__content {
+    margin-top: 20px;
+
+    @include av-mq(portable) {
+      
+    }
+
+    @include av-mq(desk) {
+      margin-left: 25px;
+      padding-left: 25px;
+      border-left: 2px solid $c-secondary;
+    }
+  }
+
+  &__btn-go {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: $task-geometry;
+    height: $task-geometry;
+
+    @include av-mq(portable) {
+      margin-left: auto;
+    }
+
+    @include av-mq(desk) {
+      
+    }
+  }
+}
+
+.btn-task {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: $fz-middle;
+  max-width: 200px;
+  width: 100%;
+  background-color: $c-primary;
+  letter-spacing: 1px;
+  color: #fff;
+  padding: 16px 15px 14px;
+  user-select: none;
+  margin-bottom: 20px;
+
+  @include av-mq(pocket) {
+    max-width: 100%;
+  }
+
+
+  .ico-task-done {
+    display: none;
+  }
+
+  &--done {
+    background-color: $c-green;
+
+    .ico-task-progress {
+      display: none;
+    }
+
+    .ico-task-done {
+      display: block;
+    }
+  }
+
+  &__title {
+    margin-left: -10px;
+  }
+
+  .ico-task-done {
+    position: absolute;
+    top: 10;
+    right: 8px;
+  }
+
+  .ico-task-progress {
+    position: absolute;
+    top: 11;
+    right: 13px;
+  }
+
+}

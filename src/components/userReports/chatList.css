@@ -1,0 +1,28 @@
+.svgIco {
+  composes: svg-icon from '../../index.css';
+}
+
+.chatsListSpectator {
+  composes: chats-list__spectator from '../../index.css';
+}
+
+.chatsList {
+  composes: chats-list from '../../index.css';
+}
+
+.chatsListItemName {
+  composes: chats-list__item-name from '../../index.css';
+}
+
+.chatsListItemTimestamp {
+  composes: chats-list__item-timestamp from '../../index.css';
+}
+
+.chatsListItem {
+  composes: chats-list__item from '../../index.css';
+}
+
+.chatsListItemSelected {
+  composes: chats-list__item from '../../index.css';
+  composes: chats-list__item_selected from '../../index.css';
+}

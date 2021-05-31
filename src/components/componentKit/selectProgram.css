@@ -1,0 +1,12 @@
+.select {
+  composes: select from '../../index.css';
+}
+
+.selectField {
+  composes: select__field from '../../index.css';
+}
+
+.svgIcoArrowAccordion {
+  composes: svg-icon from '../../index.css';
+  composes: ico-arrow-accordion from '../../index.css';
+}

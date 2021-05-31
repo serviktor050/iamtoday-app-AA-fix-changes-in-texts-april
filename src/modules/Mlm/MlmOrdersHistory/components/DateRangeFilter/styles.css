@@ -1,0 +1,65 @@
+.dateRangeFilter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-right: auto;
+  width: 100%;
+}
+
+.dateRangeFilter__containerButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  flex-grow: 1;
+}
+
+.dateRangeFilter__button {
+  font-size: 12px;
+  line-height: 15px;
+  padding: 5px 10px;
+  background-color: #daeff2;
+  border-radius: 12px;
+  color: #4da2d6;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dateRangeFilter__button:last-child {
+  margin-right: 0;
+}
+
+.dateRangeFilter__button--active {
+  background-color: #4da2d6;
+  color: #ffffff;
+}
+
+@media screen and (min-width: 471px) {
+  .dateRangeFilter__containerButtons {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dateRangeFilter {
+    width: auto;
+  }
+
+  .dateRangeFilter__containerButtons {
+    flex-grow: 0;
+  }
+
+  .dateRangeFilter__button {
+    font-size: 10px;
+    line-height: 12px;
+    padding: 4px 15px;
+    margin-right: 5px;
+  }
+
+  .dateRangeFilter__button:last-child {
+    margin-right: 0;
+  }
+}

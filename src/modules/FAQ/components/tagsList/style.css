@@ -1,0 +1,57 @@
+.tagsList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    all: unset;
+    background: #EEFFE9;
+    color: #39961E;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0px 10px 10px 0px;
+    cursor: pointer;
+}
+
+.tag:hover {
+    color: #EEFFE9;
+    background-color: #39961E;
+}
+
+.tag:focus {
+    color: #EEFFE9;
+    background-color: #39961E;
+}
+
+.noTag {
+    all: unset;
+    background: #EFEFEF;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0px 10px 10px 0px;
+    cursor: pointer;
+}
+
+.moreTagButton {
+    composes: tag;
+    color: #EEFFE9;
+    background-color: #79C330; 
+    display: flex;
+    align-items: center; 
+    padding: 3px 5px;  
+}
+
+.moreTagButton>span {
+    background: url(/static/media/chevron-down.c66b213d.svg) center/cover no-repeat;
+    background-size: cover;
+    filter: brightness(0) saturate(100%) invert(97%) sepia(0%) saturate(0%) hue-rotate(29deg) brightness(103%) contrast(103%);
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    display: inline-flex;
+    
+}

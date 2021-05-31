@@ -1,0 +1,185 @@
+.layout {
+  composes: layout from '../index.css';
+}
+
+.pendingProfileRow {
+  composes: pending-profile__row from '../index.css';
+}
+
+.pendingProfileRowTitle {
+  composes: pending-profile__row-title from '../index.css';
+}
+
+.pendingProfileParams {
+  composes: pending-profile__params from '../index.css';
+}
+
+.pendingProfileButtonSecondary {
+  composes: pending-profile__button from '../index.css';
+  composes: btn from '../index.css';
+  composes: btn--secondary from '../index.css';
+}
+
+.header {
+  composes: header from '../index.css';
+}
+
+.gridHeaderInner {
+  composes: grid from '../index.css';
+  composes: header__inner from '../index.css';
+}
+
+.gridCellHeaderLogo {
+  composes: grid__cell from '../index.css';
+  composes: header__logo from '../index.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width33 {
+    width: 33.33333%;
+  }
+  .width66 {
+    width: 66.66667%;
+  }
+  .width25 {
+    width: 25%;
+  }
+  .width50 {
+    width: 50%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+
+.gridCellLayout33 {
+  composes: width33;
+  composes: grid__cell from '../index.css';
+}
+
+.gridCellLayout50 {
+  composes: width50;
+  composes: grid__cell from '../index.css';
+}
+
+.gridCellLayoutIsVideo50 {
+  composes: width50;
+  composes: is-video from '../index.css';
+  composes: grid__cell from '../index.css';
+}
+
+.gridLayoutMenuInner {
+  composes: grid from '../index.css';
+  composes: layout__menu-inner from '../index.css';
+}
+
+.gridCellLayout66 {
+  composes: width66;
+  composes: grid__cell from '../index.css';
+  /*composes: 1/1--pocket from '../index.css';*/
+}
+
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from '../index.css';
+  composes: layout__menu from '../index.css';
+}
+
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../index.css';
+  /*composes: 1/1--pocket from '../index.css';*/
+}
+
+.stageBoxSmallPadding {
+  composes: stage-box from '../index.css';
+  composes: stage-box--small-padding from '../index.css';
+}
+
+.textCenter {
+  composes: text-center from '../index.css';
+}
+
+.loaderMain {
+  composes: loader from '../index.css';
+  composes: loader--main from '../index.css';
+}
+
+.pendingProfile {
+  composes: pending-profile from '../index.css';
+}
+
+.pendingProfileTopPanel {
+  composes: pending-profile__top-panel from '../index.css';
+}
+
+.pendingProfileButtons {
+  composes: pending-profile__buttons from '../index.css';
+}
+
+.pendingProfileButtonPrimary {
+  composes: pending-profile__button from '../index.css';
+  composes: btn from '../index.css';
+  composes: btn--primary from '../index.css';
+}
+
+.pendingProfileButtonAction {
+  composes: pending-profile__button from '../index.css';
+  composes: btn from '../index.css';
+  composes: btn--action from '../index.css';
+}
+
+.pendingProfileCloseButton {
+  composes: pending-profile__close-button from '../index.css';
+}
+
+.chatEmoji {
+  composes: chat__emoji from '../index.css';
+}
+
+.chatEmojiButton {
+  composes: chat__emoji-button from '../index.css';
+}
+
+.chatForm {
+  composes: chat-form from '../index.css';
+}
+
+.chatFormInner {
+  composes: chat-form__inner from '../index.css';
+}
+
+.chatFormInnerTextarea {
+  composes: chat-form__field from '../index.css';
+  composes: textarea__field from '../index.css';
+}
+
+.btnChat {
+  composes: btn-chat from '../index.css';
+}
+
+.btnChatTitle {
+  composes: btn-chat__title from '../index.css';
+}
+
+.btnChatIco {
+  composes: btn-chat__ico from '../index.css';
+}
+
+.svgIcoArrowUp {
+  composes: svg-icon from '../index.css';
+  composes: ico-arrow-up from '../index.css';
+}
+
+.svgIcoClose {
+  composes: svg-icon from '../index.css';
+  composes: ico-close from '../index.css';
+}
+
+.pendingProfileContainer {
+  composes: pending-profile__container from '../index.css';
+}
+
+.pendingProfileInnerPopup {
+  composes: pending-profile__inner-popup from '../index.css';
+}

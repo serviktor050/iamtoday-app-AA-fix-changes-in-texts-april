@@ -1,0 +1,10 @@
+.itd-link-decorator-wrapper {
+  position: relative;
+}
+.itd-link-decorator-icon {
+  position: absolute;
+  right: -15px;
+  top: -5px;
+  cursor: pointer;
+  background-color: white;
+}

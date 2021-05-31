@@ -1,0 +1,8 @@
+.loaderMain {
+  composes: loader from '../../index.css';
+  composes: loader--main from '../../index.css';
+}
+
+.textCenter {
+  composes: text-center from '../../index.css';
+}

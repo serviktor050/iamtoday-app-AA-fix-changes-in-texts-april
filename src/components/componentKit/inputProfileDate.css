@@ -1,0 +1,9 @@
+.inputBox {
+  composes: input from '../../index.css';
+  composes: input--box  from '../../index.css';
+}
+
+.inputFieldDate {
+  composes: input__field from '../../index.css';
+  composes: input__field--date from '../../index.css';
+}

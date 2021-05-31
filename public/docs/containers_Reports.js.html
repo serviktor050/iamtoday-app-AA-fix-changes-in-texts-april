@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/Reports.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/Reports.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import moment from 'moment'
+import { bindActionCreators } from 'redux'
+import Layout from '../components/componentKit2/Layout'
+import { api, domen } from '../config.js'
+
+import {
+  selectReports,
+  invalidateReports,
+  fetchReportsIfNeeded,
+  fetchTaskDayIfNeeded
+} from '../actions'
+import LoadingView from '../components/componentKit/LoadingView'
+import CSSModules from 'react-css-modules'
+import styles from './reports.css'
+/**
+ *  Контейнер Reports.
+ *  Используется для отображения страницы 'Зачетка' (/reports)
+ *
+ */
+class Reports extends Component {
+  /**
+   * @memberof Reports
+   * @prop {Object} propTypes - the props that are passed to this component
+   * @prop {boolean} propTypes.isFetching Индикатор загрузки
+   * @prop {func} propTypes. selectReports Выбор программы
+   * @prop {array} propTypes.reports Зачеты
+   * @prop {array} propTypes.activeAccordionItems Активные зачеты
+   * @prop {object} propTypes.taskDay Данные для дня
+   * @prop {string} propTypes.selectedReports Выбор зачетов
+   * @prop {func} propTypes.fetchReportsIfNeeded Загрузка зачетов с сервера
+   * @prop {func} propTypes.fetchTaskDayIfNeeded Загрузка дня с заданием с сервера
+   *
+   * */
+  static propTypes = {
+    taskDay: PropTypes.object.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    /**
+     * Функция для выбора отчета
+     * @memberof  Reports
+     * @param {reports}  Зачеты.
+     */
+    selectReports:PropTypes.func.isRequired,
+    reports:PropTypes.array.isRequired,
+    activeAccordionItems:PropTypes.array.isRequired,
+    selectedReports: PropTypes.string.isRequired,
+    /**
+     * Функция для получения данных с сервера для рендеринга страницы 'Зачетка'.
+     * @memberof Reports
+     * @param {string} Зачеты.
+     */
+    fetchReportsIfNeeded: PropTypes.func.isRequired,
+    /**
+     * Функция для получения данных с сервера для раздела 'Задания'.
+     * @memberof Reports
+     * @param {number} day - Номер дня.
+     */
+    fetchTaskDayIfNeeded: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired
+  }
+
+  componentDidMount() {
+    const { fetchReportsIfNeeded, selectedReports, fetchTaskDayIfNeeded } = this.props
+    fetchReportsIfNeeded(selectedReports)
+    fetchTaskDayIfNeeded('reactjs')
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedReports !== this.props.selectedReports) {
+      const { fetchReportsIfNeeded, selectedReports } = nextProps
+      fetchReportsIfNeeded(selectedReports)
+    }
+  }
+// &lt;LoadingView title="Если вы видите это окно, значит мы делаем личный кабинет для вас удобнее! Напишите нам в чат тех подержки (внизу справа) или на почту sb@todayme.ru" taskBack={true}/>
+
+  render() {
+    const { dispatch, reports, isFetching, taskDay, activeAccordionItems } = this.props
+    const isEmpty = (!reports || reports.length === 0) &amp;&amp; (!taskDay || !taskDay.data || taskDay.data.length === 0)
+    const isAlfa = domen.isAlfa
+    let calendar = []
+    let id
+    let role
+
+    if (!isEmpty) {
+      calendar = taskDay.data[0].calendar
+      id = taskDay.data[0].id
+      role = taskDay.data[0].user.role
+    }
+
+    const items = reports.map((report, index) => {
+      let health, status, accordionState
+      const adminName = report.userInfo.firstName + ' ' + report.userInfo.lastName
+
+      switch (report.health) {
+        case 'good':
+          health = 'Отлично'
+          break
+        case 'middle':
+          health = 'Так себе'
+          break
+        case 'bad':
+          health = 'Не очень'
+          break
+        default:
+          health = 'Так себе'
+      }
+
+      switch (report.status) {
+        case 'done':
+          status = 'Зачет'
+          accordionState = styles.accordionStateDone
+          break
+        case 'missed':
+          status = 'Не сдан'
+          accordionState = styles.accordionStateCross
+          break
+        case 'waitingadmin':
+        case 'waiting':
+          status = 'Проверка'
+          accordionState = styles.accordionStateWaiting
+          break
+        default:
+          health = 'Так себе'
+      }
+
+      let isItemActive = activeAccordionItems.indexOf(index) !== -1
+
+      return (
+        &lt;li key={index} className={isItemActive ? styles.accordionItemActive : styles.accordionItem} onClick={() => {
+          if (isItemActive) {
+            dispatch({ type: 'DELETE_ACCORDION_ITEM', item: index })
+          } else {
+            dispatch({ type: 'ADD_ACCORDION_ITEM', item: index })
+          }
+        }}>
+          &lt;div className={styles.accordionHeader}>
+            &lt;div className={accordionState}>{status}&lt;/div>
+            &lt;div className={styles.accordionDate}>{moment(report.date).format('YYYY-MM-DD')}&lt;/div>
+            &lt;div className={styles.accordionName}>{adminName}&lt;/div>
+            {/* &lt;div className="accordion__qty-msg">
+             &lt;svg className="svg-icon ico-msg">
+             &lt;use xlinkHref="#ico-msg">&lt;/use>
+             &lt;/svg>
+             &lt;span className="num">5&lt;/span>
+             &lt;/div> */}
+            {/*&lt;div className={styles.accordionBtn}>
+              &lt;div className={styles.accordionBtnTitle}>свернуть&lt;/div>
+              &lt;svg className={styles.svgIcoArrowAccordion}>
+                &lt;use xlinkHref="#ico-arrow-accordion">&lt;/use>
+              &lt;/svg>
+            &lt;/div>*/}
+
+             &lt;span className={styles.btnBase}>
+                  &lt;span className={styles.btnTitle}>Показать&lt;/span>
+
+                  &lt;span className={styles.btnIco}>
+                    &lt;svg className={styles.svgIconBoldArrowDown}>
+                      &lt;use xlinkHref="#ico-bold-arrow-down">&lt;/use>
+                    &lt;/svg>
+                  &lt;/span>
+              &lt;/span>
+
+          &lt;/div>
+          &lt;div className={styles.accordionContent}>
+            &lt;ul className={styles.chatContent}>
+              {report.adminAnswer &amp;&amp;
+                &lt;li className={styles.chatMsgSomeone}>
+                  {/* &lt;div className="chat-msg__ava">
+                   &lt;img src={report.userInfo.photo} alt=""/>
+                   &lt;/div> */}
+                  &lt;div className={styles.chatMsgContent} style={{ margin: '0px 50px' }}>
+                    &lt;p className={styles.chatMsgName}>{adminName}&lt;/p>
+                    &lt;div className={styles.chatMsgText}>{report.adminAnswer}&lt;/div>
+                  &lt;/div>
+                &lt;/li>
+              }
+              &lt;li className={styles.chatMsgYouSystem}>
+                &lt;div className={styles.chatMsgContent} style={{ margin: '0px 50px' }}>
+                  &lt;div className={styles.chatMsgText}>{`${report.report} Состояние: ${health}`}&lt;/div>
+                &lt;/div>
+                {/* &lt;div className="chat-msg__ava">
+                 &lt;img src="/tmp/ava-you.png" alt=""/>
+                 &lt;/div> */}
+              &lt;/li>
+              &lt;br/>
+            &lt;/ul>
+          &lt;/div>
+        &lt;/li>
+      )
+    })
+
+    return (
+      &lt;Layout pageNumber={1}>
+        {isEmpty
+          ? (isFetching ? &lt;LoadingView isAlfa={isAlfa} title="Загружается..."/> : &lt;LoadingView isAlfa={isAlfa} title="Загружается..."/>)
+          : &lt;div>
+                  {reports.length
+                    ? &lt;div className={styles.stageBoxNoPadding}>
+                        &lt;h1 className={styles.h1}>Отчеты за все дни&lt;/h1>
+                        &lt;ul className={styles.accordionReports}>
+                         {items}
+                        &lt;/ul>
+                      &lt;/div>
+                    : &lt;div className={styles.stageBoxReport}>
+
+                        &lt;h1 className={styles.h1}>Это твоя зачетная книжка&lt;/h1>
+
+                        &lt;div className="">
+                          &lt;p className="">Здесь ты будешь сдавать тренерам “проверяющим” отчеты о своих выполненных заданиях. Они тебе будут задавать наводящие вопросы, для того, чтобы проверить тебя. Мы ведь обещали, что спуску не дадим! Пиши отчет по каждому выполненному заданию и двигайся вперед к финальным задачам! Удачи!&lt;/p>
+                        &lt;/div>
+
+                      &lt;/div>
+                  }
+        &lt;/div>}
+      &lt;/Layout>
+
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  const { selectedReports, recivedReports, sign, selectedTaskDay, recivedTaskDay, activeAccordionItems } = state
+
+  const {
+    isFetching,
+    reports
+  } = recivedReports[selectedReports] || {
+    isFetching: true,
+    reports: []
+  }
+
+  const {taskDay} = recivedTaskDay[selectedTaskDay] || {
+    isFetching: true,
+    taskDay: {}
+  }
+
+  return {
+    activeAccordionItems,
+    sign,
+    taskDay,
+    recivedTaskDay,
+    selectedReports,
+    isFetching,
+    reports
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  selectReports: bindActionCreators(selectReports, dispatch),
+  invalidateReports: bindActionCreators(invalidateReports, dispatch),
+  fetchReportsIfNeeded: bindActionCreators(fetchReportsIfNeeded, dispatch),
+  fetchTaskDayIfNeeded: bindActionCreators(fetchTaskDayIfNeeded, dispatch),
+  dispatch
+})
+
+Reports = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Reports)
+
+export default CSSModules(Reports, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

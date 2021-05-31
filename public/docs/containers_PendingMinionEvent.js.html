@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/PendingMinionEvent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/PendingMinionEvent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {Component, PropTypes } from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router'
+import EmojiPicker from 'emojione-picker'
+import Textarea from 'react-textarea-autosize'
+import {
+  fetchChat,
+  closeChat,
+  createWithMessage,
+  rejectExam,
+  waitingExam,
+  approveExam,
+  fetchPendingExam,
+  PRIVATE_CHAT_ID
+} from '../actions'
+import CSSModules from 'react-css-modules'
+import styles from './pendingMinionEvent.css'
+
+import Chat from './Chat'
+import UserReportsMenu from '../components/userReports/UserReportsMenu'
+
+const programs = [
+  'Я герой',
+  'Мама может',
+  'Экстренная сушка'
+]
+
+const healthConditions = {
+  bad: 'Ужасно',
+  middle: 'Так себе',
+  good: 'Отлично'
+}
+const youtubePattern = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&amp;v=|\?v=)([^#\&amp;\?]*).*/
+
+/**
+ *  Контейнер UserReports.
+ *  Используется для отображения страницы экзаменов в админке (/userReports/exams/:userId/:dayId)
+ *
+ */
+class UserReports extends Component {
+  /**
+   * @memberof UserReports
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {number} propTypes.userId id Пользователя
+   * @prop {func} propTypes.closeChat Функция закрывания чата
+   * @prop {func} propTypes.fetchPendingExam Получение данных с сервера(экзамены)
+   * @prop {func} propTypes.rejectExam Функция отклонения экзамена
+   * @prop {func} propTypes.waitingExam Функция  - экзамен в ожидании
+   * @prop {func} propTypes.approveExam Функция  - принять экзамен
+   * @prop {object} propTypes.userInfo Данные пользователя
+   *
+   * */
+  static propTypes = {
+    userId: PropTypes.number.isRequired,
+    closeChat: PropTypes.func.isRequired,
+    fetchPendingExam: PropTypes.func.isRequired,
+    approveExam: PropTypes.func.isRequired,
+    rejectExam: PropTypes.func.isRequired,
+    waitingExam: PropTypes.func.isRequired,
+    userInfo: PropTypes.object.isRequired,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      /**
+       * Видим ли popup
+       * @memberof UserReports
+       */
+      isConfirmPopupVisible: false,
+      /**
+       * Показать  Emoji
+       * @memberof UserReports
+       */
+      showEmojiPopup: false
+    }
+  }
+
+  componentWillMount() {
+    const {fetchPendingExam, routeParams} = this.props
+
+    fetchChat(PRIVATE_CHAT_ID)
+    fetchPendingExam(routeParams.userId, routeParams.dayId)
+  }
+
+  componentWillUnmount() {
+    const {closeChat} = this.props
+
+    closeChat()
+  }
+
+  confirmChoice() {
+    const {confirmMessage} = this.refs
+    const {confirmationAction} = this.state
+
+    this.toggleStatus(confirmationAction, confirmMessage.value)
+  }
+
+  toggleStatus(action, message) {
+    const {id, router} = this.props
+
+    action(id, message)
+      .then(() => router.push('/userReports/exams'))
+  }
+
+  showConfirmPopup(confirmationAction) {
+    this.setState({isConfirmPopupVisible: true, confirmationAction})
+  }
+
+  hideConfirmPopup() {
+    this.setState({isConfirmPopupVisible: false})
+  }
+
+  dateFormat(date, bool) {
+    let newDate
+
+    if (date) {
+      let arr = date.split('-')
+      let arrTime = date.split('T')
+      let age
+
+      if (bool) {
+        newDate = arrTime[1].slice(0, 8) + ',' + ' ' + arr[2].slice(0, 2) + '-' + arr[1] + '-' + arr[0]
+        return newDate
+      }
+      newDate = arr[2].slice(0, 2) + '-' + arr[1] + '-' + arr[0]
+
+      age = Math.floor((new Date() - new Date(arr[0], arr[1] - 1, arr[2].slice(0, 2))) / 3600 / 1000 / 24 / 365.25)
+      return {newDate, age}
+    }
+
+    return 'Нет данных'
+  }
+
+  toggleEmojiPopup() {
+    this.setState({showEmojiPopup: !this.state.showEmojiPopup})
+  }
+
+  appendEmoji(unicode) {
+    this.refs.confirmMessage.value += this.getEmoji(unicode)
+  }
+
+  getEmoji(unicode) {
+    const point = Number('0x' + unicode)
+    const offset = point - 0x10000
+    const lead = 0xd800 + (offset >> 10)
+    const trail = 0xdc00 + (offset &amp; 0x3ff)
+    const arr = [lead.toString(16), trail.toString(16)]
+
+    return arr
+      .map((el) => parseInt(el, 16))
+      .map((el) => String.fromCharCode(el))
+      .join('')
+  }
+
+  render() {
+    const { isConfirmPopupVisible, showEmojiPopup } = this.state
+
+    const {
+      userId,
+      isFetching,
+      approveExam,
+      waitingExam,
+      rejectExam,
+      video = '',
+      report,
+      health,
+      createTs,
+      userInfo
+    } = this.props
+
+    const {
+      firstName,
+      lastName,
+      city,
+      program,
+      id,
+      diseases,
+      birthday,
+      bodyMeasure,
+      isSpectator
+      } = userInfo ? userInfo : 'Нет данных'
+
+    const {
+      hips,
+      chest,
+      height,
+      thigh,
+      waist,
+      weight,
+      date
+      } = bodyMeasure ? bodyMeasure : 'Нет данных'
+
+    const fullName = firstName + ' ' + lastName
+
+    const birthdayFormat = this.dateFormat(birthday).newDate
+    const dateFormat = this.dateFormat(date).newDate
+    const createTsFormat = this.dateFormat(createTs, true).newDate
+
+    const age = this.dateFormat(birthday).age
+    const healthCondition = healthConditions[health] || healthConditions.middle
+
+    let matchYoutubeUrl = ''
+    let videoEmbedUrl = ''
+    let isVideoValid = false
+    let yandexVideo = false
+
+    if (video &amp;&amp; video.indexOf('drive.google.com') > -1) {
+      matchYoutubeUrl = video.match(/open\?id=(.*)|file\/d\/(.*)\/view/)
+      if(matchYoutubeUrl){
+        isVideoValid = matchYoutubeUrl[1] || matchYoutubeUrl[2]
+        videoEmbedUrl = `https://drive.google.com/file/d/${matchYoutubeUrl[1] ? matchYoutubeUrl[1] : matchYoutubeUrl[2]}/preview`
+      }
+
+    } else if (video &amp;&amp; video.indexOf('yadi.sk') > -1) {
+      yandexVideo = true
+      videoEmbedUrl = video
+    } else if (video &amp;&amp; video.match(youtubePattern)) {
+      matchYoutubeUrl = video.match(youtubePattern)
+      if(matchYoutubeUrl){
+        isVideoValid = matchYoutubeUrl &amp;&amp; matchYoutubeUrl[2].length === 11
+        videoEmbedUrl = isVideoValid ? `https://www.youtube.com/embed/${matchYoutubeUrl[2]}?autoplay=0` : null
+      }
+    }
+
+    return (
+        &lt;div className={styles.layout}>
+          &lt;Chat
+            userId={userId}
+            onWaiting={() => this.toggleStatus(waitingExam, '')}/>
+
+          &lt;div className={styles.header}>
+            &lt;div className={styles.gridHeaderInner}>
+              &lt;h1 className={styles.gridCellHeaderLogo}>
+                Ясегодня
+                &lt;img src="/assets/img/ys_logo.svg" alt="Ясегодня"/>
+              &lt;/h1>
+            &lt;/div>
+          &lt;/div>
+
+          &lt;div className={styles.layoutInner}>
+            &lt;div className={styles.grid}>
+
+            &lt;div className={styles.gridCellLayoutMenu14}>
+              &lt;div className={styles.gridLayoutMenuInner}>
+                &lt;div className={styles.gridCellLayout66}>
+                  &lt;UserReportsMenu/>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className={styles.gridCellLayoutContentPocket34}>
+              &lt;div className={styles.stageBoxSmallPadding}>
+                {
+                  isFetching ? &lt;div className={styles.textCenter}>
+                        &lt;div className={styles.loaderMain}>&lt;/div>
+                      &lt;/div> : (
+                      &lt;div className={styles.pendingProfile}>
+                        &lt;div className={styles.pendingProfileTopPanel}>
+                          &lt;div className={styles.pendingProfileButtons}>
+                            &lt;button
+                              onClick={() => this.showConfirmPopup(approveExam)}
+                              className={styles.pendingProfileButtonPrimary}>
+                              Отчёт принят
+                            &lt;/button>
+                            &lt;button
+                              onClick={() => this.showConfirmPopup(rejectExam)}
+                              className={styles.pendingProfileButtonAction}>
+                              Отчёт не принят
+                            &lt;/button>
+                            &lt;button
+                              onClick={() => this.showConfirmPopup(waitingExam)}
+                              className={styles.pendingProfileButtonSecondary}>
+                              Вернуть клиенту
+                            &lt;/button>
+                          &lt;/div>
+
+                          &lt;Link
+                            to="/userReports/exams"
+                            className={styles.pendingProfileCloseButton}>
+                            &lt;svg className={styles.svgIcoClose}>
+                              &lt;use xlinkHref="#ico-close">&lt;/use>
+                            &lt;/svg>
+                          &lt;/Link>
+                        &lt;/div>
+
+                        &lt;div className={styles.pendingProfileContainer}>
+                          &lt;div className={styles.pendingProfileRow}>
+                            &lt;h3 className={styles.pendingProfileRowTitle}>
+                              Состояние
+                            &lt;/h3>
+
+                            {healthCondition}
+                          &lt;/div>
+
+                          &lt;div className={styles.pendingProfileRow}>
+                            &lt;h3 className={styles.pendingProfileRowTitle}>
+                              Комментарий
+                            &lt;/h3>
+
+                            {report}
+                          &lt;/div>
+
+                          &lt;div className={styles.pendingProfileRow}>
+                            &lt;h3 className={styles.pendingProfileRowTitle}>
+                              Видео
+                            &lt;/h3>
+
+                            {
+                              yandexVideo ? (
+                                &lt;a href='#' onClick={e => {
+                                  e.preventDefault()
+                                  window.open(videoEmbedUrl, '_blank')
+                                }}>
+                                  Открыть в Яндекс Диске
+                                &lt;/a>
+                              ) : isVideoValid ? (
+                                  &lt;iframe width="420" height="315" src={videoEmbedUrl}/>
+                                ) : video
+                            }
+                          &lt;/div>
+
+                          &lt;div className={styles.pendingProfileRow}>
+                            &lt;h2>Информация о пользователе&lt;/h2>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                                id Пользователя
+                              &lt;/h3>
+
+                              {id}
+                            &lt;/div>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                                Имя
+                              &lt;/h3>
+
+                              {fullName}
+                            &lt;/div>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                               Программа
+                              &lt;/h3>
+
+                              {programs[program - 1]}
+                            &lt;/div>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                                Претендует на призы:
+                              &lt;/h3>
+
+                              {isSpectator ? 'нет' : 'да'}
+                            &lt;/div>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                                Город
+                              &lt;/h3>
+
+                              {city}
+                            &lt;/div>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                                День рождения
+                              &lt;/h3>
+
+                                {birthdayFormat} ({age})
+
+                            &lt;/div>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                                Травмы
+                              &lt;/h3>
+
+                              {diseases}
+                            &lt;/div>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                                Дата отправки отчета
+                              &lt;/h3>
+
+                              {createTsFormat}
+                            &lt;/div>
+
+                            &lt;div className={styles.pendingProfileRow}>
+                              &lt;h3 className={styles.pendingProfileRowTitle}>
+                                Параметры тела:
+                              &lt;/h3>
+
+                              &lt;div>
+                                &lt;table className={styles.pendingProfileParams}>
+                                  &lt;tr>
+                                    &lt;td>Дата заполнения&lt;/td>
+                                    &lt;td> {dateFormat}&lt;/td>
+                                  &lt;/tr>
+                                  &lt;tr>
+                                    &lt;td>Рост&lt;/td>
+                                    &lt;td>{height ? height + ' см' : 'нет данных'}&lt;/td>
+                                  &lt;/tr>
+                                  &lt;tr>
+                                    &lt;td>Вес&lt;/td>
+                                    &lt;td>{weight ? weight + ' кг' : 'нет данных'}&lt;/td>
+                                  &lt;/tr>
+                                  &lt;tr>
+                                    &lt;td>Грудь&lt;/td>
+                                    &lt;td>{chest ? chest + ' см' : 'нет данных'}&lt;/td>
+                                  &lt;/tr>
+                                  &lt;tr>
+                                    &lt;td>Талия&lt;/td>
+                                    &lt;td>{waist ? waist + ' см' : 'нет данных'}&lt;/td>
+                                  &lt;/tr>
+                                  &lt;tr>
+                                    &lt;td>Бедра&lt;/td>
+                                    &lt;td>{hips ? hips + ' см' : 'нет данных'}&lt;/td>
+                                  &lt;/tr>
+                                  &lt;tr>
+                                    &lt;td>Обхват бедра&lt;/td>
+                                    &lt;td> {thigh ? thigh + ' см' : 'нет данных'}&lt;/td>
+                                  &lt;/tr>
+
+                                &lt;/table>
+                              &lt;/div>
+
+                            &lt;/div>
+                          &lt;/div>
+
+                        &lt;/div>
+                      &lt;/div>
+                    )
+                }
+
+                {
+                  isConfirmPopupVisible ? (
+                      &lt;div className={styles.pendingProfileInnerPopup}>
+                        &lt;br/>
+                        &lt;br/>
+                        &lt;br/>
+                        &lt;br/>
+                        &lt;div className={styles.pendingProfileTopPanel}>
+                          &lt;div className={styles.pendingProfileButtons}>
+                            &lt;button
+                              onClick={() => this.confirmChoice()}
+                              className={styles.pendingProfileButtonPrimary}>
+                              Принять
+                            &lt;/button>
+                            &lt;button
+                              onClick={() => this.hideConfirmPopup()}
+                              className={styles.pendingProfileButtonAction}>
+                              Отмена
+                            &lt;/button>
+                          &lt;/div>
+
+                          &lt;div className={styles.pendingProfileCloseButton}
+                               onClick={() => this.hideConfirmPopup()}>
+                            &lt;svg className={styles.svgIcoClose}>
+                              &lt;use xlinkHref="#ico-close">&lt;/use>
+                            &lt;/svg>
+                          &lt;/div>
+                        &lt;/div>
+
+                        &lt;br/>
+                        &lt;br/>
+                        &lt;div className={styles.chatForm}>
+                          &lt;div className={styles.chatFormInner}>
+                            {
+                              showEmojiPopup ? (
+                                  &lt;div className={styles.chatEmoji}>
+                                    &lt;EmojiPicker onChange={({unicode}) => this.appendEmoji(unicode)}/>
+                                  &lt;/div>
+                                ) : null
+                            }
+
+                            &lt;button
+                              onClick={() => this.toggleEmojiPopup()}
+                              className={styles.chatEmojiButton}>
+                              😀
+                            &lt;/button>
+
+                            &lt;Textarea
+                              ref="confirmMessage"
+                              onKeyDown={e => {
+                                if (e.keyCode === 13 &amp;&amp; !e.shiftKey) {
+                                  this.refs.confirmMessage.value = ''
+                                  this.confirmChoice()
+                                }
+                              }}
+                              placeholder="Написать комментарий"
+                              className={styles.chatFormInnerTextarea}>&lt;/Textarea>
+                          &lt;/div>
+                        &lt;/div>
+                      &lt;/div>
+                    ) : null
+                }
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  const {pendingEvent = {}} = state
+
+
+  return pendingEvent
+}
+
+const mapDispatchToProps = {
+  fetchChat,
+  closeChat,
+  createWithMessage,
+  rejectExam,
+  waitingExam,
+  approveExam,
+  fetchPendingExam
+}
+
+UserReports = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserReports)
+
+export default CSSModules(UserReports, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

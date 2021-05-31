@@ -1,0 +1,157 @@
+.menuMobLeft {
+  composes: menu-mob-left from '../../index2.css';
+}
+
+.menuMobLeftInner {
+  composes: menu-mob-left__inner from '../../index2.css';
+  max-width:300px !important;
+}
+
+.menuMobLeftIcoClose {
+  composes: menu-mob-left__ico-close from '../../index2.css';
+  top: 60px !important;
+}
+
+.svgIconClose {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-close from '../../index2.css';
+}
+.hidden{
+  opacity:0.4;
+  pointer-events: none;
+}
+.btnAction {
+  composes: btn from '../../index.css';
+  composes: btn--secondary  from '../../index.css';
+  background-color: #ff6633;
+  z-index: 2;
+}
+.menuMobLeftLogo {
+  composes: menu-mob-left__logo from '../../index2.css';
+}
+
+.svgIconLogoWeb {
+  composes: svg-icon from '../../index2.css';
+  composes: ys-logo-web from '../../index2.css';
+}
+
+.mainNav {
+  composes: main-nav from '../../index2.css';
+  margin-bottom:8px;
+}
+.main-nav__item:last-child{
+  margin:0;
+}
+.mainNavItem {
+  composes: main-nav__item from '../../index2.css';
+}
+
+.mainNavItemActive {
+  composes: main-nav__item from '../../index2.css';
+  composes: main-nav__item--active from '../../index2.css';
+}
+
+.mainNavItemInner {
+  composes: main-nav__item-inner from '../../index2.css';
+}
+
+.mainNavTitle {
+  composes: main-nav__title from '../../index2.css';
+}
+
+.svgIcoTasksMobile {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-m-tasks from '../../index2.css';
+}
+
+.svgIcoBookMobile {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-m-book from '../../index2.css';
+}
+
+.svgIcoFoodMobile {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-m-food from '../../index2.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-m-faq from '../../index2.css';
+}
+
+.svgIcoPhoto {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-m-photo from '../../index2.css';
+}
+
+.svgIcoChat {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-m-chat from '../../index2.css';
+}
+
+.svgIcoCalendar {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-m-calendar from '../../index2.css';
+}
+
+.uniproLogo{
+  margin-top: 48px;
+  width:150px;
+}
+
+.social{
+  display: flex;
+  padding: 12px;
+  border-radius: 7px;
+}
+.socialSigninItem{
+  border:1px solid #1f447b;
+  border-radius: 55%;
+  width: 30px;
+  height: 30px;
+  margin-right:9px;
+  align-items: center;
+  -webkit-align-items: center;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+.link{
+  display: flex;
+}
+.socialSignin{
+  composes: social-signin from '../../index2.css';
+}
+.svgIconFb{
+  composes: svg-icon from '../../index2.css';
+  composes: ico-fb from '../../index2.css';
+  width:7px;
+  fill: #1f447b;
+}
+.svgIconInsta{
+  composes: svg-icon from '../../index2.css';
+  composes: ico-vk from '../../index2.css';
+  width:12px;
+  fill: #1f447b;
+}
+.svgIconVk{
+  composes: svg-icon from '../../index2.css';
+  composes: ico-vk from '../../index2.css';
+  width:17px;
+  fill: #1f447b;
+}
+.svgIconOk{
+  composes: svg-icon from '../../index2.css';
+  composes: ico-odnoklassniki from '../../index2.css';
+  width:10px;
+  fill: #1f447b;
+}
+
+.svgIconYoutube{
+   composes: svg-icon from '../../index2.css';
+   composes: ico-odnoklassniki from '../../index2.css';
+   fill: #1f447b;
+   width: 17px;
+
+ }
+

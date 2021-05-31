@@ -1,0 +1,102 @@
+@mixin mq($bpmin, $bpmax: false) {
+  @each $sz, $mq in $sizes {
+    @if $sz == $bpmin {
+      $a: $mq;
+
+      @if $bpmax {
+        @each $sz, $mq in $sizes {
+          @if $sz == $bpmax {
+            @media (min-width: #{$a}px) and (max-width: $mq - 1px) {
+              @content;
+            }
+          }
+        }
+      } @else {
+        @media (min-width: #{$a}px) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+$sizes: (
+  xs: 0,
+  s: 376,
+  l: 768,
+  m: 992,
+  lg: 1280
+);
+
+
+// Use
+
+// @include mq(xs, l) {
+//   display: block;
+// }
+// @include mq(l) {
+//   display: none;
+// }
+
+// Font-face
+
+@mixin font-face($font-name, $file-name, $path: "../fonts/", $weight: normal, $style: normal) {
+  @font-face {
+    font-family: quote($font-name);
+    /* IE9 Compat Modes */
+    src: url($path + $file-name + ".eot");
+    /* IE6-IE8 */
+    src: url($path + $file-name + ".eot?#iefix") format("embedded-opentype"),
+      url($path + $file-name + ".woff") format("woff"),
+      url($path + $file-name + ".ttf") format("truetype"),
+      url($path + $file-name + ".svg##{" + $file-name + "}") format("svg");
+    font-weight: $weight;
+    font-style: $style;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Centered element
+
+@mixin el-center {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: transform(-50%, -50%);
+}
+
+// ex clearfix
+
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+.clearfix {
+  &::before,
+  &::after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+// Pseudo
+
+@mixin pseudo($content: "") {
+  content: $content;
+}
+
+// Hardware-acceleration
+// Use @extend %ha;

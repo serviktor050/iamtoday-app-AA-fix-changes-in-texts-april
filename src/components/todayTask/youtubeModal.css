@@ -1,0 +1,54 @@
+.videoPupupg {
+  composes: video-pupupg from '../../index.css';
+}
+
+.numListDescription {
+  composes: num-list__description from '../../index.css';
+}
+
+.taskHeader {
+  composes: task__header from '../../index2.css';
+}
+
+.taskHeaderInner {
+  composes: task__header-inner from '../../index2.css';
+}
+
+.taskNum {
+  composes: task__num from '../../index2.css';
+}
+
+.taskName {
+  composes: task__name from '../../index2.css';
+}
+
+.taskBtnGo {
+  composes: task__btn-go from '../../index2.css';
+}
+
+.svgIcoTaskPlay {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-task-play from '../../index2.css';
+}
+
+.svgIcoTaskDescription {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-task-description from '../../index2.css';
+}
+
+.svgIcoTaskPhoto {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-task-photo from '../../index2.css';
+}
+
+.taskContent {
+  composes: task__content from '../../index2.css';
+}
+
+.baseParag {
+  composes: base-parag from '../../index2.css';
+}
+
+.taskPhoto {
+  width: 100%;
+}

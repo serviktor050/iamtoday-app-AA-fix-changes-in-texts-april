@@ -1,0 +1,83 @@
+.quizHistory {
+    padding: 40px 40px 50px 40px;
+    background: #fff;
+}
+
+.quizHistoryHeader .title {
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 20px
+}
+
+.quizHistoryHeader hr {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content {
+    padding: 30px;
+}
+
+.name {
+    font-size: 18px;
+    padding: 30px;
+    color: #50A3D6;
+}
+
+.table {
+    display: table;
+    width: 100%;
+    font-size: 12px;
+}
+
+.row {
+    display: table-row;
+}
+
+.heading {
+    display: table-header-group;
+    height: 50px;
+    font-size: 12px;
+}
+
+.cell, .head {
+    display: table-cell;
+    padding: 10px 5px;
+}
+.body {
+    display: table-row-group;
+    font-size: 12px;
+}
+
+.body .row {
+    box-shadow: 0 5px 5px -5px rgb(203, 226, 238);
+}
+
+.failed {
+    color: red;
+}
+
+.passed {
+    color: green;
+}
+
+
+@media screen and (min-width: 768px) {
+    .table {
+        font-size: 15px;
+    }
+    .heading {
+        font-size: 15px;
+    }
+    .body {
+        font-size: 15px;
+    }
+    .name {
+        font-size: 18px;
+    }
+    .cell, .head {
+         padding: 20px 10px;
+     }
+
+}

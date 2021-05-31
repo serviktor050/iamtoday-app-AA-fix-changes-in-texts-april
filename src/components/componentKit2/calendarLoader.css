@@ -1,0 +1,97 @@
+.minCalendar {
+  composes: min-calendar from '../../index2.css';
+}
+.minCalendarWrap {
+  composes: min-calendar-wrap from '../../index2.css';
+  margin-top:36px;
+  margin-bottom:0 !important;
+}
+@media screen and (min-width: 1025px) {
+  .width33 {
+    width: 33.33333%;
+  }
+
+  .minCalendarWrap{
+    margin-top:0;
+  }
+}
+.gridCellLayoutCalendar33 {
+  composes: width33;
+  composes: grid__cell from '../../index2.css';
+  composes: layout__calendar from '../../index2.css';
+}
+.minCalendarBtnPrev {
+  composes: min-calendar__btn-prev from '../../index2.css';
+}
+.minCalendarBtnPrevUnactive {
+  composes: min-calendar__btn-prev from '../../index2.css';
+  pointer-events: none;
+  background-color:rgba(255, 102, 51, 0.31);
+}
+
+.svgIconBoldArrowUp {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-up from '../../index2.css';
+}
+
+.svgIconBoldArrowUpUnactive {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-up__unactive from '../../index2.css';
+}
+
+.minCalendarBtnNext {
+  composes: min-calendar__btn-next from '../../index2.css';
+}
+
+.minCalendarBtnNextUnactive {
+  composes: min-calendar__btn-next from '../../index2.css';
+  pointer-events: none;
+  background-color:rgba(255, 102, 51, 0.31);
+}
+
+.svgIconBoldArrowDown {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-down from '../../index2.css';
+}
+
+.svgIconBoldArrowDownUnactive {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-down__unactive from '../../index2.css';
+}
+
+.btnGoBack {
+  composes: btn-go-back from '../../index2.css';
+  opacity:0;
+  transition:0.4s;
+}
+.btnGoBackShow {
+  composes: btn-go-back from '../../index2.css';
+  opacity:1;
+}
+.btnGoBackTitle {
+  composes: btn-go-back__title from '../../index2.css';
+}
+
+@keyframes ph-task-loader {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1; } }
+
+.minCalendarItem {
+  composes: min-calendar__item from '../../index2.css';
+  background-color: #e1eaf6;
+  max-width: 80px;
+  margin: auto;
+  animation: ph-task-loader 1s infinite;
+  animation-timing-function: linear;
+}
+
+@media screen and (min-width: 1025px) {
+    .minCalendarItem {
+        margin: 0;
+        max-width: none;
+    }
+}

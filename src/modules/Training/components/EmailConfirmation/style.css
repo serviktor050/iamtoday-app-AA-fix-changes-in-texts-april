@@ -1,0 +1,94 @@
+.email-confirmation {
+  position: relative;
+  background-color: #ffffff;
+  color: #2c2f33;
+}
+
+.email-confirmation__container {
+  padding: 35px 35px 35px 135px;
+  background-color: rgba(121, 195, 48, 0.14);
+  z-index: 1;
+  background-image: url("../../../../assets/img/svg/yellow-error.svg");
+  background-repeat: no-repeat;
+  background-position: 35px;
+}
+
+.email-confirmation__title {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.email-confirmation__text {
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 10px;
+}
+
+.email-confirmation__email {
+  font-weight: 700;
+}
+
+.email-confirmation__button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  background-repeat: no-repeat;
+}
+
+.email-confirmation__confirm {
+  padding-left: 25px;
+  color: #39961e;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: bold;
+  text-decoration: underline;
+  background-image: url("../../../../assets/img/svg/refresh-arrows.svg");
+  background-position: 0;
+}
+
+.email-confirmation__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  background-image: url("../../../../assets/img/svg/black-sharpened-cross.svg");
+  background-position: center;
+}
+
+.btnPrimary {
+  composes: btn from "../../../../index.css";
+  composes: btn--primary from "../../../../index.css";
+  margin-top: 20px;
+}
+
+.entryHeader {
+  composes: entry__header from '../../../../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../../../../index.css';
+  composes: text-center from '../../../../index.css';
+  color: #fff;
+  font-weight: normal;
+}
+
+.textCenter {
+  composes: text-center from '../../../../index.css';
+}
+
+.loaderMain {
+  composes: loader from '../../../../index.css';
+  composes: loader--main from '../../../../index.css';
+}
+
+@media screen and (max-width: 768px) {
+  .email-confirmation__container {
+    padding-left: 35px;
+    padding-top: 135px;
+    background-position: center 35px;
+    text-align: center;
+  }
+}

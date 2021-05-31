@@ -1,0 +1,32 @@
+.minionChatSpinner {
+  composes: minion-chat__spinner from '../../index.css';
+  composes: spinner from '../../index.css';
+}
+
+.minionChatButtons {
+  composes: minion-chat__buttons from '../../index.css';
+}
+
+.minionChatButtonWaiting {
+  composes: minion-chat__button-waiting from '../../index.css';
+  composes: btn from '../../index.css';
+  composes: btn--secondary from '../../index.css';
+}
+
+.minionChatButtonForward {
+  composes: minion-chat__button-forward from '../../index.css';
+  composes: btn from '../../index.css';
+  composes: btn--action from '../../index.css';
+}
+
+.minionChatMessagesBox {
+  composes: minion-chat__messages-box from '../../index.css';
+}
+
+.minionChatAnswerBox {
+  composes: minion-chat__answer-box from '../../index.css';
+}
+
+.minionChatAnswerArea {
+  composes: minion-chat__answer-area from '../../index.css';
+}

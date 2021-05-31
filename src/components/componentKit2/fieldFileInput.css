@@ -1,0 +1,108 @@
+.inputFileOld {
+    display: none;
+}
+
+.inputFileNew {
+    height: 46px;
+    border: 1px solid #ced9eb;
+    border-radius: 5px;
+    color: #908a8a;
+    font-size: 14px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding-left: 20px;
+}
+
+.inputFileNewError {
+    composes: inputFileNew;
+    border: 1px solid #f97b7c;
+}
+
+.img {
+    width:33px;
+    height:33px;
+}
+
+.btn {
+    color: #fff;
+    cursor: pointer;
+    background: #4da2d6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width:100px;
+    border: none;
+}
+
+.btnLoad {
+    composes: btn;
+    background: #b5b5b5;
+}
+.name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+}
+.nameFile {
+    composes: name;
+    color: #4da2d6;
+}
+.inputCustom {
+    width: 100%;
+    padding-left: 20px;
+    border: none;
+    outline:none;
+    background: #fff !important;
+}
+.iconUpload {
+    margin-right:12px;
+}
+.fileUpload {
+    margin-top: -22px;
+    margin-left: 1px;
+    display: flex;
+}
+.fileUploadText{
+    font-size:12px;
+}
+
+button[disabled]{
+    cursor: no-drop;
+}
+.inputName {
+    font-size: 14px;
+    position: absolute;
+    top: 13px;
+    background: transparent;
+    padding: 0 7px;
+    left: 5px;
+    color: hsl(0,0%,50%);
+    letter-spacing: 0.5px;
+    z-index:-1;
+    transition:all .3s ease;
+}
+.inputNameShow {
+    z-index: 2;
+    top: -10px;
+    background: #fff;
+    left: 14px;
+    font-size: 12px;
+}
+@media screen and (min-width: 768px) {
+    .btn {
+        min-width:150px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .inputNameShow {
+        position: initial;
+        color: black;
+    }
+    .inputCustom {
+        padding-left: 0;
+    }
+}

@@ -1,0 +1,59 @@
+.weekScroller {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.days__container {
+    margin: 0 25px;
+    display: flex;
+    flex: 1;
+}
+
+.day__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% / 7);
+    cursor: pointer;
+}
+
+.weekday {
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    color: #B5B5B5;
+}
+
+.day__wrapper-active .weekday {
+    color: #2C2F33;
+}
+
+.date {
+    font-size: 30px;
+    line-height: 37px;
+    text-align: center;
+    color: #2C2F33;
+}
+
+.day__wrapper-active .date {
+    font-weight: bold;
+    color: #4DA2D6;
+}
+
+.btn {
+    all: unset;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: url('../../../../../../assets/img/svg-symbols/ico-arrow-left.svg') center/14px no-repeat;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.btn-next {
+    transform: rotate(180deg);
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,226 @@
+.stageBoxSmallPadding {
+  composes: stage-box from '../../index2.css';
+  composes: stage-box--small-padding from '../../index2.css';
+  composes: stage-box--expand from '../../index2.css';
+  margin-bottom:20px !important;
+  padding-top:1px;
+}
+
+.stageBoxInner {
+  composes: stage-box__inner from '../../index2.css';
+}
+
+.stageBoxBigPadding {
+  composes: stage-box from '../../index.css';
+  composes: stage-box--big-padding from '../../index.css';
+}
+
+.btnPrimary {
+  composes: btn from '../../index2.css';
+  composes: btn--primary from '../../index2.css';
+}
+
+.taskIntroBanner {
+	position: relative;
+	margin-top: 50px;
+  padding: 20px 270px 20px 30px;
+	width: 100%;
+	font-size: 0;
+  text-align: center;
+  background-color: #e84225;
+  overflow: hidden;
+}
+
+.taskIntroBanner > * {
+  position: relative;
+  z-index: 3;
+}
+
+.taskIntroBanner img {
+	display: block;
+  height: 100%;
+  width: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.taskIntroBanner > span {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.taskIntroBanner p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.taskIntroBanner .shareButtonWrapper {
+	font-size: 16px;
+}
+
+.btnSimple {
+  composes: btn-simple from '../../index.css';
+  background-color: #fff;
+  display: inline-flex;
+  font-size: 16px;
+  color: #e84225;
+}
+.btnSimpleActive{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .taskIntroBanner {
+    padding: 10px 110px 60px 10px;
+    text-align: left;
+  }
+  .taskIntroBanner > span {
+    font-size: 18px;
+  }
+  .taskIntroBanner p {
+    font-size: 16px;
+  }
+  .taskIntroBanner img {
+    transform: translate(25%, 0);
+    height: calc(100% - 60px);
+    top: auto;
+    bottom: 60px;
+  }
+  .taskIntroBanner .shareButtonWrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.socialSignin {
+  composes: social-signin from '../../index.css';
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--fb from '../../index.css';
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--vk from '../../index.css';
+}
+
+.socialSigninItemOk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--odnoklassniki from '../../index.css';
+}
+
+.svgIconFb {
+  composes: svg-icon from '../../index.css';
+  composes: ico-fb from '../../index.css';
+}
+
+.svgIconVk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-vk from '../../index.css';
+}
+
+.svgIconOk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-odnoklassniki from '../../index.css';
+}
+
+.svgIcoShare {
+  composes: svg-icon from '../../index.css';
+  composes: ico-share from '../../index.css';
+}
+
+.socialShare {
+  composes: social-share from '../../index.css';
+}
+
+.demoSocialShare {
+  composes: Demo__some-network__share-button from '../../index.css';
+}
+
+.btnSimpleTitle {
+  composes: btn-simple__title from '../../index.css';
+}
+
+.svgIcoShare {
+  composes: svg-icon from '../../index.css';
+  composes: ico-share from '../../index.css';
+}
+.btnSimple {
+  composes: btn-simple from '../../index.css';
+  background-color: #fff;
+}
+
+
+.btnSimpleIco {
+  composes: btn-simple__ico from '../../index.css';
+}
+
+.svgIcoCopy {
+  composes: svg-icon from '../../index.css';
+  composes: ico-copy from '../../index.css';
+}
+.svgIcoOk{
+  width:19px;
+  height:19px;
+}
+
+.socialSignin{
+  justify-content: center;
+  display: none;
+}
+.socialSigninShow{
+  display: flex;
+  justify-content: center;
+}
+
+.socialSigninItem{
+  margin-right:22px;
+  cursor: pointer;
+}
+.socialSigninItemLast{
+  cursor: pointer;
+}
+.btnPrimary {
+  composes: btn from '../../index.css';
+  composes: btn--primary from '../../index.css';
+}
+
+.svgIconVk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-vk from '../../index.css';
+  width: 28px;
+  height: 20px;
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--vk from '../../index.css';
+  margin-right:22px;
+  cursor: pointer;
+  width: 47px;
+  height: 45px;
+}
+.textCenter{
+  text-align: center;
+}
+
+.textCenterMt20 {
+  composes: text-center from '../../index2.css';
+  composes: mt20 from '../../index2.css';
+}
+
+.stageBoxBtnExpand {
+  composes: stage-box__btn-expand from '../../index2.css';
+}

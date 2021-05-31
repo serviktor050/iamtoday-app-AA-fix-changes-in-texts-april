@@ -1,0 +1,91 @@
+// Popups List
+
+.pay-success {
+  display: none;
+}
+
+// Popups style
+
+.video-popup {
+  .tingle-modal-box {
+    &__content {
+      // padding: 0;
+    }
+  }
+
+  .tingle-modal-box {
+    width: 100%;
+    height: 100%;
+    max-width: 794px;
+    max-height: 446px;
+  }
+}
+
+.mob-popup {
+  &.tingle-modal--overflow {
+    padding: 0;
+  }
+
+  .tingle-modal-box {
+    padding: 0 15px;
+    justify-content: center;
+    display: flex;
+    background-color: rgba($c-l-blue, 0.88);
+    border-radius: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .tingle-modal__close {
+  }
+
+  .tingle-modal-box__content {
+    max-width: 480px;
+    margin: 0 auto;
+    color: #fff;
+  }
+}
+
+.base-popup {
+  @include av-mq(desk) {
+    padding: 0 15px;
+  }
+
+  .btn--primary {
+    max-width: 264px;
+    width: 100%;
+  }
+
+  .tingle-modal-box {
+    width: 100%;
+    max-width: 760px;
+    @include av-mq(desk) {
+      border-radius: $big-radius;
+    }
+
+    &__content {
+      padding: $base-margin;
+    }
+  }
+
+  .tingle-modal__close {
+    color: $c-l-blue;
+    background-color: $c-l-gray;
+  }
+
+  &__wrap {
+  }
+
+  &__msg {
+    text-align: center;
+  }
+
+  &__msg-content {
+    padding: 10% 0;
+  }
+}
+
+
+
+
+

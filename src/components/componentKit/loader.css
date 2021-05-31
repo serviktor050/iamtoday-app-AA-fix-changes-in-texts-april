@@ -1,0 +1,54 @@
+.btnGoBackTitle {
+  composes: btn-go-back__title from '../../index2.css';
+}
+
+.contentLoader{
+  composes: content-loader from '../../index2.css';
+  width: 100%;
+  text-align: center;
+}
+
+.contentLoaderItem{
+  composes: content-loader__item from '../../index2.css';
+}
+
+.contentLoaderTitleH30{
+  composes: content-loader__title from '../../index2.css';
+  composes: h-30 from '../../index2.css';
+}
+
+.contentLoaderContentH80{
+  composes: content-loader__content from '../../index2.css';
+  composes: h-80 from '../../index2.css';
+}
+
+.contentLoaderContentH70{
+  composes: content-loader__content from '../../index2.css';
+  composes: h-80 from '../../index2.css';
+}
+
+.contentLoaderContentH40{
+  composes: content-loader__content from '../../index2.css';
+  composes: h-80 from '../../index2.css';
+}
+
+.contentLoaderBtnH30{
+  composes: content-loader__btn from '../../index2.css';
+  composes: h-30 from '../../index2.css';
+}
+
+.layer {
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.layer .contentLoaderTitleH30{
+  width: 100%;
+}
+
+.loaderWrapper {
+  padding-left: 2em;
+  padding-right: 2em;
+  margin: auto;
+}

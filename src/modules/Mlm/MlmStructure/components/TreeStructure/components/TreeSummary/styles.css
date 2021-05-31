@@ -1,0 +1,71 @@
+.summary {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.avatarWrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  margin-right: 15px;
+}
+
+.avatar {    
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.meBlock, .firstLevelBlock, .secondLevelBlock {
+  padding: 13px 20px;
+  width: 30%;
+  min-width: 230px;             
+}
+
+.meBlock{
+  display: flex;
+  background-color: #F0F6FF;
+  align-items: center;    
+}
+
+.meBlock_info, .firstLevelBlock_info, .secondLevelBlock_info {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  padding-top: 13px;
+}
+
+.meBlock_info {
+  color: #4DA2D6;
+}
+
+.meBlock_info span,
+.firstLevelBlock_info span,
+.secondLevelBlock_info span {
+  font-size: 24px;
+  line-height: 29px;
+  margin-right: 5px;
+}
+
+.firstLevelBlock {
+  background: #F8FFF1;        
+}
+
+.firstLevelBlock_info {    
+  color: #79C330;
+}
+
+.secondLevelBlock {
+  background: #FFF5EC;     
+}
+
+.secondLevelBlock_info {
+  color: #FF9F43;
+}

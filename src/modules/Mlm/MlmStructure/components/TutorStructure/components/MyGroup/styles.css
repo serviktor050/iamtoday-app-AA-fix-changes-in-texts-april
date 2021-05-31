@@ -1,0 +1,56 @@
+.groupBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  width: 325px;
+}
+
+.groupList {
+  position: relative;
+}
+
+.groupList:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: 10px;
+  height: calc(100% - 50px);
+  background-color: #D3EEFF;
+}
+
+.secondLevelGroup {
+  background: #F8FFF1;
+}
+
+.firstLevelGroup {
+  background: #F1FDFF; 
+}
+.groupBlock_users {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.chevronDown {
+  background: url("../../../../../../../assets/img/svg-symbols/chevron-down.svg")
+  center/cover no-repeat;    
+}
+
+.chevronUp {
+  background: url("../../../../../../../assets/img/svg-symbols/chevron-up.svg")
+  center/cover no-repeat;
+}
+
+.chevronDown, .chevronUp {
+  filter: invert(92%) sepia(8%) saturate(268%) hue-rotate(47deg) brightness(91%) contrast(83%);
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin-left: 10px;
+}

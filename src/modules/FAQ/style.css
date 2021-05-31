@@ -1,0 +1,21 @@
+.faqComponent {
+  padding: 20px 40px;
+  background: #ffffff;
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.1);
+}
+
+.inputWrapper {
+  width: 100%;
+}
+
+.faq_input {
+  color: black;
+}
+
+h3 {
+  padding: 25px 0px;
+}
+
+.faqBlock {
+  display: flex;
+}

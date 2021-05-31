@@ -1,0 +1,13 @@
+.itd-history-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.itd-history-dropdownoption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.itd-history-dropdown {
+  width: 50px;
+}

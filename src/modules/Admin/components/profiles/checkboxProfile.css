@@ -1,0 +1,58 @@
+.checkboxesItem {
+  composes: checkboxes__item from '../../../../index.css';
+}
+
+.checkbox {
+  composes: checkbox from '../../../../index.css';
+}
+
+.checkboxLabel {
+  composes: checkbox__label from '../../../../index.css';
+  font-size: 14px;
+}
+
+.checkboxField {
+  composes: checkbox__field from '../../../../index.css';
+}
+
+.checkboxPh {
+  composes: checkbox__ph from '../../../../index.css';
+  border-color: #ddd;
+  border-radius: 2px;
+  padding: 0;
+  margin: 0 10px 0 0;
+}
+.checkboxPh.sign {
+  background: #fff;
+}
+.checkboxField:checked + .checkboxPh .tick {
+  background-color: #FF543E;
+  background-image: url('../../../../assets/img/svg/check.svg');
+  background-size: cover;
+  border-radius: 2px;
+  width:100%;
+  height:100%;
+}
+
+.checkboxField:checked + .checkboxPhBlue .tick {
+  background-color: #4DA2D6;
+  background-image: url('../../../../assets/img/svg/check.svg');
+  background-size: cover;
+  border-radius: 2px;
+  width:100%;
+  height:100%;
+}
+.checkboxField.sign:checked + .checkboxPh .tick {
+  background: #08a5d8;
+  border-radius: 2px;
+  width:100%;
+  height:100%;
+}
+.svgIcoTick {
+  composes: svg-icon from '../../../../index.css';
+  composes: ico-tick from '../../../../index.css';
+}
+
+.checkboxTitle {
+  composes: checkbox__title from '../../../../index.css';
+}

@@ -1,0 +1,373 @@
+.layoutEntry {
+  composes: layout from '../index.css';
+  composes: layout--entry from '../index.css';
+}
+
+.gridEntryHeader {
+  composes: grid from '../index.css';
+  composes: entry-header from '../index.css';
+}
+
+.gridCellTodaymeLogo {
+  composes: grid__cell from '../index.css';
+  composes: todayme-logo from '../index.css';
+}
+
+.entryDesc{
+  text-align: center;
+  margin-top: -22px;
+  margin-bottom: 22px;
+}
+
+.entryMin {
+  composes: entry from '../index.css';
+  composes: entry--min from '../index.css';
+}
+
+.entryInner {
+  composes: entry__inner from '../index.css';
+  padding-bottom:20px;
+}
+
+.entryHeader {
+  composes: entry__header from '../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../index.css';
+  composes: text-center from '../index.css';
+  color: #fff;
+}
+
+.entryBox {
+  composes: entry__box from '../index.css';
+}
+
+.entryNavMtb20 {
+  composes: entry-nav from '../index.css';
+  composes: mtb20 from '../index.css';
+}
+
+.entryNavItem {
+  composes: entry-nav__item from '../index.css';
+}
+
+.textCenterMb10 {
+  composes: text-center from '../index.css';
+  composes: mb10 from '../index.css';
+}
+
+.socialSignin {
+  composes: social-signin from '../index.css';
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from '../index.css';
+  composes: social-signin__item--fb from '../index.css';
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../index.css';
+  composes: social-signin__item--vk from '../index.css';
+}
+
+.socialSigninItemOk {
+  composes: social-signin__item from '../index.css';
+  composes: social-signin__item--odnoklassniki from '../index.css';
+}
+
+.svgIconFb {
+  composes: svg-icon from '../index.css';
+  composes: ico-fb from '../index.css';
+}
+
+.svgIconVk {
+  composes: svg-icon from '../index.css';
+  composes: ico-vk from '../index.css';
+}
+
+.svgIconOk {
+  composes: svg-icon from '../index.css';
+  composes: ico-odnoklassniki from '../index.css';
+}
+
+.entryBg {
+  composes: entry__bg from '../index.css';
+}
+
+.buttonSecondaryWide {
+  composes: btn from '../index.css';
+  composes: btn--secondary  from '../index.css';
+  composes: wide  from '../index.css';
+}
+
+.buttonActionWide {
+  composes: btn from '../index.css';
+  composes: btn--action  from '../index.css';
+  composes: wide  from '../index.css';
+}
+.buttonTele2Wide {
+    composes: btn from '../index.css';
+    composes: btn--action  from '../index.css';
+    composes: wide  from '../index.css';
+    background: #ff6633;
+    color: #fff;
+}
+.entryStep {
+  composes: entry-step from '../index.css';
+}
+.entryStepTele2 {
+  composes: entryStep;
+  color: #000;
+}
+.entryStepTitle {
+  composes: entry-step__title from '../index.css';
+}
+
+.entryStepNo {
+  composes: entry-step__no from '../index.css';
+}
+.entryStepGoto {
+  composes: entry-step__go-to from '../index.css';
+}
+.optionsItemIsActive {
+  composes: options__item from '../index.css';
+  composes: is-active from '../index.css';
+  width: 100% !important;
+  margin-right:0 !important;
+}
+.optionsItemIsActiveHalf{
+  composes: options__item from '../index.css';
+  composes: is-active from '../index.css';
+  width: 100% !important;
+}
+.optionsItemIsActiveGift{
+  composes: options__item from '../index.css';
+  composes: is-active from '../index.css';
+  width: 100% !important;
+  border: 1px solid #fff !important;
+  background: #e05d25; /* Old browsers */
+  background: -moz-linear-gradient(left, #e05d25 0%, #f4cd39 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #e05d25 0%,#f4cd39 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #e05d25 0%,#f4cd39 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.optionsItem {
+  composes: options__item from '../index.css';
+  width: 100% !important;
+  margin-right:0 !important;
+}
+.optionsItemHalf{
+  composes: options__item from '../index.css';
+  width: 100% !important;
+}
+.optionsItemHalfWrap{
+  width:50%;
+}
+
+.inputField {
+  composes: input__field from '../index.css';
+}
+.optionsItemWrap{
+  display: flex;
+  width:100%;
+ /* margin-right: 10px;*/
+}
+.optionsItemDisabled{
+   composes: optionsItem;
+   cursor:default;
+}
+.optionsItemDisabled:hover{
+  background-color: #fff;
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width50 {
+    width: 50%;
+  }
+}
+
+.deskGridCellTodaymeLogo14 {
+  composes: width25;
+  composes: grid__cell from '../index.css';
+  composes: todayme-logo from '../index.css';
+}
+
+.deskGridCellTextCenter24 {
+  composes: width50;
+  composes: grid__cell from '../index.css';
+  composes: text-center from '../index.css';
+}
+
+.optionsWhiteWideMb30 {
+  composes: options from '../index.css';
+  composes: options--white  from '../index.css';
+  composes: wide  from '../index.css';
+  composes: mb30  from '../index.css';
+}
+
+.optionsError {
+  composes: options__error from '../index.css';
+}
+
+.optionsWhiteThreeValMt30 {
+  composes: options from '../index.css';
+  composes: options--white  from '../index.css';
+  composes: options--three-val  from '../index.css';
+  composes: mt30  from '../index.css';
+  margin-bottom:30px;
+}
+
+.optionsWhiteTwoVal {
+  composes: options from '../index.css';
+  composes: options--white  from '../index.css';
+  composes: options--two-val  from '../index.css';
+}
+
+.entryProgramPrice {
+  composes: entry-program-price from '../index.css';
+}
+.entryProgramPriceNone {
+    composes: entry-program-price from '../index.css';
+    display: none;
+}
+.inputBoxBtn {
+  composes: input from '../index.css';
+  composes: input--box from '../index.css';
+  composes: input--btn from '../index.css';
+}
+
+.btnSecondary {
+  composes: btn from '../index.css';
+  composes: btn--secondary from '../index.css';
+}
+
+.buttonPrimaryWide {
+  composes: btn from '../index.css';
+  composes: btn--primary  from '../index.css';
+  composes: wide  from '../index.css';
+}
+
+.entryNav {
+  composes: entry-nav from '../index.css';
+}
+
+.entryNavItem {
+  composes: entry-nav__item from '../index.css';
+}
+
+.optionsItemHero {
+  composes: options__item from '../index.css';
+  composes: g-hero  from '../index.css';
+}
+
+.optionsItemHeroActive {
+  composes: options__item from '../index.css';
+  composes: g-hero  from '../index.css';
+  composes: is-active  from '../index.css';
+}
+
+.optionsItemMother {
+  composes: options__item from '../index.css';
+  composes: g-mather  from '../index.css';
+}
+
+.optionsItemMotherActive {
+  composes: options__item from '../index.css';
+  composes: g-mather  from '../index.css';
+  composes: is-active  from '../index.css';
+}
+
+.optionsItemExtreme {
+  composes: options__item from '../index.css';
+  composes: g-extreme  from '../index.css';
+}
+
+.optionsItemExtremeActive {
+  composes: options__item from '../index.css';
+  composes: g-extreme  from '../index.css';
+  composes: is-active  from '../index.css';
+}
+
+.optionsItemTomorrow {
+  composes: options__item from '../index.css';
+  composes: g-tomorrow  from '../index.css';
+}
+
+.optionsItemTomorrowActive {
+  composes: options__item from '../index.css';
+  composes: g-tomorrow  from '../index.css';
+  composes: is-active  from '../index.css';
+}
+.entryPrice{
+  display: flex;
+}
+.entryProgramPriceItem{
+  composes: entry-program-price from '../index.css';
+  display: flex;
+  width:50%;
+}
+
+.colorHeader {
+  composes: entry__header from '../index.css';
+  composes: entry__header--colorful from '../index.css';
+}
+
+.entryHeaderHero {
+  composes: colorHeader;
+  background-image: radial-gradient(at 70% 120%, #762FB3 3%, #261DB4 100%);
+  border-radius: 17px 17px 0 0;
+}
+
+.entryHeaderMother {
+  composes: colorHeader;
+  background-image: radial-gradient(at 70% 120%, #ffe799 -14%, #42b0ba 72%);
+  border-radius: 17px 17px 0 0;
+}
+
+.entryHeaderExtreme {
+  composes: colorHeader;
+  background-image: linear-gradient(-44deg, #5bffe2 0%, #005fff 51%, #ee0652 100%, #ff0045 100%);
+  border-radius: 17px 17px 0 0;
+}
+
+.entryHeaderTomorrow {
+  composes: colorHeader;
+  background-image: radial-gradient(at 70% 120%, #ef9227 0%, #e5522b 83%);
+  border-radius: 17px 17px 0 0;
+}
+
+.notify{
+  margin-bottom: 30px;
+}
+
+.notifyItem{
+  background: #56daa1;
+  position: relative;
+  padding: 20px 60px;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.notifyClose{
+  position: absolute;
+  right:26px;
+}
+
+.notifyCloseIcon{
+  fill:#fff;
+  height: 30px;
+  width: 20px;
+  cursor: pointer;
+}
+.notifyItemLink{
+  color: #fff;
+}
+.alfaBg{
+  max-width: 100%;
+ /* height: 100%;*/
+  width:100%;
+  height:100%;
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/PendingPhotos.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/PendingPhotos.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component, PropTypes  } from 'react'
+import { connect } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
+import { fetchPendingPhotos } from '../actions'
+import ReactPaginate from 'react-paginate'
+import Textarea from 'react-textarea-autosize'
+
+import UserReportsMenu from '../components/userReports/UserReportsMenu'
+import PhotosList from '../components/userReports/PhotosList'
+import CSSModules from 'react-css-modules'
+import styles from './pendingPhotos.css'
+
+const DEFAULT_PAGE = 1
+const DEFAULT_PAGE_COUNT = 10
+let isChecked = null
+/**
+ *  Контейнер Photos.
+ *  Используется для отображения страницы фотографий в админке (/userReports/photos)
+ *
+ */
+class PendingPhotos extends Component {
+  /**
+   * @memberof PendingPhotos
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {array} propTypes.list Массив с данными
+   * @prop {func} propTypes.fetchPendingPhotos Получение данных с сервера
+   *
+   * */
+  static propTypes = {
+    list: PropTypes.array.isRequired,
+    /**
+     * Получение данных с сервера с фото
+     * @memberof PendingPhotos
+     * @param {number} page - Номер страницы
+     * @param {boolean} isChecked - Флаг о проверке
+     * @param {number} user - id пользователя
+     * @param {string} userFilterText- фильтр
+     */
+    fetchPendingPhotos:PropTypes.func.isRequired
+  }
+  componentWillMount() {
+    const {fetchPendingPhotos} = this.props
+    this.state = {
+      list: [],
+      page: DEFAULT_PAGE,
+      pageCount: DEFAULT_PAGE_COUNT
+    }
+
+    fetchPendingPhotos()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.isFetching &amp;&amp; this.props.isFetching) {
+      this.setState({
+        list: [...nextProps.list],
+        pageCount: nextProps.pageCount
+      })
+    }
+  }
+
+  render() {
+    const { list, isFetching = true, fetchPendingPhotos } = this.props
+
+    const photosTypes = [
+      { text: 'Новые', isChecked: null },
+      { text: 'Принятые', isChecked: true },
+      { text: 'Отклоненные', isChecked: false }
+    ]
+
+    const handlePageClick = data => {
+      const nextPage = data.selected + 1
+      fetchPendingPhotos(nextPage, isChecked)
+      this.setState({page: nextPage})
+    }
+
+    // const filterText = () => {
+    //   this.state = {
+    //     list: [],
+    //     page: DEFAULT_PAGE
+    //   }
+    //
+    //   fetchPendingPhotos(DEFAULT_PAGE, isChecked, undefined, this.refs.filterText.value)
+    // }
+
+    const filterId = () => {
+      this.state = {
+        list: [],
+        page: DEFAULT_PAGE
+      }
+
+      fetchPendingPhotos(DEFAULT_PAGE, isChecked, this.refs.filterId.value, undefined)
+    }
+
+    return (
+      &lt;div className={styles.layout}>
+
+        &lt;div className={styles.header}>
+          &lt;div className={styles.gridHeaderInner}>
+            &lt;h1 className={styles.gridCellHeaderLogo}>
+              Ясегодня
+              &lt;img src="/assets/img/ys_logo.svg" alt="Ясегодня"/>
+            &lt;/h1>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div className={styles.layoutInner}>
+          &lt;div className={styles.grid}>
+
+          &lt;div className={styles.gridCellLayoutMenu14}>
+            &lt;div className={styles.gridLayoutMenuInner}>
+              &lt;div className={styles.gridCellLayout66}>
+                &lt;UserReportsMenu/>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+          &lt;div className={styles.gridCellLayoutContentPocket34}>
+            &lt;div className={styles.stageBoxSmallPadding}>
+                { isFetching ? &lt;div className={styles.textCenter}>
+                      &lt;div className={styles.loaderMain}>&lt;/div>
+                    &lt;/div> : &lt;div>
+                      &lt;ul className={styles.optionsWhiteMtd30} style={{ display: 'inline-block' }}>
+                        {photosTypes.map((val, index) => (
+                          &lt;label key={index} style={{ display: 'inline-block' }}>
+                            &lt;li name="photosTypes" className={ isChecked === val.isChecked ? styles.optionsItemIsActive : styles.optionsItem} id={`photosTypes[${index}]`} onClick={e => {
+                              document.getElementById(`photosTypes[${index}]`).className += ' is-active'
+                              photosTypes.forEach((v, i) => {
+                                if (index !== i) {
+                                  document.getElementById(`photosTypes[${i}]`).className = styles.optionsItem
+                                }
+                              })
+                            }}>
+                              &lt;Field
+                                component='input'
+                                type='radio'
+                                name='photosTypes'
+                                style={{visibility: 'hidden', margin: -5}}
+                                value={val.val}
+                                onClick={() => {
+                                  isChecked = val.isChecked
+
+                                  this.state = {
+                                    list: [],
+                                    page: DEFAULT_PAGE
+                                  }
+
+                                  fetchPendingPhotos(DEFAULT_PAGE, isChecked)
+                                }}/>
+                              {val.text}
+                            &lt;/li>
+                            &lt;span/>
+                          &lt;/label>
+                        ))}
+                      &lt;/ul>
+
+                      &lt;div className={styles.chatForm}>
+                        &lt;div className={styles.chatFormInner}>
+
+                          &lt;Textarea
+                            ref="filterId"
+                            onKeyDown={e => {
+                              if (e.keyCode === 13 &amp;&amp; !e.shiftKey) {
+                                this.confirmChoice()
+                              }
+                            }}
+                            placeholder="Поиск..."
+                            className={styles.chatFormInnerTextarea}
+                          />
+                          &lt;div className={styles.btnChat}
+                               onClick={filterId}>
+                            &lt;div className={styles.btnChatTitle}>Поиск ID&lt;/div>
+                            &lt;div className={styles.btnChatIco}>
+                              &lt;svg className={styles.svgIcoArrowUp}>
+                                &lt;use xlinkHref="#ico-arrow-up"/>
+                              &lt;/svg>
+                            &lt;/div>
+                          &lt;/div>
+                        &lt;/div>
+                      &lt;/div>
+
+                      {/* &lt;div className={styles.chatForm}>
+                        &lt;div className={styles.chatFormInner}>
+
+                          &lt;Textarea
+                            ref="filterText"
+                            onKeyDown={e => {
+                              if (e.keyCode == 13 &amp;&amp; !e.shiftKey) {
+                                this.confirmChoice()
+                              }
+                            }}
+                            placeholder="Поиск..."
+                            className={styles.chatFormInnerTextarea}
+                          />
+                          &lt;div className={styles.btnChat}
+                               onClick={filterText}>
+                            &lt;div className={styles.btnChatTitle}>Поиск&lt;/div>
+                            &lt;div className={styles.btnChatIco}>
+                              &lt;svg className={styles.svgIcoArrowUp}>
+                                &lt;use xlinkHref="#ico-arrow-up"/>
+                              &lt;/svg>
+                            &lt;/div>
+                          &lt;/div>
+                        &lt;/div>
+                      &lt;/div> */}
+
+                      &lt;PhotosList list={list}/>
+
+                      &lt;ReactPaginate previousLabel={'&lt;'}
+                        nextLabel={'>'}
+                        forcePage={this.state.page - 1}
+                        breakLabel={&lt;a href=''>...&lt;/a>}
+                        breakClassName={'break-me'}
+                        pageCount={this.state.pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={handlePageClick}
+                        containerClassName={'pagination'}
+                        subContainerClassName={'pages pagination'}
+                        activeClassName={'active'}
+                      />
+                    &lt;/div>
+                   }
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    )
+  }
+}
+
+PendingPhotos = reduxForm({
+  form: 'photosForm'
+})(PendingPhotos)
+
+const mapStateToProps = state => {
+  const { isFetching, list = [], pageCount } = state.pendingPhotos
+
+  return {
+    isFetching,
+    list,
+    pageCount
+  }
+}
+
+const mapDispatchToProps = {fetchPendingPhotos}
+
+PendingPhotos = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PendingPhotos)
+
+export default CSSModules(PendingPhotos, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

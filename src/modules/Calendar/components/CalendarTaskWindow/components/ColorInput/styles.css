@@ -1,0 +1,19 @@
+.input {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+.label {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.input:checked + .label {
+    background: url('../../../../../../assets/img/svg/check.svg') center/16px no-repeat;
+}

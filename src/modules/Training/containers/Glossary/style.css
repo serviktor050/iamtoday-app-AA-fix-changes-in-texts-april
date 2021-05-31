@@ -1,0 +1,105 @@
+.alphabetButtonsRow{
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.39em;
+      
+}
+
+.alphabetButton {
+    background-color: inherit;
+    outline: none;
+    border: none;
+    cursor: pointer;    
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.alphabetButton:focus {
+    color: #4DA2D6;  
+    border-bottom: 2px solid #4DA2D6;
+}
+
+.alphabetButton:hover {
+    color: #4DA2D6;
+}
+
+.glossariesBlock {
+    display: flex; 
+    padding: 20px 0px; 
+    position: relative; 
+    min-height: 200px;
+}
+.glossariesBlock_list {
+    width: 40%;
+    z-index: 1;
+}
+
+.glossariesBlock_listItem {
+ padding: 5px;
+ cursor: pointer;  
+}
+
+.glossariesBlock_listItemButton {
+    all: unset; 
+    display: flex;
+    align-items: center;
+}
+
+.glossariesBlock_listItemButton:hover {
+    color: #4DA2D6; 
+}
+
+.glossariesBlock_listItemButton:focus {
+    color: #4DA2D6; 
+}
+
+.glossariesBlock_listItemButton::before {
+    content: "";
+    width: 30px;
+    margin-right: 5px;
+    margin-left: -30px;
+    display: inline-flex;
+    align-self: center;
+    border: 1px solid white;
+}
+
+
+.glossariesBlock_listItemButton:focus::before {
+    border: 1px solid #4DA2D6;
+}
+
+.glossariesBlock_description {
+    width: 60%;
+    border: 3px solid #ECF6FD;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;    
+}
+
+.glossariesBlock_quotes {
+    background: url("../../../../assets/img/svg/quote.svg")
+      center/cover no-repeat;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(31%) saturate(2207%) hue-rotate(175deg) brightness(102%) contrast(98%);
+    width: 90px;
+    height: 72px;
+    padding: 10px;
+    position: absolute;
+    transform: rotate(180deg);
+    top: 20px;
+    z-index: -1;
+}
+
+.glossariesLetter {
+    font-size: 288px;
+    color: #ECF6FD;
+    position: absolute;
+    left: 0;
+    top: 0;
+}

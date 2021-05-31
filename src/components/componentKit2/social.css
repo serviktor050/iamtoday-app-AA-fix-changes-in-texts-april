@@ -1,0 +1,46 @@
+.social{
+    display: flex;
+}
+.socialSigninItem{
+    border:1px solid #fff;
+    border-radius: 55%;
+    width: 30px;
+    height: 30px;
+    margin-right:9px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.socialSignin{
+    composes: social-signin from '../../index2.css';
+}
+.svgIconFb{
+    composes: svg-icon from '../../index2.css';
+    composes: ico-fb from '../../index2.css';
+    width:7px;
+    fill: #fff;
+}
+.svgIconInsta{
+    composes: svg-icon from '../../index2.css';
+    composes: ico-vk from '../../index2.css';
+    width:12px;
+    fill: #fff;
+}
+.svgIconVk{
+    composes: svg-icon from '../../index2.css';
+    composes: ico-vk from '../../index2.css';
+    width:17px;
+    fill: #fff;
+}
+.svgIconOk{
+    composes: svg-icon from '../../index2.css';
+    composes: ico-odnoklassniki from '../../index2.css';
+    width:10px;
+    fill: #fff;
+}
+.svgIconYoutube{
+    composes: svg-icon from '../../index2.css';
+    composes: ico-odnoklassniki from '../../index2.css';
+    fill: #fff;
+    width: 17px;
+}

@@ -1,0 +1,394 @@
+.header {
+  composes: header from "../../index2.css";
+  position: fixed;
+  width: 100%;
+  z-index: 111;
+  box-shadow: 0 7px 7px -1px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+.headerHero {
+  composes: header;
+  composes: header--hero from "../../index2.css";
+}
+.apple {
+  height: 45px;
+  min-width: 42px;
+}
+.headerHero .hProfile:hover {
+  background: #4822a0;
+}
+.headerMother {
+  composes: header;
+  composes: header--mother from "../../index2.css";
+}
+.headerMother .hProfile:hover {
+  background: #319ba5;
+}
+.blockMenu {
+  display: flex;
+}
+.headerExtreme {
+  composes: header;
+  composes: header--extreme from "../../index2.css";
+}
+.headerExtreme .hProfile:hover {
+  background: #0a52e2;
+}
+.socialBlock {
+  width: 39%;
+}
+.headerTomorrow {
+  composes: header;
+  composes: header--tomorrow from "../../index2.css";
+}
+.headerAlfa {
+  composes: header;
+  background-color: #213349;
+}
+.headerTele2 {
+  composes: header;
+  background-color: #000;
+}
+.headerUnipro {
+  composes: header;
+  background-color: #0c4c7c;
+}
+.headerTomorrow .hProfile:hover {
+  background: #d45b28;
+}
+.gridHeaderInner {
+  composes: grid from "../../index2.css";
+  composes: header__inner from "../../index2.css";
+  justify-content: stretch;
+}
+.opacity0 {
+  opacity: 0;
+}
+.width25 {
+  width: 35%;
+}
+.aboveLogo {
+  color: #7b7979;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: left;
+}
+.logoText {
+  text-transform: uppercase;
+  font-size: 26px;
+  background: linear-gradient(
+    90deg,
+    rgba(111, 190, 163, 1) 0%,
+    rgba(87, 161, 217, 1) 36%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #57a1d9;
+}
+@media screen and (min-width: 1024px) {
+  .width33 {
+    width: 33.33333%;
+  }
+  .width25 {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .width50 {
+    width: 50%;
+  }
+  .gridHeaderInner {
+    height: 78px;
+  }
+}
+
+.gridCellHeaderBurger33 {
+  composes: width33;
+  composes: grid__cell from "../../index2.css";
+  composes: header__burger from "../../index2.css";
+  width: 50px;
+}
+
+.headerIcoBurger {
+  composes: header__ico-burger from "../../index2.css";
+}
+
+.svgIconBurger {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-burger from "../../index2.css";
+  stroke: #39961e;
+}
+.right {
+  display: flex;
+  z-index: 2;
+  align-items: center;
+  position: relative;
+}
+.gridCellHeaderLogo33 {
+  composes: width25;
+  composes: grid__cell from "../../index2.css";
+  composes: header__logo from "../../index2.css";
+  display: flex;
+  align-items: center;
+}
+.gridCellHeaderLogoAlfa {
+  composes: width33;
+  composes: width50;
+  composes: grid__cell from "../../index2.css";
+  composes: header__logo from "../../index2.css";
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.svgIconYsLogoWeb {
+  composes: svg-icon from "../../index2.css";
+  composes: ys-logo-web from "../../index2.css";
+  width: 175px !important;
+}
+.logo {
+  display: flex;
+  cursor: pointer;
+}
+.gridCellHeaderRightSide33 {
+  composes: width33;
+  composes: grid__cell from "../../index2.css";
+  composes: header__right-side from "../../index2.css";
+  margin-left: auto;
+}
+
+.hNotify {
+  composes: h-notify from "../../index2.css";
+}
+
+.hNotifyIco {
+  composes: h-notify__ico from "../../index2.css";
+}
+
+.hNotifyStatus {
+  composes: h-notify__status from "../../index2.css";
+}
+
+.svgIcoNotify {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-notify from "../../index2.css";
+}
+
+.hProfile {
+  composes: h-profile from "../../index2.css";
+  padding: 17px 10px !important;
+  color: #2c2f33 !important;
+  position: initial
+}
+
+.hProfileName {
+  composes: h-profile__name from "../../index2.css";
+  white-space: nowrap;
+  margin-bottom: 2px;
+  text-align: right;
+}
+
+.hProfileAvatar {
+  composes: h-profile__avatar from "../../index2.css";
+}
+
+.hProfileAvatarImg {
+  composes: h-profile__avatar-img from "../../index2.css";
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.dropdownProfile {
+  composes: dropdown from "../../index2.css";
+  composes: dropdown--profile from "../../index2.css";
+  min-width: 210px !important;
+  top: 52px !important;
+  right: -5px;
+}
+.dropdownProfile:after {
+  right: 14px;
+}
+.dropdownItem {
+  composes: dropdown__item from "../../index2.css";
+}
+
+.dropdownSeparate {
+  composes: dropdown__separate from "../../index2.css";
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  vertical-align: middle;
+  border-top: 4px dashed #fff;
+  border-top: 4px solid #fff;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  opacity: 0.6;
+}
+
+.caretActive {
+  composes: caret;
+  opacity: 1;
+}
+
+.alfaLogo {
+  width: 200px !important;
+  padding-left: 30px;
+}
+.uniproLogo {
+  width: 150px;
+  cursor: pointer;
+  display: none;
+}
+.uniproLogoMobile {
+  composes: uniproLogo;
+  min-width: 30px;
+  display: block;
+}
+.alfaLogoMobile {
+  min-width: 30px;
+  display: block;
+  padding-left: 10px;
+}
+.rating {
+  padding: 4px 0 0;
+  border-right: 1px solid #dbf3c9;
+  border-left: 1px solid #dbf3c9;
+  height: 53px;
+  display: none;
+}
+.ratingContent {
+  padding-right: 8px;
+  display: none;
+}
+.positions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #798ca1;
+}
+.points {
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -5px;
+  font-weight: bold;
+}
+.status {
+  margin-left: auto;
+  padding-right: 13px;
+  display: none;
+  margin-top: 3px;
+}
+.flag {
+  margin-top: 4px;
+}
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+.desc {
+  font-size: 13px;
+  color: #fff;
+  margin-left: 6px;
+}
+.separator {
+  margin: 0 3px;
+  margin-top: -1px;
+}
+.hide {
+  display: none;
+}
+.default {
+  cursor: default;
+}
+.soc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+.socTitle {
+  white-space: nowrap;
+  display: none;
+}
+.socList {
+  display: flex;
+  margin-left: auto;
+  margin-top: 5px;
+}
+.socItem {
+  margin: 0 4px;
+}
+.socItem img {
+  width: 20px;
+  height: 20px;
+}
+@media screen and (min-width: 500px) {
+  .rating {
+    padding: 4px 30px 0;
+  }
+  /*.uniproLogoMobile{*/
+  /*display: block;*/
+  /*}*/
+  
+  .soc {
+    /*margin-right: -30px;*/
+  }
+}
+@media screen and (max-width: 1024px) {
+  .socialBlock {
+    display: none;
+  }
+  .svgIconYsLogoWeb {
+    max-width: 150px !important;
+  }
+  .header {
+    height: 52px;
+  }
+  .alfaLogo {
+    padding-left: 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .gridCellHeaderBurger33 {
+    padding-right: 10px;
+  }
+  .logoWrap {
+    display: none;
+  }
+
+  .width25 {
+    width: auto;
+  }
+  .gridCellHeaderRightSide33 {
+    width: 65%;
+  }
+  .hProfile {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .gridCellHeaderLogo33 {
+    padding-left: 30px;
+  }
+  .uniproLogo {
+    display: block;
+  }
+  .uniproLogoMobile {
+    display: none;
+  }
+  .socTitle {
+    display: block;
+  }
+}

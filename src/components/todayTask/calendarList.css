@@ -1,0 +1,88 @@
+.minCalendar {
+  composes: min-calendar from '../../index2.css';
+}
+
+.minCalendarWrap {
+  composes: min-calendar-wrap from '../../index2.css';
+  margin-top:36px;
+  margin-bottom:0 !important;
+}
+
+@media screen and (min-width: 1025px) {
+  .width33 {
+    width: 33.33333%;
+  }
+
+  .minCalendarWrap{
+    margin-top:0;
+  }
+}
+
+.gridCellLayoutCalendar33 {
+  composes: width33;
+  composes: grid__cell from '../../index2.css';
+  composes: layout__calendar from '../../index2.css';
+}
+
+.minCalendarBtnPrev {
+  composes: min-calendar__btn-prev from '../../index2.css';
+  background-color: #fff;
+}
+.minCalendarBtnPrev:hover{
+  background-color: #fff;
+}
+.minCalendarBtnPrevUnactive {
+  composes: min-calendar__btn-prev from '../../index2.css';
+  pointer-events: none;
+  background-color: #ef31244a;
+}
+
+.svgIconBoldArrowUp {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-up from '../../index2.css';
+}
+
+.svgIconBoldArrowUpUnactive {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-up__unactive from '../../index2.css';
+  fill:#fff;
+}
+
+.minCalendarBtnNext {
+  composes: min-calendar__btn-next from '../../index2.css';
+  background-color: #fff;
+}
+.minCalendarBtnNext:hover{
+  background-color: #fff;
+}
+.minCalendarBtnNextUnactive {
+  composes: min-calendar__btn-next from '../../index2.css';
+  pointer-events: none;
+  background-color: #ef31244a;
+}
+
+.svgIconBoldArrowDown {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-down from '../../index2.css';
+}
+
+.svgIconBoldArrowDownUnactive {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-down__unactive from '../../index2.css';
+  fill:#fff;
+}
+
+.btnGoBack {
+  composes: btn-go-back from '../../index2.css';
+  opacity:0;
+  transition:0.4s;
+  display: none;
+}
+.btnGoBackShow {
+  composes: btn-go-back from '../../index2.css';
+  opacity:1;
+  z-index:13;
+}
+.btnGoBackTitle {
+  composes: btn-go-back__title from '../../index2.css';
+}

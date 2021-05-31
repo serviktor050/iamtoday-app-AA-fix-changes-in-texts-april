@@ -1,0 +1,67 @@
+.day {
+    position: relative;
+    padding: 5px;
+}
+
+.day__tasks {
+    position: relative;
+}
+
+.day__tasks_expanded {
+    position: absolute;
+    width: 100%;
+    margin-left: -5px;
+    padding: 0px 5px 5px 5px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.number {
+    font-size: 18px;
+    line-height: 22px;
+    color: #2C2F33;
+}
+
+.number_inactive {
+    color: #C4C4C4;
+}
+
+.gradientFade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 46.68%, #FFFFFF 86.55%);
+}
+
+.expand {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.hide {
+    all: unset;
+    padding-top: 5px;
+    display: flex;
+    width: 100%;
+    height: 10px;
+    background: url('../../../../../../../../assets/img/svg-symbols/chevron-up.svg') center/10px no-repeat;
+    filter: invert(67%) sepia(30%) saturate(1828%) hue-rotate(174deg) brightness(88%) contrast(88%);
+    cursor: pointer;
+}
+
+.circle {
+    display: block;
+    border-radius: 50%;
+    width: 2px;
+    height: 2px;
+    background: #2C2F33;
+    margin: 0px 2px;
+}

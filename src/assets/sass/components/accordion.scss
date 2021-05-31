@@ -1,0 +1,133 @@
+.accordion {
+  &--reports {
+    .accordion__content {
+      padding: 0;
+      border-bottom: 1px solid $c-border;
+    }
+  }
+
+  &__item {
+    &--active {
+      .accordion__header {
+        background-color: $c-l-gray;
+      }
+
+      .ico-bold-arrow-down {
+        transform: rotate(180deg);
+      }
+
+      .accordion__content {
+        display: block;
+      }
+    }
+
+    &--new-msg {
+    }
+  }
+
+  &__header {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(31, 68, 123, 0.09);
+
+    @include av-mq(portable) {
+      padding: 20px;
+    }
+    @include av-mq(desk) {
+      padding: 20px 40px;
+    }
+
+    @include av-mq(pocket) {
+      flex-direction: column;
+
+      [class*="accordion__"] {
+        &:not(.accordion__header-title) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $c-l-gray;
+    }
+
+  }
+
+  &__header-title {
+    user-select: none;
+    font-size: $fz-h4;
+    font-weight: 700;
+    color: $c-secondary;
+
+    @include av-mq(pocket) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__state {
+    text-align: center;
+    padding: 4px 0;
+    border-radius: $base-radius;
+    max-width: 100px;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    flex-shrink: 0;
+
+    &--done {
+      background-color: $c-green;
+    }
+
+    &--cross {
+      background-color: $c-red;
+    }
+
+    &--waiting {
+      background-color: $c-l-blue;
+    }
+  }
+
+  &__date {
+  }
+
+  &__name {
+  }
+
+  &__qty-msg {
+    max-width: 88px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .num {
+      margin-left: 4px;
+    }
+  }
+
+  &__content {
+    display: none;
+
+    @include av-mq(portable) {
+      padding: 30px 20px;
+    }
+    @include av-mq(desk) {
+      padding: 40px;
+    }
+
+  }
+
+  .btn--base {
+    @include av-mq(pocket) {
+      margin: 0 auto;
+    }
+  }
+
+  .chat-content {
+    // padding: 20px;
+  }
+}

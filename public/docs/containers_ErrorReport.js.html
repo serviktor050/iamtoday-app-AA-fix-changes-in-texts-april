@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/ErrorReport.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/ErrorReport.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {Component, PropTypes } from 'react'
+import cookie from 'react-cookie'
+import Layout from '../components/componentKit2/Layout'
+import {api} from '../config.js'
+import CSSModules from 'react-css-modules'
+import styles from './errorReport.css'
+import Modal from 'boron/FadeModal'
+
+let contentStyle = {
+  borderRadius: '18px',
+  padding: '45px 20px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  width: '340px',
+  textAlign: 'center'
+}
+/**
+ *  Контейнер ErrorReport.
+ *  Используется для отображения страницы Нашел ошибку? (/error-report)
+ *
+ */
+class ErrorReport extends Component {
+
+  state = {
+    /**
+     * Текст ошибки
+     * @memberof ErrorReport
+     */
+    text: '',
+    /**
+     * Массив скриншотов или видео
+     * @memberof ErrorReport
+     */
+    docs:[]
+  }
+
+  onChangeText(event) {
+    this.setState({
+      text: event.target.value
+    })
+  }
+
+  onChangeFile(event) {
+    const {target} = event
+    this.refs.loadingModal.show()
+    if (target.files &amp;&amp; target.files[0]) {
+      var reader = new FileReader()
+      reader.onload = e => {
+        let content
+        if(reader.result.indexOf('data:video') !== -1){
+          content = reader.result.replace(/data:video\/\w+;base64,/, '')
+        } else {
+          content = reader.result.replace(/data:image\/\w+;base64,/, '')
+        }
+
+         const name = target.files[0].name
+         const payload = {
+           authToken: cookie.load('token'),
+           data: {
+             name,
+             content
+           }
+         }
+        const headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+        return fetch(`${api}/data/file-upload`, {
+          headers,
+          method: 'POST',
+          body: JSON.stringify(payload)
+        })
+          .then(response => response.json())
+          .then(json => {
+            this.refs.loadingModal.hide()
+            this.setState({
+              docs: this.state.docs.concat({
+                name:name,
+                uid: json.data.uid
+              })
+            })
+          })
+      }
+      reader.readAsDataURL(target.files[0])
+    }
+  }
+
+  send() {
+    if (!this.state.docs.length &amp;&amp; !this.state.text) return;
+    this.refs.loadingModal.show()
+    const uids = this.state.docs.map(item => item.uid)
+    const payload = {
+      authToken: cookie.load('token'),
+      data: {
+        message: this.state.text,
+       // email: this.state.email,
+        //name: this.state.name,
+        screenshots: uids
+      }
+    };
+    return fetch(`${api}/data/errorReport-create`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+      .then(response => response.json())
+      .then(json => {
+        this.refs.loadingModal.hide()
+        if (json.errorCode === 1) {
+          this.refs.successModal.show()
+          this.setState({
+           // screenshotsName: [],
+            //email: '',
+            //name: '',
+            text: '',
+            docs: []
+           // screenshots: []
+          })
+        } else {
+          this.refs.errorModal.show()
+        }
+      })
+  }
+
+  onRemove(doc){
+    this.setState({
+      docs: this.state.docs.filter(item => item.uid !== doc.uid)
+    })
+    this.refs.error.value = ''
+  }
+
+  render() {
+    return (
+      &lt;Layout pageNumber={9}>
+        &lt;div className="stage-box stage-box--small-padding">
+          &lt;div className="stage-box__inner">
+            &lt;h2 className="h1 text-center mb10">Отчет о ошибке&lt;/h2>
+            &lt;p className="sub-title">К сожалению, на нашем ресурсе иногда встречаются ошибки или неточности, поэтому мы
+              будем благодарны Вам за сообщение об ошибке.&lt;/p>
+         {/*   &lt;div className="grid">
+              &lt;div className="1/2--desk grid__cell">
+                &lt;div className="input">
+                  &lt;input
+                    type="text"
+                    name="name"
+                    className="input__field"
+                    placeholder="Ваше имя"
+                    value={this.state.name}
+                    onChange={(event) => this.onChangeHandler(event)}
+                  />
+                &lt;/div>
+              &lt;/div>
+              &lt;div className="1/2--desk grid__cell">
+                &lt;div className="input">
+                  &lt;input
+                    type="email"
+                    name="email"
+                    className="input__field"
+                    placeholder="Ваш email"
+                    value={this.state.email}
+                    onChange={(event) => this.onChangeHandler(event)}
+                  />
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>*/}
+
+            &lt;div className="textarea mb30">
+            &lt;textarea
+              className="textarea__field"
+              name="text"
+              placeholder="Ваше сообщение"
+              value={this.state.text}
+              onChange={(event) => this.onChangeText(event)}
+            />
+            &lt;/div>
+            {
+              this.state.docs.map((item, index) => {
+                return (
+                  &lt;div className={styles.doneList} key={index}>
+                    &lt;span className={styles.listName}>{item.name}&lt;/span>
+                    &lt;span className={styles.listNameIcons}>
+                      &lt;span>
+                        &lt;svg className={styles.svgIcoDone}>
+                          &lt;use xlinkHref="#ico-big-done">&lt;/use>
+                        &lt;/svg>
+                      &lt;/span>
+                      &lt;span className={styles.trash}  onClick={() => this.onRemove(item)}>
+                        &lt;svg className="svg-icon ico-trash">
+                          &lt;use xlinkHref="#ico-trash">&lt;/use>
+                        &lt;/svg>
+                      &lt;/span>
+                    &lt;/span>
+                  &lt;/div>
+                )
+              })
+            }
+            &lt;div className="input input--btn">
+              &lt;span className="input__text">Скриншот или видео&lt;/span>
+              &lt;input
+                multiple=""
+                type="file"
+                ref="error"
+              /*  accept="image/!*"*/
+                id="file-upload"
+                className="input__field"
+                placeholder=""
+                onChange={(event) => this.onChangeFile(event)}
+              />
+              &lt;label
+                htmlFor="file-upload"
+                className="btn btn--base"
+              >Прикрепить файл&lt;/label>
+            &lt;/div>
+
+            &lt;p className="text-center">
+              &lt;button
+                className="btn btn--primary"
+                type="button"
+                onClick={() => this.send()}
+              >Отправить сообщение
+              &lt;/button>
+            &lt;/p>
+
+          &lt;/div>
+          &lt;Modal ref='loadingModal' contentStyle={contentStyle}>
+            &lt;div className={styles.entryHeader}>
+              &lt;h2 className={styles.entryTitleCenter}>Загружается...&lt;/h2>
+            &lt;/div>
+            &lt;div className={styles.textCenter}>
+              &lt;div className={styles.loaderMain}>&lt;/div>
+            &lt;/div>
+          &lt;/Modal>
+
+          &lt;Modal ref='errorModal' contentStyle={contentStyle}>
+            &lt;h2>Что-то пошло не так, попробуйте снова&lt;/h2>
+            &lt;br/>
+            &lt;button className={styles.btnAction} onClick={() => {
+              this.refs.errorModal.hide()
+            }}>
+              Продолжить
+            &lt;/button>
+          &lt;/Modal>
+          &lt;Modal ref='successModal' contentStyle={contentStyle}>
+            &lt;h2>Спасибо!&lt;/h2>
+            &lt;br/>
+            &lt;button className={styles.btnAction} onClick={() => {
+              this.refs.successModal.hide()
+            }}>
+              Продолжить
+            &lt;/button>
+          &lt;/Modal>
+
+        &lt;/div>
+      &lt;/Layout>
+    )
+  }
+}
+
+export default CSSModules(ErrorReport, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

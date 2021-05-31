@@ -1,0 +1,146 @@
+
+.stageBoxSmallPadding {
+  composes: stage-box from '../../index2.css';
+  composes: stage-box--small-padding from '../../index2.css';
+}
+.contentText p{
+  margin-bottom:15px;
+}
+.contentText ul{
+  margin-bottom: 25px;
+  padding-left: 30px;
+}
+.contentText li{
+  margin-bottom:10px;
+  position: relative;
+}
+.contentText li span{
+  text-decoration:line-through;
+  margin:0 6px;
+}
+.contentText li span:last-child{
+ color: red;
+}
+.contentText li:before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: #b3b9bd;
+  position: absolute;
+  left: -20px;
+  top: 9px;
+  border-radius: 50%;
+}
+.h1 {
+  composes: h1 from '../../index2.css';
+}
+.h4 {
+  composes: h4 from '../../index2.css';
+  margin-top: 20px;
+}
+.grid {
+  composes: grid from '../../index2.css';
+}
+.stageBoxInner{
+  composes: stage-box__inner from '../../index2.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width33 {
+    width: 33%;
+  }
+  .width75 {
+    width: 75%;
+  }
+
+  .stageBoxInner:first-child{
+    padding-top: 40px;
+  }
+
+  .stageBoxInner:last-child{
+    padding-bottom: 25px;
+  }
+}
+
+
+
+.bc{
+  composes: bc from '../../index2.css';
+}
+.bcItem{
+  composes: bc__item from '../../index2.css';
+  transition: 0.2s;
+}
+
+.bcItem:not(:first-child){
+  margin-left:5px;
+}
+.bcItemActive{
+  composes: bcItem;
+  color: #70cffe;
+  cursor: text !important;
+}
+
+.bcItemLink{
+  text-decoration: none;
+  color: #1f447b;
+  transition: 0.2s;
+}
+.bcItemLink:hover{
+  text-decoration: none;
+  color: #70cffe;
+}
+.partnerLogo{
+  composes: partner-logo from '../../index2.css';
+}
+.partnerLogoImg{
+  composes: partner-logo__img from '../../index2.css';
+  max-width: 180px !important;
+}
+
+.baseParag{
+  composes: base-parag from '../../index2.css';
+}
+.baseList{
+  composes: base-list from '../../index2.css';
+}
+.baseListItem{
+   composes: base-list__item from '../../index2.css';
+}
+.gridCellLineRight50{
+   width:50%;
+   composes: grid__cell from '../../index2.css';
+   composes: line-right from '../../index2.css';
+}
+
+.gridCelltextCenter50{
+  width:50%;
+  composes: grid__cell  from '../../index2.css';
+  composes: text-center from '../../index2.css';
+}
+
+.btnPrimary{
+  composes: btn from '../../index2.css';
+  composes: btn--primary from '../../index2.css';
+  margin-top:20px;
+}
+
+.btnPrimary:hover{
+  background-color: #69daa9;
+}
+
+.btnPrimaryLink{
+  color: #fff;
+  text-decoration: none;
+}
+
+.strike{
+  text-decoration: line-through;
+}
+.marker{
+  color: red;
+}

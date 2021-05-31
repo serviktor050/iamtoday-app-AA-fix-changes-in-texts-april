@@ -1,0 +1,85 @@
+<!--регистрация врача письмо для партнера-->
+
+<mjml>
+  <mj-head>
+    <mj-title>Регистрация партнера</mj-title>
+    <mj-attributes>
+      <mj-body background-color="#FFFFFF" />
+      <mj-section padding="15px" />
+      <mj-text font-size="13px" font-family="helvetica" color="#000000" line-height="20px" />
+      <mj-class name="email" color="#06007c" text-decoration="underline" />
+      <mj-class name="button" background-color="#4DA2D6" color="white" font-weight="bold" align="left" />
+      <mj-class name="info-block" background-color="#F0F6FF" padding-left="0px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <!-- Header with social icons-->
+
+    <mj-section padding="0px" full-width="full-width">
+      <mj-column>
+        <mj-image width="150px" height="80px" padding="0px" src="https://i.postimg.cc/YqL7FZky/1-1.png" />
+      </mj-column>
+      <mj-column>
+        <mj-social>
+          <mj-social-element href="https://www.facebook.com/antiageexpert.ru/" name="facebook" icon-size="40px" />
+          <mj-social-element href="https://www.instagram.com/antiageexpert_ru/" name="instagram" icon-size="40px" />
+        </mj-social>
+      </mj-column>
+    </mj-section>
+
+    <!--Welcome Image -->
+    <mj-hero mode="fluid-height" background-width="600px" background-url="https://i.postimg.cc/Y9ptH1nH/Group-10.png" background-height="400px" background-color="#37D3AF" padding="300px 20px 30px 30px">
+      <mj-text padding="5px" color="#ffffff" vertical-align="bottom" font-size="30px" line-height="37px" font-weight="normal">
+        Здравствуйте,
+      </mj-text>
+      <mj-text padding="5px" color="#ffffff" font-family="Helvetica" vertical-align="bottom" font-size="30px" line-height="37px" font-weight="normal">
+        Кольцова Валерия Евгеньевна!
+      </mj-text>
+    </mj-hero>
+
+    <!-- Introduction Text -->
+    <mj-section>
+      <mj-text><strong>Вы зарегистрировали врача в Вашей группе - Косаткину Ирину
+          Владимировну</strong></mj-text>
+    </mj-section>
+
+    <!-- Email Text-->
+    <mj-section>
+      <mj-text>Электронный адрес доктора:
+        <a mj-class="email">kosatkina@mail.ru</a></mj-text>
+    </mj-section>
+
+    <!-- Instruction Text -->
+    <mj-section>
+      <mj-text><strong>Проверьте, пожалуйста, регистрационные данные нового участника и
+          попросте его проверить почту.</strong>
+        Он получит письмо с ссылкой для подтверждения регистрации, а также
+        учетные данные для входа в личный кабинет.</mj-text>
+    </mj-section>
+
+    <!-- Instruction Text -->
+    <mj-section>
+      <mj-text>Как только врач подтвердит регистрацию, ему необходимо будет заполнить
+        все пункты анкеты, а также прикрепить сканы документов, которые
+        запрашиваются на платформе. После он получит доступ к онлайн-материалам
+        и продуктам Anti-Age Expert.</mj-text>
+    </mj-section>
+
+    <!-- Info Text -->
+
+    <mj-section mj-class="info-block">
+      <mj-column width="10%" vertical-align="middle">
+        <mj-image align="center" padding="0px" width="15px" src="https://i.postimg.cc/MGJ9XtJh/info-1-1.png" />
+      </mj-column>
+      <mj-column width="90%" vertical-align="middle">
+        <mj-text color="#4DA2D6" padding="0px">Если Вы зарегистрировали врача по ошибке, пожалуйста, напишите об
+          этом в техподдержку.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Support Button -->
+    <mj-section>
+      <mj-button mj-class="button"> Написать в техподдержку </mj-button>
+    </mj-section>
+  </mj-body>
+</mjml>

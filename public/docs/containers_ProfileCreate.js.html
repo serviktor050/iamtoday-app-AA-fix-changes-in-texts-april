@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/ProfileCreate.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/ProfileCreate.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { browserHistory } from 'react-router'
+import * as actions from '../actions'
+import { SubmissionError } from 'redux-form'
+import SubmitValidationForm from '../components/profile/SubmitValidationForm'
+import LoadingView from '../components/componentKit/LoadingView'
+import cookie from 'react-cookie'
+import Modal from 'boron/FadeModal'
+import moment from 'moment'
+import { api, domen } from '../config.js'
+import CSSModules from 'react-css-modules'
+import styles from './profileCreate.css'
+import HeaderTask from '../components/componentKit2/HeaderTask'
+import Menu from '../components/todayTask/Menu'
+import { changeChatType, clearRenderChat, setTypeId, PRIVATE_CHAT_ID } from '../actions'
+import { Link } from 'react-router'
+
+let contentStyle = {
+  borderRadius: '18px',
+  padding: '30px'
+}
+/**
+ *  Компонент ProfileCreate.
+ *  Используется для отображения страницы 'Профиль' (/profile)
+ *
+ */
+class ProfileCreate extends Component {
+  /**
+   * @memberof ProfileCreate
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {string} propTypes.token Токен
+   * @prop {object} propTypes.userInfo Данные о юзере
+   * @prop {object} propTypes.profileFields Заполненные данные профиля
+   * @prop {object} propTypes.profileData Данные профиля
+   * @prop {array} propTypes.bodyParams Данные параметров тела
+   * @prop {object} propTypes.insurance Данные по страховке
+   * @prop {string} propTypes.selectedProfile Выбранные профиль
+   * @prop {boolean} propTypes.isFetching Индикатор загрузки
+   *
+   * */
+
+  static propTypes = {
+    token: PropTypes.string,
+    userInfo: PropTypes.object.isRequired,
+    profileFields: PropTypes.object.isRequired,
+    profileData: PropTypes.object.isRequired,
+    bodyParams: PropTypes.array,
+    insurance: PropTypes.object,
+    selectedProfile: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired
+  }
+
+  componentWillMount() {
+    if (window.mobilecheck()) {
+      contentStyle.margin = '80px'
+      contentStyle.width = '340px'
+    }
+  }
+
+  componentDidUpdate() {
+    const { profileData, dispatch } = this.props
+    if (profileData &amp;&amp; profileData.isFirstEdit) {
+      dispatch({ type: 'IS_READY_TO_TASKS', isReadyToTasks: true })
+    }
+  }
+
+  componentDidMount() {
+    const { dispatch, selectedProfile, fetchTaskDayIfNeeded, selectedTaskDay} = this.props
+    dispatch(actions.fetchProfileIfNeeded(selectedProfile))
+    dispatch(actions.fetchTaskDayIfNeeded(selectedTaskDay))
+    dispatch({type: 'SET_MENU_LIST', index: 21})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedProfile !== this.props.selectedProfile) {
+      const { dispatch, selectedProfile } = nextProps
+      dispatch(actions.fetchProfileIfNeeded(selectedProfile))
+    }
+
+    if (nextProps.selectedTaskDay !== this.props.selectedTaskDay) {
+      const { fetchTaskDayIfNeeded, selectedTaskDay, fetchChat } = nextProps
+      this.props.dispatch(actions.fetchTaskDayIfNeeded(selectedTaskDay))
+    }
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props
+    dispatch(actions.receiveProfile('reactjs', { data: [{ insurance: {}, bodyMeasures: [] }] }))
+  }
+
+  render() {
+    const { profileData, insurance, selectedProfile, bodyParams, token, isFetching,
+       isReadyToTasks, isBabyFeeding, dispatch, profileFields, userInfo, taskDayData } = this.props
+    const isEmpty = !profileData || !profileData.email
+    const insuranceIsEmpty = !insurance
+    const { firstName, lastName, program, photo, gender } = userInfo.data
+    const { isLoad } = taskDayData
+    let calendar, id
+      if(taskDayData.dayData){
+        calendar= taskDayData.dayData.calendar
+        id= taskDayData.dayData.id
+    }
+    const isAlfa = domen.isAlfa
+    if(isAlfa){
+        document.body.style.backgroundColor = "#f9f0f0"
+    }
+
+    return (
+      &lt;div className={isAlfa ? styles.layoutAlfa : styles.layout}>
+        {isEmpty
+          ? (isFetching
+            ? &lt;LoadingView isAlfa={isAlfa} title="Загружается..."/>
+            : &lt;LoadingView isAlfa={isAlfa} title="Если вы видите это окно, значит мы делаем личный кабинет для вас удобнее! Напишите нам в чат тех подержки (внизу справа) или на почту sb@todayme.ru"/>)
+          : &lt;div  style={{ opacity: isFetching ? 0.5 : 1 }}>
+
+          &lt;HeaderTask
+            program={program}
+            fullName={`${firstName} ${lastName}`}
+            avatar={photo}
+          />
+            &lt;div className={isAlfa ? styles.layoutInnerAlfa : styles.layoutInner}>
+              &lt;div className={styles.grid}>
+                &lt;div className={profileData.isFirstEdit ? styles.gridCellLayoutMenu14 : styles.gridCellLayoutMenu14Show}>
+                  &lt;div id="menu" className={profileData.isFirstEdit ? styles.gridLayoutMenuInner :styles.gridLayoutMenuInnerShow}>
+
+                    &lt;Menu fullName={`${firstName} ${lastName}`} dayId={id} gender={gender} />
+
+                    {/*{ isLoad ? &lt;CalendarList
+                                calendar={calendar}
+                                none={true}
+                                dayId={id} role={role}
+                                privateChatId={PRIVATE_CHAT_ID}
+                                setTypeId ={setTypeId}
+                                changeChatType={changeChatType}
+                                clearRenderChat={clearRenderChat}
+                    /> : null }*/}
+
+
+
+                  &lt;/div>
+                &lt;/div>{/*gridCellLayoutMenu14*/}
+
+                &lt;div className={styles.gridCellLayoutContentPocket34}>
+
+                    &lt;SubmitValidationForm
+                      bodyMeasure={bodyParams}
+                      profileData={profileData}
+                      isReadyToTasks={isReadyToTasks}
+                      feedDate={moment(profileData.lastBabyFeedMonth).format('YYYY-MM-DD')}
+                      injuriesEx={profileData.injuriesExist}
+                      isBabyFeed={profileData.isBabyFeeding}
+                      prevSeasons={profileData.prevSeasons}
+                      initialValues={{
+              ...profileData,
+              country: profileData.country,
+              city:  profileData.city,
+              birthday:profileData.birthday,
+              workPosition: profileData.customUserFields.workPosition,
+              workTeam: profileData.customUserFields.workTeam,
+              fullName: !insuranceIsEmpty &amp;&amp; insurance.fullName
+                ? insurance.fullName : '',
+              profession: !insuranceIsEmpty &amp;&amp; insurance.profession
+                ? insurance.profession : '',
+              passport: !insuranceIsEmpty &amp;&amp; insurance.passport
+                ? insurance.passport : '',
+              address: !insuranceIsEmpty &amp;&amp; insurance.address
+                ? insurance.address : '',
+              insuranceFile: !insuranceIsEmpty &amp;&amp; insurance.insuranceFile
+                ? insurance.insuranceFile : []
+            }}
+                onSubmit={ data => {
+                  console.log('submitttt')
+                  console.log(data)
+                if (profileData.program % 4 === 2) {
+                  data.isBabyFeeding = isBabyFeeding
+                }
+
+                this.refs.loadingModal.show()
+                data.didSports = profileFields.didSports
+                data.babyCount = profileFields.babyCount
+                data.injuryItems = profileFields.injuryItems
+                data.diseases = profileFields.diseases
+                data.injuriesExist = profileFields.injuriesExist
+                data.customUserFields = {
+                    workPosition: data.workPosition,
+                    workTeam: data.workTeam
+                }
+                delete data.password
+                delete data.prevSeasons
+                delete data.bodyMeasures
+                const payload = {
+                  authToken: token ? token : cookie.load('token'),
+                  data
+                }
+                console.log('payloadddd')
+                console.log(payload)
+
+                return fetch(`${api}/user/user-update`, {
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  method: 'POST',
+                  body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(user => {
+                  console.log('userrrrr')
+                  console.log(user)
+                  this.refs.loadingModal.hide()
+                  if (!user.data) {
+                    throw new SubmissionError({ _error: 'Что-то пошло не так, попробуйте снова.' })
+                  } else {
+                    this.refs.successModal.show()
+                     dispatch(actions.fetchProfileIfNeeded(selectedProfile))
+                  }
+                })
+            }}
+              />
+
+                &lt;/div>{/*gridCellLayoutContentPocket34*/}
+
+              &lt;/div>{/*grid*/}
+            &lt;/div>{/*layoutInner*/}
+
+            &lt;Modal ref='successModal' contentStyle={contentStyle}>
+              &lt;h2>Профиль обновлен!&lt;/h2>
+              &lt;br/>
+              &lt;h4>Мы проверим анкету на наличие опечаток и пришлём подтверждение по почте. Ознакомьтесь с разделом Вопросы/Ответы!&lt;/h4>
+              &lt;br/>
+              &lt;div className={styles.btnPrimary} onClick={() => {
+                browserHistory.push('/task')
+              }}>
+                К заданиям
+              &lt;/div>
+              &lt;div className="divider" />
+              &lt;div className={styles.btnAction} onClick={() => {
+                this.refs.successModal.hide()
+                dispatch({ type: 'IS_READY_TO_TASKS', isReadyToTasks: true })
+              }}>
+                Продолжить
+              &lt;/div>
+            &lt;/Modal>
+
+            &lt;Modal ref='failBirthdayModal' contentStyle={contentStyle}>
+              &lt;h2>Дата вашего рождения не верна, проверьте формат даты&lt;/h2>
+              &lt;br/>
+              &lt;div className={styles.btnAction} onClick={() => {
+                this.refs.failBirthdayModal.hide()
+              }}>
+                Продолжить
+              &lt;/div>
+            &lt;/Modal>
+
+            &lt;Modal ref='failDatesModal' contentStyle={contentStyle}>
+              &lt;h2>Рождения вашего ребенка или число последнего месяца кормления грудью не верны&lt;/h2>
+              &lt;br/>
+              &lt;div className={styles.btnAction} onClick={() => {
+                this.refs.failDatesModal.hide()
+              }}>
+                Продолжить
+              &lt;/div>
+            &lt;/Modal>
+
+            &lt;Modal ref='loadingModal' contentStyle={contentStyle} backdrop={false}>
+              &lt;div className={styles.entryHeader}>
+                &lt;h2 className={styles.entryTitleCenter}>Загружается...&lt;/h2>
+              &lt;/div>
+              &lt;div className={styles.textCenter}>
+                &lt;div className={styles.loaderMain}>&lt;/div>
+              &lt;/div>
+            &lt;/Modal>
+
+            {isReadyToTasks &amp;&amp;
+              &lt;ul className={styles.menuMobBottom}>
+                  &lt;li className={styles.menuMobBottomItem}>
+                      &lt;Link to={'/task'}  className={styles.menuMobBottomItemInner}>
+                          &lt;span className={styles.menuMobBottomIco}>
+                            &lt;svg className={styles.svgIcoBookMobile}>
+                              &lt;use xlinkHref="#ico-m-tasks">&lt;/use>
+                            &lt;/svg>
+                          &lt;/span>
+                          &lt;span className={styles.menuMobBottomTitle}>Задания&lt;/span>
+                      &lt;/Link>
+                  &lt;/li>
+                  &lt;li className={styles.menuMobBottomItem}>
+                      &lt;Link to={'/food'}  className={styles.menuMobBottomItemInner}>
+                          &lt;span className={styles.menuMobBottomIco}>
+                            &lt;svg className={styles.svgIcoFoodMobile}>
+                              &lt;use xlinkHref="#ico-m-food">&lt;/use>
+                            &lt;/svg>
+                          &lt;/span>
+                          &lt;span className={styles.menuMobBottomTitle}>Питание&lt;/span>
+                      &lt;/Link>
+
+                  &lt;/li>
+                 &lt;li className={styles.menuMobBottomItem}>
+                      &lt;Link to={'/chats/' + id}  className={styles.menuMobBottomItemInner}>
+                          &lt;span className={styles.menuMobBottomIco}>
+                            &lt;svg className={styles.svgIcoPhoto}>
+                              &lt;use xlinkHref="#ico-chat">&lt;/use>
+                            &lt;/svg>
+                          &lt;/span>
+                          &lt;span className={styles.menuMobBottomTitle}>Чат&lt;/span>
+                      &lt;/Link>
+                  &lt;/li>
+                  &lt;li className={styles.menuMobBottomItem}>
+                      &lt;Link to={'/reports'}  className={styles.menuMobBottomItemInner}>
+                          &lt;span className={styles.menuMobBottomIco}>
+                            &lt;svg className={styles.svgIcoBookMobile}>
+                              &lt;use xlinkHref="#ico-m-book">&lt;/use>
+                            &lt;/svg>
+                          &lt;/span>
+                          &lt;span className={styles.menuMobBottomTitle}>Зачеты&lt;/span>
+                      &lt;/Link>
+                  &lt;/li>
+              &lt;/ul>
+            }
+          &lt;/div>
+        }
+      &lt;/div>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  const { selectedProfile, recivedProfile, userToken, birthday, isBabyFeeding,
+    babyBirthday, menuList, sign, babyFeed, isReadyToTasks, profileFields, sportsPast, userInfo, taskDayData} = state
+  const {
+    isFetching,
+    lastUpdated,
+    profileData,
+    insurance,
+    bodyParams
+  } = recivedProfile[selectedProfile] || {
+    isFetching: true,
+    profileData: {}
+  }
+
+  return {
+    userInfo,
+    sign,
+    menuList,
+    isBabyFeeding,
+    taskDayData,
+    selectedProfile,
+    isFetching,
+    lastUpdated,
+    profileFields,
+    profileData,
+    insurance,
+    bodyParams,
+    birthday,
+    babyBirthday,
+    babyFeed,
+    isReadyToTasks,
+    sportsPast,
+    isBabyFeed: isBabyFeeding,
+    token: userToken.token
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  setTypeId: bindActionCreators(setTypeId , dispatch),
+  changeChatType: bindActionCreators(changeChatType , dispatch),
+  clearRenderChat: bindActionCreators(clearRenderChat , dispatch),
+  dispatch
+})
+ProfileCreate = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileCreate)
+
+export default CSSModules(ProfileCreate, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

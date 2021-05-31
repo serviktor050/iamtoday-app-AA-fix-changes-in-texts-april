@@ -1,0 +1,117 @@
+/* ===========================
+   App theme
+   =========================== */
+
+@charset "utf-8";
+
+// Global Vars
+$bg-img-path: "../img";
+$header-height: 60px;
+$mob-menu-height: 50px;
+$max-content-width: 1200px;
+$base-margin: 30px;
+$base-shadow: 0 6px 10px rgba(31, 68, 123, 0.03);
+$middle-shadow: 0 12px 44px rgba(31, 68, 123, 0.13);
+$base-radius: 5px;
+$big-radius: 18px;
+
+// -- Typography
+// Fonts
+@font-face {
+  font-family: "TextSansReg";
+  src: url("../fonts/regular/Tele2TextSans-Regular.eot?") format("eot"),
+  url("../fonts/regular/Tele2TextSans-Regular.woff") format("woff"),
+  url("../fonts/regular/Tele2TextSans-Regular.ttf") format("truetype"),
+  url("../fonts/regular/Tele2TextSans-Regular.svg") format("svg");
+}
+@font-face {
+  font-family: "TextSansBold";
+  src: url("../fonts/bold/Tele2TextSans-Bold.eot?") format("eot"),
+  url("../fonts/bold/Tele2TextSans-Bold.woff") format("woff"),
+  url("../fonts/bold/Tele2TextSans-Bold.ttf") format("truetype"),
+  url("../fonts/bold/Tele2TextSans-Bold.svg") format("svg");
+}
+@font-face {
+  font-family: "PTSans";
+  src: url("../fonts/ptsans/ptsans.woff") format("woff"),
+  url("../fonts/ptsans/ptsans.ttf") format("truetype"),
+  url("../fonts/ptsans/ptsans.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PTSansBold";
+  src: url("../fonts/ptsans/ptsansbold.woff") format("woff"),
+  url("../fonts/ptsans/ptsansbold.ttf") format("truetype"),
+  url("../fonts/ptsans/ptsansbold.woff2") format("woff2");
+}
+@import url("https://fonts.googleapis.com/css?family=Exo+2:200,700&subset=cyrillic");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=cyrillic");
+//$f-headline: "Exo 2", Arial, Tahoma, sans-serif;
+//$f-body: "Noto Sans", Arial, Tahoma, sans-serif;
+$f-headline: "TextSansReg", Arial, Tahoma, sans-serif;
+$f-body: "TextSansBold", Arial, Tahoma, sans-serif;
+// Headers
+$fz-h1: 3rem;
+$fz-h2: 2.6rem;
+$fz-h3: 2rem;
+$fz-h4: 1.8rem;
+$fz-h5: 1.6rem;
+
+// Base fonts
+$fz-base: 1.5rem;
+$fz-middle: 1.2rem;
+$fz-small: 1.1rem;
+
+
+// -- Colors
+
+// Font color
+$c-text: #333;
+$c-text-gray: #c8c9cf;
+
+// Main color
+$c-primary: #70cffe;
+$c-secondary: #1f447b;
+$c-border: #ced9eb;
+
+// Button colors
+$btn-primary: #56daa1;
+$btn-secondary: #70cffe;
+$btn-action: #ff8858;
+
+// Other Colors
+$c-green: #56daa1;
+$c-red: #f97b7c;
+$c-orange: #ff6f37;
+$c-l-blue: #869bb8;
+$c-l-yellow: #fffbca;
+$c-s-yellow: #928227;
+
+// Gray colors
+$c-gray: #e1eaf6;
+$c-l-gray: #f3f6f8;
+$c-m-gray: #b3b9bd;
+$c-s-gray: #696d7d;
+$bg-color: #f1f7ff;
+
+// Gradient Program Todayme
+$gradient-hero: radial-gradient(at 70% 120%, #762fb3 3%, #261db4 100%);
+$gradient-mather: radial-gradient(at 70% 120%, #ffe799 -14%, #42b0ba 72%);
+$gradient-extreme: linear-gradient(-44deg, #5bffe2 0%, #005fff 51%, #ee0652 100%, #ff0045 100%);
+$gradient-tomorrow: radial-gradient(at 70% 120%, #ef9227 0%, #e5522b 83%);
+
+// Background gradients
+$gradient-style-1: linear-gradient(-132deg, #f3fff3 0%, #ffffe5 98%);
+$gradient-style-2: linear-gradient(-44deg, #d1e5ff 0%, #f2fffb 100%);
+$gradient-style-3: linear-gradient(-44deg, #ffdbdb 0%, #fff6f1 100%);
+
+// Color Program Todayme
+$color-hero: #5127b3;
+$color-mother: #42afb9;
+$color-extreme: #0d5af6;
+$color-tomorrow: #e5622a;
+
+// Program Color - text highlight
+$c-highlight-1: #e8fff5;
+$c-highlight-2: #fff6f2;
+$c-highlight-3: #e7f6ff;
+$c-highlight-4: #f7f3ff;

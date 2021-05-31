@@ -1,0 +1,38 @@
+.itd-text-align-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.itd-text-align-dropdown {
+  width: 50px;
+  z-index: 90;
+}
+.itd-text-align-dropdownOption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.itd-right-aligned-block {
+  text-align: right;
+}
+.itd-left-aligned-block {
+  text-align: left;
+}
+.itd-center-aligned-block {
+  text-align: center;
+}
+.itd-justify-aligned-block {
+  text-align: justify;
+}
+.itd-right-aligned-block > div {
+  display: inline;
+}
+.itd-left-aligned-block > div {
+  display: inline;
+}
+.itd-center-aligned-block > div {
+  display: inline;
+}
+.itd-justify-aligned-block > div {
+  display: inline;
+}

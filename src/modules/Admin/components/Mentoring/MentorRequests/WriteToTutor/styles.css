@@ -1,0 +1,70 @@
+.writeToTutor {
+}
+
+.disabledField label {
+  font-size: 12px;
+  line-height: 15px;
+  color: #b5b5b5;
+}
+
+.disabledField input {
+  all: unset;
+  font-size: 12px;
+  line-height: 15px;
+  color: #4da2d6;
+}
+
+.textareaWrapper {
+  margin-top: 10px;
+  width: 100%;
+  padding: 20px;
+  background: #f8fff1;
+  border-radius: 2px;
+}
+
+.textarea {
+  border: none;
+  resize: none;
+  width: 100%;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 15px;
+  background-color: #ffffff;
+}
+
+.action {
+  margin-top: 15px;
+  display: flex;
+}
+
+.button {
+  all: unset;
+  padding: 10px 20px;
+  border: 1px solid #79c330;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.okButton {
+  composes: button;
+  background: #79c330;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.okButton:hover {
+  background: #5f9b23;
+}
+
+.cancelButton {
+  composes: button;
+  color: #79c330;
+}
+
+.cancelButton:hover {
+  background: #e7fdd0;
+}

@@ -1,0 +1,17 @@
+.sortIcon {
+  vertical-align: middle;
+  width: 6px;
+  height: 6px;
+  margin-left: 4px;
+}
+
+.emptyTable {
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+}
+.emptyTable__message {
+  color: #daeff2;
+  font-weight: bold;
+  font-size: 18px;
+}

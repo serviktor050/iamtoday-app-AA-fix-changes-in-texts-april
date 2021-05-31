@@ -1,0 +1,143 @@
+
+.exercise-preview {
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid #E0EDFF;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.exercise-preview.active {
+  background: #eee;
+}
+.exercise-preview:last-child {
+  border-bottom: none;
+}
+.exercise-preview__index{
+  width:35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.exercise-preview__name {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 152.8%;
+  width: 65%;
+}
+.exercise-preview__number {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 152.8%;
+  color: #4DA2D6;
+}
+.exercise-preview__views {
+  color: #979797;
+  font-size:12px;
+}
+.exercise-preview__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.triangle {
+  position: relative;
+}
+.triangle:before{
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 6px;
+  width: 0;
+  height: 0;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom: 3px solid #929394;
+  transform: rotate(90deg) scale(1.6);
+}
+.list__content {
+  overflow: auto;
+  width: 100%;
+}
+.exercise-preview__status{
+  display: flex;
+}
+.exercise-preview__status-text {
+  font-size:10px;
+  padding-left: 10px;
+  color: #929394;
+}
+.exercise-preview__timing {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  color: #4DA2D6;
+  width: 30%;
+  text-align: right;
+}
+.exercise-preview__timing::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url('../../../../assets/img/svg-symbols/clock2.svg') center/cover no-repeat;
+  filter: brightness(0) saturate(100%) invert(56%) sepia(54%) saturate(467%) hue-rotate(159deg) brightness(95%) contrast(93%);
+  margin-right: 5px;
+}
+.group {
+  background: #F0F6FF;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 152.8%;
+  color: #4DA2D6;
+  padding: 10px 20px;
+  margin-top: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.group__toggle__arrow {
+  top: 12px;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: initial;
+  right: 10px;
+}
+
+.preview {
+  padding:0 12px 8px 12px;
+}
+
+.preview_unpaid {
+  cursor: auto;
+}
+
+.group-meta {
+  margin-left: 20px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #C4C4C4;
+}
+
+.group__toggle__arrow-up {
+  background: url("/assets/img/antiage/chevron-down.svg") center/cover no-repeat;
+  filter: brightness(0) saturate(100%) invert(66%) sepia(13%) saturate(2155%) hue-rotate(165deg) brightness(88%) contrast(90%);
+}
+
+.group__toggle__arrow-down{
+  background: url("/assets/img/antiage/chevron-up.svg") center/cover no-repeat;
+  filter: brightness(0) saturate(100%) invert(66%) sepia(13%) saturate(2155%) hue-rotate(165deg) brightness(88%) contrast(90%);
+}
+
+.group-hidden {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+
+}

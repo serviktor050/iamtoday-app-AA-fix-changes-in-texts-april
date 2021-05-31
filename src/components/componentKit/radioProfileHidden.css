@@ -1,0 +1,6 @@
+.optionsItem {
+  composes: options__item from '../../index.css';
+}
+.optionsItemActive {
+  composes: options__item from '../../index.css';
+}

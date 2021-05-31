@@ -1,0 +1,91 @@
+.tabs {
+  &__inner {
+    @include av-mq(portable) {
+      padding: 20px;
+    }
+    @include av-mq(desk) {
+      padding: 30px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    border-radius: $base-radius $base-radius 0 0;
+    border-bottom: 1px solid $c-border;
+
+    @include av-mq(desk) {
+      
+    }
+
+    @include av-mq(portable) {
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+  }
+
+  &__nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+    max-height: 70px;
+    font-family: $f-headline;
+    font-weight: 700;
+    font-size: $fz-h4;
+    transition: 0.1s;
+    color: $c-l-blue;
+
+    @include av-mq(desk) {
+      max-width: 210px;
+      width: 100%;
+    }
+    @include av-mq(portable) {
+      width: 100%;
+    }
+
+    &:hover {
+      color: $c-secondary;
+      background-color: $c-l-gray;
+    }
+
+    &--active {
+      color: $c-secondary;
+
+      span {
+        &::before {
+          display: block;
+        }
+      }
+      
+    }
+  }
+
+  &__tab-title {
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: none;
+      height: 6px;
+      background-color: $c-secondary;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+  }
+
+  .h1 {
+    color: $c-primary;
+  }
+}

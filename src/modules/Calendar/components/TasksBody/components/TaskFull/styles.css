@@ -1,0 +1,172 @@
+.taskFull {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-left: 4px solid transparent;
+    margin-bottom: 10px;
+}
+
+.taskFull__done {
+    opacity: 0.6;
+}
+
+.taskFull:last-child {
+    margin-bottom: 0;
+}
+
+.taskFull__checkbox_wrapper {
+    margin-right: 15px;
+}
+
+.taskFull__checkbox_input {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+.taskFull__checkbox_label {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+}
+
+.taskFull__checkbox_input:checked + .taskFull__checkbox_label {
+    background: url('../../../../../../assets/img/svg-symbols/ico-check.svg') center/16px no-repeat;
+    background-color: #ffffff;
+}
+
+.taskFull__time {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    margin-right: 15px;
+}
+
+.taskFull__info {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+}
+
+.taskFull__info_center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.taskFull__info_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.taskFull__info_title {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.taskFull__info_description {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #2C2F33;
+    grid-column-start: 2;
+}
+
+.taskFull__actions {
+    display: flex;
+    margin-left: auto;
+}
+
+.taskFull__btn {
+    all: unset;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: center/16px no-repeat;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.taskFull__btn:first-child {
+    margin-right: 15px;
+}
+
+.taskFull__btn_edit {
+    width: 16px;
+    height: 16px;
+}
+
+.taskFull__btn_delete {
+    width: 16px;
+    height: 16px;
+    stroke: #FF6B6B;
+}
+
+.modal__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.modal__title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.modal__text {
+    margin-top: 10px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+}
+
+.modal__actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.modal__btn {
+    all: unset;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.modal__btn_delete {
+    margin-right: 10px;
+    color: #FFFFFF;
+    background: #FF6B6B;
+}
+
+.modal__btn_delete:hover {
+    background: #e05656;
+}
+
+.modal__btn_cancel {
+    color: #4DA2D6;
+    border: 1px solid #4DA2D6;
+    background: #ffffff;
+}
+
+.modal__btn_cancel:hover {
+    background: #bbdbee;
+}

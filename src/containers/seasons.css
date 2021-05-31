@@ -1,0 +1,128 @@
+.layout {
+  composes: layout from '../index.css';
+}
+
+.entryInner {
+  composes: entry__inner from '../index.css';
+}
+
+.layoutInner {
+  composes: layout__inner from '../index.css';
+}
+
+.btnGoBack {
+  composes: btn-go-back from '../index.css';
+}
+
+.basePopupMsg {
+  composes: base-popup__msg from '../index.css';
+}
+
+.basePopupMsgContent {
+  composes: base-popup__msg-content from '../index.css';
+}
+
+.baseParag {
+  composes: base-parag from '../index.css';
+}
+
+.btnPrimaryFillReport3 {
+  composes: btn from '../index.css';
+  composes: btn--primary from '../index.css';
+  composes: js-fill-report-3 from '../index.css';
+}
+
+.menuMobBottom {
+  composes: menu-mob-bottom from '../index.css';
+}
+
+.menuMobBottomItem {
+  composes: menu-mob-bottom__item from '../index.css';
+}
+
+.menuMobBottomItemInner {
+  composes: menu-mob-bottom__item-inner from '../index.css';
+}
+
+.menuMobBottomIco {
+  composes: menu-mob-bottom__ico from '../index.css';
+}
+
+.svgIcoTasksMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-tasks from '../index.css';
+}
+
+.svgIcoBookMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-book from '../index.css';
+}
+
+.svgIcoFoodMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-food from '../index.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-faq from '../index.css';
+}
+
+.menuMobBottomTitle {
+  composes: menu-mob-bottom__title from '../index.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from '../index.css';
+  composes: layout__menu from '../index.css';
+}
+
+.gridLayoutMenuInner {
+  composes: grid from '../index.css';
+  composes: layout__menu-inner from '../index.css';
+}
+
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../index.css';
+  /*composes: 1/1--pocket from '../index.css';*/
+}
+
+.grid {
+  composes: grid from '../index.css';
+}
+
+.btnGoBack {
+  composes: btn-go-back from '../index.css';
+}
+
+.svgIcoArrowUp {
+  composes: svg-icon from '../index.css';
+  composes: ico-arrow-up from '../index.css';
+}
+
+.svgIcoPhoto {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-photo from '../index.css';
+}
+.imgActive{
+  width: 100%;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.imgActive:hover{
+  opacity:1;
+}
+.img{
+  width: 100%;
+}

@@ -1,0 +1,298 @@
+.layout {
+  composes: layout from '../index2.css';
+}
+.entryHeader {
+  composes: entry__header from '../index.css';
+}
+.entryTitleCenter {
+  composes: entry__title from '../index.css';
+  composes: text-center from '../index.css';
+}
+.layoutInner {
+  composes: layout__inner from '../index2.css';
+  padding-top:90px !important;
+}
+
+.loading{
+  position: absolute;
+  top: 44%;
+  z-index: 1111;
+  color: #000;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .layoutInner {
+    padding-top:14px !important;
+  }
+}
+
+.grid {
+  composes: grid from '../index2.css';
+}
+.stageBoxInner{
+  composes: stage-box__inner from '../index2.css';
+}
+.stageBoxInnerCustom{
+  composes:stageBoxInner;
+  padding-top:0 !important;
+}
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width75 {
+    width: 75%;
+  }
+
+  .stageBoxInner:first-child{
+    padding-top: 40px;
+  }
+  .stageBoxInner:last-child{
+    padding-bottom: 25px;
+  }
+}
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from '../index2.css';
+  composes: layout__menu from '../index2.css';
+}
+.gridLayoutMenuInner {
+  composes: grid from '../index2.css';
+  composes: layout__menu-inner from '../index2.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .gridLayoutMenuInner {
+    position: fixed;
+    width: 25%;
+    max-width: 281px;
+  }
+}
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../index2.css';
+  /*composes: 1/1--pocket from '../index.css';*/
+}
+.tabs{
+  display: flex;
+  background: #fff;
+  border: 1px solid #ced9eb;
+  margin-bottom: -2px;
+  position: relative;
+  z-index: 9;
+  border-radius: 5px 5px 0 0;
+  height:55px;
+}
+.stageBoxSmallPadding {
+  composes: stage-box from '../index2.css';
+  composes: stage-box--small-padding from '../index2.css';
+  padding-top:0;
+}
+.h1 {
+  composes: h1 from '../index2.css';
+}
+
+/* Upload photo */
+
+.uploadGallery {
+  composes: upload-gallery from '../index2.css';
+  margin-bottom:10px;
+}
+
+.uploadGalleryItemUploaded {
+  composes: upload-gallery__item from '../index.css';
+  composes: upload-gallery__item--uploaded from '../index.css';
+}
+
+.uploadGalleryItem {
+  composes: upload-gallery__item from '../index2.css';
+}
+.uploadGalleryItemOverlay{
+  composes: upload-gallery__overlay from '../index2.css';
+  position: absolute;
+  top:0;
+  left:0;
+}
+.uploadGalleryItemOverlayPending{
+  composes: uploadGalleryItemOverlay;
+  cursor: default;
+  background-color: rgba(31, 68, 123, 0.54);
+  z-index: 13;
+  border-radius: 6px;
+}
+.uploadGalleryItemInner {
+  composes: upload-gallery__item-inner from '../index2.css';
+  height: 220px !important;
+}
+
+.uploadFileInput {
+  composes: upload-file__input from '../index.css';
+}
+
+.uploadGalleryIco {
+  composes: upload-gallery__ico from '../index2.css';
+}
+.uploadGalleryIcoHide {
+  composes: uploadGalleryIco;
+  display: none;
+}
+.svgIconGallery {
+  composes: svg-icon from '../index.css';
+  composes: ico-gallery from '../index.css';
+}
+
+.svgIconPhotoSide1{
+  composes: svg-icon from '../index2.css';
+  composes: ico-photo-side-1 from '../index2.css';
+}
+
+.svgIconPhotoSide2{
+  composes: svg-icon from '../index2.css';
+  composes: ico-photo-side-2 from '../index2.css';
+}
+.svgIconPhotoSide3{
+  composes: svg-icon from '../index2.css';
+  composes: ico-photo-side-3 from '../index2.css';
+}
+.uploadGalleryTitle {
+  composes: upload-gallery__title from '../index2.css';
+}
+.uploadGalleryTitlePending{
+  composes: uploadGalleryTitle;
+  color: #fff;
+}
+.uploadGalleryTitleHide {
+  composes: uploadGalleryTitle;
+  display: none;
+}
+.uploadGalleryImgWrap {
+  composes: upload-gallery__img_wrap from '../index.css';
+  cursor: pointer;
+}
+.uploadGalleryImgWrapDisable{
+  composes: uploadGalleryImgWrap ;
+  cursor: default;
+}
+.uploadGalleryImg {
+  composes: upload-gallery__img from '../index.css';
+  z-index: 12;
+  position: relative;
+}
+
+.inputBox {
+  composes: input from '../index.css';
+  composes: input--box from '../index.css';
+}
+
+.inputField {
+  composes: input__field from '../index.css';
+  border:1px solid #163e79 !important;
+}
+
+.btnPrimary {
+  composes: btn from '../index.css';
+  composes: btn--primary from '../index.css';
+}
+.btnSecondary {
+  composes: btn from '../index.css';
+  composes: btn--secondary from '../index.css';
+}
+.textCenter {
+  composes: text-center from '../index.css';
+}
+.loaderMain {
+  composes: loader from '../index.css';
+  composes: loader--main from '../index.css';
+}
+.btnAction {
+  composes: btn from '../index.css';
+  composes: btn--action from '../index.css';
+}
+.btnCheck{
+  composes: btnSecondary;
+  margin-bottom:10px;
+  border-radius: 25px;
+}
+.btnCheckDisable{
+  composes: btnCheck;
+  background-color: #e4e1e180 !important;
+  cursor: no-drop !important;
+}
+.btnCheckDisable:hover{
+  background-color: #e4e1e180;
+}
+.menuMobBottom {
+  composes: menu-mob-bottom from '../index.css';
+}
+.menuMobBottomItem {
+  composes: menu-mob-bottom__item from '../index.css';
+}
+.menuMobBottomItemInner {
+  composes: menu-mob-bottom__item-inner from '../index.css';
+}
+.menuMobBottomIco {
+  composes: menu-mob-bottom__ico from '../index.css';
+}
+.svgIcoTasksMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-tasks from '../index.css';
+}
+.svgIcoBookMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-book from '../index.css';
+}
+.svgIcoFoodMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-food from '../index.css';
+}
+.svgIcoFaqMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-faq from '../index.css';
+}
+.svgIcoPhoto {
+   composes: svg-icon from '../index.css';
+   composes: ico-m-photo from '../index.css';
+ }
+.svgIcoBigPending {
+  composes: svg-icon from '../index.css';
+  composes: ico-big-pending from '../index.css';
+}
+.svgIcoBigDone {
+  composes: svg-icon from '../index.css';
+  composes: ico-big-done from '../index.css';
+}
+.svgIcoRefuse{
+  composes: svg-icon from '../index.css';
+  composes: ico-big-refuse from '../index.css';
+  width: 34px;
+  height: 34px;
+}
+.uploadGallerystatus{
+  composes: upload-gallery__status from '../index2.css';
+  z-index: 16;
+}
+
+.menuMobBottomTitle {
+  composes: menu-mob-bottom__title from '../index.css';
+}
+.stageBoxSmallPadding2{
+  composes: stage-box from '../index2.css';
+  composes: stage-box--small-padding from '../index2.css';
+  composes: box-style-2 from '../index2.css';
+}
+@media screen and (max-width: 600px) {
+    .stageBoxSmallPadding2 {
+      padding-bottom:60px !important;
+    }
+}
+.baseParag{
+  composes: base-parag from '../index2.css';
+}
+.h3TextCenter{
+  composes: h3 from '../index2.css';
+  composes: text-center from '../index2.css';
+}
+.btnUploadHide{
+  display: none;
+}

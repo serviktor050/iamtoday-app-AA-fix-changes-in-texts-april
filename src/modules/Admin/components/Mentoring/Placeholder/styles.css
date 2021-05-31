@@ -1,0 +1,10 @@
+.placeholder__title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 43px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,260 @@
+.layout {
+  composes: layout from '../../index2.css';
+}
+
+.header {
+  composes: header from '../../index.css';
+}
+
+.basePopupMsg {
+  composes: base-popup__msg from '../../index.css';
+}
+
+.gridHeaderInner {
+  composes: grid from '../../index.css';
+  composes: header__inner from '../../index.css';
+}
+
+.gridCellHeaderLogo {
+  composes: grid__cell from '../../index.css';
+  composes: header__logo from '../../index.css';
+}
+
+.layoutInner {
+  composes: layout__inner from '../../index.css';
+  padding-top:90px !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .layoutInner {
+    padding-top:14px !important;
+  }
+  .contentNav {
+    margin-bottom:20px;
+  }
+}
+
+.menuMobBottom {
+  composes: menu-mob-bottom from '../../index2.css';
+}
+
+.menuMobBottomItem {
+  composes: menu-mob-bottom__item from '../../index2.css';
+}
+
+.menuMobBottomItemActive {
+  composes: menu-mob-bottom__item from '../../index2.css';
+  composes: menu-mob-bottom__item--active from '../../index2.css';
+}
+
+.menuMobBottomItemInner {
+  composes: menu-mob-bottom__item-inner from '../../index2.css';
+}
+
+.menuMobBottomIco {
+  composes: menu-mob-bottom__ico from '../../index2.css';
+}
+
+.svgIcoTasksMobile {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-tasks from '../../index.css';
+}
+
+.svgIcoBookMobile {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-book from '../../index.css';
+}
+
+.svgIcoFoodMobile {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-food from '../../index.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-faq from '../../index.css';
+}
+
+.svgIcoPhoto {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-photo from '../../index.css';
+}
+
+.menuMobBottomTitle {
+  composes: menu-mob-bottom__title from '../../index2.css';
+}
+
+.grid {
+  composes: grid from '../../index.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+
+.gridCellLayoutMenu14 {
+   composes: width25;
+   composes: grid__cell from '../../index.css';
+   composes: layout__menu from '../../index.css';
+ }
+
+.gridLayoutMenuInner {
+  composes: grid from '../../index.css';
+  composes: layout__menu-inner from '../../index.css';
+
+}
+@media screen and (min-width: 1025px) {
+    .gridLayoutMenuInner {
+        position: fixed;
+        width: 25%;
+        max-width: 281px;
+    }
+}
+
+
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../../index2.css';
+  composes: layout__content from '../../index2.css';
+  /*composes: 1/1--pocket from '../../index.css';*/
+}
+
+.btnAction {
+  composes: btn from '../../index.css';
+  composes: btn--action from '../../index.css';
+  background-color: #ef3125;
+  padding: 14px 45px 17px;
+  border-radius: 4px;
+  text-transform: none;
+  color: #fff;
+}
+
+.btnGoBack {
+  composes: btn-go-back from '../../index.css';
+}
+
+.svgIcoArrowUp {
+  composes: svg-icon from '../../index.css';
+  composes: ico-arrow-up from '../../index.css';
+}
+
+.profile {
+  composes: profile from '../../index.css';
+}
+.btnPrimary {
+  composes: btn from '../../index2.css';
+  composes: btn--primary from '../../index2.css';
+}
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+}
+.loaderMain {
+  composes: loader from '../../index.css';
+  composes: loader--main from '../../index.css';
+}
+@media screen and (max-width: 600px) {
+    .contentNav {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .contentNavItem:not(:last-child) {
+        margin-bottom: 20px !important;
+    }
+}
+
+.contentNav {
+  composes: content-nav from '../../index2.css';
+  margin-bottom: 0;
+}
+
+.contentNavItem {
+  composes: content-nav__item from '../../index2.css';
+  margin-bottom: 20px;
+}
+
+.btnBase {
+  composes: btn from '../../index2.css';
+  composes: btn--base from '../../index2.css';
+  background-color: #213349;
+}
+
+.btnTitle {
+  composes: btn__title from '../../index2.css';
+}
+
+.btnIco {
+  composes: btn__ico from '../../index2.css';
+}
+
+.svgIconBoldArrowDown {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-down from '../../index2.css';
+}
+
+.contentNavItemToggle {
+  composes: content-nav__item from '../../index2.css';
+  composes: content-nav__item--content-toggle from '../../index2.css';
+  margin-bottom: 20px;
+}
+
+.btnToggle {
+  composes: btn-toggle from '../../index2.css';
+}
+
+.btnToggleItem {
+  composes: btn-toggle__item from '../../index2.css';
+}
+
+.btnToggleItemActive {
+  composes: btn-toggle__item from '../../index2.css';
+  composes: btn-toggle__item--active from '../../index2.css';
+}
+
+.btnToggleIco {
+  composes: btn-toggle__ico from '../../index2.css';
+}
+
+.svgIconContentMin {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-content-min from '../../index2.css';
+}
+
+.btnToggleTitle {
+  composes: btn-toggle__title from '../../index2.css';
+  color: #000;
+}
+
+.svgIconContentMax {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-content-max from '../../index2.css';
+  fill: #000;
+}
+
+.btnBaseMobile {
+  composes: btn from '../../index2.css';
+  composes: btn--base from '../../index2.css';
+}
+
+.svgIconBoldArrowDownMoble {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-down from '../../index2.css';
+  width: 10px;
+  height: 9px;
+}
+
+.btnToggleMobile {
+  composes: btn-toggle from '../../index2.css';
+  height: 29px;
+}
+
+.btnToggleTitleMobile {
+  composes: btn-toggle__title from '../../index2.css';
+  font-size: 9px;
+}

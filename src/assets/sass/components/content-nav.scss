@@ -1,0 +1,32 @@
+.content-nav {
+  display: flex;
+
+  @include av-mq(pocket) {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include av-mq(portable) {
+    padding: 0 20px;
+  }
+
+  @include av-mq(desk) {
+    margin-bottom: 20px;
+  }
+
+  &__item {
+    &--content-toggle {
+      margin-left: auto;
+    }
+    @include av-mq(pocket) {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+
+      &--content-toggle {
+        margin-left: initial;
+      }
+    }
+  }
+}

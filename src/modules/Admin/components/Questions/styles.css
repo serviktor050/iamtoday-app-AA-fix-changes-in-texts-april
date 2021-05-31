@@ -1,0 +1,11 @@
+.layout {
+    padding: 30px;
+    background: #FFFFFF;
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+}

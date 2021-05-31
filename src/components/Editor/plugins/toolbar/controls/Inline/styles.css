@@ -1,0 +1,12 @@
+.itd-inline-wrapper {
+  display: flex;
+  margin-bottom: 6px;
+}
+.itd-inline-dropdown {
+  width: 50px;
+}
+.itd-inline-dropdownoption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}

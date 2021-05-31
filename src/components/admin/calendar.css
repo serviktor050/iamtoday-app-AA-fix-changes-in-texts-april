@@ -1,0 +1,24 @@
+.minCalendarItem {
+  composes: min-calendar__item from '../../index.css';
+}
+
+.minCalendarDateWrap {
+  composes: min-calendar__date-wrap from '../../index.css';
+}
+
+.minCalendarDay {
+  composes: min-calendar__day from '../../index.css';
+}
+
+.minCalendarDate {
+  composes: min-calendar__date from '../../index.css';
+}
+
+.minCalendarInfo {
+  composes: min-calendar__info from '../../index.css';
+}
+
+.svgIcoTrash {
+  composes: svg-icon from '../../index.css';
+  composes: ico-trash from '../../index.css';
+}

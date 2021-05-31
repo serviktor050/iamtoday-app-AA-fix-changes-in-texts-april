@@ -1,0 +1,22 @@
+.kawo-tooltip {
+  max-width: 200px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #fff;
+  box-shadow: $middle-shadow;
+  border-radius: $base-radius;
+}
+
+.kawo-tooltip-arrow {
+  border: 6px solid #fff;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.tips {
+  cursor: help;
+
+  &__img {
+    max-width: 100%;
+  }
+}

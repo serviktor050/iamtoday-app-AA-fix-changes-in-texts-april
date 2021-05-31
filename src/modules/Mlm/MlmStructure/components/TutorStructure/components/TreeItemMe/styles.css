@@ -1,0 +1,71 @@
+.treeItem{
+  display:flex;
+  align-items: center;
+  width: 80%;
+  max-width: 300px;
+  font-size: 12px;
+  line-height: 15px;
+  padding: 20px 0px;
+  min-height: 50px;
+  position: relative;
+  margin-left: 10px;
+}
+
+.treeItem1Level, .treeItem2Level {
+  display: flex;
+  padding: 15px;
+  width:100%;
+}
+
+.treeItem1Level {
+  background: #F0F6FF;
+}
+
+.treeItem2Level {
+  background: #D1F5CC;
+}
+
+.userName1Level {
+  color: #4DA2D6;
+}
+
+.userName2Level {
+  color: #39971F;
+}
+
+.userAvatarWrapper {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.userAvatar {    
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.userName {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.treeItem::before {
+  content: "";
+  width: 20px;  
+  border-left: 1px solid #D3EEFF;
+  border-bottom: 1px solid #D3EEFF;
+}
+
+.treeItem::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: 0px;
+  height: 100%;
+  background-color: #D3EEFF;
+}

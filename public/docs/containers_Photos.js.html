@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/Photos.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/Photos.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {Component, PropTypes } from 'react'
+import {browserHistory} from 'react-router'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as actions from '../actions'
+//import {fetchTaskDayIfNeeded } from '../actions'
+import {api} from '../config.js'
+import cookie from 'react-cookie'
+import Chat from './Chat'
+//import { PRIVATE_CHAT_ID } from '../actions'
+import Layout from '../components/componentKit2/Layout'
+import Loader from '../components/componentKit/Loader'
+import {
+  Entity,
+  Editor,
+  EditorState,
+  convertFromRaw,
+  CompositeDecorator
+} from 'draft-js'
+import {getCustomStyleMap} from 'draftjs-utils'
+import Modal from 'boron/FadeModal'
+import CSSModules from 'react-css-modules'
+import styles from './photos.css'
+import LogoLink from '../components/componentKit/LogoLink'
+import ChatTabItem from '../components/Chat/ChatTabItem'
+
+let contentStyle = {
+  borderRadius: '18px',
+  padding: '45px 20px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  width: '340px',
+  textAlign: 'center'
+}
+let url = 'https://api.todayme.ru'
+const customStyleMap = getCustomStyleMap()
+
+
+let photoBeforeVideoExt
+let photoAfterVideoExt
+
+// флаг фото до/после
+//const photoBefore = false
+
+const decorator = new CompositeDecorator([
+  {
+    strategy: (contentBlock, callback) => {
+      contentBlock.findEntityRanges(
+        (character) => {
+          const entityKey = character.getEntity()
+          return (
+            entityKey !== null &amp;&amp;
+            Entity.get(entityKey).getType() === 'LINK'
+          )
+        },
+        callback
+      )
+    },
+    component: (props) => {
+      const {url} = Entity.get(props.entityKey).getData()
+      return (
+        &lt;a href={url}>
+          {props.children}
+        &lt;/a>
+      )
+    }
+  }
+])
+
+const Image = (props) => {
+  return &lt;img role="presentation" src={props.src} style={{
+    maxWidth: '100%',
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }}/>
+}
+
+const Atomic = (props) => {
+  const entity = Entity.get(props.block.getEntityAt(0))
+  const {src} = entity.getData()
+  const type = entity.getType()
+
+  let media
+  if (type === 'IMAGE') {
+    media = &lt;Image src={src}/>
+  }
+
+  return media
+}
+
+function mediaBlockRenderer(block) {
+  if (block.getType() === 'atomic') {
+    return {
+      component: Atomic,
+      editable: false
+    }
+  }
+
+  return null
+}
+/**
+ *  Компонент Photos.
+ *  Используется для отображения страницы 'Фото' (/photos)
+ *
+ */
+class Photos extends Component {
+  /**
+   * @memberof Photos
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {object} propTypes.photos Данные фото
+   * @prop {string} propTypes. selectedPhotos Выбранные фото
+   *
+   * */
+  static propTypes = {
+    photos: PropTypes.object.isRequired,
+    selectedPhotos: PropTypes.string.isRequired,
+  }
+
+  state = {
+    tab:'instruction',
+    videoBefore: '',
+    videoAfter: '',
+    photoBeforeRightUrl: null,
+    photoBeforeLeftUrl: null,
+    photoBeforeFrontUrl: null,
+    photoBeforeBackUrl: null,
+    photoAfterFrontUrl: null,
+    photoAfterBackUrl: null,
+    photoAfterLeftUrl: null,
+    photoAfterRightUrl: null,
+  }
+
+  change(e) {
+    this.setState({
+      videoBefore: e.target.value
+    })
+  }
+
+  changeVideoAfter(e) {
+    this.setState({
+      videoAfter: e.target.value
+    })
+  }
+
+  componentDidMount() {
+    const {dispatch, selectedPhotos, selectedTaskDay} = this.props
+    dispatch(actions.fetchPhotosIfNeeded(selectedPhotos))
+    dispatch(actions.fetchTaskDayIfNeeded(selectedTaskDay))
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedPhotos !== this.props.selectedPhotos) {
+      const {dispatch, selectedPhotos} = nextProps
+      dispatch(actions.fetchPhotosIfNeeded(selectedPhotos))
+    }
+
+    if (nextProps.photos !== this.props.photos) {
+      const isEmpty = !nextProps.photos || !nextProps.photos.data || !nextProps.photos.data[0]
+      if (!isEmpty) {
+        const p = nextProps.photos.data[0]
+        this.photoBeforeVideoExt = p.photoBeforeVideoExt ? p.photoBeforeVideoExt : ''
+        this.photoAfterVideoExt = p.photoAfterVideoExt ? p.photoAfterVideoExt : ''
+
+        this.setState({
+          videoBefore: this.photoBeforeVideoExt,
+          videoAfter: this.photoAfterVideoExt,
+          photoBeforeRightUrl: p.photoBeforeRightUrl ? url + p.photoBeforeRightUrl : '',
+          photoBeforeLeftUrl:  p.photoBeforeLeftUrl ? url + p.photoBeforeLeftUrl : '',
+          photoBeforeFrontUrl:  p.photoBeforeFrontUrl ? url + p.photoBeforeFrontUrl : '',
+          photoBeforeBackUrl:  p.photoBeforeBackUrl ? url + p.photoBeforeBackUrl : '',
+          photoAfterFrontUrl: p.photoAfterFrontUrl ? url + p.photoAfterFrontUrl : '',
+          photoAfterBackUrl: p.photoAfterBackUrl ? url + p.photoAfterBackUrl : '',
+          photoAfterLeftUrl: p.photoAfterLeftUrl ? url + p.photoAfterLeftUrl : '',
+          photoAfterRightUrl: p.photoAfterRightUrl ? url + p.photoAfterRightUrl : ''
+        })
+      }
+    }
+  }
+
+  renderIco(isChecked, url) {
+    if(url){
+      return (
+        &lt;span className={styles.uploadGallerystatus}>
+                      {
+                        !isChecked ? isChecked === null ?
+                          &lt;svg className={styles.svgIcoBigPending}>
+                            &lt;use xlinkHref="#ico-big-pending">&lt;/use>
+                          &lt;/svg>
+                          :
+                          &lt;svg className={styles.svgIcoRefuse}>
+                            &lt;use xlinkHref="#ico-big-refuse">&lt;/use>
+                          &lt;/svg>
+                          :
+                          &lt;svg className={styles.svgIcoBigDone}>
+                            &lt;use xlinkHref="#ico-big-done">&lt;/use>
+                          &lt;/svg>
+                      }
+                    &lt;/span>
+      )
+    }
+  }
+
+  renderTitle(isChecked, place, url){
+    if(url &amp;&amp; !isChecked){
+      return (
+        &lt;span className={styles.uploadGalleryTitlePending}>
+          {isChecked === null ? 'Проверяется' : 'Не принята'}
+        &lt;/span>
+      )
+    } else {
+      return (
+        &lt;span className={styles.uploadGalleryTitle}>{place}&lt;/span>
+      )
+    }
+  }
+
+  onClickTabs(tab){
+    this.setState({
+      tab:tab
+    })
+  }
+
+  render() {
+    let  {photos, taskDayData} = this.props
+    const isEmpty = !photos || !photos.data || !photos.data[0]
+    const {isLoad} = taskDayData
+    let json
+    let userPhotoUploadState
+    let photoAfterBackIsChecked
+    let photoAfterFrontIsChecked
+    let photoAfterLeftIsChecked
+    let photoAfterRightIsChecked
+    let photoBeforeBackIsChecked
+    let photoBeforeFrontIsChecked
+    let photoBeforeLeftIsChecked
+    let photoBeforeRightIsChecked
+    let photoBeforeVideoIsChecked
+    if (!isEmpty) {
+      const p = photos.data[photos.data.length - 1]
+      photoBeforeVideoExt = p.photoBeforeVideoExt ? p.photoBeforeVideoExt : ''
+      photoAfterVideoExt = p.photoAfterVideoExt ? p.photoAfterVideoExt : ''
+      json = p.userPhotoCaption ? JSON.parse(p.userPhotoCaption) : {}
+      userPhotoUploadState = photos.data[0].userPhotoUploadState
+      photoAfterBackIsChecked = photos.data[0].photoAfterBackIsChecked
+      photoAfterFrontIsChecked = photos.data[0].photoAfterFrontIsChecked
+      photoAfterLeftIsChecked = photos.data[0].photoAfterLeftIsChecked
+      photoAfterRightIsChecked = photos.data[0].photoAfterRightIsChecked
+      photoBeforeBackIsChecked = photos.data[0].photoBeforeBackIsChecked
+      photoBeforeFrontIsChecked = photos.data[0].photoBeforeFrontIsChecked
+      photoBeforeLeftIsChecked = photos.data[0].photoBeforeLeftIsChecked
+      photoBeforeRightIsChecked = photos.data[0].photoBeforeRightIsChecked
+      photoBeforeVideoIsChecked = photos.data[0].photoBeforeVideoIsChecked
+    }
+    const editorState = json ? EditorState.createWithContent(convertFromRaw(json), decorator) : EditorState.createEmpty()
+    return (
+      &lt;Layout pageNumber={4}>
+        {!isEmpty &amp;&amp; isLoad ?
+          &lt;div >
+              &lt;div className={styles.tabs}>
+                {editorState &amp;&amp;
+                &lt;ChatTabItem
+                  onClickTabs={this.onClickTabs.bind(this)}
+                  tabName={'instruction'}
+                  active={this.state.tab}
+                >
+                  Инструкции
+                &lt;/ChatTabItem>
+                }
+
+                &lt;ChatTabItem
+                  onClickTabs={this.onClickTabs.bind(this)}
+                  tabName={'photoBefore'}
+                  active={this.state.tab}
+                >
+                  Фото До
+                &lt;/ChatTabItem>
+
+                {userPhotoUploadState !== 'before' &amp;&amp;
+                  &lt;ChatTabItem
+                    onClickTabs={this.onClickTabs.bind(this)}
+                    tabName={'photoAfter'}
+                    active={this.state.tab}
+                  >
+                    Фото После
+                  &lt;/ChatTabItem>
+                }
+              &lt;/div>
+              { this.state.tab === 'instruction' &amp;&amp;
+                &lt;div className={styles.stageBoxSmallPadding}>
+                  &lt;div className={styles.stageBoxInnerCustom}>
+
+                    {/*&lt;h1 className={styles.h1}>{userPhotoUploadState === 'before' ? 'Фото До:' : 'Фото После:'}&lt;/h1>*/}
+
+                    &lt;Editor
+                      readOnly={true}
+                      customStyleMap={customStyleMap}
+                      editorState={editorState}
+                      blockRendererFn={mediaBlockRenderer}
+                    />
+
+                    &lt;hr/>
+                  &lt;/div>
+                &lt;/div>
+              }
+
+
+            { this.state.tab !== 'instruction' &amp;&amp; &lt;div className={styles.stageBoxSmallPadding2}>
+              {this.state.tab === 'photoBefore' &amp;&amp; &lt;div className={styles.stageBoxInner}>
+
+                &lt;h2 className={styles.h1}>Твой фото отчет&lt;/h2>
+
+                &lt;p className={styles.baseParag}>До старта программы если претендуешь на призы должен прислать фото ДО.
+                  Прислать ты их можешь до первого экзамена! Фото ПОСЛЕ ты присылаешь после последнего экзамена.&lt;/p>
+
+                &lt;h4 className={styles.h3TextCenter}>Фото До&lt;/h4>
+
+                &lt;ul className={styles.uploadGallery}>
+
+                  &lt;li ref="liBeforeFront"
+                      className={this.state.photoBeforeFrontUrl ? styles.uploadGalleryItemUploaded : styles.uploadGalleryItem}>
+                &lt;span className={styles.uploadGalleryItemInner}>
+                  &lt;span className={this.state.photoBeforeFrontUrl &amp;&amp; !photoBeforeFrontIsChecked ? styles.uploadGalleryItemOverlayPending : styles.uploadGalleryItemOverlay}
+                     onClick={() => {
+                      this.refs.inputBeforeFront.click()
+                    }}>
+                    &lt;input ref="inputBeforeFront" type="file" accept="image/*" className={styles.uploadFileInput}
+                           disabled={this.state.photoBeforeFrontUrl &amp;&amp; (photoBeforeFrontIsChecked || photoBeforeFrontIsChecked === null)}
+                           onChange={input => {
+                             const {target} = input
+                             if (target.files &amp;&amp; target.files[0]) {
+                               var reader = new FileReader()
+
+                               reader.onload = e => {
+                                 this.refs.liBeforeFront.className = styles.uploadGalleryItemUploaded
+                                 this.refs.beforeFront.src = e.target.result
+                                 this.refs.frontIcon.style.cssText = 'display: none;'
+                                 this.refs.frontButton.text = ""
+
+                                 const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                                 const name = target.files[0].name
+                                 const payload = {
+                                   authToken: cookie.load('token'),
+                                   data: {
+                                     name,
+                                     content
+                                   }
+                                 }
+
+                                 const headers = {
+                                   'Accept': 'application/json',
+                                   'Content-Type': 'application/json'
+                                 }
+
+                                 return fetch(`${api}/data/file-upload`, {
+                                   headers,
+                                   method: 'POST',
+                                   body: JSON.stringify(payload)
+                                 })
+                                   .then(response => response.json())
+                                   .then(json => {
+
+                                     this.photoBeforeFrontSend = json.data.uid
+                                     this.photoBeforeFrontUrl = `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, '')
+                                   })
+                               }
+
+                               reader.readAsDataURL(target.files[0])
+                             }
+                           }}/>
+
+                    &lt;span
+                      ref="frontIcon"
+                      className={styles.uploadGalleryIco}
+                      style={this.state.photoBeforeFrontUrl ? {display: 'none'} : {}}
+                    >
+                      &lt;svg className={styles.svgIconPhotoSide1}>
+                        &lt;use xlinkHref="#ico-photo-side-1">&lt;/use>
+                      &lt;/svg>
+                    &lt;/span>
+
+                    {this.renderTitle(photoBeforeFrontIsChecked, 'Спереди', this.state.photoBeforeFrontUrl)}
+                     &lt;div
+                       ref="frontButton"
+                       className={styles.btnUpload}
+                       onClick={e => {
+                         e.preventDefault()
+                         this.refs.inputBeforeFront.click()
+                       }}
+                     >
+                       {this.state.photoBeforeFrontUrl ? '' : 'Загрузить'}
+                     &lt;/div>
+                  &lt;/span>
+
+
+                  &lt;span className={this.state.photoBeforeFrontUrl &amp;&amp; (photoBeforeFrontIsChecked || photoBeforeFrontIsChecked === null) ? styles.uploadGalleryImgWrapDisable : styles.uploadGalleryImgWrap}>
+                    {this.renderIco(photoBeforeFrontIsChecked, this.state.photoBeforeFrontUrl)}
+                    &lt;img ref='beforeFront'
+                         className={styles.uploadGalleryImg}
+                         onClick={e => {
+                           e.preventDefault()
+                           this.refs.inputBeforeFront.click()
+                         }}
+                         src={this.state.photoBeforeFrontUrl} alt=""/>
+                  &lt;/span>
+
+                &lt;/span>
+
+                  &lt;/li>
+
+
+                  &lt;li ref="liBeforeBack"
+                      className={this.state.photoBeforeBackUrl ? styles.uploadGalleryItemUploaded : styles.uploadGalleryItem}>
+                &lt;span className={styles.uploadGalleryItemInner}>
+                  &lt;span className={this.state.photoBeforeBackUrl &amp;&amp; !photoBeforeBackIsChecked ? styles.uploadGalleryItemOverlayPending : styles.uploadGalleryItemOverlay}
+                     onClick={() => {
+                      this.refs.inputBeforeBack.click()
+                    }}>
+                  &lt;input ref="inputBeforeBack" type="file" accept="image/*" className={styles.uploadFileInput}
+                         disabled={this.state.photoBeforeBackUrl &amp;&amp; (photoBeforeBackIsChecked || photoBeforeBackIsChecked === null)}
+                         onChange={input => {
+                           const {target} = input
+
+                           if (target.files &amp;&amp; target.files[0]) {
+                             var reader = new FileReader()
+
+                             reader.onload = e => {
+                               this.refs.liBeforeBack.className = styles.uploadGalleryItemUploaded
+                               this.refs.beforeBack.src = e.target.result
+                               this.refs.backIcon.style.cssText = 'display: none;'
+                               this.refs.backButton.text = ""
+
+                               const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                               const name = target.files[0].name
+                               const payload = {
+                                 authToken: cookie.load('token'),
+                                 data: {
+                                   name,
+                                   content
+                                 }
+                               }
+
+                               const headers = {
+                                 'Accept': 'application/json',
+                                 'Content-Type': 'application/json'
+                               }
+
+                               return fetch(`${api}/data/file-upload`, {
+                                 headers,
+                                 method: 'POST',
+                                 body: JSON.stringify(payload)
+                               })
+                                 .then(response => response.json())
+                                 .then(json => {
+                                   this.photoBeforeBackSend = json.data.uid
+                                   this.state.photoBeforeBackUrl = `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, '')
+                                 })
+                             }
+
+                             reader.readAsDataURL(target.files[0])
+                           }
+                         }}/>
+
+                    &lt;span
+                      ref="backIcon"
+                      className={styles.uploadGalleryIco}
+                      style={this.state.photoBeforeBackUrl ? {display: 'none'} : {}}
+                    >
+                      &lt;svg className={styles.svgIconPhotoSide1}>
+                        &lt;use xlinkHref="#ico-photo-side-1">&lt;/use>
+                      &lt;/svg>
+                    &lt;/span>
+                    {this.renderTitle(photoBeforeBackIsChecked, 'Сзади', this.state.photoBeforeBackUrl)}
+                     &lt;div
+                       ref="backButton"
+                       className={styles.btnUpload}
+                       onClick={e => {
+                         e.preventDefault()
+                         this.refs.inputBeforeBack.click()
+                       }}
+                     >
+                       {this.state.photoBeforeBackUrl ? '' : 'Загрузить'}
+                     &lt;/div>
+
+                  &lt;/span>
+
+                    &lt;span className={this.state.photoBeforeBackUrl &amp;&amp; (photoBeforeBackIsChecked || photoBeforeBackIsChecked === null) ? styles.uploadGalleryImgWrapDisable : styles.uploadGalleryImgWrap}>
+                       {this.renderIco(photoBeforeBackIsChecked, this.state.photoBeforeBackUrl)}
+                      &lt;img ref='beforeBack'
+                           className={styles.uploadGalleryImg}
+                           onClick={e => {
+                             e.preventDefault()
+                             this.refs.inputBeforeBack.click()
+                           }}
+                           src={this.state.photoBeforeBackUrl} alt=""/>
+                  &lt;/span>
+
+                  &lt;/span>
+                  &lt;/li>
+
+
+                  &lt;li ref="liBeforeLeft"
+                      className={this.state.photoBeforeLeftUrl ? styles.uploadGalleryItemUploaded : styles.uploadGalleryItem}>
+                  &lt;span className={styles.uploadGalleryItemInner}>
+                        &lt;span className={this.state.photoBeforeLeftUrl &amp;&amp; !photoBeforeLeftIsChecked ? styles.uploadGalleryItemOverlayPending : styles.uploadGalleryItemOverlay}
+                          onClick={() => {
+                           this.refs.inputBeforeLeft.click()
+                         }}>
+                      &lt;input ref="inputBeforeLeft" type="file" accept="image/*" className={styles.uploadFileInput}
+                             disabled={this.state.photoBeforeLeftUrl &amp;&amp; (photoBeforeLeftIsChecked || photoBeforeLeftIsChecked === null)}
+                             onChange={input => {
+                               const {target} = input
+                               if (target.files &amp;&amp; target.files[0]) {
+                                 var reader = new FileReader()
+
+                                 reader.onload = e => {
+                                   this.refs.liBeforeLeft.className = styles.uploadGalleryItemUploaded
+                                   this.refs.beforeLeft.src = e.target.result
+                                   this.refs.leftIcon.style.cssText = 'display: none;'
+                                   this.refs.leftButton.text = ""
+
+                                   const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                                   const name = target.files[0].name
+                                   const payload = {
+                                     authToken: cookie.load('token'),
+                                     data: {
+                                       name,
+                                       content
+                                     }
+                                   }
+
+                                   const headers = {
+                                     'Accept': 'application/json',
+                                     'Content-Type': 'application/json'
+                                   }
+
+                                   return fetch(`${api}/data/file-upload`, {
+                                     headers,
+                                     method: 'POST',
+                                     body: JSON.stringify(payload)
+                                   })
+                                     .then(response => response.json())
+                                     .then(json => {
+                                       this.photoBeforeLeftSend = json.data.uid
+                                       this.photoBeforeLeftUrl = `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, '')
+                                     })
+                                 }
+
+                                 reader.readAsDataURL(target.files[0])
+                               }
+                             }}/>
+                      &lt;span
+                        ref="leftIcon"
+                        className={styles.uploadGalleryIco}
+                        style={this.state.photoBeforeLeftUrl ? {display: 'none'} : {}}
+                      >
+                        &lt;svg className={styles.svgIconPhotoSide2}>
+                          &lt;use xlinkHref="#ico-photo-side-2">&lt;/use>
+                        &lt;/svg>
+                      &lt;/span>
+
+                      {this.renderTitle(photoBeforeLeftIsChecked, 'Слева', this.state.photoBeforeLeftUrl)}
+                         &lt;div
+                           ref="leftButton"
+                           className={styles.btnUpload}
+                           onClick={e => {
+                             e.preventDefault()
+                             this.refs.inputBeforeLeft.click()
+                           }}
+                         >
+                           {this.state.photoBeforeLeftUrl ? '' : 'Загрузить'}
+                         &lt;/div>
+                    &lt;/span>
+
+                    &lt;span className={this.state.photoBeforeLeftUrl &amp;&amp; (photoBeforeLeftIsChecked || photoBeforeLeftIsChecked === null) ? styles.uploadGalleryImgWrapDisable : styles.uploadGalleryImgWrap}>
+                       {this.renderIco(photoBeforeLeftIsChecked, this.state.photoBeforeLeftUrl)}
+                        &lt;img ref='beforeLeft'
+                             className={styles.uploadGalleryImg}
+                             onClick={e => {
+                               e.preventDefault()
+                               this.refs.inputBeforeLeft.click()
+                             }}
+                             src={this.state.photoBeforeLeftUrl} alt=""/>
+                      &lt;/span>
+                  &lt;/span>
+                  &lt;/li>
+
+
+                  &lt;li ref="liBeforeRight"
+                      className={this.state.photoBeforeRightUrl ? styles.uploadGalleryItemUploaded : styles.uploadGalleryItem}>
+                &lt;span className={styles.uploadGalleryItemInner}>
+                  &lt;span className={this.state.photoBeforeRightUrl &amp;&amp; !photoBeforeRightIsChecked ? styles.uploadGalleryItemOverlayPending : styles.uploadGalleryItemOverlay}
+                     onClick={() => {
+                      this.refs.inputBeforeRight.click()
+                    }}>
+                  &lt;input ref="inputBeforeRight" type="file" accept="image/*" className={styles.uploadFileInput}
+                         disabled={this.state.photoBeforeRightUrl &amp;&amp; (photoBeforeRightIsChecked || photoBeforeRightIsChecked === null)}
+                         onChange={input => {
+                           const {target} = input
+                           if (target.files &amp;&amp; target.files[0]) {
+                             var reader = new FileReader()
+
+                             reader.onload = e => {
+                               this.refs.liBeforeRight.className = styles.uploadGalleryItemUploaded
+                               this.refs.beforeRight.src = e.target.result
+                               this.refs.rightIcon.style.cssText = 'display: none;'
+                               this.refs.rightButton.text = ""
+
+                               const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                               const name = target.files[0].name
+
+                               const payload = {
+                                 authToken: cookie.load('token'),
+                                 data: {
+                                   name,
+                                   content
+                                 }
+                               }
+
+                               const headers = {
+                                 'Accept': 'application/json',
+                                 'Content-Type': 'application/json'
+                               }
+
+                               return fetch(`${api}/data/file-upload`, {
+                                 headers,
+                                 method: 'POST',
+                                 body: JSON.stringify(payload)
+                               })
+                                 .then(response => response.json())
+                                 .then(json => {
+                                   //console.log(json)
+                                   this.photoBeforeRightSend = json.data.uid
+                                   this.photoBeforeRightUrl  =  `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, '')
+                                 })
+                             }
+
+                             reader.readAsDataURL(target.files[0])
+                           }
+                         }}/>
+                  &lt;span
+                    ref="rightIcon"
+                    className={styles.uploadGalleryIco}
+                    style={this.state.photoBeforeRightUrl ? {display: 'none'} : {}}
+                  >
+                    &lt;svg className={styles.svgIconPhotoSide3}>
+                      &lt;use xlinkHref="#ico-photo-side-3">&lt;/use>
+                    &lt;/svg>
+                  &lt;/span>
+
+                    {this.renderTitle(photoBeforeRightIsChecked, 'Справа', this.state.photoBeforeRightUrl)}
+
+                    &lt;div
+                      ref="rightButton"
+                      className={styles.btnUpload}
+                      onClick={e => {
+                        e.preventDefault()
+                        this.refs.inputBeforeRight.click()
+                      }}
+                    >
+                        {this.state.photoBeforeRightUrl ? '' : 'Загрузить'}
+                    &lt;/div>
+                &lt;/span>
+
+                   &lt;span className={this.state.photoBeforeRightUrl &amp;&amp; (photoBeforeRightIsChecked || photoBeforeRightIsChecked === null) ? styles.uploadGalleryImgWrapDisable : styles.uploadGalleryImgWrap}>
+                     {this.renderIco(photoBeforeRightIsChecked, this.state.photoBeforeRightUrl)}
+                    &lt;img ref='beforeRight'
+                         className={styles.uploadGalleryImg}
+                         onClick={e => {
+                           e.preventDefault()
+                           this.refs.inputBeforeRight.click()
+                         }}
+                         src={this.state.photoBeforeRightUrl} alt=""/>
+                  &lt;/span>
+                &lt;/span>
+                  &lt;/li>
+                &lt;/ul>
+
+                &lt;div className={styles.inputBox}>
+                  &lt;input
+                    value={this.state.videoBefore}
+                    type="text"
+                    onChange={this.change.bind(this)}
+                    className={styles.inputField}
+                    placeholder="Ссылка на видео"
+                  />
+                  {/*&lt;div className={styles.btnSecondary}>Прикрепить файл&lt;/div>*/}
+                &lt;/div>
+
+                &lt;div className={styles.textCenter}>
+                  &lt;button type="button"
+                          disabled={userPhotoUploadState !== 'before'}
+                          className={userPhotoUploadState !== 'before' ? styles.btnCheckDisable : styles.btnCheck}
+                          onClick={() => {
+                            this.refs.loadingModal.show()
+                            const payload = {
+                              authToken: cookie.load('token'),
+                              data: {
+                                // program: cookie.load('userProgram') ? cookie.load('userProgram') : 5,
+                                photoBeforeFront: this.photoBeforeFrontSend,
+                                photoBeforeBack: this.photoBeforeBackSend,
+                                photoBeforeLeft: this.photoBeforeLeftSend,
+                                photoBeforeRight: this.photoBeforeRightSend,
+
+                                photoBeforeFrontUrl: this.photoBeforeFrontUrl,
+                                photoBeforeBackUrl: this.photoBeforeBackUrl,
+                                photoBeforeLeftUrl: this.photoBeforeLeftUrl,
+                                photoBeforeRightUrl: this.photoBeforeRightUrl,
+                                photoBeforeVideoExt: this.state.videoBefore
+
+                              }
+                            }
+                            console.log(payload.data)
+                            let url = `${api}/user/userPhoto-update`
+                            if (
+                              !(this.state.photoBeforeFrontUrl || this.photoBeforeFrontUrl) ||
+                              !(this.state.photoBeforeBackUrl || this.photoBeforeBackUrl) ||
+                              !(this.state.photoBeforeLeftUrl || this.photoBeforeLeftUrl) ||
+                              !(this.state.photoBeforeRightUrl || this.photoBeforeRightUrl)
+                            ) {
+                              this.refs.photosModal.show()
+                              return;
+                            }
+
+                            this.setState({
+                              photoBeforeRightUrl: this.photoBeforeRightUrl || this.state.photoBeforeRightUrl,
+                              photoBeforeLeftUrl: this.photoBeforeLeftUrl || this.state.photoBeforeLeftUrl,
+                              photoBeforeFrontUrl: this.photoBeforeFrontUrl || this.state.photoBeforeFrontUrl,
+                              photoBeforeBackUrl: this.photoBeforeBackUrl || this.state.photoBeforeBackUrl,
+                            })
+                            if (isEmpty || (!photos.data[photos.data.length - 1].photoBeforeFrontUrl &amp;&amp;
+                                !photos.data[photos.data.length - 1].photoBeforeBackUrl &amp;&amp;
+                                !photos.data[photos.data.length - 1].photoBeforeLeftUrl &amp;&amp;
+                                !photos.data[photos.data.length - 1].photoBeforeRightUrl &amp;&amp;
+                                !photos.data[photos.data.length - 1].photoBeforeVideoExt)) {
+                              url = `${api}/user/userPhoto-create`
+                            }
+
+                            return fetch(url, {
+                              headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                              },
+                              method: 'POST',
+                              body: JSON.stringify(payload)
+                            })
+                              .then(response => response.json())
+                              .then(json => {
+
+                                this.refs.loadingModal.hide()
+                                if (json.errorCode === 1) {
+                                  this.refs.successModal.show()
+                                } else {
+                                  this.refs.errorModal.show()
+                                }
+                              })
+                          }}
+                  >Отправить на проверку
+                  &lt;/button>
+                &lt;/div>
+
+              &lt;/div>}
+              {/* ----------------------after------------------*/}
+              {this.state.tab === 'photoAfter' &amp;&amp; &lt;div className={styles.stageBoxInnerCustom}>
+
+                &lt;h2 className={styles.h1}>Твой фото отчет&lt;/h2>
+
+                &lt;p className={styles.baseParag}>До старта программы если претендуешь на призы должен прислать фото ДО.
+                  Прислать ты их можешь до первого экзамена! Фото ПОСЛЕ ты присылаешь после последнего экзамена.&lt;/p>
+
+                &lt;h4 className={styles.h3TextCenter}>Фото После&lt;/h4>
+
+                &lt;ul className={styles.uploadGallery}>
+
+                  &lt;li ref="liAfterFront"
+                      className={this.state.photoAfterFrontUrl ? styles.uploadGalleryItemUploaded : styles.uploadGalleryItem}>
+                &lt;span className={styles.uploadGalleryItemInner}>
+
+                  &lt;span className={this.state.photoAfterFrontUrl &amp;&amp; !photoAfterFrontIsChecked ? styles.uploadGalleryItemOverlayPending : styles.uploadGalleryItemOverlay}
+                        onClick={() => {
+                          this.refs.inputAfterFront.click()
+                        }}>
+                    &lt;input ref="inputAfterFront" type="file" accept="image/*" className={styles.uploadFileInput}
+                           disabled={this.state.photoAfterFrontUrl &amp;&amp; (photoAfterFrontIsChecked || photoAfterFrontIsChecked === null)}
+                           onChange={input => {
+                             const {target} = input
+                             if (target.files &amp;&amp; target.files[0]) {
+                               var reader = new FileReader()
+
+                               reader.onload = e => {
+                                 this.refs.liAfterFront.className = styles.uploadGalleryItemUploaded
+                                 this.refs.afterFront.src = e.target.result
+                                 this.refs.frontIcon.style.cssText = 'display: none;'
+                                 this.refs.frontButton.text = ""
+
+                                 const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                                 const name = target.files[0].name
+                                 const payload = {
+                                   authToken: cookie.load('token'),
+                                   data: {
+                                     name,
+                                     content
+                                   }
+                                 }
+
+                                 const headers = {
+                                   'Accept': 'application/json',
+                                   'Content-Type': 'application/json'
+                                 }
+
+                                 return fetch(`${api}/data/file-upload`, {
+                                   headers,
+                                   method: 'POST',
+                                   body: JSON.stringify(payload)
+                                 })
+                                   .then(response => response.json())
+                                   .then(json => {
+                                     console.log(json)
+                                     this.photoAfterFrontSend = json.data.uid
+                                     this.photoAfterFrontUrl = `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, '')
+                                   })
+                               }
+
+                               reader.readAsDataURL(target.files[0])
+                             }
+                           }}/>
+
+                    &lt;span
+                      ref="frontIcon"
+                      className={styles.uploadGalleryIco}
+                      style={this.state.photoAfterFrontUrl ? {display: 'none'} : {}}
+                    >
+                      &lt;svg className={styles.svgIconPhotoSide1}>
+                        &lt;use xlinkHref="#ico-photo-side-1">&lt;/use>
+                      &lt;/svg>
+                    &lt;/span>
+
+                    {this.renderTitle(photoAfterFrontIsChecked, 'Спереди', this.state.photoAfterFrontUrl)}
+                     &lt;div
+                       ref="frontButton"
+                       className={styles.btnUpload}
+                       onClick={e => {
+                         e.preventDefault()
+                         this.refs.inputAfterFront.click()
+                       }}
+                     >
+                       {this.state.photoAfterFrontUrl ? '' : 'Загрузить'}
+                     &lt;/div>
+                  &lt;/span>
+
+
+                  &lt;span className={this.state.photoAfterFrontUrl &amp;&amp; (photoAfterFrontIsChecked || photoAfterFrontIsChecked === null) ? styles.uploadGalleryImgWrapDisable : styles.uploadGalleryImgWrap}>
+                      {this.renderIco(photoAfterFrontIsChecked, this.state.photoAfterFrontUrl)}
+
+                    &lt;img ref='afterFront'
+                         className={styles.uploadGalleryImg}
+                         onClick={e => {
+                           e.preventDefault()
+                           this.refs.inputAfterFront.click()
+                         }}
+                         src={this.state.photoAfterFrontUrl} alt=""/>
+                  &lt;/span>
+
+                &lt;/span>
+
+                  &lt;/li>
+
+
+                  &lt;li ref="liAfterBack"
+                      className={this.state.photoAfterBackUrl ? styles.uploadGalleryItemUploaded : styles.uploadGalleryItem}>
+                &lt;span className={styles.uploadGalleryItemInner}>
+                  &lt;span className={this.state.photoAfterBackUrl &amp;&amp; !photoAfterBackIsChecked ? styles.uploadGalleryItemOverlayPending : styles.uploadGalleryItemOverlay}
+                     onClick={() => {
+                      this.refs.inputAfterBack.click()
+                    }}>
+                  &lt;input ref="inputAfterBack" type="file" accept="image/*" className={styles.uploadFileInput}
+                         disabled={this.state.photoAfterBackUrl &amp;&amp; (photoAfterBackIsChecked || photoAfterBackIsChecked === null)}
+                         onChange={input => {
+                           const {target} = input
+
+                           if (target.files &amp;&amp; target.files[0]) {
+                             var reader = new FileReader()
+
+                             reader.onload = e => {
+                               this.refs.liAfterBack.className = styles.uploadGalleryItemUploaded
+                               this.refs.afterBack.src = e.target.result
+                               this.refs.backIcon.style.cssText = 'display: none;'
+                               this.refs.backButton.text = ""
+
+                               const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                               const name = target.files[0].name
+                               const payload = {
+                                 authToken: cookie.load('token'),
+                                 data: {
+                                   name,
+                                   content
+                                 }
+                               }
+
+                               const headers = {
+                                 'Accept': 'application/json',
+                                 'Content-Type': 'application/json'
+                               }
+
+                               return fetch(`${api}/data/file-upload`, {
+                                 headers,
+                                 method: 'POST',
+                                 body: JSON.stringify(payload)
+                               })
+                                 .then(response => response.json())
+                                 .then(json => {
+                                   this.photoAfterBackSend = json.data.uid
+                                   this.photoAfterBackUrl = `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, '')
+                                 })
+                             }
+
+                             reader.readAsDataURL(target.files[0])
+                           }
+                         }}/>
+
+                    &lt;span
+                      ref="backIcon"
+                      className={styles.uploadGalleryIco}
+                      style={this.state.photoAfterBackUrl ? {display: 'none'} : {}}
+                    >
+                      &lt;svg className={styles.svgIconPhotoSide1}>
+                        &lt;use xlinkHref="#ico-photo-side-1">&lt;/use>
+                      &lt;/svg>
+                    &lt;/span>
+
+                    {this.renderTitle(photoAfterBackIsChecked, 'Сзади', this.state.photoAfterBackUrl)}
+                     &lt;div
+                       ref="backButton"
+                       className={styles.btnUpload}
+                       onClick={e => {
+                         e.preventDefault()
+                         this.refs.inputAfterBack.click()
+                       }}
+                     >
+                       {this.state.photoAfterBackUrl ? '' : 'Загрузить'}
+                     &lt;/div>
+
+                  &lt;/span>
+
+                    &lt;span className={this.state.photoAfterBackUrl &amp;&amp; (photoAfterBackIsChecked || photoAfterBackIsChecked === null) ? styles.uploadGalleryImgWrapDisable : styles.uploadGalleryImgWrap}>
+                      {this.renderIco(photoAfterBackIsChecked, this.state.photoAfterBackUrl)}
+                      &lt;img ref='afterBack'
+                           className={styles.uploadGalleryImg}
+                           onClick={e => {
+                             e.preventDefault()
+                             this.refs.inputAfterBack.click()
+                           }}
+                           src={this.state.photoAfterBackUrl} alt=""/>
+                  &lt;/span>
+
+                  &lt;/span>
+                  &lt;/li>
+
+
+                  &lt;li ref="liAfterLeft"
+                      className={this.state.photoAfterLeftUrl ? styles.uploadGalleryItemUploaded : styles.uploadGalleryItem}>
+                  &lt;span className={styles.uploadGalleryItemInner}>
+                      &lt;span className={this.state.photoAfterLeftUrl &amp;&amp; !photoAfterLeftIsChecked ? styles.uploadGalleryItemOverlayPending : styles.uploadGalleryItemOverlay}
+                         onClick={() => {
+                           this.refs.inputAfterLeft.click()
+                         }}>
+                      &lt;input ref="inputAfterLeft" type="file" accept="image/*" className={styles.uploadFileInput}
+                             disabled={this.state.photoAfterLeftUrl &amp;&amp; (photoAfterLeftIsChecked || photoAfterLeftIsChecked === null)}
+                             onChange={input => {
+                               const {target} = input
+                               if (target.files &amp;&amp; target.files[0]) {
+                                 var reader = new FileReader()
+
+                                 reader.onload = e => {
+                                   this.refs.liAfterLeft.className = styles.uploadGalleryItemUploaded
+                                   this.refs.afterLeft.src = e.target.result
+                                   this.refs.leftIcon.style.cssText = 'display: none;'
+                                   this.refs.leftButton.text = ""
+
+                                   const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                                   const name = target.files[0].name
+                                   const payload = {
+                                     authToken: cookie.load('token'),
+                                     data: {
+                                       name,
+                                       content
+                                     }
+                                   }
+
+                                   const headers = {
+                                     'Accept': 'application/json',
+                                     'Content-Type': 'application/json'
+                                   }
+
+                                   return fetch(`${api}/data/file-upload`, {
+                                     headers,
+                                     method: 'POST',
+                                     body: JSON.stringify(payload)
+                                   })
+                                     .then(response => response.json())
+                                     .then(json => {
+                                       this.photoAfterLeftSend = json.data.uid
+                                       this.photoAfterLeftUrl = `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, '')
+                                     })
+                                 }
+
+                                 reader.readAsDataURL(target.files[0])
+                               }
+                             }}/>
+                      &lt;span
+                        ref="leftIcon"
+                        className={styles.uploadGalleryIco}
+                        style={this.state.photoAfterLeftUrl ? {display: 'none'} : {}}
+                      >
+                        &lt;svg className={styles.svgIconPhotoSide2}>
+                          &lt;use xlinkHref="#ico-photo-side-2">&lt;/use>
+                        &lt;/svg>
+                      &lt;/span>
+
+                        {this.renderTitle(photoAfterLeftIsChecked, 'Слева', this.state.photoAfterLeftUrl)}
+                         &lt;div
+                           ref="leftButton"
+                           className={styles.btnUpload}
+                           onClick={e => {
+                             e.preventDefault()
+                             this.refs.inputBeforeLeft.click()
+                           }}
+                         >
+                           {this.state.photoAfterLeftUrl ? '' : 'Загрузить'}
+                         &lt;/div>
+                    &lt;/span>
+
+                    &lt;span className={this.state.photoAfterLeftUrl &amp;&amp; (photoAfterLeftIsChecked || photoAfterLeftIsChecked === null) ? styles.uploadGalleryImgWrapDisable : styles.uploadGalleryImgWrap}>
+                      {this.renderIco(photoAfterLeftIsChecked, this.state.photoAfterLeftUrl)}
+                        &lt;img ref='afterLeft'
+                             className={styles.uploadGalleryImg}
+                             onClick={e => {
+                               e.preventDefault()
+                               this.refs.inputAfterLeft.click()
+                             }}
+                             src={this.state.photoAfterLeftUrl} alt=""/>
+                      &lt;/span>
+                  &lt;/span>
+                  &lt;/li>
+
+
+                  &lt;li ref="liAfterRight"
+                      className={this.state.photoAfterRightUrl ? styles.uploadGalleryItemUploaded : styles.uploadGalleryItem}>
+                &lt;span className={styles.uploadGalleryItemInner}>
+                  &lt;span className={this.state.photoAfterRightUrl &amp;&amp; !photoAfterRightIsChecked ? styles.uploadGalleryItemOverlayPending : styles.uploadGalleryItemOverlay}
+                     onClick={() => {
+                      this.refs.inputAfterRight.click()
+                    }}>
+                  &lt;input ref="inputAfterRight" type="file" accept="image/*" className={styles.uploadFileInput}
+                         disabled={this.state.photoAfterRightUrl &amp;&amp; (photoAfterRightIsChecked || photoAfterRightIsChecked === null)}
+                         onChange={input => {
+                           const {target} = input
+                           if (target.files &amp;&amp; target.files[0]) {
+                             var reader = new FileReader()
+
+                             reader.onload = e => {
+                               this.refs.liAfterRight.className = styles.uploadGalleryItemUploaded
+                               this.refs.afterRight.src = e.target.result
+                               this.refs.rightIcon.style.cssText = 'display: none;'
+                               this.refs.rightButton.text = ""
+
+                               const content = reader.result.replace(/data:image\/\w+;base64,/, '')
+                               const name = target.files[0].name
+
+                               const payload = {
+                                 authToken: cookie.load('token'),
+                                 data: {
+                                   name,
+                                   content
+                                 }
+                               }
+
+                               const headers = {
+                                 'Accept': 'application/json',
+                                 'Content-Type': 'application/json'
+                               }
+
+                               return fetch(`${api}/data/file-upload`, {
+                                 headers,
+                                 method: 'POST',
+                                 body: JSON.stringify(payload)
+                               })
+                                 .then(response => response.json())
+                                 .then(json => {
+                                   console.log(json)
+                                   this.photoAfterRightSend = json.data.uid
+                                   this.photoAfterRightUrl = `${api}/files/${json.data.uid}.${json.data.extension}`.replace(/api\//, '')
+                                 })
+                             }
+
+                             reader.readAsDataURL(target.files[0])
+                           }
+                         }}/>
+                  &lt;span
+                    ref="rightIcon"
+                    className={styles.uploadGalleryIco}
+                    style={this.state.photoAfterRightUrl ? {display: 'none'} : {}}
+                  >
+                    &lt;svg className={styles.svgIconPhotoSide3}>
+                      &lt;use xlinkHref="#ico-photo-side-3">&lt;/use>
+                    &lt;/svg>
+                  &lt;/span>
+
+                    {this.renderTitle(photoAfterRightIsChecked, 'Справа', this.state.photoAfterRightUrl)}
+                    &lt;div
+                      ref="rightButton"
+                      className={styles.btnUpload}
+                      onClick={e => {
+                        e.preventDefault()
+                        this.refs.inputAfterRight.click()
+                      }}
+                    >
+                        {this.state.photoAfterRightUrl ? '' : 'Загрузить'}
+                    &lt;/div>
+                &lt;/span>
+
+                  &lt;span className={this.state.photoAfterRightUrl &amp;&amp; (photoAfterRightIsChecked || photoAfterRightIsChecked === null) ? styles.uploadGalleryImgWrapDisable : styles.uploadGalleryImgWrap}>
+                    {this.renderIco(photoAfterRightIsChecked, this.state.photoAfterRightUrl)}
+                    &lt;img ref='afterRight'
+                         className={styles.uploadGalleryImg}
+                         onClick={e => {
+                           e.preventDefault()
+                           this.refs.inputAfterRight.click()
+                         }}
+                         src={this.state.photoAfterRightUrl} alt=""/>
+                  &lt;/span>
+                &lt;/span>
+                  &lt;/li>
+                &lt;/ul>
+
+                &lt;div className={styles.inputBox}>
+                  &lt;input value={this.state.videoAfter}
+                         type="text"
+                         onChange={this.changeVideoAfter.bind(this)}
+                         className={styles.inputField}
+                         placeholder="Ссылка на видео"/>
+                  {/*  &lt;div className={styles.btnSecondary}>Прикрепить файл&lt;/div>*/}
+                &lt;/div>
+
+
+                &lt;div className={styles.textCenter}>
+                  &lt;button type="button"
+                          disabled={userPhotoUploadState !== 'after'}
+                          className={userPhotoUploadState !== 'after' ? styles.btnCheckDisable : styles.btnCheck}
+                          onClick={() => {
+                            this.refs.loadingModal.show()
+                            const payload = {
+                              authToken: cookie.load('token'),
+                              data: {
+                                photoAfterFront: this.photoAfterFrontSend,
+                                photoAfterBack: this.photoAfterBackSend,
+                                photoAfterLeft: this.photoAfterLeftSend,
+                                photoAfterRight: this.photoAfterRightSend,
+                                photoAfterFrontUrl: this.photoAfterFrontUrl,
+                                photoAfterBackUrl: this.photoAfterBackUrl,
+                                photoAfterLeftUrl: this.photoAfterLeftUrl,
+                                photoAfterRightUrl: this.photoAfterRightUrl,
+                                photoAfterVideoExt: this.state.videoAfter
+
+                              }
+                            }
+
+                            let url = `${api}/user/userPhoto-update`
+
+                            if (
+                              !(this.state.photoAfterFrontUrl || this.photoAfterFrontUrl) ||
+                              !(this.state.photoAfterBackUrl || this.photoAfterBackUrl) ||
+                              !(this.state.photoAfterLeftUrl || this.photoAfterLeftUrl) ||
+                              !(this.state.photoAfterRightUrl || this.photoAfterRightUrl)
+                            ) {
+                              this.refs.photosModal.show()
+                              return;
+                            }
+                            this.setState({
+                              photoAfterFrontUrl: this.photoAfterFrontUrl || this.state.photoAfterFrontUrl,
+                              photoAfterBackUrl: this.photoAfterBackUrl || this.state.photoAfterBackUrl,
+                              photoAfterLeftUrl: this.photoAfterLeftUrl || this.state.photoAfterLeftUrl,
+                              photoAfterRightUrl: this.photoAfterRightUrl || this.state.photoAfterRightUrl,
+                            })
+
+                            if (isEmpty || (!photos.data[photos.data.length - 1].photoBeforeFrontUrl &amp;&amp;
+                                !photos.data[photos.data.length - 1].photoBeforeBackUrl &amp;&amp;
+                                !photos.data[photos.data.length - 1].photoBeforeLeftUrl &amp;&amp;
+                                !photos.data[photos.data.length - 1].photoBeforeRightUrl &amp;&amp;
+                                !photos.data[photos.data.length - 1].photoBeforeVideoExt)) {
+                              url = `${api}/user/userPhoto-create`
+                            }
+
+                            return fetch(url, {
+                              headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                              },
+                              method: 'POST',
+                              body: JSON.stringify(payload)
+                            })
+                              .then(response => response.json())
+                              .then(json => {
+                                console.log('jsonnnn')
+                                console.log(json)
+                                this.refs.loadingModal.hide()
+                                if (json.errorCode === 1) {
+                                  this.refs.successModal.show()
+                                } else {
+                                  this.refs.errorModal.show()
+                                }
+                              })
+                          }}
+                  >Отправить на проверку
+                  &lt;/button>
+                &lt;/div>
+
+              &lt;/div>}
+            &lt;/div>}
+
+          &lt;/div> : &lt;Loader/>
+        }
+        &lt;Modal ref='loadingModal' contentStyle={contentStyle}>
+          &lt;div className={styles.entryHeader}>
+            &lt;h2 className={styles.entryTitleCenter}>Загружается...&lt;/h2>
+          &lt;/div>
+          &lt;div className={styles.textCenter}>
+            &lt;div className={styles.loaderMain}>&lt;/div>
+          &lt;/div>
+        &lt;/Modal>
+        &lt;Modal ref='photosModal' contentStyle={contentStyle}>
+          &lt;h2>Загрузите все фотографии!&lt;/h2>
+          &lt;br/>
+          &lt;button className={styles.btnAction} onClick={() => {
+            this.refs.photosModal.hide()
+            this.refs.loadingModal.hide()
+          }}>
+            Продолжить
+          &lt;/button>
+        &lt;/Modal>
+
+        &lt;Modal ref='errorModal' contentStyle={contentStyle}>
+          &lt;h2>Что-то пошло не так, попробуйте снова&lt;/h2>
+          &lt;br/>
+          &lt;button className={styles.btnAction} onClick={() => {
+            this.refs.errorModal.hide()
+          }}>
+            Продолжить
+          &lt;/button>
+        &lt;/Modal>
+        &lt;Modal ref='successModal' contentStyle={contentStyle}>
+          &lt;h2>Фотографии и видео отправлены на проверку!&lt;/h2>
+          &lt;br/>
+          &lt;button className={styles.btnAction} onClick={() => {
+            this.refs.successModal.hide()
+          }}>
+            Продолжить
+          &lt;/button>
+        &lt;/Modal>
+
+        &lt;ul className={styles.menuMobBottom}>
+          &lt;li className={styles.menuMobBottomItem}>
+            &lt;a href="#" className={styles.menuMobBottomItemInner} onClick={
+              () => browserHistory.push('/task')
+            }>
+          &lt;span className={styles.menuMobBottomIco}>
+            &lt;svg className={styles.svgIcoTasksMobile}>
+              &lt;use xlinkHref="#ico-m-tasks">&lt;/use>
+            &lt;/svg>
+          &lt;/span>
+              &lt;span className={styles.menuMobBottomTitle}>Задания&lt;/span>
+            &lt;/a>
+          &lt;/li>
+
+          &lt;li className={styles.menuMobBottomItem}>
+            &lt;a href="#" className={styles.menuMobBottomItemInner} onClick={
+              () => browserHistory.push('/food')
+            }>
+          &lt;span className={styles.menuMobBottomIco}>
+            &lt;svg className={styles.svgIcoFoodMobile}>
+              &lt;use xlinkHref="#ico-m-food">&lt;/use>
+            &lt;/svg>
+          &lt;/span>
+              &lt;span className={styles.menuMobBottomTitle}>Питание&lt;/span>
+            &lt;/a>
+          &lt;/li>
+
+          &lt;li className={styles.menuMobBottomItem}>
+            &lt;a href="#" className={styles.menuMobBottomItemInner} onClick={
+              () => browserHistory.push('/chats')
+            }>
+      &lt;span className={styles.menuMobBottomIco}>
+        &lt;svg className={styles.svgIcoPhoto}>
+          &lt;use xlinkHref="#ico-chat">&lt;/use>
+        &lt;/svg>
+      &lt;/span>
+              &lt;span className={styles.menuMobBottomTitle}>Чат&lt;/span>
+            &lt;/a>
+          &lt;/li>
+
+          &lt;li className={styles.menuMobBottomItem}>
+            &lt;a href="#" className={styles.menuMobBottomItemInner} onClick={
+              () => browserHistory.push('/photos')
+            }>
+          &lt;span className={styles.menuMobBottomIco}>
+            &lt;svg className={styles.svgIcoPhoto}>
+              &lt;use xlinkHref="#ico-photo">&lt;/use>
+            &lt;/svg>
+          &lt;/span>
+              &lt;span className={styles.menuMobBottomTitle}>Фото&lt;/span>
+            &lt;/a>
+          &lt;/li>
+        &lt;/ul>
+
+        &lt;div className="menu-mob-left">
+          &lt;div className="menu-mob-left__inner">
+            &lt;div className="menu-mob-left__ico-close">
+              &lt;svg className={styles.svgIcoClose}>
+                &lt;use xlinkHref="#ico-close">&lt;/use>
+              &lt;/svg>
+            &lt;/div>
+            &lt;div className="menu-mob-left__logo">
+              &lt;LogoLink/>
+            &lt;/div>
+            &lt;ul className={styles.mainNav}>
+              &lt;li className="main-nav__item main-nav__item--active">
+                &lt;a href="#" className="main-nav__item-inner">
+                  &lt;svg className={styles.svgIcoTasksMobile}>
+                    &lt;use xlinkHref="#ico-m-tasks">&lt;/use>
+                  &lt;/svg>
+                  &lt;span className="main-nav__title">Задания222&lt;/span>
+                &lt;/a>
+              &lt;/li>
+              &lt;li className={styles.mainNavItem}>
+                &lt;a href="#" className="main-nav__item-inner">
+                  &lt;svg className={styles.svgIcoBookMobile}>
+                    &lt;use xlinkHref="#ico-m-book">&lt;/use>
+                  &lt;/svg>
+                  &lt;span className="main-nav__title">Зачетка&lt;/span>
+                &lt;/a>
+              &lt;/li>
+              &lt;li className={styles.mainNavItem}>
+                &lt;a href="#" className="main-nav__item-inner">
+                  &lt;svg className={styles.svgIcoFoodMobile}>
+                    &lt;use xlinkHref="#ico-m-food">&lt;/use>
+                  &lt;/svg>
+                  &lt;span className="main-nav__title">Питание&lt;/span>
+                &lt;/a>
+              &lt;/li>
+              &lt;li className={styles.mainNavItem}>
+                &lt;a href="#" className="main-nav__item-inner">
+                  &lt;svg className={styles.svgIcoFaqMobile}>
+                    &lt;use xlinkHref="#ico-m-faq">&lt;/use>
+                  &lt;/svg>
+                  &lt;span className="main-nav__title">Вопросы/Ответы&lt;/span>
+                &lt;/a>
+              &lt;/li>
+            &lt;/ul>
+            &lt;hr/>
+            &lt;div className={styles.profile}>
+              &lt;a href="#">
+                &lt;p className={styles.profileName}>Анна Иванова&lt;/p>
+                &lt;p className={styles.profileSubText}>Профиль&lt;/p>
+              &lt;/a>
+            &lt;/div>
+            &lt;hr/>
+            &lt;ul className="banner-ls banner-ls--menu-mob-left">
+              &lt;li className="banner-ls__item">
+                &lt;a href="#">
+                  &lt;div className="banner-ls__img">
+                    &lt;img src="tmp/banner-2.png" alt=""/>
+                  &lt;/div>
+                  &lt;p className="banner-ls__desc">В твой выходной день только сегодня TezTour дарит -10% на тур&lt;/p>
+                &lt;/a>
+              &lt;/li>
+              &lt;li className="banner-ls__item">
+                &lt;a href="#">
+                  &lt;div className="banner-ls__img">
+                    &lt;img src="tmp/banner-1.png" alt=""/>
+                  &lt;/div>
+                &lt;/a>
+              &lt;/li>
+            &lt;/ul>
+            &lt;hr/>
+            &lt;div className={styles.btnAction}>Выйти из кабинета&lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/Layout>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+
+  const {selectedPhotos, sign, recivedPhotos, userInfo, taskDayData, selectedTaskDay, userToken, showMobileLeftMenu} = state
+
+  const {
+    isFetching,
+    photos
+  } = recivedPhotos[selectedPhotos] || {
+    isFetching: true,
+    photos: {}
+  }
+
+  return {
+    selectedPhotos,
+    showMobileLeftMenu,
+    taskDayData,
+    sign,
+    isFetching,
+    selectedTaskDay,
+    photos,
+    userInfo,
+    token: userToken.token
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  setTypeId: bindActionCreators(actions.setTypeId, dispatch),
+  changeChatType: bindActionCreators(actions.changeChatType, dispatch),
+  clearRenderChat: bindActionCreators(actions.clearRenderChat, dispatch),
+  showLeftMenu: bindActionCreators(
+    () => dispatch({type: 'SHOW_LEFT_MENU', show: true}),
+    dispatch
+  ),
+  hideLeftMenu: bindActionCreators(
+    () => dispatch({type: 'SHOW_LEFT_MENU', show: false}),
+    dispatch
+  ),
+  dispatch
+
+})
+
+Photos = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Photos)
+
+export default CSSModules(Photos, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

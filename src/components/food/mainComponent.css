@@ -1,0 +1,270 @@
+.layout {
+  composes: layout from '../../index2.css';
+}
+
+.header {
+  composes: header from '../../index.css';
+}
+.gridHeaderInner {
+  composes: grid from '../../index.css';
+  composes: header__inner from '../../index.css';
+}
+.gridCellHeaderLogo {
+  composes: grid__cell from '../../index.css';
+  composes: header__logo from '../../index.css';
+}
+.layoutInner {
+  composes: layout__inner from '../../index2.css';
+}
+.menuMobBottom {
+  composes: menu-mob-bottom from '../../index.css';
+}
+
+
+.menuMobBottomItem {
+  composes: menu-mob-bottom__item from '../../index.css';
+}
+
+.menuMobBottomItemInner {
+  composes: menu-mob-bottom__item-inner from '../../index.css';
+}
+
+.menuMobBottomIco {
+  composes: menu-mob-bottom__ico from '../../index.css';
+}
+
+.svgIcoTasksMobile {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-tasks from '../../index.css';
+}
+
+.svgIcoBookMobile {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-book from '../../index.css';
+}
+
+.svgIcoFoodMobile {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-food from '../../index.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-faq from '../../index.css';
+}
+
+.menuMobBottomTitle {
+  composes: menu-mob-bottom__title from '../../index.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width50 {
+    width: 50%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from '../../index.css';
+  composes: layout__menu from '../../index.css';
+}
+
+.gridCell50 {
+  composes: width50;
+  composes: grid__cell from '../../index.css';
+}
+
+.gridLayoutMenuInner {
+  composes: grid from '../../index.css';
+  composes: layout__menu-inner from '../../index.css';
+}
+
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../../index.css';
+  /*composes: 1/1--pocket from '../../index.css';*/
+}
+
+.grid {
+  composes: grid from '../../index.css';
+}
+
+.btnGoBack {
+  composes: btn-go-back from '../../index.css';
+}
+
+.svgIcoArrowUp {
+  composes: svg-icon from '../../index.css';
+  composes: ico-arrow-up from '../../index.css';
+}
+
+.svgIcoPhoto {
+  composes: svg-icon from '../../index.css';
+  composes: ico-m-photo from '../../index.css';
+}
+
+.stageBox {
+  composes: stage-box from '../../index2.css';
+}
+
+.stageBoxExpand {
+  composes: stage-box from '../../index2.css';
+  composes: stage-box--expand from '../../index2.css';
+}
+
+.tabs {
+  composes: tabs from '../../index2.css';
+}
+
+.tabsNav {
+  composes: tabs__nav from '../../index2.css';
+}
+
+.tabNavItem {
+  composes: tabs__nav-item from '../../index2.css';
+}
+
+.tabNavItemActive {
+  composes: tabs__nav-item from '../../index2.css';
+  composes: tabs__nav-item--active from '../../index2.css';
+}
+
+.tabsTabTitle {
+  composes: tabs__tab-title from '../../index2.css';
+}
+
+.tabsContent {
+  composes: tabs__content from '../../index2.css';
+}
+
+.tabsInner {
+  composes: tabs__inner from '../../index2.css';
+}
+
+.h2 {
+  composes: h2 from '../../index2.css';
+}
+
+.h3 {
+  composes: h3 from '../../index2.css';
+}
+
+.h5 {
+  composes: h5 from '../../index2.css';
+}
+
+.baseParag {
+  composes: base-parag from '../../index2.css';
+}
+
+.h1Mb0 {
+  composes: h1 from '../../index2.css';
+  composes: mb0 from '../../index2.css';
+}
+
+.baseList {
+  composes: base-list from '../../index2.css';
+}
+
+.baseListItem {
+  composes: base-list__item from '../../index2.css';
+}
+
+.emoji {
+  composes: emoji from '../../index2.css';
+}
+
+.textHightlight1 {
+  composes: text-hightlight-1 from '../../index2.css';
+}
+
+.svgIconNewWindow {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-new-window from '../../index2.css';
+}
+
+.attentionBoxStyle3 {
+  composes: attention-box from '../../index2.css';
+  composes: box-style-3 from '../../index2.css';
+}
+
+.video {
+  composes: video from '../../index2.css';
+}
+
+.accordion {
+  composes: accordion from '../../index2.css';
+}
+
+.accordionItem {
+  composes: accordion__item from '../../index2.css';
+}
+
+.accordionItemActive {
+  composes: accordion__item from '../../index2.css';
+  composes: accordion__item--active from '../../index2.css';
+}
+
+.accordionHeader {
+  composes: accordion__header from '../../index2.css';
+}
+
+.accordionHeaderTitle {
+  composes: accordion__header-title from '../../index2.css';
+}
+
+.btnBase {
+  composes: btn from '../../index2.css';
+  composes: btn--base from '../../index2.css';
+}
+
+.btnTitle {
+  composes: btn__title from '../../index2.css';
+}
+
+.btnIco {
+  composes: btn__ico from '../../index2.css';
+}
+
+.svgIconBoldArrowDown {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-bold-arrow-down from '../../index2.css';
+}
+
+.accordionContent {
+  composes: accordion__content from '../../index2.css';
+}
+
+.baseNavMb40 {
+  composes: base-nav from '../../index2.css';
+  composes: mb40 from '../../index2.css';
+}
+
+.baseNavItem {
+  composes: base-nav__item from '../../index2.css';
+}
+
+.baseNavLabelTextHightlight1 {
+  composes: base-nav__label from '../../index2.css';
+  composes: text-hightlight-1 from '../../index2.css';
+}
+
+.baseListMb40 {
+  composes: base-list from '../../index2.css';
+  composes: mb40 from '../../index2.css';
+}
+
+.h2mb10 {
+  composes: h2 from '../../index2.css';
+  composes: mb10 from '../../index2.css';
+}
+
+.imgWrap {
+  composes: img-wrap from '../../index2.css';
+}

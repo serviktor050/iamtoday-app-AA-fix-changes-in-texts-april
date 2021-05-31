@@ -1,0 +1,81 @@
+.MentorData {
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+  width: fit-content;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.MentorDataBlock {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.MentorData_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.MentorPicture {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.MentorName {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24.38px;
+}
+
+.MentorOccupation {
+  font-size: 12px;
+  line-height: 15px;
+  color: #79c330;
+}
+
+.MentorName {
+  font-size: 15px;
+  line-height: 18px;
+  white-space: nowrap;
+  margin-right: 15px;
+}
+
+.MentorLocationExperienceContainer {
+  display: block;
+}
+
+.MentorExperienceContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.MentorExperience {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #b5b5b5;
+}
+
+.flex-container-mentor-reqeuests {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-container-mentor-reqeuests .MentorExperienceContainer {
+  margin-top: 0;
+}
+
+.width-100 {
+  width: 100%;
+}

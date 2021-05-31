@@ -1,0 +1,111 @@
+<!--регистрация врача письмо для врача-->
+
+<mjml>
+  <mj-head>
+    <mj-title>Регистрация партнера</mj-title>
+    <mj-attributes>
+      <mj-body background-color="#FFFFFF" />
+      <mj-section padding="20px" />
+      <mj-text font-size="13px" font-family="helvetica" color="#000000" line-height="20px" />
+      <mj-class name="email" color="#06007c" text-decoration="underline" />
+      <mj-class name="button" background-color="#79C330" color="white" font-weight="bold" align="left" />
+      <mj-class name="info-block" background-color="#F0F6FF" padding-left="0px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <!-- Header with social icons-->
+    <mj-section padding="0px">
+      <mj-column vertical-align="middle">
+        <mj-image width="150px" height="80px" padding="0px" src="https://i.postimg.cc/YqL7FZky/1-1.png" />
+      </mj-column>
+      <mj-column vertical-align="middle">
+        <mj-social>
+          <mj-social-element href="https://www.facebook.com/antiageexpert.ru/" name="facebook" icon-size="40px" />
+          <mj-social-element href="https://www.instagram.com/antiageexpert_ru/" name="instagram" icon-size="40px" />
+        </mj-social>
+      </mj-column>
+    </mj-section>
+
+    <!--Welcome Image -->
+    <mj-hero mode="fluid-height" background-width="600px" background-url="https://i.postimg.cc/Y9ptH1nH/Group-10.png" background-height="400px" background-color="#37D3AF" padding="300px 20px 30px 30px">
+      <mj-text padding="5px" color="#ffffff" vertical-align="bottom" font-size="30px" line-height="37px" font-weight="normal">
+        Здравствуйте,
+      </mj-text>
+      <mj-text padding="5px" color="#ffffff" font-family="Helvetica" vertical-align="bottom" font-size="30px" line-height="37px" font-weight="normal">
+        Косаткина Ирина Владимировна!
+      </mj-text>
+    </mj-hero>
+
+    <!-- Welcome Text -->
+    <mj-section>
+      <mj-text color="#4DA2D6" font-weight="bold">Добро пожаловать в международную школу Anti-Age Expert</mj-text>
+    </mj-section>
+
+    <!-- Instruction Text -->
+    <mj-section>
+      <mj-text>Скоро вы получите доступ к самым передовым знаниям по антивозрастной
+        медицине, которые наши эксперты собирали десятки лет</mj-text>
+    </mj-section>
+
+    <!-- Personal Account-->
+
+    <mj-section>
+      <mj-column background-color="#F8FFF1">
+        <mj-text padding-bottom="0px"><strong>Теперь у вас есть личный кабинет, в который можно войти с помощью
+            ваших учетных данных:</strong></mj-text>
+        <mj-text padding-bottom="0px">Логин: <a color="#4DA2D6">mail@mail.ru </a></mj-text>
+        <mj-text padding-bottom="0px">Пароль: <a>123</a></mj-text>
+        <mj-text>Для подтверждения регистрации нажмите, пожалуйста, на кнопку
+          ниже.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Instruction Text -->
+    <mj-section>
+      <mj-text>Для получения полного доступа к онлайн-материалам необходимо заполнить
+        анкету и приложить сканы документов, подтверждающих Ваше медицинское
+        образование.</mj-text>
+    </mj-section>
+
+    <!-- Validate Documents Button -->
+    <mj-section>
+      <mj-button mj-class="button"> Отправить анкету на проверку </mj-button>
+    </mj-section>
+
+    <!-- Info About Partner -->
+    <mj-section>
+      <mj-text font-weight="bold" color="#4DA2D6" font-size="18px">Вас пригласила</mj-text>
+    </mj-section>
+
+    <mj-section text-align="left">
+      <mj-column vertical-align="middle" width="20%">
+        <mj-image padding="0px" width="120px" src="https://i.postimg.cc/JhvScc8c/7781-2-1.png" />
+      </mj-column>
+      <mj-column vertical-align="middle">
+        <mj-text padding-bottom="0px"><strong>Кольцова Юлия Евгеньевна</strong></mj-text>
+        <mj-text padding-bottom="0px" color="#C4C4C4">косметолог, гинеколог</mj-text>
+        <mj-text padding-bottom="0px">Москва, GTM +03:00</mj-text>
+        <mj-text padding-bottom="0px">+0(000)000-00-00</mj-text>
+        <mj-text padding-bottom="0px"><a>koltsova@mail.ru</a></mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Info -->
+    <mj-section mj-class="info-block">
+      <mj-column width="10%" vertical-align="middle">
+        <mj-image align="center" padding="0px" width="15px" src="https://i.postimg.cc/MGJ9XtJh/info-1-1.png" />
+      </mj-column>
+      <mj-column width="90%" vertical-align="middle">
+        <mj-text color="#4DA2D6" padding="0px">Чтобы узнать подробности, пожалуйста свяжитесь с доктором, от
+          которого Вы получили приглашение.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Warning -->
+    <mj-section>
+      <mj-text color="#C4C4C4">Если Вы не знакомы с человеком, пригласившим Вас в сообщество Anti-Age
+        Expert и считаете данное письмо спамом, пожалуйста, сообщите об этом по
+        e-mail: <a>info@antiage-expert.com</a></mj-text>
+    </mj-section>
+  </mj-body>
+</mjml>

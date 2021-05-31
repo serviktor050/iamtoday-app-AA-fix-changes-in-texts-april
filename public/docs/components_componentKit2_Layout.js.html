@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/componentKit2/Layout.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/componentKit2/Layout.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {Component, PropTypes} from 'react'
+import {browserHistory} from 'react-router'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as actions from '../../actions'
+import {api, domen} from '../../config.js'
+import cookie from 'react-cookie'
+import Menu from '../todayTask/Menu'
+import HeaderTask from './HeaderTask'
+import CalendarList from '../todayTask/CalendarList'
+import MobileLeftMenu from './MobileLeftMenu'
+import CSSModules from 'react-css-modules'
+import styles from './layout.css'
+import CalendarLoader from '../componentKit2/CalendarLoader'
+import {Link} from 'react-router'
+
+/**
+ *  Компонент Layout.
+ *
+ */
+class Layout extends Component {
+
+  static propTypes = {
+    profileData: PropTypes.object,
+    selectedTaskDay: PropTypes.string.isRequired,
+    pageNumber: PropTypes.number,
+    dispatch: PropTypes.func.isRequired
+  }
+
+  componentDidMount() {
+    const {dispatch, selectedTaskDay, pageNumber} = this.props
+    dispatch({type: 'SET_MENU_LIST', index: pageNumber})
+  }
+
+  render() {
+    const {
+      userInfo, setTypeId, taskDay, changeChatType, clearRenderChat,
+      showMobileLeftMenu, showLeftMenu, hideLeftMenu, menuList, calendarLoadSlow, prevSeasons
+    } = this.props
+    const {firstName, lastName, program, photo, gender, role} = userInfo.data
+    let calendar, id
+    const isAlfa = domen.isAlfa
+    if (isAlfa) {
+      document.body.style.backgroundColor = "#f9f0f0"
+    }
+    console.log('layyyy')
+    console.log(this.props)
+    if(taskDay &amp;&amp; taskDay.data){
+      calendar= taskDay.data[0].calendar
+      id = taskDay.data[0].id
+    }
+    return (
+      &lt;div className={styles.layout}>
+        &lt;HeaderTask
+          program={program}
+          showLeftMenu={showLeftMenu}
+          fullName={firstName &amp;&amp; lastName ? `${firstName} ${lastName}` : null}
+          avatar={photo}
+        />
+
+
+        {window.mobilecheck() &amp;&amp; showMobileLeftMenu &amp;&amp;
+        &lt;MobileLeftMenu dayId={id} hideMenu={hideLeftMenu}/>
+        }
+
+        &lt;div className={styles.layoutInner}>
+          &lt;div className={styles.grid}>
+            &lt;div className={styles.gridCellLayoutMenu14}>
+              &lt;div className={styles.gridLayoutMenuInner}>
+                &lt;Menu
+                  fullName={`${firstName} ${lastName}`}
+                  dayId={id}
+                  prevSeasons={prevSeasons}
+                  program={program}
+                  gender={gender}/>
+
+                {taskDay &amp;&amp; taskDay.data &amp;&amp; !calendarLoadSlow
+                  ? &lt;CalendarList
+                    calendar={calendar}
+                    dayId={id} role={role}
+                    privateChatId={actions.PRIVATE_CHAT_ID}
+                    setTypeId={setTypeId}
+                    changeChatType={changeChatType}
+                    clearRenderChat={clearRenderChat}
+                  />
+                  : &lt;CalendarLoader/>
+                }
+
+              &lt;/div>
+            &lt;/div>
+
+            &lt;div className={styles.gridCellLayoutContentPocket34}>
+              {this.props.children}
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;ul className={styles.menuMobBottom}>
+          &lt;li
+            className={menuList[0].active
+              ? styles.menuMobBottomItemActive
+              : styles.menuMobBottomItem
+            }
+          >
+
+            &lt;Link to={'/task'} className={styles.menuMobBottomItemInner}>
+                &lt;span className={styles.menuMobBottomIco}>
+                  &lt;svg className={styles.svgIcoBookMobile}>
+                    &lt;use xlinkHref="#ico-m-tasks">&lt;/use>
+                  &lt;/svg>
+                &lt;/span>
+              &lt;span className={styles.menuMobBottomTitle}>Задания&lt;/span>
+            &lt;/Link>
+          &lt;/li>
+          &lt;li
+            className={menuList[2].active
+              ? styles.menuMobBottomItemActive
+              : styles.menuMobBottomItem
+            }
+          >
+
+            &lt;Link to={'/food'} className={styles.menuMobBottomItemInner}>
+              &lt;span className={styles.menuMobBottomIco}>
+                &lt;svg className={styles.svgIcoFoodMobile}>
+                  &lt;use xlinkHref="#ico-m-food">&lt;/use>
+                &lt;/svg>
+              &lt;/span>
+              &lt;span className={styles.menuMobBottomTitle}>Питание&lt;/span>
+            &lt;/Link>
+
+          &lt;/li>
+          &lt;li
+            className={menuList[5].active
+              ? styles.menuMobBottomItemActive
+              : styles.menuMobBottomItem
+            }
+          >
+            &lt;Link to={'/chats/' + id} className={styles.menuMobBottomItemInner}>
+                  &lt;span className={styles.menuMobBottomIco}>
+                    &lt;svg className={styles.svgIcoPhoto}>
+                      &lt;use xlinkHref="#ico-chat">&lt;/use>
+                    &lt;/svg>
+                  &lt;/span>
+              &lt;span className={styles.menuMobBottomTitle}>Чат&lt;/span>
+            &lt;/Link>
+          &lt;/li>
+          &lt;li
+            className={menuList[4].active
+              ? styles.menuMobBottomItemActive
+              : styles.menuMobBottomItem
+            }
+          >
+            &lt;Link to={'/reports'} className={styles.menuMobBottomItemInner}>
+              &lt;span className={styles.menuMobBottomIco}>
+                &lt;svg className={styles.svgIcoBookMobile}>
+                  &lt;use xlinkHref="#ico-m-book">&lt;/use>
+                &lt;/svg>
+              &lt;/span>
+              &lt;span className={styles.menuMobBottomTitle}>Зачеты&lt;/span>
+            &lt;/Link>
+          &lt;/li>
+
+        &lt;/ul>
+      &lt;/div>
+
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  const {selectedTaskDay, recivedTaskDay, menuList, sign, userInfo, userToken, showMobileLeftMenu} = state
+  console.log('stateee')
+  console.log(state)
+  const {
+    isFetching,
+    lastUpdated,
+    taskDay
+  } = recivedTaskDay[selectedTaskDay] || {
+    isFetching: true,
+    taskDay: null
+  }
+
+  return {
+    menuList,
+    sign,
+    showMobileLeftMenu,
+    taskDay,
+    selectedTaskDay,
+    userInfo,
+    token: userToken.token
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  setTypeId: bindActionCreators(actions.setTypeId, dispatch),
+  changeChatType: bindActionCreators(actions.changeChatType, dispatch),
+  clearRenderChat: bindActionCreators(actions.clearRenderChat, dispatch),
+  showLeftMenu: bindActionCreators(
+    () => dispatch({type: 'SHOW_LEFT_MENU', show: true}),
+    dispatch
+  ),
+  hideLeftMenu: bindActionCreators(
+    () => dispatch({type: 'SHOW_LEFT_MENU', show: false}),
+    dispatch
+  ),
+  dispatch
+
+})
+
+Layout = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Layout)
+
+
+export default CSSModules(Layout, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

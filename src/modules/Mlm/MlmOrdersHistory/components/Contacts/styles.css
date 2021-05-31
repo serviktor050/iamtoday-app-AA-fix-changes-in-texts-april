@@ -1,0 +1,98 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.contacts__manager {
+  margin-bottom: 30px;
+}
+
+.contacts__title {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #4da2d6;
+}
+
+.contacts__lastName {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 600;
+}
+
+.contacts__firstName {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 21px;
+  margin-bottom: 10px;
+}
+
+.contacts__telWrapper {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.contacts__tel {
+  color: #2c2f33;
+  text-decoration: none;
+}
+
+.contacts__tel--manager {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.contacts__tel--logistics {
+  display: block;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 5px;
+}
+
+.contacts__wa {
+  margin-left: 10px;
+  display: flex;
+}
+
+.contacts__wa svg {
+  width: 15px;
+  height: 15px;
+}
+
+.contacts__email {
+  font-size: 12px;
+  line-height: 15px;
+  color: #1f6d9c;
+  text-decoration: none;
+}
+
+.contacts__workingTime {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+@media screen and (min-width: 470px) {
+  .contacts {
+    flex-direction: row;
+  }
+
+  .contacts__manager {
+    margin-right: 100px;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contacts__manager {
+    margin-right: 235px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .contacts {
+    box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.1);
+  }
+}

@@ -1,0 +1,56 @@
+.profileContacts {
+  margin-top: 3px;
+  display: flex;
+}
+
+.profileContacts__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.profileContacts__button:last-child {
+  margin-right: 0;
+}
+
+.profileContacts__button svg {
+  width: 13px;
+  height: 13px;
+}
+
+.profileContacts__tooltip {
+  display: flex;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.profileContacts__phone,
+.profileContacts__email {
+  color: #2c2f33;
+  text-decoration: none;
+}
+
+.profileContacts__phone {
+  display: inline-flex;
+  align-items: center;
+}
+
+.profileContacts__phone svg {
+  margin-left: 5px;
+  width: 15px;
+  height: 15px;
+}
+
+.profileContacts__copyButton {
+  margin-left: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: inherit;
+  line-height: inherit;
+  color: #4da2d6;
+  cursor: pointer;
+}

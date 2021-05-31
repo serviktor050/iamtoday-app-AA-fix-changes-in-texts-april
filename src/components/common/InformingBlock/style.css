@@ -1,0 +1,107 @@
+.informing-block__container {
+  width: 100%;
+  padding: 32px 60px 32px 32px;
+  background: #f0f6ff;
+  margin-bottom: 40px;
+}
+
+.informing-block__container-main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.informing-block__container .informing-block__main-content-wrapper {
+  display: flex;
+}
+
+.informing-block__main-content-text {
+  font-size: 15px;
+  line-height: 18px;
+  text-align: left;
+  max-width: 400px;
+}
+
+.informing-block__container .informing-block__btn-wrapper {
+  margin-left: auto;
+}
+
+.informing-block__container
+  .informing-block__btn-wrapper
+  button.informing-block__btn {
+  padding: 10px 20px;
+  background: #4da2d6;
+  border-radius: 2px;
+  font-size: 15px;
+  line-height: 18px;
+  color: #ffffff;
+}
+
+.informing-block__error-ico {
+  display: block;
+  width: 80px;
+  min-width: 80px;
+  height: 80px;
+  background: url("../../../assets/img/svg/error.svg") center/cover no-repeat;
+  margin-right: 26px;
+}
+
+.informing-block__main-content-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.informing-block__main-info {
+  background: #ffffff;
+  border-radius: 2px;
+  font-size: 15px;
+  line-height: 18px;
+  padding: 8px 20px 8px 8px;
+  color: #1f6d9c;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: fit-content;
+  margin-left: 106px;
+  margin-top: -20px;
+}
+
+.informing-block__main-info::before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: url("../../../assets/img/svg-symbols/ico-info.svg") center/cover
+    no-repeat;
+  margin-right: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .informing-block__container {
+    padding: 32px;
+  }
+  .informing-block__container-main {
+    flex-wrap: wrap;
+  }
+  .informing-block__container .informing-block__main-content-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .informing-block__main-content-text {
+    max-width: initial;
+  }
+  .informing-block__error-ico {
+    margin-right: 0;
+  }
+  .informing-block__main-content-text {
+    text-align: center;
+  }
+  .informing-block__main-content-text-link {
+    text-align: center;
+  }
+  .informing-block__container .informing-block__btn-wrapper {
+    margin: 15px auto 0;
+  }
+}

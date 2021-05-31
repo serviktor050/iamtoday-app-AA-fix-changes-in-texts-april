@@ -1,0 +1,38 @@
+.input__wrapper {
+    display: flex;
+    border: 1px solid transparent;
+}
+
+.input__wrapper_error {
+    border: 1px solid red;
+}
+
+.input {
+    all: unset;
+    padding: 10px;
+    background: #F0F6FF;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #1F6D9C;
+    width: 76%;
+}
+
+.icon__wrapper {
+    all: unset;
+    padding: 0 8px;
+    background: #F0F6FF;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.icon {
+    width: 14px;
+    height: 14px;
+    filter: invert(33%) sepia(88%) saturate(419%) hue-rotate(158deg) brightness(95%) contrast(96%);
+}
+
+.input:disabled,
+.icon__wrapper:disabled {
+    filter: brightness() saturate(0);
+}

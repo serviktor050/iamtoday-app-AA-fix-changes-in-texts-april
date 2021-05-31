@@ -1,0 +1,80 @@
+.bc {
+  @include av-mq(portable) {
+    padding: 0 20px;
+  }
+
+  @include av-mq(desk) {
+    margin-bottom: 10px;
+  }
+
+  &__item {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding: 13px 20px;
+    border-radius: $base-radius 0 0 $base-radius;
+    color: $c-secondary;
+    margin-bottom: 10px;
+
+    &:not(:first-child) {
+      padding-left: 36px;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 23px 0 23px 17px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 23px 0 23px 17px;
+      position: absolute;
+      left: 100%;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    &:hover {
+      color: $c-primary;
+    }
+
+    @include av-mq(portable) {
+      background-color: $bg-color;
+
+      &:not(:first-child) {
+        &::before {
+          border-color: transparent transparent transparent #fff;
+        }
+      }
+
+      &::after {
+        border-color: transparent transparent transparent $bg-color;
+      }
+    }
+
+    @include av-mq(desk) {
+      background-color: #fff;
+
+      &:not(:first-child) {
+        &::before {
+          border-color: transparent transparent transparent $bg-color;
+        }
+      }
+
+      &::after {
+        border-color: transparent transparent transparent #fff;
+      }
+    }
+  }
+}

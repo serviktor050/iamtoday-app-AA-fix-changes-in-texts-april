@@ -1,0 +1,82 @@
+.diplomCard {
+  width: 100%;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.diplomCard__cover {
+    width: 30%;
+    height: 100%;
+    margin-right: 20px;
+    object-fit: contain;
+}
+
+.diplomCard__mainInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.diplomCard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.diplomCard__title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 10px;
+}
+
+.diplomCard__downloadContainer {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    line-height: 18px;
+    color: #4DA2D6;
+}
+
+.diplomCard__downloadBtn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
+    border-bottom: 1px solid #4DA2D6;
+}
+
+.diplomCard__downloadBtn::before {
+    content: '';
+    display: block;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    background: url('../../../../assets/img/svg-symbols/ico-download.svg') center/cover no-repeat;
+    margin-right: 5px;
+}
+
+.diplomCard__downloadSubInfo {
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.diplomCard__description {
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 152.8%;
+}
+
+.diplomCard__date {
+    font-size: 13px;
+    line-height: 152.8%;
+    color: #4DA2D6;
+    margin-top: 20px;
+}
+
+.diplomCard__datePrefix {
+    color: #C4C4C4;
+}

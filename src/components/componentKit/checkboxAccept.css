@@ -1,0 +1,28 @@
+.checkboxesItem {
+  composes: checkboxes__item from '../../index.css';
+}
+
+.checkbox {
+  composes: checkbox from '../../index.css';
+}
+
+.checkboxLabel {
+  composes: checkbox__label from '../../index.css';
+}
+
+.checkboxField {
+  composes: checkbox__field from '../../index.css';
+}
+
+.checkboxPh {
+  composes: checkbox__ph from '../../index.css';
+}
+
+.svgIcoTick {
+  composes: svg-icon from '../../index.css';
+  composes: ico-tick from '../../index.css';
+}
+
+.checkboxTitle {
+  composes: checkbox__title from '../../index.css';
+}

@@ -1,0 +1,53 @@
+.mainNavItemInner {
+  composes: main-nav__item-inner from '../../index2.css';
+  color: #2c2f33;
+  fill: #2c2f33;
+}
+.mainNavItemInner:hover {
+  color: #fff;
+}
+
+.disabled:hover {
+  fill: #2c2f33;
+  color: #2c2f33;
+  cursor: no-drop;
+}
+
+/*.mainNavItemInnerActive {
+  composes: main-nav__item-inner from '../../index2.css';
+  composes: main-nav__item-inner--active from '../../index2.css';
+  color: #fff;
+  fill: #fff;
+}*/
+
+.mainNavTitle {
+  composes: main-nav__title from '../../index2.css';
+  color: #1f447b;
+}
+.iconWrap{
+  width:30px;
+  display: flex;
+}
+.iconWrap span{
+  color: #fff;
+}
+.unReadMsgs{
+  padding: 0 4px;
+  background: #f97b7c;
+  border-radius: 3px;
+  color: #fff;
+  margin-left:6px;
+}
+.iconWrap svg {
+  width: 20px;
+  height: 17px;
+}
+.error {
+  width: 30px !important;
+  left: -4px;
+  position: relative;
+}
+
+.subItems{
+  margin-left:6px;
+}

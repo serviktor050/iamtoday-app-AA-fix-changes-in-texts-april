@@ -1,0 +1,127 @@
+.minCalendarItem {
+  composes: min-calendar__item from '../../index2.css';
+  max-width: 80px;
+  margin: auto;
+}
+.minCalendarItem:first-child {
+  border-top: 1px solid #eee;
+}
+.minCalendarItem:last-child {
+  border-bottom: 1px solid #eee;
+}
+@media screen and (min-width: 1025px) {
+    .minCalendarItem {
+        margin: 0;
+        max-width: none;
+    }
+}
+
+.icoDone {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-done from '../../index2.css';
+}
+
+.icoCross {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-cross from '../../index2.css';
+}
+
+.icoWaiting {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-waiting from '../../index2.css';
+  fill: #869bb8 !important;
+}
+
+.icoGift {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-gift from '../../index2.css';
+}
+
+.finish {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-finish from '../../index2.css';
+}
+
+.minCalendarInfo {
+  composes: min-calendar__info from '../../index2.css';
+  top: -7px;
+  position: relative;
+}
+
+.calendarToolipInner {
+  composes: calendar-toolip__inner from '../../index2.css';
+}
+
+.calendarToolipTitle {
+  composes: calendar-toolip__title from '../../index2.css';
+}
+
+.calendarToolipDate {
+  composes: calendar-toolip__date from '../../index2.css';
+}
+
+.minCalendarIcon {
+  composes: min-calendar__icon from '../../index2.css';
+}
+
+.svgIcon {
+  composes: svg-icon from '../../index2.css';
+}
+
+.minCalendarSpecialDay {
+  composes: min-calendar__special-day from '../../index2.css';
+}
+
+.minCalendarItemToday {
+  composes: minCalendarItem;
+  composes: today from '../../index2.css';
+  display: flex;
+}
+.minCalendarItemToday .minCalendarInfo {
+  display: flex !important;
+}
+.minCalendarItemToday .minCalendarInfo svg {
+  fill: #fff;
+}
+.minCalendarItemIsSelect {
+  composes: minCalendarItem ;
+  composes: is-select from '../../index2.css';
+}
+.minCalendarItemIsSelectTele2 {
+  composes: minCalendarItem ;
+  composes: is-select from '../../index2.css';
+  background-color: #ef3124 !important;
+}
+.minCalendarItemIsSelectTele2:before  {
+  border: 4px solid #ef3124 !important;
+}
+.svgIconWaiting {
+  composes: svg-icon from '../../index2.css';
+  composes: waiting from '../../index2.css';
+}
+
+.minCalendarDateWrap {
+  composes: min-calendar__date-wrap from '../../index2.css';
+}
+.minCalendarDate{
+  color: #000;
+}
+
+.minCalendarDay {
+  composes: min-calendar__day from '../../index2.css';
+  color: #ef3124;
+}
+
+.minCalendarDate {
+  composes: min-calendar__date from '../../index2.css';
+}
+.iSvg{
+  fill:rgba(112, 207, 254, 0.68);
+  width:20px;
+  height:20px;
+}
+.iconDay{
+  fill:rgba(112, 207, 254, 0.68);
+  height: 35px;
+  width: 100%;
+}

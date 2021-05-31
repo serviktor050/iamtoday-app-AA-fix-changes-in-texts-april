@@ -1,0 +1,68 @@
+.h1 {
+  composes: h1 from '../../index2.css';
+  text-align: center;
+}
+.layoutEntry {
+  composes: layout from '../../index.css';
+  composes: layout--entry from '../../index.css';
+}
+
+.gridEntryHeader {
+  composes: grid from '../../index.css';
+  composes: entry-header from '../../index.css';
+}
+
+.gridCellTodaymeLogo {
+  composes: grid__cell from '../../index.css';
+  composes: todayme-logo from '../../index.css';
+}
+.entryBg {
+  composes: entry__bg from '../../index.css';
+  background: #21ACE1;
+}
+.container{
+  border: 1px solid #ced9eb;
+  background: #fff;
+  border-radius: 5px;
+  padding: 40px;
+}
+.layout {
+  composes: layout from '../../index2.css';
+}
+
+.layoutInner {
+  composes: layout__inner from '../../index2.css';
+  padding-bottom: 30px;
+}
+.grid {
+  composes: grid from '../../index2.css';
+}
+.gridCellLayoutContentPocket34 {
+  width:100%;
+   composes: grid__cell from '../../index2.css';
+ }
+
+.header{
+  background-color: #0078dc;;
+  height:60px;
+}
+.gridCellHeaderLogoUnipro{
+  width: 33.33333%;
+  composes: grid__cell from '../../index2.css';
+  composes: header__logo from '../../index2.css';
+  font-size:18px;
+  height:62px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.uniproLogo{
+  width: 100px;
+  margin-top: -4px;
+  cursor: pointer;
+}
+.p{
+  margin:12px 0;
+ }
+.h2{
+  margin: 20px 0;
+}

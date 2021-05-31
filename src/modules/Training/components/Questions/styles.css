@@ -1,0 +1,70 @@
+.questions {
+    display: block;
+    width: 100%;
+}
+
+.addNewQuestion {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    background: #F0F6FF;
+    border: 1px dashed #E6EFF4;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 18px;
+    color: #4DA2D6;
+    cursor: pointer;
+}
+
+.addNewQuestion__plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #4DA2D6;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-right: 15px;
+}
+
+.newQuestion__textarea {
+    all: unset;
+    padding: 15px;
+    width: 100%;
+    border: 1px solid #E6EFF4;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 10px;
+}
+
+.newQuestion__button {
+    all: unset;
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 2px;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.newQuestion__button-blue {
+    background: #4DA2D6;
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+
+.newQuestion__button-white {
+    color: #4DA2D6;
+}

@@ -1,0 +1,26 @@
+.newTask__input {
+  margin-bottom: 10px;
+}
+
+.newTask__input_wrapper {
+  position: relative;
+  padding-top: 15px;
+}
+
+.newTask__contractor_input {
+  font-size: 16px;
+  line-height: 19px;
+  color: #2C2F33;
+  width: 100%;
+  border: 1px solid #E6EFF4;
+  padding-left: 30px !important;
+}
+
+.newTask__contractor_icon {
+  position: absolute;
+  top: 32px;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  filter: invert(33%) sepia(88%) saturate(419%) hue-rotate(158deg) brightness(95%) contrast(96%);
+}

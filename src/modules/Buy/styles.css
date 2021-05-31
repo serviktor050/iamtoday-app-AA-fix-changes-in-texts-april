@@ -1,0 +1,655 @@
+.buy {
+  background: #fff;
+  padding: 30px;
+  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.buy__step {
+  font-size: 12px;
+  line-height: 138.3%;
+  color: #b5b5b5;
+}
+
+.buy__title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.buy__title-green {
+  color: #39961e;
+}
+
+.buy__list {
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  flex-direction: column;
+}
+.buy__item {
+  width: 100%;
+  margin-right: 30px;
+  margin-bottom: 35px;
+}
+
+.buy__item:last-child {
+  margin-right: 0;
+}
+
+.tarif {
+  height: 100%;
+}
+
+.tarif__content {
+  /* background: rgb(238, 245, 246);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 245, 246, 1) 0%,
+    rgba(243, 253, 237, 1) 49%
+  ); */
+  background: #f8fff1;
+  border-radius: 2px;
+  padding: 15px 20px;
+  text-align: left;
+  height: 100%;
+  position: relative;
+}
+.tarif__content-blue {
+  background: #f0f6ff;
+}
+.tarif__type {
+  font-size: 12px;
+  line-height: 138.3%;
+  color: #b5b5b5;
+  margin-bottom: 7px;
+}
+.tarif__content_chat {
+  height: 230px;
+}
+.tarif__title {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #79c330;
+}
+
+.tarif__title-blue {
+  color: #4da2d6;
+}
+
+.tarif__desc {
+  font-size: 12px;
+  margin-top: 10px;
+  line-height: 15px;
+}
+
+.tarif__chat {
+  position: absolute;
+  bottom: 12px;
+  font-size: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #fff;
+}
+.tarif__chat span {
+  font-size: 12px;
+  color: #39961e;
+}
+.tarif__icon {
+  margin-top: -45px;
+  margin-bottom: 31px;
+  height: 83px;
+}
+.no-verify {
+  background: #fff;
+}
+.header {
+  padding: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 1px solid #eee;
+}
+.content {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buy__variantsList {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.buy__variantsList-red {
+  box-shadow: 0px 0px 5px 2px red;
+}
+
+.variantWayCardWrapper {
+  position: relative;
+}
+
+.variantWayCard {
+  position: relative;
+  width: 100%;
+  display: block;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #daeff2;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.variantWayCard-green {
+  background: #e7ffd0;
+}
+
+.variantWayCardContent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.withdarwalWayInputWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: initial;
+  margin-top: 29px;
+  margin-left: 38px;
+}
+
+.withdrawalWayTextarea {
+  width: 610px;
+  background: #ffffff;
+  border: 1px solid #e6eff4;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: inherit;
+}
+
+.withdrawalActions {
+  margin-left: 34px;
+  z-index: inherit;
+}
+
+.withdrawalBtn {
+  z-index: inherit;
+  padding: 10px 20px;
+  background: #4da2d6;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.withdrawalAgreement {
+  z-index: inherit;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #4da2d6;
+}
+
+.withdrawalAgreementCheckbox {
+  z-index: inherit;
+  margin-right: 15px;
+  margin-top: 2px;
+}
+
+.fakeCheckboxWrapper {
+  display: block;
+  margin-right: 18px;
+}
+
+.fakeCheckbox {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: 1px solid #e6eff4;
+  box-sizing: border-box;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fakeCheckboxFill {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #4da2d6;
+  border-radius: 1px;
+}
+
+.fakeCheckboxFill-green {
+  background: #79c330;
+}
+
+.variantWayTitle {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: #2c2f33;
+}
+
+.variantWayTitle-blue {
+  color: #4da2d6;
+}
+
+.variantWayTitle-green {
+  color: #79c330;
+}
+
+.variantWayDescription {
+  width: 70%;
+  border-right: 1px solid #daeff2;
+}
+
+.variantWayDescrWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.variantWayDescrImgWrapper {
+  min-width: 180px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.variantWayDescrImg {
+  width: 100%;
+  object-fit: cover;
+}
+
+.variantWayDescr {
+  margin-top: 15px;
+}
+
+.variantWayInput {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.variantWayCardBorder {
+  box-shadow: 0px 3px 10px 5px #ecf6fd;
+}
+
+.variantWayInput:checked + .variantWayCardBorder {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 3px 10px 5px #ecf6fd;
+  border-radius: 4px;
+}
+
+.vipChatDescrPoints {
+  display: block;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 152.8%;
+  color: #2c2f33;
+  color: #39961e;
+}
+
+.pointsWrapper {
+  padding: 18px 4px 0 45px;
+  color: #79c330;
+  text-align: left;
+}
+
+.pointsCurrency {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.pointsText {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: #79c330;
+}
+
+.firstStepFooter {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.acceptVipChat {
+  margin-right: 34px;
+}
+
+.acceptVipChat-label {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.acceptVipChat-label-red {
+  box-shadow: 0px 0px 5px 2px red;
+}
+
+.acceptVipChat-label > input {
+  margin-right: 13px;
+}
+
+.note {
+  color: #4da2d6;
+}
+
+.note-red {
+  color: red !important;
+}
+
+.noteLink {
+  color: inherit;
+}
+
+.endFirstStepBtn {
+  position: relative;
+  padding: 15px 25px;
+  background: #4da2d6;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+  border: 1px solid #4da2d6;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.endFirstStepBtn::after {
+  content: "";
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  display: inline-block;
+  background-image: url("../../assets/img/svg-symbols/arrow-right.svg");
+  background-size: cover;
+}
+
+.cart__item {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  margin-right: 30px;
+}
+
+.cart__item:last-child {
+  margin-right: 0;
+}
+
+.cart__icon-price {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  background-image: url("../../assets/img/svg/receipt.svg");
+  background-size: cover;
+  margin-right: 15px;
+}
+
+.cart__icon-chat {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  background-image: url("../../assets/img/svg/chat.svg");
+  /* filter: brightness(0.2) sepia(1) hue-rotate(180deg) saturate(5); */
+  background-size: cover;
+  margin-right: 15px;
+}
+
+.cart__item-descr {
+  padding-top: 5px;
+}
+
+.cart__item-title {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2c2f33;
+}
+
+.cart__item-points {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #2c2f33;
+}
+
+.bigGreen {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+  color: #79c330;
+  margin-right: 8px;
+}
+
+.pointsTitle {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 152.8%;
+  text-align: center;
+  color: #2c2f33;
+}
+
+.text-center {
+  text-align: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  align-items: center;
+}
+
+.secondStepFooter {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.endSecondStepBtn {
+  composes: endFirstStepBtn;
+  margin-right: 30px;
+}
+
+.endSecondStepBtn::after {
+  display: none;
+}
+
+.backToFirstStepBtn {
+  composes: endSecondStepBtn;
+  background-color: transparent;
+  color: #4da2d6;
+  margin-right: 0;
+}
+
+.notEnoughPoints {
+  margin-top: 18px;
+  font-size: 12px;
+  line-height: 152.8%;
+  text-align: center;
+  color: #ff6b6b;
+}
+
+.notEnoughPoints-quantity {
+  font-weight: bold;
+}
+
+.buyPointsWrapper {
+  position: absolute;
+  bottom: 20px;
+  left: 67px;
+}
+
+.buyPointsPlaceholder {
+  padding-top: 15px;
+  width: 170px;
+  height: 50px;
+}
+
+.buyPoints {
+  composes: endSecondStepBtn;
+  background-color: #79c330;
+  border-color: #79c330;
+}
+
+.pic {
+  width: 100%;
+  text-align: center;
+}
+.info {
+  width: 70%;
+}
+.pic img {
+  width: 122px;
+  height: 122px;
+}
+.text {
+  font-size: 18px;
+  margin-bottom: 60px;
+}
+.btns {
+  display: flex;
+  flex-direction: column;
+}
+.buy-btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.buy-btn:first-child {
+  margin-right: 25px;
+}
+.strike {
+  position: relative;
+  margin: 0 5px;
+}
+.strike:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  background: red;
+  height: 1.5px;
+  width: 100%;
+}
+.strike-cost {
+  padding-right: 5px;
+}
+.partnerInfoModal {
+  position: relative;
+}
+
+.modalContent {
+  display: flex;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1.5;
+  text-align: center;
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .pic {
+    width: 30%;
+  }
+  .buy__item {
+    width: 50%;
+    margin-bottom: 0;
+  }
+  .buy__list {
+    flex-direction: row;
+  }
+  .header {
+    font-size: 22px;
+  }
+  .content {
+    padding: 50px;
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .btns {
+    flex-direction: row;
+  }
+  .buy-btn {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .variantWayCardContent {
+    flex-wrap: wrap;
+  }
+  .variantWayDescription {
+    border: none;
+  }
+  .withdarwalWayInputWrapper {
+    flex-wrap: wrap;
+    margin-top: 29px;
+    margin-left: 0px;
+  }
+  .withdrawalWayTextarea {
+    width: 100%;
+  }
+  .withdrawalActions {
+    margin: 15px auto 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .withdrawalShopBtn {
+    margin-top: 15px;
+  }
+  .buy__list {
+    padding-top: 10px;
+  }
+  .cart__item {
+    margin: 10px 0;
+    width: 100%;
+  }
+  .variantWayDescrWrapper {
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .text-center {
+    width: 100%;
+  }
+  .variantWayCardWrapper:last-child .variantWayCard {
+    padding-bottom: 90px;
+  }
+}

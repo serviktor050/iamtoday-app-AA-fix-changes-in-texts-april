@@ -1,0 +1,23 @@
+.pendingPhotos {
+  composes: pending-photos from '../../index.css';
+}
+
+.pendingPhotosTitle {
+  composes: pending-photos__title from '../../index.css';
+}
+
+.pendingPhotosRow {
+  composes: pending-photos__row from '../../index.css';
+}
+
+.pendingPhotosPhoto {
+  composes: pending-photos__photo from '../../index.css';
+}
+
+.pendingPhotosPhotoTitle {
+  composes: pending-photos__photo-title from '../../index.css';
+}
+
+.pendingPhotosPhotoImage {
+  composes: pending-photos__photo-image from '../../index.css';
+}

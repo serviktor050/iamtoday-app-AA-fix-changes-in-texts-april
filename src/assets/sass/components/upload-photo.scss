@@ -1,0 +1,148 @@
+.upload-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__item {
+    position: relative;
+    margin-bottom: 20px;
+
+    &--uploaded,
+    &--refuse,
+    &--pending {
+      .upload-gallery__overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: $base-radius;
+        transition: 0.1s;
+      }
+
+      .upload-gallery__title {
+        color: #fff;
+      }
+    }
+
+    &--uploaded {
+      .upload-gallery__overlay {
+        opacity: 0;
+        background-color: rgba(112, 207, 254, 0.86);
+        
+      }
+
+      .upload-gallery__ico {
+        .svg-icon {
+          fill: #fff;
+        }
+      }
+
+      a { color: #fff; }
+
+      &:hover {
+        .upload-gallery__overlay {
+          opacity: 1;
+        }
+      }
+    }
+
+    &--refuse,
+    &--pending {
+      .upload-gallery__overlay {
+        cursor: default;
+        background-color: rgba(31, 68, 123, 0.54);
+      }
+    }
+
+    // &:hover {
+    //   &:not(.upload-gallery--uploaded):not(.upload-gallery--refuse) {
+    //     .upload-gallery__overlay {
+    //       background-color: $c-l-gray;
+    //     }
+    //   }
+    // }
+
+    @include av-mq(pocket) {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+
+    @include av-mq(portable) {
+      width: 48%;
+
+      &:not(:last-child) {
+        margin-right: 3%;
+      }
+
+      &:nth-of-type(2n+2) {
+        margin-right: 0;
+      }
+    }
+
+    @include av-mq(desk) {
+      width: 23%;
+
+      &:not(:last-child) {
+        margin-right: 2.5%;
+      }
+    }
+  }
+
+  &__item-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: $base-radius;
+    height: 100%;
+
+    @include av-mq(portable) {
+      max-height: 300px;
+    }
+    @include av-mq(desk) {
+      max-height: 220px;
+    }
+  }
+
+  &__overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: 0.1s;
+
+  }
+
+  &__ico {
+    margin-bottom: 25px;
+
+    .svg-icon {
+      fill: $c-l-blue;
+    }
+  }
+
+  &__title {
+    font-family: $f-headline;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $c-secondary;
+  }
+
+  &__img-wrap {
+    position: relative;
+  }
+
+  &__img {
+    max-width: 100%;
+  }
+
+  &__status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}

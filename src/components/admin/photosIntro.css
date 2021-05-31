@@ -1,0 +1,101 @@
+.layout {
+  composes: layout from '../../index.css';
+}
+
+.layoutInner {
+  composes: layout__inner from '../../index.css';
+}
+
+.grid {
+  composes: grid from '../../index.css';
+}
+
+.stageBoxSmallPadding {
+  composes: stage-box from '../../index.css';
+  composes: stage-box--small-padding from '../../index.css';
+}
+
+.mainNav {
+  composes: main-nav from '../../index.css';
+}
+
+.mainNavItem {
+  composes: main-nav__item from '../../index.css';
+}
+
+.entryHeader {
+  composes: entry__header from '../../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width33 {
+    width: 33.33333%;
+  }
+  .width66 {
+    width: 66.66667%;
+  }
+  .width25 {
+    width: 25%;
+  }
+  .width50 {
+    width: 50%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+
+.gridCellLayout33 {
+  composes: width33;
+  composes: grid__cell from '../../index.css';
+}
+
+.gridCellLayout50 {
+  composes: width50;
+  composes: grid__cell from '../../index.css';
+}
+
+.gridCellLayoutIsVideo50 {
+  composes: width50;
+  composes: is-video from '../../index.css';
+  composes: grid__cell from '../../index.css';
+}
+
+.gridLayoutMenuInner {
+  composes: grid from '../../index.css';
+  composes: layout__menu-inner from '../../index.css';
+}
+
+.gridCellLayout66 {
+  composes: width66;
+  composes: grid__cell from '../../index.css';
+  /*composes: 1/1--pocket from '../../index.css';*/
+}
+
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from '../../index.css';
+  composes: layout__menu from '../../index.css';
+}
+
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../../index.css';
+  /*composes: 1/1--pocket from '../../index.css';*/
+}
+
+.deskGridCell12Mb30 {
+  composes: width50;
+  composes: grid__cell from '../../index.css';
+  composes: mb30 from '../../index.css';
+}
+
+.btnPrimary {
+  composes: btn from '../../index.css';
+  composes: btn--primary from '../../index.css';
+}

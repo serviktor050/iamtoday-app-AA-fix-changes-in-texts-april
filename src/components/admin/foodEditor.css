@@ -1,0 +1,30 @@
+.layout {
+  composes: layout from '../../index.css';
+}
+
+.layoutInner {
+  composes: layout__inner from '../../index.css';
+}
+
+.entryHeader {
+  composes: entry__header from '../../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+}
+
+.textCenter {
+  composes: text-center from '../../index.css';
+}
+
+.loaderMain {
+  composes: loader from '../../index.css';
+  composes: loader--main from '../../index.css';
+}
+
+.btnAction {
+  composes: btn from '../../index.css';
+  composes: btn--action from '../../index.css';
+}

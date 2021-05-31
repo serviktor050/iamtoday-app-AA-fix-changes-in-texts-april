@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/Chat.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/Chat.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {Component, PropTypes } from 'react'
+import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import ChatBlock from '../components/Chat/ChatBlock'
+import $ from 'jquery'
+import {api} from '../config.js'
+
+signalR // инициализация - не удалять
+//Hub  // инициализация - не удалять
+
+import CSSModules from 'react-css-modules'
+import styles from './chat.css'
+
+import {
+  fetchChat,
+  fetchChats,
+  closeChat,
+  addToChat,
+  answerToChat,
+  answeredChat,
+  waitingFromChat,
+  concatPrivateChatAction,
+  concatTeamChatAction,
+  concatPublicChatAction,
+  clearRenderChat,
+  renderPublicChatAction,
+  renderPrivateChatAction,
+  renderTeamChatAction,
+  changeChatType,
+  changeStatusChatAction,
+  PUBLIC_CHAT_ID, PRIVATE_CHAT_ID, TEAM_CHAT_ID
+} from '../actions'
+/**
+ *  Компонент Chat
+ *  Используется для блока Чат
+ *
+ */
+export class Chat extends Component {
+  /**
+   * @memberof Chat
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {func} propTypes.closeAdminChat Закрытие админского чата
+   * @prop {func} propTypes.closeChat Закрыть чат
+   * @prop {func} propTypes.answeredChat Посылает ответ
+   * @prop {func} propTypes.addToChat Добавить в чат админа
+   * @prop {func} propTypes.fetchChat Получение данных для чата
+   * @prop {func} propTypes.changeChatType Сменить тип чата
+   * @prop {number} propTypes.chatType Тип чата
+   * @prop {number} propTypes.chatTypeId Тип чата числовой
+   *
+   * */
+  static propTypes = {
+    closeAdminChat: PropTypes.func,
+    closeChat: PropTypes.func.isRequired,
+    answeredChat: PropTypes.func.isRequired,
+    addToChat: PropTypes.func.isRequired,
+    fetchChat: PropTypes.func.isRequired,
+    changeChatType: PropTypes.func.isRequired,
+    chatType: PropTypes.number,
+    chatTypeId: PropTypes.number.isRequired
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      isForwarding: false,
+      chatType:2
+    }
+  }
+  checkMessageLength(e) {
+    this.setState({
+      isMessageValid: e.target &amp;&amp; e.target.value.length
+    })
+  }
+  closeChat() {
+    const {closeChat, closeAdminChat} = this.props
+
+    if (this.state.isForwarding) {
+      this.setState({isForwarding: false})
+    }
+    closeAdminChat()
+  }
+  waiting(idGroup) {
+    const {
+      waitingFromChat
+    } = this.props
+    waitingFromChat(idGroup)
+  }
+  answered(id) {
+    const { answeredChat, dispatch } = this.props
+    answeredChat(id)
+      .then(() => dispatch({ type: 'UPDATE_CHATS', updateChats: true }))
+    this.closeChat()
+  }
+
+  sendMessage(text) {
+    console.log('sendMessageee')
+    const {
+      id,
+      type,
+      typeId,
+      groupId,
+      chatType,
+      chatTypeId,
+      admin,
+      addToChat,
+      answerToChat,
+      fetchChat,
+      changeStatusChatAction
+    } = this.props
+
+    const {
+      isForwarding
+    } = this.state
+
+    if(!text.length) return
+
+    if (isForwarding) {
+      addToChat(chatType, chatTypeId, text)
+    } else {
+      if (admin) {
+        if (chatType === PRIVATE_CHAT_ID) {
+          this.concatChat('privateChats', text)
+          changeStatusChatAction(groupId)
+          answerToChat(groupId, text, chatType, chatTypeId)
+            .then(() => fetchChat(PRIVATE_CHAT_ID, chatTypeId))
+
+        }
+        if (chatType === 1) {
+          answerToChat(groupId, text, chatType, chatTypeId)
+          this.concatChat('commonChats', text)
+        }
+      } else {
+        if (chatType === PUBLIC_CHAT_ID) {
+          answerToChat(id, text, PUBLIC_CHAT_ID, typeId)
+          this.concatChat('commonChats', text)
+        }
+        if (chatType === PRIVATE_CHAT_ID) {
+          answerToChat(id, text, PRIVATE_CHAT_ID)
+          this.concatChat('privateChats', text)
+        }
+        if (chatType === TEAM_CHAT_ID) {
+          console.log('TEAM_CHAT_ID')
+          answerToChat(id, text, TEAM_CHAT_ID)
+          this.concatChat('teamChats', text)
+        }
+      }
+    }
+  }
+
+  concatChat(chatType, text) {
+    const { userId,
+            user,
+            renderPrivateChat = [],
+            renderPublicChat = [],
+            renderTeamChat = [],
+            concatPrivateChatAction,
+            concatTeamChatAction,
+            concatPublicChatAction
+          }
+            = this.props
+    if(chatType === 'privateChats'){
+      let chats = renderPrivateChat.concat({
+        date: '2017-00-00T00:00:00.0219899+03:00',
+        text: text,
+        id:+new Date(),
+        userInfo: {
+          id: userId,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          photo: user.photo
+        }
+      })
+      concatPrivateChatAction(chats)
+    }
+
+    if(chatType === 'teamChats'){
+      let chats = renderTeamChat.concat({
+        date: '2017-00-00T00:00:00.0219899+03:00',
+        text: text,
+        id:+new Date(),
+        userInfo: {
+          id: userId,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          photo: user.photo
+        }
+      })
+      concatTeamChatAction(chats)
+    }
+
+    if(chatType === 'commonChats'){
+      let chats = renderPublicChat.concat({
+        date: '2017-00-00T00:00:00.0219899+03:00',
+        text: text,
+        id:+new Date(),
+        userInfo: {
+          id: userId,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          photo: user.photo
+        }
+      })
+      concatPublicChatAction(chats)
+    }
+
+    setTimeout(() => {
+      this.scrollTop()
+    }, 10)
+  }
+
+  toggleForwarding() {
+    this.setState({
+      isForwarding: !this.state.isForwarding
+    })
+  }
+
+
+  componentWillMount() {
+    this.props.clearRenderChat()
+  }
+  componentWillUnmount(){
+
+    this.props.clearRenderChat()
+  }
+  componentWillReceiveProps(nextProps) {
+    const { renderPublicChatAction, renderTeamChatAction, renderPrivateChatAction, chatType, typeId, changeChatType } = this.props
+
+    if (nextProps.isFetchingChat === 0 &amp;&amp; (nextProps.isFetchingChat !== this.props.isFetchingChat)) {
+      setTimeout(() => {
+        this.scrollTop()
+      }, 10)
+
+      if(!nextProps.isFetching){
+        if (chatType === PUBLIC_CHAT_ID) {
+          renderPublicChatAction(nextProps.publicChats)
+        }
+
+        if (chatType === PRIVATE_CHAT_ID) {
+          renderPrivateChatAction(nextProps.privateChats)
+        }
+        if (chatType === TEAM_CHAT_ID) {
+          renderTeamChatAction(nextProps.teamChats)
+        }
+      }
+
+    }
+  }
+
+  scrollTop() {
+    let chats = document.querySelectorAll('#chat-content')
+    for (let i = 0; i &lt; chats.length; i++) {
+      let listHeight = chats[i].children[0].offsetHeight
+      chats[i].scrollTop = listHeight
+    }
+  }
+
+  changeChat(chatId) {
+    const {type, typeId, changeChatType, fetchChat, clearRenderChat} = this.props
+    clearRenderChat()
+    changeChatType(chatId)
+
+
+    setTimeout(() => {
+      this.scrollTop()
+    }, 10)
+
+    if (chatId === PUBLIC_CHAT_ID) {
+      fetchChat(PUBLIC_CHAT_ID, typeId)
+    }
+    if (chatId === PRIVATE_CHAT_ID) {
+      fetchChat(PRIVATE_CHAT_ID, null)
+    }
+    if (chatId === TEAM_CHAT_ID) {
+      fetchChat(TEAM_CHAT_ID, null)
+    }
+  }
+
+  componentWillUnmount(){
+    this.connection.stop()
+  }
+
+  updateChatWs() {
+    const {type, userId, fetchChat, admin, typeId, chatType} = this.props
+    function getParameterByName(name, url) {
+      if (!url) {
+        url = window.location.href;
+      }
+      name = name.replace(/[\[\]]/g, "\\$&amp;");
+      var regex = new RegExp("[?&amp;]" + name + "(=([^&amp;#]*)|&amp;|#|$)"),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    //let transportType = signalR.TransportType[getParameterByName('transport')] || signalR.TransportType.WebSockets;
+    let logger = new signalR.ConsoleLogger(signalR.LogLevel.Information);
+    let http = new signalR.HttpConnection(`https://api.todayme.ru/chat`);
+
+    this.connection = new signalR.HubConnection(http, logger);
+    this.connection.on('Send', message => {
+      let arr = window.location.pathname.split('/')
+      let day = arr[2]
+      let dayId = day || typeId
+      if (admin) {
+        if(chatType === 1){
+          const {chatType, chatTypeId} = this.props
+          fetchChat(chatType, chatTypeId)
+        }
+      } else {
+        if (message === 'update_private') {
+          console.log('update_privateee')
+          fetchChat(PRIVATE_CHAT_ID, null)
+        }
+        if (message === 'update_public') {
+          fetchChat(PUBLIC_CHAT_ID, dayId)
+        }
+        if (message === 'update_team') {
+          fetchChat(TEAM_CHAT_ID, null)
+        }
+      }
+    });
+
+
+    this.connection.start().then(()=> {
+      return this.connection.invoke('ConnectUser', userId)
+    }).catch(err => console.log(err));
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    const { role } = this.props
+    const {type, userId, fetchChat, admin, chatType, typeId} = this.props
+  }
+  componentDidMount() {
+    const { role, chatType } = this.props
+    const {type, admin, fetchChat, kindChat, typeId, changeChatType, clearRenderChat} = this.props
+    clearRenderChat()
+    this.props.changeChatType(PRIVATE_CHAT_ID)
+    console.log('typeId')
+    console.log(typeId)
+    if(kindChat){
+      if (!admin) {
+        if (role === 2) {
+          fetchChat(PUBLIC_CHAT_ID, typeId)
+        } else {
+          fetchChat(PRIVATE_CHAT_ID, null)
+        }
+      }
+    }
+
+    if (role === 2) {
+      changeChatType(PUBLIC_CHAT_ID)
+    }
+   this.updateChatWs()
+  }
+  render() {
+    const {
+      isForwarding,
+      isMessageValid
+    } = this.state
+
+    const {
+      isTaskChat,
+      userId,
+      isWindow = true,
+      isFetching,
+      infoChats,
+      showAdminPanel = true,
+      status,
+      chatType,
+      admin,
+      renderPrivateChat,
+      renderPublicChat,
+      renderTeamChat,
+      role,
+      fetchChat,
+      changeChatType,
+      isFetchingChat,
+      typeId,
+      userInfo,
+      adminChatOpen
+    } = this.props
+    const idGroup = infoChats.id
+
+    const chat = &lt;ChatBlock
+      // Data
+      userId={userId}
+      role={role}
+      messageChats={renderPrivateChat}
+      commonChats={renderPublicChat}
+      privateChats={renderPrivateChat}
+      teamChats={renderTeamChat}
+      admin={admin}
+      userInfo={userInfo}
+      isFetching={isFetching}
+      isFetchingChat={isFetchingChat}
+      chat={chatType}
+      changeChat={this.changeChat.bind(this)}
+      sendButtonText={isForwarding ? 'Переадресовать' : 'Ответить'}
+      placeholderText={isForwarding ? 'Сообщение суперадмину' : 'Сообщение пользователю'}
+      // Flags
+      isForwarding={isForwarding}
+      isMessageValid={isMessageValid}
+      // Callbacks
+      onMessageChanged={(e) => this.checkMessageLength(e)}
+      onMessageSend={(message) => this.sendMessage(message)}
+    />
+
+    let style
+    if (isWindow) {
+      style = styles.chatWindow
+    }  else if (isForwarding) {
+      style = styles.chatForwarding
+    }
+
+    return adminChatOpen || !showAdminPanel ? (
+      &lt;div>
+        {isTaskChat &amp;&amp; &lt;h2 className={styles.h1}>Чат&lt;/h2>}
+        &lt;div className={styles.chat}>
+          &lt;svg
+            onClick={() => this.closeChat()}
+            className={styles.minionChatCloseIcon}>
+            &lt;use xlinkHref="#ico-close">&lt;/use>
+          &lt;/svg>
+
+          {
+            !isFetching &amp;&amp; showAdminPanel &amp;&amp; chatType === 2 ? (
+                &lt;div className={styles.chatAdminPanel}>
+                  {
+                    !isForwarding ? (
+                        &lt;button
+                          onClick={() => this.waiting(idGroup)}
+                          className={styles.chatAdminPanelBtnSecondary}>
+                          Жду ответа
+                        &lt;/button>
+                      ) : null
+                  }
+                  &lt;button
+                    onClick={() => this.toggleForwarding()}
+                    className={styles.chatAdminPanelBtnAction}>
+                    {isForwarding ? 'Отмена' : 'Переадресовать'}
+                  &lt;/button>
+                  {status !== 2 &amp;&amp;
+                    &lt;button
+                      onClick={() => this.answered(idGroup)}
+                      className={styles.minionChatButtonForwardPrimary}>
+                      Чат отвечен
+                    &lt;/button>
+                  }
+                &lt;/div>
+              ) : null
+          }
+
+          {chat}
+        &lt;/div>
+      &lt;/div>
+    ) : null
+  }
+}
+const mapStateToProps = state => {
+  const {userInfo} = state
+
+  const { publicChats,
+        privateChats,
+        teamChats,
+        messageChats,
+        isFetching,
+        isFetchingChat,
+        renderPrivateChat,
+        renderPublicChat,
+        renderTeamChat,
+        infoChats,
+    } = state.chat
+  const chatsTest= state.chats
+  const { adminChatOpen, groupId, chatTypeId, chatType} = state.chats
+  return {
+    publicChats,
+    privateChats,
+    teamChats,
+    infoChats,
+    messageChats,
+    renderPrivateChat,
+    renderPublicChat,
+    renderTeamChat,
+    isFetching,
+    chatsTest,
+    adminChatOpen,
+    groupId,
+    chatType,
+    chatTypeId,
+    userInfo,
+    isFetchingChat
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  fetchChats: bindActionCreators(fetchChats, dispatch),
+  fetchChat: bindActionCreators(fetchChat, dispatch),
+  closeChat: bindActionCreators(closeChat, dispatch),
+  addToChat: bindActionCreators(addToChat, dispatch),
+  answerToChat: bindActionCreators(answerToChat, dispatch),
+  answeredChat: bindActionCreators(answeredChat, dispatch),
+  waitingFromChat: bindActionCreators(waitingFromChat, dispatch),
+  concatPrivateChatAction: bindActionCreators(concatPrivateChatAction, dispatch),
+  concatPublicChatAction: bindActionCreators(concatPublicChatAction, dispatch),
+  concatTeamChatAction: bindActionCreators(concatTeamChatAction, dispatch),
+  renderPublicChatAction: bindActionCreators(renderPublicChatAction, dispatch),
+  renderPrivateChatAction: bindActionCreators(renderPrivateChatAction, dispatch),
+  renderTeamChatAction: bindActionCreators(renderTeamChatAction, dispatch),
+  changeStatusChatAction: bindActionCreators(changeStatusChatAction, dispatch),
+  changeChatType: bindActionCreators(changeChatType, dispatch),
+  clearRenderChat: bindActionCreators(changeChatType, dispatch),
+  dispatch
+})
+
+Chat = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Chat)
+
+export default CSSModules(Chat, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

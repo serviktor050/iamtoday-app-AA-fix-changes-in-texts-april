@@ -1,0 +1,223 @@
+@media screen and (min-width: 1025px) {
+    .width50 {
+        width: 50%;
+    }
+
+    .width25 {
+        width: 25%;
+    }
+
+    .width33 {
+        width: 33%;
+    }
+
+    .width75 {
+        width: 75%;
+    }
+}
+
+.stageBoxBigPadding {
+    composes: stage-box from '../../index2.css';
+    composes: stage-box--big-padding from '../../index2.css';
+}
+
+.stageBoxHeaderAlpha {
+    composes: stage-box__header from '../../index2.css';
+    composes: stage-box__header--alpha from '../../index2.css';
+}
+
+.gridCell13 {
+    composes: width33;
+    composes: grid__cell from '../../index2.css';
+}
+
+.gridCell {
+    composes: grid__cell from '../../index2.css';
+}
+
+.tooltip:hover {
+  opacity: 1 !important;
+}
+.tooltipBlock{
+    width: 100%;
+    display: flex;
+
+}
+.tooltipContainer{
+    left: 36px;
+}
+.baseTableStats td{
+    position: relative;
+}
+.gridMb20 {
+    composes: grid from '../../index2.css';
+    composes: mb20 from '../../index2.css';
+}
+
+.stageBoxHeaderTodayme {
+    composes: stage-box__header from '../../index2.css';
+    composes: stage-box__header--todayme from '../../index2.css';
+    background-color: #203349;
+    background-image: none;
+    text-align: center;
+    padding: 20px 0;
+    height: 70px;
+}
+
+.stageBoxHeaderLogo {
+    composes: stage-box__header-logo from '../../index2.css';
+}
+
+.baseTableScroll {
+    composes: base-table-scroll from '../../index2.css';
+    min-height: 200px;
+}
+
+.baseTableStats {
+    composes: base-table from '../../index2.css';
+    composes: base-table--stats from '../../index2.css';
+}
+.baseTableStats tr:first-child td:first-child {
+    width:5%;
+}
+.baseTableDateLeft {
+    composes: base-table__date from '../../index2.css';
+    composes: text-left from '../../index2.css';
+}
+.h2 {
+    composes: h2 from '../../index2.css';
+}
+.btnAction{
+    composes: btn from '../../index.css';
+    composes: btn--action from '../../index.css';
+}
+.textLeft {
+    composes: text-left from '../../index2.css';
+}
+.tipsImg{
+    width:180px;
+}
+.tips {
+    composes: tips from '../../index2.css';
+}
+
+.svgIconFormHelp {
+    composes: svg-icon from '../../index2.css';
+    composes: ico-form-help from '../../index2.css';
+}
+
+.svgIcoTrash {
+    composes: svg-icon from '../../index.css';
+    composes: ico-trash from '../../index.css';
+}
+
+.baseTableStatsTh {
+    composes: base-table__stats from '../../index2.css';
+    text-align: left;
+    padding-right: 5px;
+    font-size: 1.4rem;
+}
+
+.baseTableDateLeft {
+    composes: base-table__date from '../../index2.css';
+    composes: text-left from '../../index2.css';
+}
+
+.baseTableBtnDel {
+    composes: base-table__btn-del from '../../index2.css';
+}
+
+.baseTableInput {
+    composes: base-table__input from '../../index.css';
+    text-align: center;
+    padding: 6px;
+    max-width: 50px;
+    border-radius: 3px;
+    border: 1px solid #ced9eb;
+    height: 22px;
+    font-size: 14px;
+    outline: none;
+}
+.textCenter{
+    composes: text-center from '../../index2.css';
+}
+.baseTableInputHeight {
+    composes: baseTableInput;
+    max-width: 77px;
+}
+
+.baseTableInputHeight .Select-arrow-zone {
+    display: none;
+}
+.baseTableStats {
+  border-collapse: collapse;
+}
+
+.baseTableStats td,
+.baseTableStats th {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 15px 5px 15px 0;
+    width:5%;
+}
+
+.baseTableStats tr:first-child td{
+    border-bottom: none;
+
+}
+
+.baseTableStats th{
+    color: #827d7d;
+    font-weight: normal;
+    font-size: 12px !important;
+    padding:0;
+    padding-right: 5px;
+    white-space: nowrap;
+    padding-bottom: 20px;
+}
+.btnPrimary {
+    composes: btn from '../../index2.css';
+    composes: btn--primary from '../../index2.css';
+    background-color: #ef3125;
+    padding: 16px 20px 17px;
+    border-radius: 4px;
+}
+.btnPrimaryCenter {
+    composes: btn from '../../index2.css';
+    composes: btn--primary from '../../index2.css';
+    margin:0 auto;
+}
+.svgIconYsLogoWeb {
+    composes: svg-icon from '../../index2.css';
+    composes: ys-logo-web from '../../index2.css';
+}
+@media screen and (min-width: 1025px) {
+
+    .stageBoxInner {
+        padding: 0 40px;
+    }
+
+    .stageBoxInner:first-child {
+        padding-top: 40px;
+    }
+
+    .stageBoxInner:last-child {
+        padding-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    .stageBoxInner {
+        padding: 0 20px;
+        box-shadow: none;
+    }
+
+    .stageBoxInner:first-child {
+        padding-top: 20px;
+    }
+
+    .stageBoxInner:last-child {
+        padding-bottom: 20px;
+    }
+}

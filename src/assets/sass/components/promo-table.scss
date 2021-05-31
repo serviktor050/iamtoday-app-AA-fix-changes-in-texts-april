@@ -1,0 +1,156 @@
+.promo-table-wrap {
+  display: none;
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.promo-table {
+  display: flex;
+  margin: 40px 0;
+
+  @include av-mq(portable) {
+    flex-direction: column;
+  }
+  @include av-mq(desk) {
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include av-mq(portable) {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    @include av-mq(desk) {
+      width: 33.33%;
+
+      &:not(:last-child) {
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 40%;
+          background-color: $c-border;
+        }
+      }
+    }
+
+    &--color-1 {
+      color: $c-secondary;
+
+      .promo-table__promo-code {
+        background-color: $c-secondary;
+      }
+    }
+
+    &--color-2 {
+      color: $c-primary;
+
+      .promo-table__promo-code {
+        background-color: $c-primary;
+      }
+    }
+
+    &--color-3 {
+      color: $c-orange;
+
+      .promo-table__promo-code {
+        background-color: $c-orange;
+      }
+    }
+  }
+
+  &__promo-code-wrap {
+    display: flex;
+
+    @include av-mq(portable) {
+      flex-direction: row;
+      align-items: center;
+    }
+    @include av-mq(desk) {
+      flex-direction: column;
+    }
+  }
+
+  &__discount {
+    line-height: 1;
+
+    span {
+      font-family: $f-headline;
+    }
+
+    span:first-child {
+      font-weight: 700;
+      font-size: 5.3rem;
+    }
+
+    span:last-child {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__title {
+    font-family: $f-headline;
+    font-weight: 700;
+    font-size: $fz-h2;
+    margin: 10px 0 20px;
+  }
+
+  &__promo-code {
+    position: relative;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: $base-radius;
+    font-size: $fz-h3;
+    font-family: $f-headline;
+    font-weight: 700;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 8px;
+      background-color: #fff;
+      position: absolute;
+      left: 10px;
+      border-radius: 50%;
+    }
+
+    &::before {
+      content: "";
+      top: -4px;
+    }
+
+    &::after {
+      content: "";
+      bottom: -4px;
+    }
+
+    @include av-mq(portable) {
+      margin-right: 20px;
+    }
+    @include av-mq(desk) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__btns {
+    .btn-simple {
+      color: $c-text;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

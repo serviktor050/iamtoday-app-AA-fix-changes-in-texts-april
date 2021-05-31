@@ -1,0 +1,59 @@
+.headerIcoBurger {
+  composes: header__ico-burger from '../../index.css';
+}
+
+.svgIcoBurger {
+  composes: svg-icon from '../../index.css';
+  composes: ico-burger from '../../index.css';
+}
+
+.headerBanner {
+  composes: header__banner from '../../index.css';
+}
+
+.header {
+  composes: header from '../../index.css';
+}
+
+.gridHeaderInner {
+  composes: grid from '../../index.css';
+  composes: header__inner from '../../index.css';
+  padding: 0 20px;
+  justify-content: space-between;
+}
+
+.btnPrimary {
+  composes: btn from '../../index.css';
+  composes: btn--primary from '../../index.css';
+  width:100%;
+}
+
+.btnAction {
+  composes: btn from '../../index.css';
+  composes: btn--action from '../../index.css';
+  padding: 17px 35px;
+  width:100%;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: flex-end;
+}
+.logo{
+  display: flex;
+  justify-content: flex-start;
+}
+.btnWrap{
+  padding:0 5px;
+  display: flex;
+  align-self: flex-end;
+  width: 130px;
+}
+.header.alfa {
+  background-color: #213349 !important;
+}
+@media screen and (max-width: 767px) {
+  .btnGroup {
+    flex-direction: column;
+  }
+}

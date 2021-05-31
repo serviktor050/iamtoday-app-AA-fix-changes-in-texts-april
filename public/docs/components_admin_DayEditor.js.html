@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/admin/DayEditor.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/admin/DayEditor.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
+import Header from '../componentKit/Header'
+import DayEditorValidationForm from './DayEditorValidationForm'
+import LoadingView from '../componentKit/LoadingView'
+import cookie from 'react-cookie'
+import moment from 'moment'
+import { api } from '../../config.js'
+import Modal from 'boron/FadeModal'
+import CSSModules from 'react-css-modules'
+import styles from './dayEditor.css'
+
+let contentStyle = {
+  borderRadius: '18px',
+  padding: '30px'
+}
+/**
+ *  Компонент DayEditor.
+ *  Используется для отображения страницы редактора в админке
+ *
+ */
+class DayEditor extends Component {
+  /**
+   * @memberof DayEditor
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {string} propTypes.selectedDays Выбор дня
+   * @prop {object} propTypes.days Объект данных для рендеринга календаря
+   * @prop {bool} propTypes.isVideo Флаг есть ли поле видео
+   * @prop {number} propTypes.dayId Номер дня
+   *
+   * */
+  static propTypes = {
+    selectedDays: PropTypes.string.isRequired,
+    days: PropTypes.object.isRequired,
+    isVideo: PropTypes.bool.isRequired,
+    dayId: PropTypes.number.isRequired
+  }
+  componentDidMount() {
+    const { dispatch, selectedDays, selectedPrograms } = this.props
+    dispatch(actions.fetchDaysIfNeeded(selectedDays))
+    dispatch(actions.fetchProgramsIfNeeded(selectedPrograms))
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { dispatch, selectedDays, selectedPrograms } = nextProps
+
+    if (nextProps.selectedDays !== this.props.selectedDays) {
+      dispatch(actions.fetchDaysIfNeeded(selectedDays))
+    }
+
+    if (nextProps.selectedPrograms !== this.props.selectedPrograms) {
+      dispatch(actions.fetchProgramsIfNeeded(selectedPrograms))
+    }
+  }
+
+  render() {
+    const { days, token, isFetching, editDay, dayIntro, dayDate,
+      programs, editor, content, programShow, selectedDays, dispatch, dayId, isVideo,
+      editorMin, contentMin } = this.props
+    // const isEmpty = !programs || !days
+    // const id = this.props.params.id
+    // let initialValues = {}
+
+    //
+    // if (days &amp;&amp; days[0] &amp;&amp; id) {
+    //   initialValues = {
+    //     tasks: days[id].tasks || [],
+    //     customIcon: days[id].customIcon || '',
+    //     customName: days[id].customName || ''
+    //   }
+    // }
+
+    return (
+      &lt;div className={styles.layout}>
+        &lt;Header burger={false} isTask={true}/>
+        {isFetching
+          ? &lt;LoadingView title="Загружается..."/>
+          : &lt;div style={{ opacity: isFetching ? 0.5 : 1 }}>
+              &lt;div className={styles.layoutInner}>
+                &lt;DayEditorValidationForm
+                  calendar={days}
+                  program={this.props.params.program}
+                  editDay={editDay}
+                  hideCreatePoll={false}
+                  date={dayDate}
+                  programs={programs}
+                  editor={editor}
+                  editorMin={editorMin}
+                  content={content}
+                  onSubmit={data => {
+                    this.refs.loadingModal.show()
+                    data.isVideo = isVideo
+                    dispatch({ type: 'ISVIDEO', value: false })
+
+                    const otherName = 'другое'
+
+                    if (data &amp;&amp; data.poll &amp;&amp; data.poll.fields &amp;&amp;
+                      !data.poll.fields.find(f => f.name === otherName)) {
+                      data.poll.fields.push({ name: otherName })
+                    }
+
+                    if (data &amp;&amp; data.tasks &amp;&amp; data.tasks[0]) {
+                      data.programTasks = [{}]
+                      data.programTasks[0].customName = data.customName ? data.customName : ''
+                      data.programTasks[0].program = programShow
+                      data.programTasks[0].intro = content[0]
+                        ? JSON.stringify(content[0])
+                        : JSON.stringify(editor[0])
+                      data.programTasks[0].introMin = contentMin[0]
+                        ? JSON.stringify(contentMin[0])
+                        : JSON.stringify(editorMin[0])
+                      data.programTasks[0].program = programShow
+                      data.programTasks[0].tasks = data.tasks
+                    } else {
+                      data.programTasks = [{}]
+                      data.programTasks[0] = {
+                        customName: data.customName,
+                        customIcon: data.customIcon,
+                        program: programShow,
+                        intro: content[0]
+                          ? JSON.stringify(content[0])
+                          : JSON.stringify(editor[0]),
+                        introMin: contentMin[0]
+                          ? JSON.stringify(contentMin[0])
+                          : JSON.stringify(editorMin[0])
+                      }
+                    }
+
+                    delete data.program
+                    delete data.tasks
+
+                    if (data.programTasks.length) {
+                      for (let i = 0; i &lt; data.programTasks.length; i++) {
+                        if (data.programTasks[i].intro) {
+                          data.programTasks[i].intro = data.programTasks[i].intro.replace(/http:/g, 'https:')
+                          data.programTasks[i].introMin = data.programTasks[i].introMin.replace(/http:/g, 'https:')
+                        }
+                      }
+                    }
+
+                    let url = `${api}/data/adminday-create`
+                    data.date = moment(dayDate).format('YYYY-MM-DD')
+                    if (dayId &amp;&amp; dayId !== '-') {
+                      data.id = dayId
+                      url = `${api}/data/adminday-update`
+                    } else {
+                      data.forceNew = true
+                    }
+
+                    const payload = {
+                      authToken: token ? token : cookie.load('token'),
+                      customName: data.customName,
+                      customIcon: data.customIcon,
+                      data
+                    }
+
+                    const headers = {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                    }
+
+                    const method = 'POST'
+                    if (((content[0] &amp;&amp; contentMin[0])) || (editor[0] &amp;&amp; programShow)) {
+                      return fetch(url, {
+                        headers,
+                        method,
+                        body: JSON.stringify(payload)
+                      })
+                      .then(response => response.json())
+                      .then(json => {
+                        this.refs.loadingModal.hide()
+                        if (json.errorCode === 1) {
+                          this.refs.successPromoModal.show()
+                        } else {
+                          this.refs.errorModal.show()
+                        }
+                      })
+                    } else {
+                      this.refs.errorModal.show()
+                    }
+                  }
+                }/>
+                &lt;Modal ref='loadingModal' contentStyle={contentStyle}>
+                  &lt;div className={styles.entryHeader}>
+                    &lt;h2 className={styles.entryTitleCenter}>Загружается...&lt;/h2>
+                  &lt;/div>
+                  &lt;div className={styles.textCenter}>
+                    &lt;div className={styles.loaderMain}>&lt;/div>
+                  &lt;/div>
+                &lt;/Modal>
+                &lt;Modal ref='errorModal' contentStyle={contentStyle}>
+                  &lt;h2>Что-то пошло не так, попробуйте снова&lt;/h2>
+                  &lt;br/>
+                  &lt;button className={styles.btnAction} onClick={() => {
+                    this.refs.loadingModal.hide()
+                    this.refs.errorModal.hide()
+                  }}>
+                    Продолжить
+                  &lt;/button>
+                &lt;/Modal>
+                &lt;Modal ref='successPromoModal' contentStyle={contentStyle}>
+                  &lt;h2>Изменения сохранены&lt;/h2>
+                  &lt;br/>
+                  &lt;button className={styles.btnAction} onClick={() => {
+                    this.refs.loadingModal.hide()
+                    dispatch({ type: 'CONTENT_RESET' })
+                    dispatch({ type: 'DAY_INTRO_RESET' })
+                    dispatch({ type: 'EDITOR_RESET' })
+                    dispatch({ type: 'DAY_ID', id: '-' })
+                    dispatch({ type: 'PROGRAM_SHOW', programShow: 0 })
+                    dispatch(actions.fetchDaysIfNeeded(selectedDays))
+                  }}>
+                    Продолжить
+                  &lt;/button>
+                &lt;/Modal>
+              &lt;/div>
+            &lt;/div>
+          }
+      &lt;/div>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  const { selectedPrograms, recivedPrograms, selectedDays, recivedDays,
+    userToken, editDay, dayIntro, dayDate, editor, content, programShow, dayId, isVideo,
+    editorMin, contentMin } = state
+  const {
+    isFetching,
+    days
+  } = recivedDays[selectedDays] || {
+    isFetching: true,
+    days: []
+  }
+
+  const { programs } = recivedPrograms[selectedPrograms] || []
+
+  return {
+    selectedDays,
+    selectedPrograms,
+    isFetching,
+    days,
+    editDay,
+    dayIntro,
+    contentMin,
+    dayDate,
+    programs,
+    programShow,
+    editor,
+    editorMin,
+    content,
+    dayId,
+    isVideo,
+    token: userToken.token
+  }
+}
+
+DayEditor = connect(
+  mapStateToProps
+)(DayEditor)
+
+export default CSSModules(DayEditor, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

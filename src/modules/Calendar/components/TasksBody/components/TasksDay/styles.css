@@ -1,0 +1,22 @@
+.taskDay__header {
+    margin: 15px 0;
+}
+
+.taskDay__header_today {
+    font-size: 12px;
+    line-height: 15px;
+    color: #B5B5B5;
+    display: block;
+}
+
+.taskDay__date {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2C2F33;
+    display: block;
+}
+
+.taskDay__tasks {
+    
+}

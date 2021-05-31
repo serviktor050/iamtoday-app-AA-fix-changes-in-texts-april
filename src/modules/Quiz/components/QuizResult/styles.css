@@ -1,0 +1,198 @@
+.quizResult {
+    padding: 40px 40px 50px 40px;
+    background: #fff;
+}
+
+.quizResultHeader .title {
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 20px
+}
+
+.quizResultHeader hr {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 20px;
+}
+
+.wrongQuestion {
+    background: linear-gradient(90deg, rgba(238, 245, 246, 1) 0%, rgba(243, 253, 237, 1) 49%);
+    margin: 30px 0;
+    margin-bottom: 0;
+    padding: 30px;
+}
+
+.actions {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.actions .action {
+    padding-top: 25px;
+    width: 250px;
+    display: inline-block;
+}
+
+.summary {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.summary h2 {
+    color: #4ea4d6;
+    margin-left: -5px;
+}
+
+.wrongAnswers hr {
+    margin-top: 20px;
+}
+
+.wrongAnswers h2 {
+    font-weight: 400;
+}
+
+.summary .resultInfo {
+    font-size: 16px;
+    padding-top: 15px;
+}
+
+.percent {
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.failedPercent {
+    color: red;
+}
+
+.passedPercent {
+    color: green;
+}
+
+.requiredPercent {
+    padding-left: 2px;
+}
+
+.prompt {
+    background: white;
+    padding: 20px;
+    white-space: nowrap;
+}
+
+.promptHeader {
+    vertical-align: top;
+    font-size: 13px;
+    color: grey;
+}
+
+.promptAnswers {
+    font-size: 13px;
+    white-space: normal;
+    font-weight: 400;
+}
+
+.answers {
+}
+
+.answer {
+    white-space: nowrap;
+}
+
+.answerAlias {
+    display: inline-block;
+    height: 38px;
+    width: 38px;
+    text-align: center;
+    font-size: 14px;
+    background: white;
+    margin: 10px 0 10px 0;
+    border-radius: 5px;
+
+}
+
+.aliasBlock {
+    display: inline-block;
+    text-align: right;
+}
+
+.value {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 20px;
+}
+
+.meta{
+    font-size: 14px;
+    color: darkgray;
+    padding-top: 10px;
+}
+
+.prefixValue {
+    display: none;
+}
+
+.aliasValue {
+    width: 38px;
+}
+
+.answerAlias.correct.select {
+    background: linear-gradient(to left, #4ea4d6, forestgreen);
+}
+
+.answerValue .unselect {
+    color: gray;
+}
+.answerValue .correct {
+    color: forestgreen;
+}
+
+.answerValue .select {
+    color: #4ea4d6;
+}
+
+.answerAlias {
+    line-height: 30px;
+}
+
+.answerAlias.correct {
+    background: forestgreen;
+    color: white;
+    line-height: 30px;
+}
+
+.answerAlias.select {
+    background: #4ea4d6;
+    color: white;
+}
+
+.answerAlias.correct.select .prefixValue {
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.answerValue {
+    font-size: 14px;
+    margin-left: 10px;
+    display: inline-block;
+    white-space: normal;
+    padding-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .value {
+        line-height: 36px;
+    }
+
+    .answerValue {
+        font-size: 14px;
+    }
+}
+

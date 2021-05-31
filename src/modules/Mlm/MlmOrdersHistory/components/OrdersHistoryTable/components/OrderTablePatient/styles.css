@@ -1,0 +1,454 @@
+.orderTablePatient {
+  width: 100%;
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 15px;
+  color: #2c2f33;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.orderTablePatient--productsVisible {
+  margin-bottom: 30px;
+}
+
+.orderTablePatient:last-child {
+  margin-bottom: 0;
+}
+
+.orderTablePatient__head {
+  background-color: #f4f8fe;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.09);
+}
+
+.orderTablePatient__head tr:first-child {
+  cursor: pointer;
+}
+
+.orderTablePatient__th {
+  font-weight: 400;
+  padding: 9px 5px;
+}
+
+.orderTablePatient__th--td {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  color: #b5b5b5;
+}
+
+.orderTablePatient__th--100 {
+  width: 100%;
+}
+
+.orderTablePatient__th--white {
+  background-color: #ffffff;
+}
+
+.orderTablePatient__th:first-child,
+.orderTablePatient__td:first-child {
+  padding-left: 8px;
+}
+
+.orderTablePatient__th:last-child {
+  padding-right: 8px;
+}
+
+.orderTablePatient__cellData--price {
+  width: 52px;
+  word-break: break-word;
+}
+
+.orderTablePatient__cellData--quantity {
+  width: 22px;
+  margin: 0 auto;
+}
+
+.orderTablePatient__wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
+.orderTablePatient__date,
+.orderTablePatient__id {
+  color: #4e4e4e;
+}
+
+.orderTablePatient__date {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.orderTablePatient__id {
+  font-weight: 300;
+}
+
+.orderTablePatient__endDate {
+  margin-left: 5px;
+  font-size: 10px;
+  line-height: 12px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.orderTablePatient__status {
+  max-width: 190px;
+  padding: 5px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.orderTablePatient__status--success {
+  color: #39961e;
+  background-color: #d7ead2;
+}
+
+.orderTablePatient__status--fail {
+  color: #d11a24;
+  background-color: rgba(255, 75, 85, 0.12);
+}
+
+.orderTablePatient__patientFio {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.orderTablePatient__totalPrice {
+  font-weight: bold;
+}
+
+.orderTablePatient__totalPriceRub {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.orderTablePatient__totalPrice--income {
+  color: #000000;
+}
+
+.orderTablePatient__totalPriceRub--income {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.orderTablePatient__totalPrice--patient {
+  color: #39961e;
+}
+
+.orderTablePatient__totalPriceRub--patient {
+  color: rgba(57, 150, 30, 0.5);
+}
+
+.orderTablePatient__button {
+  width: 11px;
+  border: none;
+  background-color: transparent;
+  vertical-align: middle;
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgba(99, 167, 214, 0.65);
+  font-weight: 700;
+  text-align: center;
+}
+
+.orderTablePatient__button--circle {
+  position: relative;
+  height: 16px;
+}
+
+.orderTablePatient__button--circle::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  left: calc(50% - 2px);
+  top: 0;
+  background-color: #d4dae2;
+  border-radius: 50%;
+  box-shadow: 0 6px 0 0 #d4dae2, 0 12px 0 0 #d4dae2;
+}
+
+.orderTablePatient__button svg {
+  width: 11px;
+  height: 11px;
+  color: #4da2d6;
+  fill: none;
+  transform: rotate(180deg);
+}
+
+.orderTablePatient__button--productsVisible svg {
+  transform: none;
+}
+
+.orderTablePatient__body {
+  background-color: #ffffff;
+}
+
+.orderTablePatient__title {
+  background-color: #f6f6f6;
+}
+
+.orderTablePatient__td {
+  padding: 8px 5px;
+  word-break: break-word;
+}
+
+.orderTablePatient__td--quantity {
+  text-align: center;
+}
+
+.orderTablePatient__productPrice {
+  font-weight: 700;
+}
+
+.orderTablePatient__productPriceRub {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.orderTablePatient__productPrice--income {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.orderTablePatient__productPriceRub--income {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.orderTablePatient__productPrice--patient {
+  color: rgba(57, 150, 30, 0.7);
+}
+
+.orderTablePatient__productPriceRub--patient {
+  color: rgba(57, 150, 30, 0.5);
+}
+
+.orderTablePatient__td--hider:first-child {
+  padding: 0;
+}
+
+.orderTablePatient__hideButton {
+  border: none;
+  margin-top: 7px;
+  padding: 10px 10px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+  color: #4da2d6;
+  background-color: #daeff2;
+  font-weight: 700;
+  height: 40px;
+}
+
+.orderTablePatient__contextMenu {
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.orderTablePatient__contactInfo {
+  display: flex;
+  align-items: center;
+  color: #2c2f33;
+  padding: 10px 15px;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: 15px;
+}
+
+.orderTablePatient__contactInfo svg {
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+}
+
+.orderTablePatient__contactInfo:last-of-type {
+  border-bottom: 1px solid rgba(196, 196, 196, 0.3);
+}
+
+.orderTablePatient__tooltipButton {
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(196, 196, 196, 0.3);
+  cursor: pointer;
+}
+
+.orderTablePatient__tooltipButton:last-of-type {
+  border-bottom: none;
+}
+
+.orderTablePatient__tooltipButton--cancel {
+  color: #ff4b55;
+}
+
+@media screen and (min-width: 375px) {
+  .orderTablePatient__cellData--price {
+    width: 65px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .orderTablePatient__cellData--price {
+    width: 95px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .orderTablePatient--productsVisible {
+    margin-bottom: 15px;
+  }
+
+  .orderTablePatient__head {
+    box-shadow: none;
+  }
+
+  .orderTablePatient__th {
+    padding: 10px 5px;
+  }
+
+  .orderTablePatient__th--date {
+    width: 150px;
+  }
+
+  .orderTablePatient__th--patient {
+    width: 115px;
+  }
+
+  .orderTablePatient__th--quantity {
+    width: 36px;
+  }
+
+  .orderTablePatient__th:first-child,
+  .orderTablePatient__td:first-child {
+    padding-left: 15px;
+  }
+
+  .orderTablePatient__th:last-child {
+    padding: 0;
+  }
+
+  .orderTablePatient__cellData--price {
+    width: 75px;
+  }
+
+  .orderTablePatient__cellData--quantity {
+    width: 26px;
+    margin: 0;
+  }
+
+  .orderTablePatient__wrapper--status {
+    width: 130px;
+    align-items: center;
+  }
+
+  .orderTablePatient__th--td,
+  .orderTablePatient__date,
+  .orderTablePatient__id,
+  .orderTablePatient__totalPrice,
+  .orderTablePatient__productPrice {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .orderTablePatient__status {
+    width: 85px;
+    max-width: none;
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .orderTablePatient__button {
+    width: 100px;
+    height: 50px;
+  }
+
+  .orderTablePatient__body {
+    box-shadow: 0 4px 4px #ecf6fd;
+  }
+
+  .orderTablePatient__title {
+    background-color: rgba(244, 248, 254, 0.5);
+    border-bottom: none;
+  }
+
+  .orderTablePatient__tr {
+    border-bottom: 1px solid rgba(77, 162, 214, 0.1);
+  }
+
+  .orderTablePatient__tr:last-child {
+    border-bottom: none;
+  }
+
+  .orderTablePatient__td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .orderTablePatient__difference {
+    display: flex;
+    align-items: center;
+  }
+
+  .orderTablePatient__difference svg {
+    margin-left: 5px;
+    width: 12px;
+    height: 12px;
+    color: rgba(77, 162, 214, 0.49);
+    fill: none;
+  }
+
+  .orderTablePatient__cancelButton {
+    margin-left: 14px;
+    width: 25px;
+    height: 25px;
+    background-color: #daeff2;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .orderTablePatient__cancelButton svg {
+    width: 13px;
+    height: 13px;
+    stroke: #a1cdea;
+  }
+
+  .orderTablePatient__tooltip {
+    padding: 5px 0;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    color: #4da2d6;
+  }
+
+  .orderTablePatient__tooltip--difference {
+    width: 100px;
+  }
+
+  .orderTablePatient__tooltip--cancel {
+    width: 60px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .orderTablePatient__th--date {
+    width: 167px;
+  }
+
+  .orderTablePatient__th--patient {
+    width: 147px;
+  }
+
+  .orderTablePatient__cellData--price {
+    width: 99px;
+  }
+}

@@ -1,0 +1,17 @@
+.stepsVisualList {
+  display: flex;
+  padding:0 15px;
+  margin-top:10px;
+}
+.stepsVisualItem {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fff;
+  margin-right:10px;
+  background: transparent;
+  border-radius: 50%;
+}
+.stepsVisualItem.active {
+  background: #fff;
+  box-shadow: 0 0 17px 1px white;
+}

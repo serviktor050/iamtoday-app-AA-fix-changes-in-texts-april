@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="42px" viewBox="0 0 48 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>ico</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-477.000000, -296.000000)" stroke="#B3B9BD" stroke-width="2">
+            <g id="ico" transform="translate(478.000000, 297.000000)">
+                <path d="M46,37.129 C46,38.182 45.148,39.031 44.101,39.031 L1.901,39.031 C0.85,39.031 0,38.182 0,37.129 L0,2.87 C0,1.819 0.85,0.97 1.901,0.97 L44.101,0.97 C45.149,0.97 46,1.82 46,2.87 L46,37.129 Z" id="Shape"></path>
+                <polyline id="Shape" points="4.436 38.962 21.25 21.983 28.956 29.925 36.66 21.983 46 29.925"></polyline>
+                <circle id="Oval" cx="10.975" cy="14.481" r="4.437"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

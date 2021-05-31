@@ -1,0 +1,128 @@
+.newTask__form {
+    padding: 10px;
+    min-width: 350px
+}
+
+.newTask__title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #2C2F33;
+    margin-bottom: 5px;
+}
+
+.newTask__title_input {
+    font-size: 16px;
+    line-height: 19px;
+    color: #2C2F33;
+    width: 100%;
+    border: 1px solid #E6EFF4;
+    padding-left: 20px;
+}
+
+.newTask__textarea {
+    all: unset;
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2C2F33;
+    background: #FFFFFF;
+    border: 1px solid #E6EFF4;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.newTask__input_wrapper {
+    position: relative;
+    padding-top: 15px;
+}
+
+.newTask__input {
+    margin-bottom: 10px;
+}
+
+.newTask__contractor_input {
+    font-size: 16px;
+    line-height: 19px;
+    color: #2C2F33;
+    width: 100%;
+    border: 1px solid #E6EFF4;
+    padding-left: 30px !important;
+}
+
+.newTask__contractor_icon {
+    position: absolute;
+    top: 32px;
+    left: 10px;
+    width: 14px;
+    height: 14px;
+    filter: invert(33%) sepia(88%) saturate(419%) hue-rotate(158deg) brightness(95%) contrast(96%);
+}
+
+.newTask__colors_container {
+    position: relative;
+}
+
+.newTask__colors_label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 15px;
+}
+
+.newTask__colors_wrapper {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 15px 0px;
+    width: 100%;
+}
+
+.newTask__validationError {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 8px;
+    color: red;
+    text-align: right;
+}
+
+.newTask__input-error {
+    border-color: red;
+    border-radius: 7px;
+}
+
+.newTask__actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.newTask__button {
+    all: unset;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    width: 47%;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.newTask__button_blue {
+    background-color: #4DA2D6;
+    color: #FFFFFF;
+}
+
+.newTask__button_blueOutlined {
+    background: #FFFFFF;
+    border: 1px solid #4DA2D6;
+    color: #4DA2D6;
+}

@@ -1,0 +1,24 @@
+.month {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.day {
+    border: 1px solid #E0EDFF;
+    width: calc(100% / 7);
+}
+
+.labels {
+    width: 100%;
+    display: flex;
+    margin: 20px 0px 6px;
+}
+
+.label {
+    font-size: 15px;
+    line-height: 18px;
+    text-align: left;
+    color: #B5B5B5;
+    width: calc(100% / 7); 
+}

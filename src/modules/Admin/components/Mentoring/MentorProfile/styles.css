@@ -1,0 +1,215 @@
+.layout {
+  padding: 30px;
+  background: #fff;
+}
+
+.mentorsPage__header {
+  display: flex;
+  align-items: flex-start;
+  margin: 30px 0 64px;
+}
+
+.mentorsPage__avatarButtonsWrapper {
+  width: 40%;
+  max-width: 263px;
+  padding-right: 50px;
+}
+
+.mentorsPage__ava {
+  width: 100%;
+  max-width: 213px;
+  height: auto;
+  max-height: 213px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.mentorsPage__mainInfo {
+  flex: 1;
+}
+
+.mentorsPage__name {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 138.3%;
+}
+
+.mentorsPage__specialisation {
+  font-size: 15px;
+  line-height: 138.3%;
+  color: #79c330;
+}
+
+.mentorsPage__table {
+  margin-top: 15px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mentorsPage__table-row {
+  width: 100%;
+}
+
+.mentorsPage__table-row:nth-child(2n + 1) {
+  background-color: #f4f8fe;
+}
+
+.mentorsPage__table-cell {
+  padding: 15px 10px 15px 24px;
+  text-align: left;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.mentorsPage__table-cell:nth-child(1) {
+  width: 65%;
+  font-weight: bold;
+  color: #b5b5b5;
+}
+
+.mentorsPage__table-cell:nth-child(2) {
+  width: 35%;
+}
+
+.mentorsPage__actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10%;
+}
+
+.mentorsPage__actions .mentorsPage__button {
+  all: unset;
+  padding: 10px 20px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #4da2d6;
+  cursor: pointer;
+}
+
+.mentorsPage__actions .mentorsPage__btn-recommend {
+  background: #4da2d6;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.mentorsPage__actions .mentorsPage__btn-recommend:hover {
+  background: #418ebe;
+}
+
+.mentorsPage__actions .mentorsPage__btn-writeToMentor {
+  background: transparent;
+  color: #4da2d6;
+}
+
+.mentorsPage__actions .mentorsPage__btn-writeToMentor::before {
+  content: "";
+  display: block;
+  width: 14px;
+  min-width: 14px;
+  height: 14px;
+  background: url("../../../../../assets/img/svg-symbols/ico-message.svg")
+    center/cover no-repeat;
+  margin-right: 15px;
+}
+
+.mentorsPage__actions .mentorsPage__btn-writeToMentor:hover {
+  background: #d5ecfc;
+}
+
+.mentorsPage__body {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.mentorsPage__quote {
+  position: relative;
+  width: 100%;
+  padding: 35px 15px 35px 120px;
+  background-color: #f4f8fe;
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 15px;
+}
+
+.mentorsPage__quote::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  transform: translate(0, -40%);
+  width: 74px;
+  min-width: 74px;
+  height: 64px;
+  background: url("../../../../../assets/img/svg/quote.svg") center/cover
+    no-repeat;
+}
+
+.mentorsPage__quote-text {
+  margin-bottom: 25px;
+}
+
+.mentorsPage__quote-author {
+  width: 100%;
+  font-size: 15px;
+  line-height: 18px;
+  color: #4da2d6;
+  text-align: left;
+}
+
+.mentorsPage__about-header {
+  font-size: 24px;
+  margin: 15px 0;
+}
+
+.success_icon {
+  width: 100px;
+  height: 100px;
+  background: url("../../../../../assets/img/svg/checkup.svg") center/cover no-repeat;
+  margin: 10px auto 0;
+}
+
+.mentorsPage__socials {
+  display: flex;
+  align-items: center;
+}
+
+.mentorsPage__social_icoLink {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+}
+
+.mentorsPage__social_icon {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .mentorsPage__header {
+    flex-wrap: wrap;
+  }
+  .mentorsPage__avatarButtonsWrapper {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto 20px;
+  }
+  .mentorsPage__ava {
+    display: block;
+    margin: 0 auto;
+  }
+  .mentorsPage__name {
+    text-align: center;
+  }
+  .mentorsPage__specialisation {
+    text-align: center;
+  }
+}

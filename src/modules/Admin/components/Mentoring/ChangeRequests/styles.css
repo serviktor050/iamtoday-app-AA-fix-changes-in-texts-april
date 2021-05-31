@@ -1,0 +1,411 @@
+.layout {
+  padding: 30px;
+  background: #fff;
+}
+
+.main-title {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 145.2%;
+}
+
+.content {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.card {
+  composes: card from "../DeclinedRequests/styles.css";
+}
+
+.card__tutor {
+  composes: card__student from "../DeclinedRequests/styles.css";
+  background: #f0f6ff;
+}
+
+.card__title {
+  composes: card__title from "../DeclinedRequests/styles.css";
+}
+
+.card__title-tutor {
+  composes: card__title-tutor from "../DeclinedRequests/styles.css";
+}
+
+.card__student {
+  composes: card__tutor from "../DeclinedRequests/styles.css";
+  background: #f8fff1;
+  display: block;
+}
+
+.card__separator-container {
+  composes: card__separator-container from "../DeclinedRequests/styles.css";
+}
+
+.card__separator-wrapper {
+  composes: card__separator-wrapper from "../DeclinedRequests/styles.css";
+}
+
+.card__separator {
+  composes: card__separator from "../DeclinedRequests/styles.css";
+  transform: rotate(180deg);
+  filter: brightness(0) saturate(100%) invert(62%) sepia(28%) saturate(1025%)
+    hue-rotate(163deg) brightness(91%) contrast(82%);
+}
+
+.card__close-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.card__close-btn {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card__close-btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 3px;
+  background-color: #c4c4c4;
+  transform: rotate(45deg);
+}
+
+.card__close-btn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 3px;
+  background-color: #c4c4c4;
+  transform: rotate(-45deg);
+}
+
+.recommendedTutors {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recommendedTutors__card {
+  width: 30%;
+  margin-right: 5%;
+}
+.recommendedTutors__card:nth-child(3n) {
+  margin-right: 0;
+}
+
+.card__avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.card__svgIco {
+  display: block;
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%);
+}
+
+.phone-ico {
+  background: url("../../../../../assets/img/svg/phone.svg") center/cover
+    no-repeat;
+  margin-right: 5px;
+}
+
+.card__phone {
+  display: flex;
+}
+
+.card__student-cardWrapper {
+  display: flex;
+}
+
+.tutorCard__writeToTutor {
+  all: unset;
+  background: #4da2d6;
+  border-radius: 2px;
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  cursor: pointer;
+  max-width: 200px;
+  box-sizing: border-box;
+}
+
+.tutorCard__writeToTutor-hidden {
+  composes: tutorCard__writeToTutor;
+  background: #f0f6ff;
+  color: #f0f6ff;
+}
+
+.answerToStudent__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.answerToStudent__inputWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.answerToStudent__mentorsTable-hud {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.answerToStudent__mentorsTable-hud:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(to top, #fff 25%, transparent 100%);
+}
+
+.answerToStudent__actions {
+  display: flex;
+  justify-content: center;
+}
+
+.answerToStudent__btn {
+  padding: 5px 15px;
+  width: fit-content;
+}
+
+.answerToStudent__btn-show {
+  margin-right: 20px;
+}
+
+.card__actions {
+  margin-top: 10px;
+  display: flex;
+}
+
+.card__actions-btn {
+  all: unset;
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #79c330;
+}
+
+.card__actions-btn-green {
+  color: #ffffff;
+  background: #79c330;
+  margin-right: 10px;
+}
+
+.card__actions-btn-green:hover {
+  background: #69ac26;
+}
+
+.card__actions-btn-green-outline {
+  color: #79c330;
+  background: #ffffff;
+}
+
+.card__actions-btn-green-outline:hover {
+  background: #ecffd9;
+}
+
+.modal__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.modal__ico-accept {
+  width: 100px;
+  height: 100px;
+  background: url("../../../../../assets/img/svg/checkup.svg") center/cover
+    no-repeat;
+  margin-bottom: 15px;
+}
+
+.modal__ico-rejected {
+  width: 100px;
+  height: 100px;
+  background: url("../../../../../assets/img/svg/cross2.svg") center/cover
+    no-repeat;
+  margin-bottom: 15px;
+}
+
+.info {
+  margin-top: 10px;
+  background: #f0f6ff;
+  border-radius: 0px 2px 2px 0px;
+  width: 100%;
+  min-height: 75px;
+  padding: 10px 25px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #2c2f33;
+}
+
+.info__img {
+  width: 50px;
+  height: 50px;
+  background: url("../../../../../assets/img/svg/error.svg") center/cover
+    no-repeat;
+  margin-right: 10px;
+}
+
+.info__text {
+  width: 100%;
+}
+
+.radioButton__form {
+  display: flex;
+  margin-top: 20px;
+}
+
+.radioButton__wrapper {
+  margin-right: 10px;
+}
+
+.radioButton__input {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.radioButton__label {
+  display: block;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: #daeff2;
+  color: #4da2d6;
+}
+
+.radioButton__input:checked + .radioButton__label {
+  background: #4da2d6;
+  color: #fff;
+}
+
+.infoBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0f6ff;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1;
+  color: #1f6d9c;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.infoBlock p {
+  display: flex;
+}
+
+.infoBlock p::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url('../../../../../assets/img/svg-symbols/ico-info.svg') center/cover no-repeat;
+  margin-right: 6px;
+}
+
+.infoBlock-accepted p::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url('../../../../../assets/img/svg-symbols/check-circle-5.svg') center/cover no-repeat;
+  margin-right: 6px;
+}
+
+.infoBlock__okBtn {
+  all: unset;
+  display: block;
+  background: #79C330;
+  border-radius: 2px;
+  padding: 0 30px;
+  height: 30px;
+  margin: -5px 0;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.modal__subtext {
+  margin-top: 12px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+  color: #2c2f33;
+}
+
+.modal__textarea {
+  margin-top: 20px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 15px;
+  resize: none;
+}
+
+.modal__title-accepted {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal__btn-accepted {
+  all: unset;
+  background: #4da2d6;
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: 20px;
+}

@@ -1,0 +1,11 @@
+.chatTabs {
+  /*composes: chat__tabs from '../../index.css';*/
+  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid #ced9eb;
+  /*height: 55px;*/
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}

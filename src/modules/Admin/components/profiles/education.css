@@ -1,0 +1,363 @@
+.mlmRegistration {
+  padding: 40px 30px 50px 40px;
+  background: #fff;
+}
+
+.mlmRegistration h1 {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: #2c2f33;
+}
+.mlmRegistrationHeader .title {
+  font-weight: bold;
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+.mlmRegistrationHeader hr {
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.info {
+  background: linear-gradient(99.06deg, #eef5f6 38.23%, #f3fded 56.88%);
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  color: #4da2d6;
+  padding: 15px;
+  margin-right: 10px;
+  font-family: "Proxima Nova", serif;
+}
+
+.h1 {
+  composes: h1 from "../../../../index2.css";
+  margin-bottom: 10px;
+}
+.h2 {
+  composes: h2 from "../../../../index2.css";
+  color: #4da2d6;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.hr2 {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-style: inset;
+  height: 1px;
+  border: none;
+  background-color: #ced9eb;
+}
+.width50 {
+  width: 100%;
+}
+.pr15 {
+  padding-right: 0px;
+}
+.pl15 {
+  padding-left: 0px;
+}
+.grid {
+  composes: grid from "../../../../index.css";
+  margin-left: 0;
+}
+
+.gridCell12 {
+  composes: width50;
+  composes: grid__cell from "../../../../index2.css";
+  padding-left: 0;
+}
+
+.input {
+  composes: input from "../../../../index2.css";
+  margin-bottom: 15px;
+}
+
+.input70 {
+  composes: input;
+  width: 65%;
+}
+
+.inputColor {
+  color: #2c2f33;
+  font-size: 14px;
+}
+
+.svgIconAccordion {
+  composes: svg-icon from "../../../../index2.css";
+  z-index: 0;
+  width: 9px;
+  height: 8px;
+  position: absolute;
+  bottom: 17px;
+  right: 15px;
+  pointer-events: none;
+  stroke: #696868;
+}
+
+.inputFieldWrap {
+  composes: input__field-wrap from "../../../../index2.css";
+}
+
+.checkboxWrapper {
+  height: 100%;
+  margin-top: 10px;
+}
+
+.checkboxWrapperMB {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.checkbox {
+  composes: checkbox from "../../../../index2.css";
+  width: fit-content;
+  height: 100%;
+}
+
+.inputPlusCheckbox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.profileBtnsSave {
+  composes: profile-btns-save from "../../../../index2.css";
+  margin-top: 40px;
+}
+
+.btnPrimaryCenter {
+  composes: btn from "../../../../index2.css";
+  composes: btn--primary from "../../../../index2.css";
+  margin: 0 auto;
+  background-color: #39961e;
+  padding: 16px 20px 17px;
+  border-radius: 4px;
+}
+
+.entryTitleCenter {
+  composes: entry__title from "../../../../index.css";
+  composes: text-center from "../../../../index.css";
+  color: #08a5d8;
+}
+
+.btnPrimaryCenter:hover {
+  background: #2f8d14;
+}
+.note {
+  font-size: 14px;
+  color: #4da2d6;
+}
+.noteError {
+  color: #ff543e;
+}
+.noteLink {
+  color: #4da2d6;
+}
+.btnLoad {
+  composes: btnPrimaryCenter;
+  margin-top: 20px;
+  background-color: #4da2d6;
+}
+
+.profileText {
+  color: #39961e;
+  font-weight: bold;
+  font-size: 20px;
+}
+.profileNote {
+  font-size: 14px;
+  color: #b5b5b5;
+}
+
+.btnPrimary {
+  composes: btn from "../../../../index.css";
+  composes: btn--primary from "../../../../index.css";
+  width: 100%;
+  color: white;
+}
+
+.btnAdd {
+  composes: btnPrimary;
+  background-color: #4da2d6;
+}
+.btnAdd:hover {
+  background-color: #2a86be;
+}
+.btnAddVerify {
+  composes: btnAdd;
+  padding-right: 0;
+  padding-left: 0;
+  width: 100%;
+  max-width: 100% !important;
+}
+.uploadFileInput {
+  display: none;
+}
+.avatarImgWrap {
+  position: relative;
+  height: 100%;
+}
+.avatarBlock {
+  width: 100%;
+  font-size: 14px;
+}
+.avatarContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.avatarImg {
+  /*max-width: 100%;*/
+  position: relative;
+  z-index: 5;
+  /*width:100%;*/
+  height: 100%;
+}
+.avatarInfo {
+  font-size: 14px;
+  padding: 20px;
+}
+.avatarText {
+  position: absolute;
+  color: #fff;
+  margin-top: 37px;
+  font-family: "Exo 2", Arial, Tahoma, sans-serif;
+  font-weight: 700;
+}
+.avatarInfoItem {
+  display: flex;
+  margin-bottom: 10px;
+}
+.avatarInfoText {
+  color: #b9b0b0;
+  margin-right: 8px;
+}
+
+.svgIconCalendar {
+  width: 20px;
+  height: 20px;
+  color: #39961e;
+  margin-top: 3px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.checkboxMb10Mt10 {
+  composes: checkbox from "../../../../index2.css";
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 1025px) {
+  .h1 {
+    margin-left: -40px;
+  }
+  .width25 {
+    width: 25%;
+  }
+  .width33 {
+    width: 33%;
+  }
+  .width75 {
+    width: 75%;
+  }
+
+  .stageBoxInner {
+    padding: 0 80px;
+  }
+  .stageBoxInner:first-child {
+    padding-top: 40px;
+  }
+  .stageBoxInner:last-child {
+    padding-bottom: 50px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .stageBoxInner {
+    padding: 0 20px;
+    box-shadow: none;
+  }
+  .stageBoxInner:first-child {
+    padding-top: 50px;
+  }
+
+  .stageBoxInner:last-child {
+    padding-bottom: 20px;
+  }
+}
+
+.serverError {
+  padding-bottom: 20px;
+  color: red;
+  font-size: 12px;
+}
+
+.svgIconFile {
+  width: 20px;
+  height: 20px;
+  color: #39961e;
+  margin-top: 3px;
+  position: absolute;
+  top: 10px;
+  left: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .pr15 {
+    padding-right: 15px;
+  }
+  .pl15 {
+    padding-left: 15px;
+  }
+
+  .width50 {
+    width: 50%;
+  }
+  .gridCell12:first-child {
+    padding-right: 15px;
+  }
+  .gridCell12:last-child {
+    padding-left: 15px;
+  }
+  .avatarContent {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .hr2 {
+    margin-left: -80px;
+    margin-right: -80px;
+  }
+}
+
+.addBlock {
+}
+.btn {
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: inline-flex;
+}
+.trigger {
+  width: 23px;
+  height: 22px;
+  background: #4da2d6;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.group {
+    margin-bottom: 10px;
+}

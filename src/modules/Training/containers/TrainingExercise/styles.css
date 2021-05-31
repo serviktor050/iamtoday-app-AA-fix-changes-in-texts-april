@@ -1,0 +1,332 @@
+.content{
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px 20px 20px;
+    font-family: 'PTSans', sans-serif;
+    margin-bottom: 50px;
+    box-shadow: 1px 1px 9px rgba(0,0,0,0.1);
+}
+.bread{
+    padding-bottom:10px;
+    display: flex;
+    font-weight: bold;
+    font-size: 12px;
+    width:100%;
+}
+.bread__item{
+    position: relative;
+    padding-right: 25px;
+}
+.bread__item--link {
+    cursor: pointer;
+    color: #39961e;
+}
+.bread__item:after{
+    content: '';
+    padding: 0;
+    width: 4px;
+    height: 4px;
+    display: block;
+    float: left;
+    border-top: 1px solid #222;
+    border-right: 1px solid #222;
+    position: absolute;
+    transform: rotate(45deg);
+    right: 10px;
+    top: 7px;
+}
+.bread__item:last-child:after{
+    display: none;
+}
+.exercise{
+    display: flex;
+    flex-wrap: wrap;
+}
+.main{
+    width: 100%;
+    background: #F0F6FF;
+    border-radius: 2px;
+}
+.main__container {
+    width: 100%;
+    background: #F0F6FF;
+    border-radius: 2px;
+    padding: 15px 20px;
+}
+.images {
+    /*max-height: 295px;*/
+    overflow: hidden;
+}
+.images img {
+    width:100%;
+}
+.list__header{
+    width:100%;
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 4px;
+    background: rgb(238,245,246);
+    background: linear-gradient(90deg, rgba(238,245,246,1) 0%, rgba(243,253,237,1) 49%);
+}
+.header__title, .header__toggle {
+    display: inline-block;
+}
+.header__toggle {
+    text-align: right;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+.list {
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    z-index: 99;
+    width: 40%;
+    overflow: auto;
+}
+
+.list__shadow {
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.1);
+}
+
+.list__control {
+    display: flex;
+    cursor: pointer;
+    background: #FFFFFF;
+    padding: 15px 20px;
+    height: 55px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 15px;
+    border-bottom: 1px solid #ced9eb;
+}
+
+.list__textWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.list__text {
+    display: flex;
+    color: #A4AFC1;
+}
+
+.list__text::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: url('../../../../assets/img/svg-symbols/ico-film.svg') center/cover no-repeat;
+    margin-right: 10px;
+}
+
+.list__expand {
+    display: flex;
+    align-items: center;
+    color: #39961E;
+}
+
+.list__expand::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    background: url('../../../../assets/img/svg-symbols/ico-bold-arrow-down.svg') center/8px no-repeat;
+    filter: brightness(0) saturate(100%) invert(44%) sepia(61%) saturate(672%) hue-rotate(61deg) brightness(94%) contrast(82%);
+}
+
+.list__hide {
+    display: flex;
+    align-items: center;
+    color: #39961E;
+}
+
+.list__hide::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    background: url('../../../../assets/img/svg-symbols/ico-bold-arrow-up.svg') center/8px no-repeat;
+    filter: brightness(0) saturate(100%) invert(44%) sepia(61%) saturate(672%) hue-rotate(61deg) brightness(94%) contrast(82%);
+}
+
+.header__icon {
+    top: 8px;
+    left: 15px;
+    position: absolute;
+}
+.header__title__primaryText {
+    margin-left: 42px;
+    color: gray;
+}
+
+.icon__video {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background: url("/assets/img/antiage/video.svg");
+}
+
+.header__toggle__arrow-up {
+    top: -2px;
+    position: absolute;
+    background: url("/assets/img/antiage/chevron-up.svg");
+    width: 24px;
+    height: 24px;
+}
+.header__toggle__arrow-down{
+    top: -2px;
+    position: absolute;
+    background: url("/assets/img/antiage/chevron-down.svg");
+    width: 24px;
+    height: 24px;
+}
+
+.header__toggle__text{
+    margin-left: 25px;
+    color: #38971f;
+    font-size: 13px;
+}
+
+.info-bottom{
+    display: flex;
+    justify-content: space-between;
+    padding:0 0 10px;
+}
+.views__text {
+    color: #979797;
+    font-size:12PX;
+}
+.views__value {
+    font-weight: bold;
+    font-size:12px;
+    margin-left:5px;
+}
+.name{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.likes{
+    width: 75px;
+    display: flex;
+    color: #1f447b;
+}
+.likes.active {
+    color: #ff241aab;
+}
+.likes.active svg {
+    fill: #ff241aab;
+}
+.likes svg {
+    fill: #1f447b;
+    height: 20px;
+    width: 20px;
+    margin-right:8px;
+    cursor: pointer;
+}
+.likes span {
+    cursor: pointer;
+}
+.tags{
+    padding:12px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.tag{
+    background: #FFFFFF;
+    color: #4DA2D6;
+    border-radius: 20px;
+    margin-right: 10px;
+    padding: 5px 15px;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    font-size: 10px;
+}
+.tag:last-child{
+    margin-right:0;
+}
+.rating {
+    position: relative;
+    margin-bottom: 20px;
+}
+.desc {
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+}
+.desc__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.desc__editor {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.header__title{
+    font-weight: bold;
+}
+.header__toggle{
+    visibility: hidden;
+}
+.video__control {
+    position: absolute;
+    top: -35px;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.video__control-btn {
+    all: unset;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+.video__control-btnPrev {
+    background: url('../../../../assets/img/svg-symbols/ico-arrow-blue.svg') center/12px no-repeat;
+    background-color: #FFFFFF;
+    margin-right: 10px;
+}
+.video__control-btnNext {
+    background: url('../../../../assets/img/svg-symbols/ico-arrow-blue.svg') center/12px no-repeat;
+    transform: rotate(180deg);
+    background-color: #FFFFFF; 
+}
+.video__control-btn:disabled {
+    filter: brightness(1.5) saturate(0%);
+}
+.playlist__container {
+    margin-left: 20px;
+}
+@media screen and (min-width: 768px) {
+    .desc {
+        flex-direction: row;
+    }
+    .desc__header{
+        flex-direction: row;
+    }
+    .desc__editor.collapsed {
+        width: 100%;
+    }
+    .header__toggle{
+        visibility: visible;
+    }
+}
+@media screen and (max-width: 767px) {
+    .list {
+        display: none;
+    }
+}

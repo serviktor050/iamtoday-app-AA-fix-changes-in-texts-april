@@ -1,0 +1,12 @@
+.inputLine {
+  composes: input from '../../index.css';
+  composes: input--line  from '../../index.css';
+}
+
+.inputLabel {
+  composes: input__label  from '../../index.css';
+}
+
+.inputField {
+  composes: input__field from '../../index.css';
+}

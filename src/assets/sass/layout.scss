@@ -1,0 +1,140 @@
+/** ===========================
+   App layout
+   =========================== **/
+
+
+.layout {
+  &--entry {
+    background-color: #fff;
+  }
+
+  &__inner {
+    margin: 0 auto;
+    max-width: $max-content-width;
+    padding: 30px 20px 0;
+
+    @include av-mq(portable) {
+      padding: 0 0 $mob-menu-height 0;
+    }
+  }
+
+  &__smm{
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 320px;
+    @include av-mq(portable) {
+      padding-left:15px;
+      padding-top: 20px;
+    }
+  }
+  &__wrap{
+    width:50%;
+    @include av-mq(tablet) {
+      width:100%;
+    }
+    &--desktop{
+      display: block;
+      @include av-mq(tablet) {
+        display: none;
+      }
+    }
+    &--mobile{
+      display: none;
+      @include av-mq(tablet) {
+        display: block;
+      }
+    }
+  }
+
+  &__wrap-item{
+    width:100%;
+    padding-right:15px;
+  }
+
+  &__menu {
+    position: relative;
+
+    &.hide-menu {
+      @include av-mq(portable) {
+        display: none;
+      }
+
+      @include av-mq(desk) {
+        .layout__menu-inner {
+          pointer-events: none;
+          transition: opacity 0.4s;
+          opacity: 0.35;
+        }
+
+        &::before {
+          content: "Заполните личные данные и получите доступ к данному функционалу.";
+          opacity: 0;
+          text-align: center;
+          max-width: 200px;
+          width: 100%;
+          position: absolute;
+          left: 50%;
+          top: 20%;
+          transform: translateX(-50%);
+          transition: opacity 0.4s;
+        }
+
+        &:hover {
+          .layout__menu-inner {
+            opacity: 0;
+          }
+
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  &__menu-nav {
+    @include av-mq(portable) {
+      display: none;
+    }
+  }
+
+  &__calendar {
+  }
+
+  &__menu-inner {
+    &.is-fixed {
+      position: fixed;
+      top: 30px;
+      z-index: 10;
+    }
+  }
+
+  &__content {
+  }
+}
+
+.layout__content {
+  .stage-box {
+    .stage-box__inner {
+      @include av-mq(portable) {
+        &:first-child {
+          padding-top: 20px;
+        }
+
+        &:last-child {
+          padding-bottom: 20px;
+        }
+      }
+
+      @include av-mq(desk) {
+        &:first-child {
+          padding-top: 40px;
+        }
+
+        &:last-child {
+          padding-bottom: 50px;
+        }
+      }
+    }
+  }
+}

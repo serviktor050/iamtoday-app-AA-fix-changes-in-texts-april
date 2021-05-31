@@ -1,0 +1,36 @@
+.itd-task-alignment-options-popup {
+  position: absolute;;
+  background: white;
+  display: flex;
+  padding: 5px 2px;
+  cursor: pointer;
+  z-index: 100;
+}
+.itd-alignment-option-left {
+  justify-content: flex-start;
+}
+.itd-task-alignment-option {
+  height: 15px;
+  min-width: 15px;
+}
+.itd-task-alignment {
+  position: relative;
+}
+.itd-task-taskwrapper {
+  position: relative;
+}
+.itd-task-center {
+  float: none;
+  display: flex;
+  justify-content: center;
+}
+.itd-task-left {
+  float: left;
+}
+.itd-task-right {
+  float: right;
+}
+.itd-task-full {
+  width: 100%;
+  float: none;
+}

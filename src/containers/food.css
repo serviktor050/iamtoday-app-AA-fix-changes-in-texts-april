@@ -1,0 +1,7 @@
+.layout {
+  composes: layout from '../index2.css';
+}
+
+.entryInner {
+  composes: entry__inner from '../index2.css';
+}

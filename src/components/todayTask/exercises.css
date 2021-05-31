@@ -1,0 +1,68 @@
+.stageBoxSmallPaddingBoxStyle1 {
+  composes: stage-box from '../../index2.css';
+  composes: stage-box--small-padding from '../../index2.css';
+  margin-bottom:20px !important;
+}
+
+.stageBoxInner {
+  composes: stage-box__inner from '../../index2.css';
+  padding-top:20px !important;
+}
+
+.stageBoxBigPadding {
+  composes: stage-box from '../../index.css';
+  composes: stage-box--big-padding from '../../index.css';
+}
+
+.taskMb30 {
+  composes: task from '../../index2.css';
+}
+
+.tasksResults {
+  composes: tasks-results from '../../index.css';
+}
+
+.h1TasksResultsTitle {
+  composes: h1 from '../../index.css';
+  composes: tasks-results__title from '../../index.css';
+}
+
+.tasksResultsDesc {
+  composes: tasks-results__desc from '../../index.css';
+}
+
+.btnPrimaryFillReport1 {
+  composes: btn from '../../index.css';
+  composes: btn--primary from '../../index.css';
+  composes: js-fill-report-1 from '../../index.css';
+}
+
+.h1 {
+  composes: h1 from '../../index.css';
+}
+
+.taskItem {
+  composes: task__item from '../../index2.css';
+}
+
+.textCenter {
+  composes: text-center from '../../index.css';
+}
+
+.h1TextCenterMb10 {
+  composes: h1 from '../../index2.css';
+  composes: text-center from '../../index2.css';
+  composes: mb10 from '../../index2.css';
+}
+
+.subTitle {
+  composes: sub-title from '../../index2.css';
+}
+
+.h2 {
+  composes: h2 from '../../index2.css';
+}
+
+.video{
+  margin-top:15px;
+}

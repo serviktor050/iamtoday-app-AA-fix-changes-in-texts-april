@@ -1,0 +1,94 @@
+.layoutEntry {
+  composes: layout from '../../index.css';
+  composes: layout--entry from '../../index.css';
+}
+
+.gridEntryHeader {
+  composes: grid from '../../index.css';
+  composes: entry-header from '../../index.css';
+}
+
+.gridCellTodaymeLogo {
+  composes: grid__cell from '../../index.css';
+  composes: todayme-logo from '../../index.css';
+}
+
+.entryMin {
+  composes: entry from '../../index.css';
+  composes: entry--min from '../../index.css';
+}
+
+.entryInner {
+  composes: entry__inner from '../../index.css';
+}
+
+.entryHeader {
+  composes: entry__header from '../../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+}
+
+.entryBox {
+  composes: entry__box from '../../index.css';
+}
+
+.entryNavMtb20 {
+  composes: entry-nav from '../../index.css';
+  composes: mtb20 from '../../index.css';
+}
+
+.entryNavItem {
+  composes: entry-nav__item from '../../index.css';
+}
+
+.textCenterMb10 {
+  composes: text-center from '../../index.css';
+  composes: mb10 from '../../index.css';
+}
+
+.socialSignin {
+  composes: social-signin from '../../index.css';
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--fb from '../../index.css';
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--vk from '../../index.css';
+}
+
+.socialSigninItemOk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--odnoklassniki from '../../index.css';
+}
+
+.svgIconFb {
+  composes: svg-icon from '../../index.css';
+  composes: ico-fb from '../../index.css';
+}
+
+.svgIconVk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-vk from '../../index.css';
+}
+
+.svgIconOk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-odnoklassniki from '../../index.css';
+}
+
+.entryBg {
+  composes: entry__bg from '../../index.css';
+}
+
+.buttonSecondaryWide {
+  composes: btn from '../../index.css';
+  composes: btn--secondary  from '../../index.css';
+  composes: wide  from '../../index.css';
+}

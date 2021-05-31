@@ -1,0 +1,203 @@
+.entryHeader {
+  composes: entry__header from '../../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+}
+
+.questionForm {
+  composes: question-form from '../../index.css';
+}
+
+.h1QuestionFormTitle {
+  composes: h1 from '../../index.css';
+  composes: question-form__title from '../../index.css';
+}
+
+.optionsBlackMb60 {
+  composes: options from '../../index.css';
+  composes: options--black from '../../index.css';
+  composes: mb60 from '../../index.css';
+}
+
+.questionFormOwnVersion {
+  composes: question-form__own-version from '../../index.css';
+}
+
+.stageBoxBigPadding {
+  composes: stage-box from '../../index2.css';
+  composes: stage-box--big-padding from '../../index2.css';
+  background: rgb(77,104,134);
+  background: linear-gradient(135deg, rgba(77,104,134,1) 0%, rgba(33,51,73,1) 100%);
+  margin-bottom:20px;
+}
+
+.stageBoxHeaderTodayme {
+  composes: stage-box__header from '../../index2.css';
+  composes: stage-box__header--todayme from '../../index2.css';
+  background-image: none;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.stageBoxHeaderLogo {
+  composes: stage-box__header-logo from '../../index2.css';
+}
+
+.stageBoxInner {
+  composes: stage-box__inner from '../../index2.css';
+  padding: 20px 40px 0 !important;
+}
+
+.h2TextCenterMb30 {
+  composes: h2 from '../../index2.css';
+  composes: text-center from '../../index2.css';
+  composes: mb30 from '../../index2.css';
+  color: #fff;
+}
+
+.optionsWhiteMb30CenterWrap {
+  composes: options from '../../index2.css';
+  composes: options--white from '../../index2.css';
+  composes: center from '../../index2.css';
+  composes: wrap from '../../index2.css';
+  flex-direction: column;
+  margin-bottom:25px;
+}
+
+
+.optionsItem {
+  composes: options__item from '../../index2.css';
+  background-color: #66788e !important;
+  color: #fff;
+  border: none !important;
+  text-align: left;
+  margin-right: 0 !important;
+  position: relative;
+  min-height: 47px;
+  display: flex;
+  align-items: center;
+  padding: 12px 90px 12px 20px !important;
+
+}
+.multi:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background: #fff;
+  opacity: 0.6;
+  position: absolute;
+  top: 11px;
+  right: 17px;
+}
+
+.optionsItemIsActive {
+  composes: optionsItem;
+  composes: is-active from '../../index2.css';
+  text-align: left !important;
+  background-color: #ef3125 !important;
+}
+.optionsItemIsActive.multi:after {
+  opacity:1;
+}
+.optionsItem:hover {
+  background: #708399;
+}
+
+.inputField {
+  composes: input__field from '../../index2.css';
+}
+
+.gridCenter {
+  composes: grid from '../../index2.css';
+  composes: grid--center from '../../index2.css';
+}
+.multiCheckbox {
+  fill: #708399;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 19px;
+  top: 13px;
+  z-index: 2;
+}
+.select {
+  position: absolute;
+  right: 20px;
+  top: 13px;
+}
+.select svg {
+  fill: #708399;
+  width: 15px;
+  height: 15px;
+  z-index: 2;
+  position: relative;
+  top: 3px;
+  left: -9px;
+}
+.smm .stageBoxInner {
+  padding: 20px 20px 0 !important;
+}
+.smm .h2TextCenterMb30 {
+  font-size:18px;
+}
+.smm .width66 {
+  width:100%;
+}
+.smm .optionsItem {
+  line-height: 18px;
+}
+@media screen and (min-width: 1025px) {
+  .width66 {
+    width: 66.66667%;
+  }
+}
+
+.gridCellDesk66 {
+  composes: width66;
+  composes: grid__cell from '../../index2.css';
+}
+
+.inputBtn {
+  composes: input from '../../index2.css';
+  composes: input--btn from '../../index2.css';
+}
+
+.inputFieldWrap {
+  composes: input__field-wrap from '../../index2.css';
+}
+
+.btnPrimary {
+  composes: btn from '../../index2.css';
+  composes: btn--primary from '../../index2.css';
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 14px 45px 17px;
+  border-radius: 4px;
+  color: #213349;
+  text-transform: none;
+  font-size: 16px;
+}
+.btnAction {
+  composes: btn from '../../index2.css';
+  composes: btn--action from '../../index2.css';
+  background-color: #ef3125;
+  padding: 14px 45px 17px;
+  border-radius: 4px;
+  text-transform: none;
+  color: #fff;
+}
+.btnPrimary:disabled {
+  background-color: #fff !important;
+}
+.btnPrimaryDisabled{
+  composes: btnPrimary;
+  opacity: 0.5;
+  cursor: no-drop;
+}
+.disabled {
+  cursor: default;
+}

@@ -1,0 +1,16 @@
+.itd-dropdownoption-default {
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+.itd-dropdownoption-highlighted {
+  background: #F1F1F1;
+}
+.itd-dropdownoption-active {
+  background: #f5f5f5;
+}
+.itd-dropdownoption-disabled {
+  opacity: 0.3;
+  cursor: default;
+}

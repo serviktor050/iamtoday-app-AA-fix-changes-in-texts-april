@@ -1,0 +1,379 @@
+.entry {
+  display: flex;
+  min-height: 100vh;
+}
+
+.layoutEntry {
+  composes: layout from '../../index.css';
+  composes: layout--entry from '../../index.css';
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  height: fit-content;
+  min-height: 100vh;
+}
+
+.gridEntryHeader {
+  composes: grid from '../../index.css';
+  /*composes: entry-header from '../../index.css';
+  margin-bottom: 0;*/
+  height: 30%;
+  padding: 30px;
+}
+.gridCellTodaymeLogo {
+  composes: grid__cell from '../../index.css';
+  composes: todayme-logo from '../../index.css';
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.entryMin {
+  composes: entry from '../../index.css';
+  composes: entry--min from '../../index.css';
+  width: 470px;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-between;
+}
+.entryInner {
+  composes: entry__inner from '../../index.css';
+  padding-bottom:20px !important;
+  background: transparent;
+}
+.entryInnerTele2{
+  composes: entryInner;
+  border: 1px solid #ffaf0f;
+}
+.entryHeader {
+  composes: entry__header from '../../index.css';
+}
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 37px;
+}
+.entryTitleCenterTele2{
+  font-size: 32px;
+  text-align: left;
+  padding-left: 80px;
+  color: #000;
+  margin-bottom: 44px;
+}
+.colorAlfa{
+  color: #fe2f1d !important;
+}
+.bgAlfa {
+  background: #fe2f1d;
+}
+.entryBox {
+  composes: entry__box from '../../index.css';
+  padding: 0px 40px;
+}
+.entryBoxSmm{
+  padding:0;
+}
+.entryNavMtb20 {
+  margin: 0px 0px 20px 0;
+}
+
+.entryNavRegister {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 19px;
+  margin: 20px 0;
+}
+
+.entryNavRegister p {
+  margin-right: 10px;
+}
+.entryNavItem {
+  composes: entry-nav__item from '../../index.css';
+  position: relative;
+}
+.layoutEntrySmm{
+  font-size:14px;
+  padding:0 30px;
+  border: 1px solid #ced9eb;
+  border-radius: 5px;
+}
+.layoutEntrySmm .entryTitleCenter{
+  padding: 15px 0;
+  font-size: 18px;
+  color: #1f447b;
+}
+.layoutEntrySmm .entryNavMtb20{
+  font-size: 13px;
+  margin: 8px 0;
+}
+.layoutEntrySmm .entryInner{
+  padding-bottom: 7px !important;
+}
+.entryMinSmm{
+  margin-bottom:0;
+}
+.textCenterMb10 {
+  composes: text-center from '../../index.css';
+  composes: mb10 from '../../index.css';
+}
+
+.socialSignin {
+  composes: social-signin from '../../index.css';
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--fb from '../../index.css';
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--vk from '../../index.css';
+}
+
+.socialSigninItemOk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--odnoklassniki from '../../index.css';
+}
+.socialSigninItemIn{
+  composes: social-signin__item from '../../index2.css';
+  composes: social-signin__item--vk from '../../index2.css';
+  background-color: #222;
+}
+.socialSigninItemGp{
+  composes: social-signin__item from '../../index2.css';
+  composes: social-signin__item--vk from '../../index2.css';
+  background-color: #f95858;
+}
+.svgIconFb {
+  composes: svg-icon from '../../index.css';
+  composes: ico-fb from '../../index.css';
+  fill: #fff;
+}
+
+.svgIconVk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-vk from '../../index.css';
+  fill: #fff;
+}
+
+.svgIconOk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-odnoklassniki from '../../index.css';
+  fill: #fff;
+}
+.svgIconGp{
+  composes: svg-icon from '../../index2.css';
+  composes: ico-vk from '../../index2.css';
+  fill: #fff;
+  width:25px;
+  height:22px;
+}
+.svgIconIn{
+  composes: svg-icon from '../../index2.css';
+  composes: ico-vk from '../../index2.css';
+  fill: #fff;
+  height:20px;
+}
+.entryBg {
+  composes: entry__bg from '../../index.css';
+  background: #21ACE1;
+}
+
+.buttonSecondaryWide {
+  composes: btn from '../../index.css';
+  composes: btn--secondary  from '../../index.css';
+  composes: wide  from '../../index.css';
+  text-transform: none;
+  color: #FFF4F4;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
+  background: linear-gradient(86.91deg, #2BB6A3 2.8%, #069ED2 94.68%)
+}
+
+.buttonSecondaryWideTele2{
+  composes: btn from '../../index.css';
+  composes: btn--secondary  from '../../index.css';
+  composes: wide  from '../../index.css';
+  background: #ff6633;
+}
+.alfaBg{
+  max-width: 100%;
+ /* height: 100%;*/
+  width:100%;
+  height:100%;
+}
+.tele2Wrap{
+  text-align: center;
+}
+.tele2Logo{
+  width: 325px;
+  margin-top: 27px;
+}
+.entryNavLink{
+  color:  #15ACC7;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.entryNavLink:hover{
+  text-decoration: underline;
+}
+/*.entryNavItem:first-child:before {*/
+  /*content: '';*/
+  /*position: absolute;*/
+  /*right: -1px;*/
+  /*top: 9px;*/
+  /*width: 1px;*/
+  /*height: 15px;*/
+  /*background: #fff;*/
+/*}*/
+.textCenter {
+  composes: text-center from '../../index.css';
+}
+
+.loaderMain {
+  composes: loader from '../../index.css';
+  composes: loader--main from '../../index.css';
+}
+.buttonAction {
+  composes: btn from '../../index.css';
+  composes: btn--action  from '../../index.css';
+  background-color: #4da2d6;
+}
+
+.wrapper{
+  padding-left: 30px;
+}
+
+.inputCustom {
+  margin-top: 5px;
+}
+
+.input {
+  background-color: transparent;
+  margin-bottom:20px;
+  composes: input from '../../index2.css';
+}
+
+.input p {
+  white-space: nowrap;
+}
+
+.accessDenied{
+  font-size: 22px;
+}
+
+.input  input::placeholder {
+  color: #8A8A8A;
+  font-size: 14px;
+}
+
+.input label {
+  color: #000000;
+  font-size: 18px;
+  line-height: 22px;  
+
+}
+
+.btnsModal{
+  margin-top:15px;
+  text-align: center;
+}
+.buttonAction {
+  composes: btn from '../../index.css';
+  composes: btn--action  from '../../index.css';
+  margin-right:15px;
+}
+.alfa .buttonAction{
+  background-color: #ef3124;
+}
+.alfa .entryTitleCenter {
+  font-family: "StyreneBLC-Thin";
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+.alfa .buttonSecondaryWide {
+  font-family: "StyreneBLC-Regular";
+}
+.alfa .entryBox {
+  font-family: "StyreneBLC-Regular";
+}
+.alfa .entryInner {
+  background-color: transparent;
+}
+.layoutEntry.alfa {
+  background-color: transparent;
+}
+
+.alfa .entryNavLink {
+  color: #213349;
+  text-decoration: none;
+}
+.alfa .entryNavLink:hover {
+  text-decoration: underline;
+}
+.buttonSecondaryWide[disabled]{
+  opacity: 0.5;
+  background-color: #fe2f1d !important;
+  cursor: no-drop;
+}
+.layoutEntrySmm.alfa {
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .accessDenied{
+    font-size: 16px;
+  }
+  .entryTitleCenter{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .layoutEntry {
+    width:100%;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .entryMin {
+    width:100%;
+  }
+  .gridEntryHeader {
+    margin-bottom: 0px;
+  }
+  .entryBg img {
+    display: none;
+  }
+  .entryInnerTele2{
+    border: none;
+  }
+  .entryTitleCenterTele2 {
+    padding-left: 15px;
+  }
+  .wrapper{
+    padding: 0 15px 15px 35px;
+    margin-top: -27px;
+  }
+
+  .layoutEntrySmm{
+    margin-top: 80px;
+  }
+  .buttonAction{
+    margin-bottom: 15px;
+    min-width: 165px;
+  }
+}
+

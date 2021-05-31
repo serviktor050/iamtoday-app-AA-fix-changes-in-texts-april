@@ -1,0 +1,26 @@
+.subTitle {
+  composes: sub-title from '../../index.css';
+}
+
+.yourCondition {
+  composes: your-condition from '../../index.css';
+}
+
+.textCenterMb30 {
+  composes: text-center from '../../index.css';
+  composes: mb30 from '../../index.css';
+}
+
+.btnPrimaryFillReport2 {
+  composes: btn from '../../index.css';
+  composes: btn--primary from '../../index.css';
+  composes: js-fill-report-2 from '../../index.css';
+}
+
+.h1 {
+  composes: h1 from '../../index.css';
+}
+
+.textCenter {
+  composes: text-center from '../../index.css';
+}

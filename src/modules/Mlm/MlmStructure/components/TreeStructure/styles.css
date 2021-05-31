@@ -1,0 +1,26 @@
+.firstLevelBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F8FFF1;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.firstLevelTitle {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.line {
+  height: 30px;
+  width: 1px;
+  border: 1px solid #D3EEFF ;
+  margin-left: 10px;
+}

@@ -1,0 +1,8 @@
+.itd-block-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.itd-block-dropdown {
+  width: 110px;
+}

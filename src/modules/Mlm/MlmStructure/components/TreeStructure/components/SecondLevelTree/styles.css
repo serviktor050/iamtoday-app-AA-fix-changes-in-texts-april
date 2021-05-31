@@ -1,0 +1,74 @@
+.secondLevelBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFF5EC;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.secondLevelTitle {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.secondLevelUsers {
+  display: flex;
+  align-items:center;
+}
+
+.chevronDown {
+  background: url("../../../../../../../assets/img/svg-symbols/chevron-down.svg")
+  center/cover no-repeat;    
+}
+
+.chevronUp {
+  background: url("../../../../../../../assets/img/svg-symbols/chevron-up.svg")
+  center/cover no-repeat;
+}
+
+.chevronDown, .chevronUp {
+  filter: invert(78%) sepia(35%) saturate(3124%) hue-rotate(327deg) brightness(103%) contrast(104%);
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin-left: 10px;
+}
+
+.line {
+  height: 1px;
+  width: 30px;
+  border: 1px solid #D3EEFF;
+  margin-left: 10px;
+}
+.treeWrapper {
+  position: relative;
+  width: 80%;
+  max-width: 400px;
+  padding-top: 10px;
+}
+
+.treeWrapper:before {
+  content: "";
+  width: 90px;
+  border-bottom: 2px solid #D3EEFF;
+  margin-left: -90px;
+  position:absolute;
+  top: 40px;
+}
+
+.treeWrapper:after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: 10px;
+  top: 15px;
+  height: calc(100% - 50px);
+  background-color: #D3EEFF;
+}

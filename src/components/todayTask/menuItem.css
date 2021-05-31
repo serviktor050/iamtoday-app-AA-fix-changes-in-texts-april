@@ -1,0 +1,78 @@
+.mainNavItem {
+  composes: main-nav__item from '../../index2.css';
+  color: #2c2f33;
+  fill: #2c2f33;
+  transition: all 0.3s;
+}
+.mainNavItem:hover {
+  background-color: #39961e;
+  color: #fff;
+}
+.mainNavItem:hover svg {
+  fill: #fff;
+}
+.liNavItem:last-child{
+  margin: 10px 0;
+}
+.mainNavItemUnselectable:hover {
+
+}
+.subItemLink {
+  font-size: 14px;
+  line-height: 30px;
+  color: #2C2F33;
+  text-decoration: none;
+}
+
+.subItemLink:hover{
+  color: #39961e;
+}
+
+.subItemLink.active{
+  color: #39961e;
+}
+
+.mainNavItemActive {
+  composes: main-nav__item from '../../index2.css';
+  composes: main-nav__item--active from '../../index2.css';
+  background-color: #39961e;
+  color: #fff;
+}
+.mainNavItemActive svg {
+  fill: #fff;
+}
+.mainNavItemActive a {
+  color: #fff;
+}
+.mainNavItemActive .svg-icon{
+  fill: #fff;
+}
+.disabled {
+  opacity: 0.5;
+  cursor: no-drop;
+}
+.disabled:hover {
+  background-color: transparent;
+  color: #222;
+}
+.disabled:hover svg {
+  fill: #222;
+}
+.subItems{
+  margin-left: 40px;
+  margin-top: 0;
+}
+
+.unReadMsgs{
+  padding: 0 4px;
+  background: #f97b7c;
+  border-radius: 3px;
+  color: #fff;
+  margin-left:6px;
+}
+
+/*
+margin: 10px 0;
+padding-top: 8px;
+border-top: 1px solid #ced9eb;*/
+

@@ -1,0 +1,27 @@
+.mainBody {
+  width: 100%;
+  padding: 105px 73px;
+  background-color: #f4f8fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mainImg {
+  width: 72px;
+  height: 94px;
+  background-image: url("../../../../assets/img/svg/profile_placeholder.svg");
+  background-size: cover;
+  margin-bottom: 18px;
+}
+
+.mainText {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #c5dcff;
+}

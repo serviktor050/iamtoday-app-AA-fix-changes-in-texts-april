@@ -1,0 +1,176 @@
+.taskHeader {
+  composes: task__header from '../../index.css';
+}
+
+.taskTitle {
+  composes: task__title from '../../index.css';
+}
+
+.taskNumber {
+  composes: task__number from '../../index.css';
+}
+
+.taskNumberActive{
+  composes: task__number from '../../index.css';
+  background-color: #56DAA1;
+}
+
+.taskName {
+  composes: task__name from '../../index.css';
+}
+
+.btnTasks {
+  composes: btn-taks from '../../index.css';
+}
+
+.btnTasksActive {
+  composes: btn-taks from '../../index.css';
+  background-color: #56DAA1;
+}
+
+.checkbox {
+  composes: checkbox from '../../index.css';
+}
+
+.checkboxLabel {
+  composes: checkbox__label from '../../index.css';
+}
+
+.checkboxTitle {
+  composes: checkbox__title from '../../index.css';
+}
+
+.checkboxFieldBtnTasks {
+  composes: checkbox__field from '../../index.css';
+  composes: checkbox__field--btn-taks from '../../index.css';
+}
+
+.checkboxPh {
+  composes: checkbox__ph from '../../index.css';
+}
+
+.svgIcoTick {
+  composes: svg-icon from '../../index.css';
+  composes: ico-tick from '../../index.css';
+}
+
+.taskDescription {
+  composes: task-description from '../../index.css';
+}
+
+.subTitleLine {
+  composes: sub-title from '../../index.css';
+  composes: sub-title--line from '../../index.css';
+}
+
+.basePragTextCenter {
+  composes: base-parag from '../../index.css';
+  composes: text-center from '../../index.css';
+}
+
+.h3 {
+  composes: h3 from '../../index.css';
+}
+
+.numListItem {
+  composes: num-list__item from '../../index.css';
+}
+
+.numListNumber {
+  composes: num-list__number from '../../index.css';
+}
+
+.numListTitle {
+  composes: num-list__title from '../../index.css';
+}
+
+.numListDescription {
+  composes: num-list__description from '../../index.css';
+}
+.svgIcoOk{
+  width:19px;
+  height:19px;
+}
+
+.socialSigninItem .ya-share2__item_service_odnoklassniki .ya-share2__badge{
+  width: 47px;
+  height: 47px;
+  padding: 4px;
+}
+
+.basePrag {
+  composes: base-parag from '../../index2.css';
+}
+
+.taskMb30 {
+  composes: task from '../../index2.css';
+  composes: mb30 from '../../index2.css';
+}
+
+.taskItem {
+  composes: task__item from '../../index2.css';
+}
+
+.taskItemActive {
+  composes: task__item from '../../index2.css';
+  composes: task__item--active from '../../index2.css';
+}
+
+.btnTask {
+  composes: btn-task from '../../index2.css';
+  background-color: #ef3124;
+}
+
+.btnTaskDone {
+  composes: btn-task from '../../index2.css';
+  composes: btn-task--done from '../../index2.css';
+}
+
+.btnTaskTitle {
+  composes: btn-task__title from '../../index2.css';
+}
+
+.btnTaskIco {
+  composes: btn-task__ico from '../../index2.css';
+}
+
+.svgIconTaskProgress {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-task-progress from '../../index2.css';
+}
+
+.svgIconTaskDone {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-task-done from '../../index2.css';
+}
+
+.taskHeaderInner {
+  composes: task__header-inner from '../../index2.css';
+}
+
+.taskNum {
+  composes: task__num from '../../index2.css';
+}
+
+.taskName {
+  composes: task__name from '../../index2.css';
+  font-size: 15px;
+}
+
+.taskBtnGo {
+  composes: task__btn-go from '../../index2.css';
+}
+
+.svgIcoTaskPlay {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-task-play from '../../index2.css';
+}
+
+.svgIcoTaskDescription {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-task-description from '../../index2.css';
+}
+.mobileLink{
+  display: block;
+  text-decoration: none;
+}

@@ -1,0 +1,41 @@
+.card {
+  /* background: #F4F8FE; */
+  /* border: 1px solid #daeff2; */
+  border: none;
+  border-radius: 2px;
+  padding: 18px 22px;
+  color: #f4f8fe;
+  height: 100%;
+}
+
+.card:first-of-type {
+  border: none;
+}
+
+.header {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: #2c2f33;
+  vertical-align: middle;
+}
+
+.content {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.svgRight {
+  float: right;
+}
+
+.svgIco {
+  line-height: 22px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.icon {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,149 @@
+.addBlock {
+  padding: 15px;
+}
+
+.addBlock_input {
+    color: black;
+  }
+
+.textareaWrapper {
+  border: 1px solid #ced9eb;
+  border-radius: 5px;
+  width: 100%;
+  padding: 12px;
+}
+
+.answerTextarea {
+    width: 100%;    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #333;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    resize: none;
+    overflow: auto;
+  }
+
+.tagsHeading {
+  padding: 10px 0px;
+}
+
+.tagsWrapper{
+  composes: textareaWrapper;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  all: unset;
+  background: #EEFFE9;
+  color: #39961E;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0px 10px 10px 0px;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+}
+
+.tag:hover {
+  color: #EEFFE9;
+  background-color: #39961E;
+}
+
+.tag:focus {
+  color: #EEFFE9;
+  background-color: #39961E;
+}
+.tag > div {
+  color: white;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Safari */
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+.addBlock_tagInput {
+   -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #333;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    width: 30%;
+}
+
+.buttonBlock {
+  padding: 10px 0px;
+}
+
+.button {
+  all: unset;
+  padding: 10px 25px;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px #4da2d6 solid;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  width:30%;
+}
+
+.buttonOk {
+  composes: button;
+  color: #ffffff;
+  background: #4da2d6;
+  margin-right: 10px;
+ 
+}
+
+.buttonCancel {
+  composes: button;
+  color: #4da2d6;
+  background: #fff;
+}
+
+.uploadFileLabel {
+	position: relative;
+}
+
+.uploadFileInput {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+/*.uploadFileInput + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.uploadFileInput:focus + label,
+.uploadFileInput + label:hover {
+  background-color: red;
+}*/
+.uploadFileLabel{
+  background: url("../../../../../assets/img/svg-symbols/ico-paperclip.svg")
+      center/cover no-repeat;
+      background-size: 20px;
+    filter: brightness(0) saturate(100%) invert(72%) sepia(17%) saturate(4214%)
+      hue-rotate(174deg) brightness(86%) contrast(93%);
+    width: 10px;
+    height: 10px;
+    padding: 10px;
+    margin-right: 10px;
+}

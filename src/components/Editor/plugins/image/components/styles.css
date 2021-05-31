@@ -1,0 +1,47 @@
+.itd-image-alignment-options-popup {
+  top: 0;
+  width: 100%;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  justify-content: center;
+  padding: 5px 2px;
+  cursor: pointer;
+  z-index: 100;
+  display: none;
+}
+.itd-image-imagewrapper:hover .itd-image-alignment-options-popup {
+  display: flex;
+}
+.itd-alignment-option-left {
+  justify-content: flex-start;
+}
+.itd-image-alignment-option {
+  height: 15px;
+  min-width: 15px;
+}
+.itd-image-alignment {
+  position: relative;
+}
+.itd-image-imagewrapper {
+  z-index: 1;
+  position: relative;
+}
+.itd-image-center {
+  float: none;
+  display: flex;
+  justify-content: center;
+}
+.itd-image-left {
+  float: left;
+  margin-left: 0;
+}
+.itd-image-right {
+  float: right;
+  margin-right: 0;
+}
+.itd-image-justify {
+  width: 100%;
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+}

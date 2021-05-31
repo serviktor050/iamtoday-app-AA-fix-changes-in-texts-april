@@ -1,0 +1,7 @@
+.promoReportTotal {
+  composes: promo-report-total from '../../../index.css';
+}
+
+.grid {
+  composes: grid from '../../../index.css';
+}

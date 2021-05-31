@@ -1,0 +1,163 @@
+.options {
+  display: flex;
+
+  &.wide {
+    flex-wrap: wrap;
+    text-align: center;
+
+    .options__item {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+
+  &--two-val {
+    .options__item {
+      width: 48%;
+    }
+  }
+
+  &--three-val {
+    .options__item {
+      width: 31%;
+    }
+  }
+
+  &--with-img {
+    .options__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      border: 1px solid $c-border;
+
+      &.is-active {
+        border: 1px solid $c-primary;
+      }
+
+      &:hover {
+      }
+    }
+  }
+
+  &--white {
+    color: $c-secondary;
+
+    .options__item {
+      border: 1px solid $c-border;
+
+      &.is-active {
+        color: #fff;
+        background-color: $c-primary;
+        border: 1px solid $c-primary;
+      }
+
+      &:hover {
+        &:not(.is-active) {
+          background-color: $c-l-gray;
+        }
+      }
+
+      &:active {
+        &:not(.is-active) {
+          background-color: darken($c-l-gray, 5%);
+        }
+      }
+    }
+  }
+
+  &--black {
+    .options__item {
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+
+      &.is-active {
+        border: 1px solid rgba(255, 255, 255, 1);
+      }
+
+      &:hover {
+        &:not(.is-active) {
+          background-color: rgba(255, 255, 255, 0.05);
+        }
+      }
+    }
+  }
+
+  &--white,
+  &--black {
+    .options__item {
+      padding: 17px 5px;
+    }
+  }
+
+  &--error {
+    .options__item {
+      border-color: $c-red;
+    }
+  }
+
+  &--numbers {
+    .options__item {
+      font-size: 1.5rem;
+      width: 100%;
+      max-width: 60px;
+      min-width: auto;
+      padding: 15px 5px;
+    }
+  }
+
+  &__item {
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    border-radius: $base-radius;
+    line-height: 1;
+    font-family: $f-headline;
+    font-weight: 700;
+    font-size: $fz-middle;
+    text-transform: uppercase;
+    min-width: 80px;
+    margin-bottom: 10px;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &.is-active {
+
+      // for programs
+      &.g-mather {
+        background-image: $gradient-mather;
+        border: 1px solid #fff;
+      }
+
+      &.g-hero {
+        background-image: $gradient-hero;
+        border: 1px solid #fff;
+      }
+
+      &.g-extreme {
+        background-image: $gradient-extreme;
+        border: 1px solid #fff;
+      }
+
+      &.g-tomorrow {
+        background-image: $gradient-tomorrow;
+        border: 1px solid #fff;
+      }
+    }
+  }
+}
+
+
+
+
+

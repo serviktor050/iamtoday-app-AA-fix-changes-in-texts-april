@@ -1,0 +1,18 @@
+.header {
+  composes: header from '../index.css';
+}
+
+.gridHeaderInner {
+  composes: grid from '../index.css';
+  composes: header__inner from '../index.css';
+}
+
+.gridCellHeaderLogo {
+  composes: grid__cell from '../index.css';
+  composes: header__logo from '../index.css';
+}
+
+.layoutLogin {
+  composes: layout from '../index.css';
+  composes: layout--login from '../index.css';
+}

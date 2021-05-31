@@ -1,0 +1,790 @@
+.mlmSummary {
+  padding: 40px 30px 50px 40px;
+  background: #fff;
+  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.mlmSummaryHeader .title {
+  font-weight: bold;
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+.mlmSummaryHeader hr {
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.aboutUser {
+  width: 100%;
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  margin-right: 30px;
+}
+
+.userAvaWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.userAva {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.userName {
+  font-weight: bold;
+  color: #2c2f33;
+}
+
+.userLastName {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.userFirstMiddleName {
+  font-size: 12px;
+  line-height: 138.3%;
+}
+
+.userPoints {
+  background: #f8fff1;
+  border-radius: 2px;
+  padding: 20px 35px;
+  display: flex;
+  align-items: center;
+}
+
+.userCashIcon {
+  width: 64px;
+  height: 64px;
+  display: block;
+  background-image: url("../../../assets/img/svg/cash.svg");
+  background-size: cover;
+  margin-right: 15px;
+}
+
+.userPointsContent {
+}
+
+.userPointsTitle {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2c2f33;
+}
+
+.userPointCurrent {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 1;
+  color: #79c330;
+}
+
+.contentList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.label {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: #2c2f33;
+}
+
+.currentBalance {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1;
+
+  letter-spacing: -0.015em;
+
+  color: #000000;
+  margin-left: 10px;
+}
+
+.pointsToBuy {
+  margin-top: 30px;
+}
+
+.cardsWrapper {
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.purchase__cards {
+  width: 100%;
+  display: flex;
+}
+
+.purchase__card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #daeff2;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.purchase__card-50 {
+  width: 50%;
+  margin-right: 30px;
+}
+
+.purchase__card-50:last-child {
+  margin-right: 0;
+}
+
+.purchase__card-label {
+  padding: 30px;
+  cursor: pointer;
+}
+
+.purchase__card-active {
+  box-shadow: 0px 3px 10px 5px #ecf6fd;
+}
+
+.purchase__card-header {
+  display: flex;
+}
+
+.fakeCheckbox {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: 1px solid #e6eff4;
+  box-sizing: border-box;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fakeCheckboxFill {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #4da2d6;
+  border-radius: 1px;
+}
+
+.purchase__card-title {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #2c2f33;
+  margin-left: 18px;
+}
+
+.puchase__readyOffers {
+  width: 100%;
+  display: flex;
+  margin-top: 22px;
+}
+
+.readyOffer__card-1 {
+  border-radius: 2px;
+  padding: 15px 40px;
+  background: url("../../../assets/img/svg/banknote_white.svg") bottom left 15px
+    no-repeat;
+  background-color: rgba(253, 172, 94, 0.1);
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+.readyOffer__card-2 {
+  composes: readyOffer__card-1;
+  background: url("../../../assets/img/svg/banknote_white.svg") bottom left 15px
+      no-repeat,
+    url("../../../assets/img/svg/banknote_white.svg") bottom 5px left 20px
+      no-repeat;
+  background-color: rgba(253, 172, 94, 0.1);
+}
+
+.readyOffer__card-3 {
+  composes: readyOffer__card-1;
+  background: url("../../../assets/img/svg/banknote_white.svg") bottom left 15px
+      no-repeat,
+    url("../../../assets/img/svg/banknote_white.svg") bottom 5px left 20px
+      no-repeat,
+    url("../../../assets/img/svg/banknote_white.svg") bottom 10px left 25px
+      no-repeat;
+  background-color: rgba(253, 172, 94, 0.1);
+  margin-right: 0;
+}
+
+.readyOffer__card-1-active {
+  border-radius: 2px;
+  padding: 15px 40px;
+  background: url("../../../assets/img/svg/banknote_orange.svg") bottom left
+    15px no-repeat;
+  background-color: #ff9f43;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+.readyOffer__card-2-active {
+  composes: readyOffer__card-1-active;
+  background: url("../../../assets/img/svg/banknote_orange.svg") bottom left
+      15px no-repeat,
+    url("../../../assets/img/svg/banknote_orange.svg") bottom 5px left 20px
+      no-repeat;
+  background-color: #ff9f43;
+}
+
+.readyOffer__card-3-active {
+  composes: readyOffer__card-1-active;
+  background: url("../../../assets/img/svg/banknote_orange.svg") bottom left
+      15px no-repeat,
+    url("../../../assets/img/svg/banknote_orange.svg") bottom 5px left 20px
+      no-repeat,
+    url("../../../assets/img/svg/banknote_orange.svg") bottom 10px left 25px
+      no-repeat;
+  margin-right: 0;
+  background-color: #ff9f43;
+}
+
+.readyOffer__card-blue {
+  composes: readyOffer__card-1;
+  background: url("../../../assets/img/svg/banknote_blue.svg") bottom left 15px
+    no-repeat;
+  background-color: rgba(77, 162, 214, 0.1);
+}
+
+.readyOffer__card-blue-active {
+  composes: readyOffer__card-1-active;
+  background: url("../../../assets/img/svg/banknote_blue-2.svg") bottom left
+    15px no-repeat;
+  background-color: #4da2d6;
+}
+
+.readyOffer__rubles {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #c4c4c4;
+}
+
+.readyOffer__pointsWrapper {
+  color: #ff9f43;
+}
+
+.readyOffer__pointsWrapper-blue {
+  color: #4da2d6;
+}
+
+.readyOffer__points-number {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.readyOffer__points-text {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.purchase__card-input {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #2c2f33;
+}
+
+.puchase__customQuantity {
+  display: flex;
+  margin-top: 30px;
+}
+
+.inputWrapper {
+  max-width: 169px;
+}
+
+.inputWrapperDis {
+  composes: inputWrapper;
+  opacity: 0.5;
+  position: relative;
+}
+
+.arrow-right {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.purchase__card-content {
+  margin-top: 10px;
+  margin-left: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.purchase__card-descr {
+  font-size: 13px;
+  line-height: 152.8%;
+  color: #2c2f33;
+  max-width: 70%;
+}
+
+.purchase__card-descr-100 {
+  max-width: 100%;
+}
+
+.purchase__card-imgWrapper {
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardsWrapperStart {
+  composes: cardsWrapper;
+  width: 50%;
+}
+
+.pointsToBuyCard {
+  padding: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4f8fe;
+  width: 23%;
+  height: 190px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.pointsToBuyCardStart {
+  composes: pointsToBuyCard;
+  width: 47%;
+}
+
+.stars {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.star {
+  width: 40px;
+  height: 31px;
+  background-image: url("../../../assets/img/svg/star.svg");
+  background-size: cover;
+}
+
+.pointsToBuy_points {
+  margin-top: 31px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+
+  text-align: center;
+  letter-spacing: -0.015em;
+
+  color: #000000;
+}
+
+.pointsToBuy_rubles {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: -0.015em;
+
+  color: #000000;
+}
+
+.pointsInput {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.pointsInput:checked {
+  border: 1px solid black;
+}
+
+.pointsToBuyCardWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pointsInput:checked + .pointsToBuyCardWrapper {
+  border: 2px solid black;
+}
+
+.pointsToBuyCustom_title {
+  margin-top: 18px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: -0.015em;
+
+  color: #000000;
+}
+
+.pointsCustomInputWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 38px;
+}
+
+.pointsCustomInput {
+  width: 70%;
+  z-index: 3;
+  outline: none;
+  font-size: 14px;
+  text-align: right;
+}
+
+.pointsToBuyCustomDescr {
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.purchaseWays {
+  width: 100%;
+}
+
+.purchaseCardsWrapper {
+  margin-top: 18px;
+  width: 100%;
+}
+
+.purchaseWayDescription {
+  margin-left: 48px;
+  max-width: 85%;
+  width: 85%;
+}
+
+.purchaseWayTitle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+
+  color: #000000;
+}
+
+.purchaseWayDescr {
+  max-width: 590px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.purchaseWayInput {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.purchaseWayCardWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.purchaseWayInput:checked + .purchaseWayCardWrapper {
+  border: 2px solid black;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 40px 0 0 40px;
+}
+
+.agreement {
+  /* padding: 20px 40px; */
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.agreementLabel {
+  display: inline-block;
+  color: #4da2d6;
+}
+
+.agreementCheckbox {
+  display: inline-block;
+  margin-right: 14px;
+}
+
+.btnGoToPay {
+  position: relative;
+  padding: 10px 20px;
+  background: #4da2d6;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+  border: 1px solid #4da2d6;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.btnGoToPay::after {
+  content: "";
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  display: inline-block;
+  background-image: url("../../../assets/img/svg-symbols/arrow-right.svg");
+  background-size: cover;
+}
+
+.withdarwalWayInputWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 29px;
+  margin-left: 38px;
+}
+
+.withdrawalWayTextarea {
+  width: 610px;
+
+  background: #ffffff;
+  border: 1px solid #e6eff4;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: inherit;
+}
+
+.withdrawalActions {
+  margin-left: 34px;
+  z-index: inherit;
+}
+
+.withdrawalBtn {
+  z-index: inherit;
+  padding: 10px 20px;
+  background: #4da2d6;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.withdrawalAgreement {
+  z-index: inherit;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #4da2d6;
+}
+
+.withdrawalAgreementCheckbox {
+  z-index: inherit;
+  margin-right: 15px;
+  margin-top: 2px;
+}
+
+.withdrawalShopBtn {
+  padding: 10px 25px;
+  background: #4da2d6;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(54, 123, 245, 0.24);
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.red {
+  color: red;
+}
+
+.red-border {
+  box-shadow: 0px 0px 5px 2px red;
+}
+
+.partnerInfoModal {
+  position: relative;
+}
+
+.modalContent {
+  display: flex;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1.5;
+  text-align: center;
+  height: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .puchase__readyOffers {
+    flex-wrap: wrap;
+  }
+  .aboutUser {
+    flex-wrap: wrap;
+  }
+  .readyOffer__card-1 {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .readyOffer__card-1-active {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .purchase__card-content {
+    flex-wrap: wrap;
+  }
+  .purchase__card-imgWrapper {
+    width: 100%;
+  }
+  .purchase__card-imgWrapper img {
+    width: 100%;
+  }
+  .userPointCurrent {
+    font-size: 28px;
+  }
+  .purchase__cards {
+    flex-wrap: wrap;
+  }
+  .purchase__card-50 {
+    width: 100%;
+    margin-right: 0;
+  }
+  .withdarwalWayInputWrapper {
+    flex-wrap: wrap;
+    margin-top: 29px;
+    margin-left: 0px;
+  }
+  .withdrawalActions {
+    margin: 15px auto 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .withdrawalShopBtn {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+	.purchase__card-label{
+		padding: 30px 10px;
+	}
+	.purchase__card-descr {
+		max-width: 100%;
+	}
+	.footer {
+		flex-direction: column;
+		align-items: baseline;
+		padding-left: 0;
+	}
+	
+	.footer > div {
+		margin-bottom: 1.5rem;
+	}
+	
+	.footer > button {
+		margin: 0 auto;
+	}
+	
+	.withdrawalShopBtn {
+		font-size: 14px;
+	}
+	
+}
+

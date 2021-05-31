@@ -1,0 +1,401 @@
+.chatNavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+.navTitle {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.backBtn {
+  background: #f0f6ff;
+  border-radius: 50px;
+  font-size: 10px;
+  line-height: 12px;
+  color: #4da2d6;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.backBtn::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  display: block;
+  background: url("../../assets/img/svg-symbols/arrow-right.svg") center/cover
+    no-repeat;
+  filter: brightness(0) saturate(100%) invert(72%) sepia(17%) saturate(4214%)
+    hue-rotate(174deg) brightness(86%) contrast(93%);
+  transform: rotate(180deg);
+  margin-right: 5px;
+}
+.chatName {
+  font-size: 15px;
+  font-weight: bold;
+}
+.chatMembers {
+  font-size: 12px;
+  color: #b5b5b5;
+}
+.pinnedIcon {
+  padding: 10px;
+  margin-left: 5px;
+}
+.icon {
+  width: 15px;
+  height: 15px;
+}
+.menuBtn {
+  outline: none;
+  border: none;
+  background-color: white;
+}
+.chatInnerBlock {
+  /* border-radius: 5px ;
+  background-color: #fff ;*/
+}
+.chatInnerBlockSmall {
+  width: 300px;
+}
+.chatSpinner {
+  composes: chat__spinner from "../../index.css";
+}
+
+.spinner {
+  composes: spinner from "../../index.css";
+}
+
+.chatMessages {
+  composes: chat-messages from "../../index.css";
+}
+
+.chatMsgTime {
+  composes: chat-msg__time from "../../index.css";
+}
+.quote {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #e3e6e8;
+  margin-bottom: 12px;
+  border-left: 4px solid #1d89e4;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  position: absolute;
+  top: -90px;
+  left: 0;
+}
+.quoteHide {
+  composes: quote;
+  display: none;
+  background-color: #f1f7ff;
+}
+.quoteName {
+  color: #70cffe;
+}
+.chatFormInnerTextarea {
+  composes: chat-form__field from "../../index.css";
+  composes: textarea__field from "../../index.css";
+}
+.quoteClose {
+  position: absolute;
+  right: 7px;
+  top: 4px;
+  cursor: pointer;
+}
+.quoteClose svg {
+  width: 15px;
+  height: 15px;
+}
+
+.chatEmoji {
+  left: 0px;
+  bottom: 77px;
+  position: absolute;
+}
+.miniChatTitle.vipChat {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.chatEmojiButton {
+  composes: chat__emoji-button from "../../index.css";
+  border-right: none !important;
+}
+.chatEmojiButtonMini {
+  composes: chatEmojiButton;
+  right: auto;
+  top: 19px;
+  left: -10px;
+  font-size: 20px;
+}
+.btnChatMini {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 35px;
+  top: 20px;
+}
+.svgIcoArrowUp {
+  composes: svg-icon from "../../index.css";
+  composes: ico-arrow-up from "../../index.css";
+}
+.btnChatMiniIcon {
+  cursor: pointer;
+  position: relative;
+  top: 2px;
+}
+.btnChatMiniIcon svg {
+  transform: rotate(45deg);
+  width: 20px;
+  height: 20px;
+}
+.chatForm {
+  composes: chat-form from "../../index2.css";
+  background-color: white;
+  margin: 0;
+  padding: 0px 40px 40px 40px;
+}
+.chatFormMini {
+  composes: chatForm;
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 0 30px;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  height: 70px;
+  position: relative;
+}
+.miniChatHeader {
+  display: flex;
+  height: 50px;
+  background-color: #39961e;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+.miniChatHeader.vipChat {
+  background-color: #009ddc;
+}
+.minionChatCloseIcon {
+  composes: svg-icon from "../../index.css";
+  composes: ico-close from "../../index.css";
+  fill: #fff;
+}
+.quoteBlock.stickers img {
+  max-width: 40px;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .chatForm {
+    padding: 10px 10px 75px 10px;
+  }
+}
+
+.chatFormInner {
+  composes: chat-form__inner from "../../index2.css";
+  width: 100%;
+}
+
+.chatMsgContent {
+  composes: chat-msg__content from "../../index.css";
+}
+
+.chatMsgName {
+  composes: chat-msg__name from "../../index.css";
+}
+
+.chatMsgText {
+  composes: chat-msg__text from "../../index.css";
+}
+
+.chatContent {
+  composes: chat-content from "../../index.css";
+}
+
+.chatMsgSystem {
+  composes: chat-msg from "../../index.css";
+  composes: chat-msg--system from "../../index.css";
+}
+
+.chatMsgYou {
+  composes: chat-msg from "../../index.css";
+  composes: chat-msg--you from "../../index.css";
+}
+
+.chatMsgSomeone {
+  composes: chat-msg from "../../index.css";
+  composes: chat-msg--someone from "../../index.css";
+}
+
+.chat {
+  composes: chat from "../../index2.css";
+}
+
+.textArea {
+  composes: trextarea from "../../index2.css";
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #f4ffe9;
+  padding: 0 !important;
+  font-size: 14px;
+}
+
+.textAreaMini {
+  composes: textArea;
+  padding-left: 30px;
+  display: flex;
+  align-items: flex-end;
+  margin-right: 0;
+}
+.textareaField {
+  composes: textarea__field from "../../index2.css";
+  border-radius: 0px;
+  border: none;
+  padding: 0px;
+  rows: 1;
+  padding-right: 0px !important;
+  transition: 0.2s;
+  background-color: #f4ffe9;
+}
+.chatWrap {
+  /*background-color: #f4ffe9;*/
+}
+.chatBlock.chatForm {
+  background-color: #f4ffe9 !important;
+  padding: 40px;
+}
+.chatWrap.chatWrapVip {
+  background: url(/assets/img/antiage/vip.jpg) no-repeat;
+  margin-top: -1px;
+  min-height: 620px;
+  position: relative;
+}
+.chatWrap.chatWrapVip.miniChat {
+  min-height: 576px;
+  width: 600px;
+}
+.chatWrap.chatWrapVip.miniChat.miniChatSmall {
+  min-height: 315px;
+  width: 300px;
+}
+.textareaFieldMini {
+  composes: textareaField;
+  border: 1px solid #fff;
+  padding-right: 0 !important;
+  padding: 0 !important;
+  margin-left: 38px;
+  margin-right: 50px;
+  height: 46px;
+}
+.textareaFieldMini:focus {
+  border-color: #fff;
+}
+.textareaFieldWrap {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+.miniChatAction {
+  display: flex;
+}
+.miniChatActionItem {
+  margin-left: 10px;
+  cursor: pointer;
+  display: flex;
+}
+.btnChat {
+  composes: btn-chat from "../../index2.css";
+  background-color: #79C330;
+  color: #FFFFFF;
+  border-radius: 0px 4px 4px 0px !important;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: normal;
+  text-transform: none;
+}
+.btnChatTitle {
+  padding: 18px;
+}
+.btnChatIco {
+  composes: btn-chat__ico from "../../index2.css";
+}
+.textBlock {
+  position: relative;
+}
+.svgIconBoldArrowUp {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-bold-arrow-up from "../../index2.css";
+}
+.chatMiniature {
+  color: #fff;
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+}
+.chatMiniatureTitle {
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+.chatMiniatureTitle.miniChat {
+  font-size: 22px;
+}
+.chatMiniatureDesc {
+  font-size: 15px;
+  opacity: 0.8;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+.chatMiniatureDesc.miniChat {
+  font-size: 14px;
+}
+.chatMiniatureBtn {
+  background: #fff;
+  color: #009ddc;
+  width: 250px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.chatMiniatureNote {
+  font-size: 15px;
+  opacity: 0.8;
+  max-width: 600px;
+}
+.chatMiniatureNote.miniChat {
+  font-size: 14px;
+  max-width: 240px;
+}
+.iconVip {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+.chatMiniatureLink {
+  color: #fff;
+  margin: 0 5px;
+}
+@media screen and (min-width: 768px) {
+  .chatMiniatureTitle {
+    font-size: 50px;
+  }
+  .chatMiniatureDesc {
+    font-size: 22px;
+  }
+  .chatMiniatureNote {
+    font-size: 18px;
+  }
+}

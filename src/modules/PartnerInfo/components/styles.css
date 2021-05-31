@@ -1,0 +1,368 @@
+.header {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #c4c4c4;
+}
+.summary {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.summaryTitle {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 20px 0px;
+}
+.summaryRow {
+  display: flex;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+}
+.greenBlock,
+.orangeBlock,
+.blueBlock,
+.greyBlock,
+.purpleBlock,
+.darkBlueBlock,
+.pinkBlock {
+  position: relative;
+  border-radius: 2px;
+  padding: 20px 10px 20px 30px;
+  width: 30%;
+  margin: 5px;
+}
+.greenBlock {
+  background: #f8fff1;
+}
+.orangeBlock {
+  background: #fff5ec;
+}
+.blueBlock {
+  background: #e6f0ff;
+}
+.greyBlock {
+  background: #efefef;
+}
+.pinkBlock {
+  background: #ffeaea;
+}
+.darkBlueBlock {
+  background: #daeff2;
+}
+.purpleBlock {
+  background: #f3d6ff;
+}
+.orangeValue {
+  position: relative;
+  z-index: 2;
+  color: #ff9f43;
+}
+.greenValue {
+  position: relative;
+  z-index: 2;
+  color: #79c330;
+}
+.blueValue {
+  position: relative;
+  z-index: 2;
+  color: #4da2d6;
+}
+.greyValue {
+  position: relative;
+  z-index: 2;
+  color: #a4afc1;
+}
+.pinkValue {
+  position: relative;
+  z-index: 2;
+  color: #ff6b6b;
+}
+.darkBlueValue {
+  position: relative;
+  z-index: 2;
+  color: #4da2d6;
+}
+.purpleValue {
+  position: relative;
+  z-index: 2;
+  color: #9b59b6;
+}
+.svgIcon {
+  width: 40px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 30px;
+}
+
+.summaryHeader {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+}
+.summaryNumber {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+}
+.filterForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
+  font-size: 10px;
+  flex-wrap: wrap;
+}
+
+.filterForm__summary {
+  font-size: 18px;
+  padding: 20px 0px;
+  color: #4da2d6;
+}
+.filterForm__searchInput {
+  width: 50%;
+}
+.leftSide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 55%;
+  font-weight: bold;
+  flex-wrap: wrap;
+}
+.toggleButton {
+  text-align: right;
+  background: #daeff2;
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  font-size: 10px;
+  font-weight: normal;
+  color: #4da2d6;
+  display: inline-block;
+  margin-right: 2px;
+  cursor: pointer;
+  border: none;
+}
+
+.toggleButton.active,
+.toggleButton:hover {
+  color: white;
+  background: #4da2d6;
+}
+.renderStructureGraph {
+  padding: 20px 0px;
+}
+.chart {
+  padding: 10px 0px;
+}
+.heading .cell.sort {
+  cursor: pointer;
+}
+.table {
+  display: table;
+  width: 100%;
+  font-size: 12px;
+}
+
+.row {
+  display: table-row;
+}
+
+.heading {
+  display: table-header-group;
+  height: 50px;
+  font-size: 12px;
+  background: #f4f8fe;
+}
+
+.cell,
+.head {
+  display: table-cell;
+  padding: 10px 5px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #b5b5b5;
+  vertical-align: middle;
+}
+
+.body {
+  display: table-row-group;
+  font-size: 12px;
+}
+
+.body .row {
+  box-shadow: 0 4px 4px #ecf6fd;
+  height: 50px;
+}
+
+.body .cell {
+  vertical-align: middle;
+  color: #2c2f33;
+}
+.heading .cell.sort {
+  cursor: pointer;
+}
+.notePadHeader {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0px 0px 20px 0px;
+}
+.notePad {
+  width: 100%;
+  background: #f0f6ff;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+.notePad_textarea {
+  width: 100%;
+  outline: none;
+  resize: none;
+  border: 0;
+}
+.notePad_button {
+  width: 20%;
+  background: #4da2d6;
+  border-radius: 2px;
+  color: white;
+  padding: 10px;
+  margin: 10px 0px;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.notePad_button:active {
+  background: #78b5db;
+}
+.note {
+  background: #f0f6ff;
+  border-radius: 2px;
+  display: flex;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2c2f33;
+  padding: 10px;
+  margin: 10px 0px;
+}
+.note_avatar {
+  width: 60px;
+  border-radius: 30px;
+}
+.note_name {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #4da2d6;
+}
+.note_time {
+  font-size: 12px;
+  text-align: center;
+  color: #c4c4c4;
+}
+.note_time {
+  padding-left: 10px;
+}
+.note_text {
+}
+.note__body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+}
+.chart {
+  width: 100%;
+}
+.chart_empty {
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-width: 0px 0px 2px 2px;
+  height: 200px;
+  border-color: #daeff2;
+}
+.filters {
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pointTypeFilters {
+  white-space: nowrap;
+}
+
+.greenToggleButton {
+  text-align: right;
+  background: #eeffe9;
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  font-size: 10px;
+  color: #39961e;
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+}
+
+.greenToggleButton.active,
+.greenToggleButton:hover {
+  color: white;
+  background: #39961e;
+  outline: none;
+  border: 0;
+}
+
+.historyTable {
+  padding-bottom: 30px;
+  width: 100%;
+  position: relative;
+}
+.cell_name {
+  width: 70%;
+}
+
+@media screen and (max-width: 500px) {
+	.notePad_button {
+		width: 100%;
+		max-width: 200px;
+	}
+	.leftSide {
+		width: 100%;
+	}
+	
+	.summaryRow {
+		flex-direction: column;
+	}
+	
+	.greenBlock,
+	.orangeBlock,
+	.blueBlock,
+	.greyBlock,
+	.purpleBlock,
+	.darkBlueBlock,
+	.pinkBlock {
+		width: 100%;
+		max-width: 100%;
+	}
+	
+	.filters {
+		flex-direction: column;
+		margin-bottom: 1.5rem;
+	}
+}

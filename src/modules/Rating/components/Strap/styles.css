@@ -1,0 +1,27 @@
+
+
+.strap-block{
+    position: relative;
+}
+.points-value{
+    color: #ff6633;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 6px;
+    letter-spacing: 1.5px;
+}
+.rank{
+    color: #1d89e4;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+.icon-strap{
+    width:35px;
+    height:35px;
+}
+.strapTitle{
+    display: flex;
+}
+.strapTitle svg{
+    margin-right: 3px;
+}

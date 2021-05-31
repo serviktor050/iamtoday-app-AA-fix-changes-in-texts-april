@@ -1,0 +1,281 @@
+.chatComponent {
+  background: #fff;
+  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.1);
+}
+.chatBreadcrumb {
+  padding: 30px 20px 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.title {
+  padding-bottom: 10px;
+}
+
+.breadcrumb__action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
+
+.searchInputBox {
+  position: relative;
+  width: 50%;
+}
+
+.svgIconFile {
+  width: 16px;
+  height: 16px;
+  color: #4da2d6;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+.searchInputBox input {
+  padding-left: 20px;
+  display: inline-block;
+  font-size: 12px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e0edff;
+}
+
+.searchInputBox input:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.breadcrumb__actionButton {
+  outline: none;
+  border: none;
+  color: white;
+  background-color: #4da2d6;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 40%;
+  min-width: 100px;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.breadcrumb__actionButton:active {
+  background-color: #2a86be;
+}
+.actionButton_mobile {
+  display: none;
+}
+
+.layoutEntry {
+  composes: layout from "../index.css";
+  composes: layout--entry from "../index.css";
+}
+
+.layoutInner {
+  composes: layout__inner from "../index.css";
+}
+
+.gridEntryHeader {
+  composes: grid from "../index.css";
+  composes: entry-header from "../index.css";
+}
+
+.gridCellTodaymeLogo {
+  composes: grid__cell from "../index.css";
+  composes: todayme-logo from "../index.css";
+}
+
+.grid {
+  composes: grid from "../index.css";
+}
+
+.entryMin {
+  composes: entry from "../index.css";
+  composes: entry--min from "../index.css";
+}
+
+.entryHeader {
+  composes: entry__header from "../index.css";
+}
+
+.entryTitleCenter {
+  composes: entry__title from "../index.css";
+  composes: text-center from "../index.css";
+}
+
+.entryBox {
+  composes: entry__box from "../index.css";
+}
+
+.entryNavMtb20 {
+  composes: entry-nav from "../index.css";
+  composes: mtb20 from "../index.css";
+}
+
+.entryNavItem {
+  composes: entry-nav__item from "../index.css";
+}
+
+.textCenterMb10 {
+  composes: text-center from "../index.css";
+  composes: mb10 from "../index.css";
+}
+
+.socialSignin {
+  composes: social-signin from "../index.css";
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from "../index.css";
+  composes: social-signin__item--fb from "../index.css";
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from "../index.css";
+  composes: social-signin__item--vk from "../index.css";
+}
+
+.socialSigninItemOk {
+  composes: social-signin__item from "../index.css";
+  composes: social-signin__item--odnoklassniki from "../index.css";
+}
+
+.svgIconFb {
+  composes: svg-icon from "../index.css";
+  composes: ico-fb from "../index.css";
+}
+
+.svgIconVk {
+  composes: svg-icon from "../index.css";
+  composes: ico-vk from "../index.css";
+}
+
+.svgIconOk {
+  composes: svg-icon from "../index.css";
+  composes: ico-odnoklassniki from "../index.css";
+}
+
+.entryBg {
+  composes: entry__bg from "../index.css";
+  background: #21ace1;
+}
+
+.buttonSecondaryWide {
+  composes: btn from "../index.css";
+  composes: btn--secondary from "../index.css";
+  composes: wide from "../index.css";
+}
+
+.layout {
+  composes: layout from "../index.css";
+}
+
+.entryInner {
+  composes: entry__inner from "../index.css";
+}
+
+.menuMobBottom {
+  composes: menu-mob-bottom from "../index.css";
+}
+
+.menuMobBottomItem {
+  composes: menu-mob-bottom__item from "../index.css";
+}
+
+.menuMobBottomItemInner {
+  composes: menu-mob-bottom__item-inner from "../index.css";
+}
+
+.menuMobBottomIco {
+  composes: menu-mob-bottom__ico from "../index.css";
+}
+
+.svgIcoTasksMobile {
+  composes: svg-icon from "../index.css";
+  composes: ico-m-tasks from "../index.css";
+}
+
+.svgIcoBookMobile {
+  composes: svg-icon from "../index.css";
+  composes: ico-m-book from "../index.css";
+}
+
+.svgIcoFoodMobile {
+  composes: svg-icon from "../index.css";
+  composes: ico-m-food from "../index.css";
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from "../index.css";
+  composes: ico-m-faq from "../index.css";
+}
+
+.menuMobBottomTitle {
+  composes: menu-mob-bottom__title from "../index.css";
+}
+
+.svgIcoPhoto {
+  composes: svg-icon from "../index.css";
+  composes: ico-photo from "../index.css";
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from "../index.css";
+  composes: layout__menu from "../index.css";
+}
+
+.gridLayoutMenuInner {
+  composes: grid from "../index.css";
+  composes: layout__menu-inner from "../index.css";
+}
+
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from "../index.css";
+  /*composes: 1/1--pocket from '../index.css';*/
+}
+@media screen and (max-width: 500px) {
+  .chatBreadcrumb {
+    padding: 10px;
+  }
+  .breadcrumb__action {
+    width: 100%;
+  }
+  .breadcrumb__actionButton {
+    display: none;
+  }
+  .searchInputBox {
+    width: 100%;
+  }
+  hr {
+    display: none;
+  }
+  .actionButton_mobile {
+    all: unset;
+    width: 50px;
+    height: 50px;
+    background: #4da2d6;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 25px;
+    position: fixed;
+    bottom: 60px;
+    right: 5px;
+    z-index: 99;
+  }
+}

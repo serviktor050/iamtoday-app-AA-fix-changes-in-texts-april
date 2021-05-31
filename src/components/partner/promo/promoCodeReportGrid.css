@@ -1,0 +1,22 @@
+.gridPromoReport {
+  composes: grid from '../../../index.css';
+  composes: promo-report from '../../../index.css';
+}
+
+.promoChart {
+  composes: promo-chart from '../../../index.css';
+}
+
+.promoChartMetric {
+  composes: promo-chart-metric from '../../../index.css';
+}
+
+.selectField {
+  composes: select__field from '../../../index.css';
+  composes: select from '../../../index.css';
+}
+
+.baseTablePromoReportTable {
+  composes: base-table from '../../../index.css';
+  composes: promo-report-table from '../../../index.css';
+}

@@ -1,0 +1,3 @@
+.profile {
+  composes: profile from '../../index.css';
+}

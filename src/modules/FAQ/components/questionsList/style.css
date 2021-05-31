@@ -1,0 +1,103 @@
+.questionsList {
+    width:60%;
+}
+
+.questionsList_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.questionsList_category {
+    display: flex;
+    align-items: center;  
+}
+
+.questionsList_titleButton {
+    all: unset;
+    cursor: pointer;
+    background: #79C330;
+    width: 20px;
+    height: 20px;
+    border-radius: 12px;
+    padding: 2px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-left: 5px;
+    font-weight: bold;
+  /* -webkit-box-sizing: border-box;*/
+}
+
+.badge {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: #4DA2D6; 
+    background-color: #DAEFF2;
+    padding: 3px 6px;
+    border-radius: 50%;
+    margin-left: 10px;
+    /*box-sizing: border-box;*/
+}
+
+.questionItem {
+    box-shadow: 0px 4px 4px #ECF6FD;
+    padding: 15px;
+    font-size: 15px;
+    /*font-weight: bold;*/
+    cursor: pointer;
+}
+
+.questionItem_header {
+    display: flex;
+    align-items: center;
+}
+
+.questionItem_arrow {
+    all: unset;
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    background: url("../../../../assets/img/svg-symbols/chevron-down.svg")
+      center/cover no-repeat;
+    background-size: 20px;
+    filter: brightness(0) saturate(100%) invert(72%) sepia(17%) saturate(4214%)
+      hue-rotate(174deg) brightness(86%) contrast(93%);
+}
+
+.tag {
+    /*composes: tag from '../style.css';*/
+    background: #EEFFE9;
+    color: #39961E;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 10px;
+}
+
+.questionText {
+    margin-top: 10px;
+}
+
+.questionAnswer {
+    padding: 30px 0px;
+    font-size: 12px;
+}
+
+.questionText_edit {
+    background: #79C330;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    display: inline-flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.svgIconFile {
+    width: 15px;
+    height: 15px;
+}

@@ -1,0 +1,31 @@
+.chatsListItemName {
+  composes: chats-list__item-name from '../../index.css';
+}
+
+.svgIco {
+  composes: svg-icon from '../../index.css';
+}
+
+.chatsListSpectator {
+  composes: chats-list__spectator from '../../index.css';
+}
+
+.chatGroup {
+  composes: chat-group from '../../index.css';
+}
+
+.chatGroupHeader {
+  composes: chat-group__header from '../../index.css';
+}
+
+.chatGroupName {
+  composes: chat-group__name from '../../index.css';
+}
+
+.chatGroupBody {
+  composes: chat-group__body from '../../index.css';
+}
+
+.chatsListItem {
+  composes: chats-list__item from '../../index.css';
+}

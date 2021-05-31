@@ -1,0 +1,74 @@
+.footer {
+  margin-top: 30px;
+}
+
+.inputColor {
+  color: #2c2f33;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.btnDefault {
+  position: relative;
+  padding: 15px 17px 15px 50px;
+  border-radius: 2px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btnBlue {
+  composes: btnDefault;
+  background-color: #4da2d6;
+}
+
+.btnBlue::before {
+  position: absolute;
+  transform: translate(-150%, 0);
+  content: " ";
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background-image: url("../../../../assets/img/svg/check.svg");
+  background-size: cover;
+}
+
+.btnRed {
+  composes: btnDefault;
+  margin-right: 30px;
+  background-color: #ff543e;
+}
+
+.btnGreen {
+  composes: btnDefault;
+  margin-right: 30px;
+  background-color: #39961e;
+}
+
+.btnRed::before {
+  position: absolute;
+  transform: translate(-150%, 0);
+  content: " ";
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background-image: url("../../../../assets/img/svg/ban.svg");
+  background-size: cover;
+}
+
+.btnGreen::before {
+  position: absolute;
+  transform: translate(-150%, 0);
+  content: " ";
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background-image: url("../../../../assets/img/svg/ban.svg");
+  background-size: cover;
+}

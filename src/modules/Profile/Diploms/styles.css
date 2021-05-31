@@ -1,0 +1,127 @@
+.layout {
+  padding: 30px;
+  background-color: #ffffff;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.info {
+  display: flex;
+  width: 100%;
+  margin: 30px 0px;
+  padding: 15px 20px;
+  background: #F0F6FF;
+  border-radius: 2px;
+  font-size: 15px;
+  line-height: 18px;
+  color: #4DA2D6;
+}
+
+.info span {
+  display: flex;  
+  align-items: center;
+}
+
+.info span::before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  min-width: 15px;
+  height: 15px;
+  background: url('../../../assets/img/svg-symbols/ico-info.svg') center/cover no-repeat;
+  margin-right: 15px;
+}
+
+.diplomsPaginate__container {
+  margin: 0 auto;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.diplomsPaginate__container-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.diplomsPaginate__topBreaker {
+  /* display: none; */
+}
+
+.diplomsPaginate__currentPage-topActive {
+  display: none;
+}
+
+.diplomsPaginate__topBreaker {
+  background: #E6EFF4;
+  border-radius: 2px;
+  padding: 0 11px;
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 12px;
+  line-height: 152.8%;
+  text-align: center;
+  width: 94px;
+  height: 24px;
+}
+
+.diplomsPaginate__link-wrapper {
+  border-radius: 2px;
+  color: #4DA2D6;
+  background: #E6EFF4;
+}
+
+.diplomsPaginate__link-wrapper a {
+  color: #2C2F33;
+}
+
+.diplomsPaginate__link-move {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  line-height: 10px;
+  text-align: center;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #4DA2D6;
+  background: #E6EFF4;
+}
+
+.diplomsPaginate__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  line-height: 10px;
+  text-align: center;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  cursor: pointer;
+}
+
+.diplomsPaginate__link-active {
+  background: #4DA2D6;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.diplomsPaginate__link-active a {
+  color: #FFFFFF;
+}
+.diplomsPaginate__link-hide {
+  display: none;
+}

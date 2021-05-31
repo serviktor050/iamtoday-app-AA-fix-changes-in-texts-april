@@ -1,0 +1,134 @@
+.quizModuleList {
+    padding: 40px 40px 50px 40px;
+    background: #fff;
+    font-size: 12px;
+}
+
+.quizModuleListHeader .title {
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 20px
+}
+
+.quizModuleListHeader hr {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.quizModuleListHeader h2 {
+    padding-bottom: 10px;
+}
+
+.descriptionArea {
+    vertical-align: bottom;
+    display: table-cell;
+    width: 50%;
+}
+
+.descriptionArea .emptyCounter {
+    padding-bottom: 10px;
+}
+
+.descriptionArea .info {
+    padding-bottom: 5px;
+    vertical-align: bottom;
+}
+
+.descriptionArea .info button {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 100%;
+}
+
+.descriptionArea .info button.linkButton {
+    background: transparent;
+    color: green;
+}
+
+.descriptionArea .info button.linkButton:hover {
+    text-decoration: underline;
+}
+
+.descriptionArea .status {
+    padding-bottom: 5px;
+}
+
+.descriptionArea .status.available {
+    color: green;
+}
+
+.descriptionArea .status .statusData {
+    color: #0a66b7;
+}
+
+.descriptionArea .counter {
+    margin-bottom: 10px;
+}
+
+.descriptionArea .counter .counterData {
+    color: #0a66b7;
+}
+
+.descriptionArea .requirement {
+    padding-bottom: 5px;
+}
+
+.descriptionArea .requirement .requirementData {
+    color: green;
+}
+
+.descriptionArea .action {
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.descriptionArea .action.available {
+    background: #3b9821;
+}
+
+.thumbnailArea {
+    display: table-cell;
+    width: 50%;
+}
+
+.quizModuleListHeader hr {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.descriptionArea .name {
+    color: #0a66b7;
+    padding-bottom: 5px;
+    font-size: 14px;
+
+}
+
+.list {
+}
+
+.card .thumbnail {
+    width: 90%;
+}
+
+.card {
+
+}
+
+@media screen and (min-width: 768px) {
+    .quizModuleList {
+        font-size: 14px;
+    }
+    .descriptionArea .name {
+        font-size: 16px;
+    }
+    .descriptionArea .action {
+        font-size: 14px;
+    }
+    .descriptionArea .info button{
+        width: 50%;
+    }
+}
+
+
+

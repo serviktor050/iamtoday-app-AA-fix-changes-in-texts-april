@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/todayTask/Menu.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/todayTask/Menu.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import MenuItem from './MenuItem'
+import CSSModules from 'react-css-modules'
+import styles from './menu.css'
+import { Link, browserHistory } from 'react-router'
+import cookie from 'react-cookie'
+import { api, domen } from '../../config.js'
+
+/**
+ *  Компонент Menu.
+ *  Используется для вывода меню
+ *
+ */
+class Menu extends Component {
+  /**
+   * @memberof  Menu
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {array} propTypes.menuList Список разделов
+   * @prop {number} propTypes.program Номер программы
+   * @prop {string} propTypes.gender Пол
+   * @prop {object} propTypes.sign Объект данных реги
+   *
+   * */
+
+  static propTypes = {
+    gender: PropTypes.string.isRequired,
+    program: PropTypes.number,
+    sign: PropTypes.object.isRequired,
+    menuList: PropTypes.array.isRequired
+  }
+  render() {
+    let { gender, dayId, sign, program, prevSeasons } = this.props;
+    let { menuList } = this.props;
+    const { host } = sign;
+    const pr = program ? program : (prevSeasons ? prevSeasons[0].id : 0);
+    //const isAlfa = domen.isAlfa
+   let imgs = [
+      'extreme_suches5.png',
+      'ya_heroi5.png',
+      'mama_mozhet5.png'
+    ];
+    if(pr % 4 === 1){
+      imgs = imgs.slice(0,2)
+    }
+    if(pr % 4 === 2){
+      imgs = imgs.slice(1)
+    }
+    if(pr % 4 === 3){
+      imgs = imgs.slice(0,1)
+    }
+    const error = {
+      name: 'Нашел ошибку?',
+      active: false,
+      link: 'error-report',
+      icon: 'ico-warning'
+    }
+    if(host === 'alfa'){
+      menuList = menuList.filter(item => {
+        return item.link !== 'seasons'
+      })
+    }
+    if (gender === 'female') {
+      imgs.push('mama_mozhet3.png')
+    }
+
+    return (
+      &lt;div className={styles.gridCellLayoutMenuNav23}>
+        &lt;ul className="main-nav">
+          {menuList.map((item, index) => {
+            return (
+              &lt;MenuItem
+                key={index}
+                item={item}
+                dayId={dayId}
+              />
+            )
+          })}
+          &lt;li className="main-nav__item--line">&lt;/li>
+          &lt;MenuItem
+            item= {error}
+            dayId={dayId}
+          />
+        &lt;/ul>
+
+        {pr &amp;&amp; (cookie.load('userPaidState') == 0 || cookie.load('userPaidState') == -1)
+          ? &lt;ul className={styles.bannerLs}>
+            &lt;li className={styles.bannerLsItem}>
+              &lt;img role="presentation" className={styles.seasonImage}
+                   src={`/assets/img/png/${imgs[Math.floor(Math.random() * imgs.length)]}`}
+                   onClick={() => {
+                        browserHistory.push('/season')
+                    }}/>
+
+                {/* &lt;div className="banner-ls__img">
+                 &lt;img src="/tmp/banner-2.png" alt=""/>
+                 &lt;/div>
+                 &lt;p className="banner-ls__desc">В твой выходной день только сегодня TezTour дарит -10% на тур&lt;/p> */}
+
+            &lt;/li>
+          &lt;/ul>
+          : null
+        }
+      &lt;/div>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  const { menuList, sign } = state
+  return {
+    menuList,
+    sign
+  }
+}
+
+Menu = connect(
+  mapStateToProps
+)(Menu)
+
+export default CSSModules(Menu, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

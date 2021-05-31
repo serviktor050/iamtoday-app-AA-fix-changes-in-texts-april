@@ -1,0 +1,57 @@
+.MentorRequestCard {
+  background: #f8fff1;
+  border-radius: 2px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.MentorRequestCard:last-child {
+  margin-bottom: 0;
+}
+
+.upperblock {
+  display: flex;
+  justify-content: space-between;
+  justify-content: start;
+}
+
+.QuestionText {
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  max-width: 350px;
+}
+
+.QuestionTextName {
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.image {
+  height: 124px;
+  width: 124px;
+  clip-path: circle(50%);
+  margin: 0 auto;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.countdownAndButtonsWrapper {
+  width: 100%;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  display: block;
+  min-width: 100px;
+  background: url("../../../../../assets/img/svg/checkup.svg") center/cover
+    no-repeat;
+  margin-bottom: 15px;
+}

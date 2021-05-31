@@ -1,0 +1,25 @@
+.groupRecipients__email {
+  composes: listOfRecipients__title from '../ListOfRecipients/styles.css';
+  display: block;
+  margin-bottom: 5px;
+}
+
+.groupRecipients__email:last-child {
+  margin-bottom: 0;
+}
+
+.listOfRecipients__showAll {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 20px;
+  color: #4DA2D6;
+  cursor: pointer;
+}
+
+.hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}

@@ -1,0 +1,189 @@
+.tabsNavigation--mlmOrdersHistory {
+  font-size: 13px;
+  padding: 0 8px;
+}
+
+.tabsNavigation--mlmOrdersHistory div {
+  padding: 0;
+  margin-right: 20px;
+  width: 100%;
+}
+
+.tabsNavigation--mlmOrdersHistory div:last-child {
+  margin-right: 0;
+}
+
+.tabsNavigation--mlmOrdersHistory div div {
+  padding: 0 15px;
+  white-space: nowrap !important;
+  font-weight: 400;
+  width: min-content;
+}
+
+.tabsNavigation--mlmOrdersHistory div:last-child div:last-child {
+  margin-right: 8px;
+}
+
+.mlmOrdersHistory {
+  background-color: #ffffff;
+}
+
+.mlmOrdersHistory__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8px 10px 8px;
+}
+
+.mlmOrdersHistory__title {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+}
+
+.mlmOrdersHistory__filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.mlmOrdersHistory__wrapper {
+  display: flex;
+  margin-top: 30px;
+  font-size: 12px;
+  line-height: 15px;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.mlmOrdersHistory__totalOrders {
+  font-weight: 700;
+}
+
+.mlmOrdersHistory__quantity {
+  margin-left: 5px;
+  color: #4da2d6;
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px 25px 8px;
+}
+
+.pagination li {
+  margin-right: 10px;
+}
+
+.pagination li:last-child {
+  margin-right: 0;
+}
+
+.pagination a {
+  display: flex;
+  min-width: 20px;
+  min-height: 20px;
+  font-size: 10px;
+  line-height: 15px;
+  color: #2c2f33;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6eff4;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.pagination .pagination__nav {
+  position: relative;
+  width: 77px;
+}
+
+.pagination .pagination__nav::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+  background-image: url("../../../../public/assets/img/ico-arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pagination .pagination__nav--previous::before {
+  transform: rotate(90deg);
+}
+
+.pagination .pagination__nav--next::before {
+  transform: rotate(-90deg);
+}
+
+.pagination__active a {
+  background-color: #4da2d6;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.pagination__disabled a {
+  cursor: no-drop;
+  outline: none;
+}
+
+.mlmOrdersHistory__contacts {
+  position: relative;
+  padding: 0 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .tabsNavigation--mlmOrdersHistory {
+    font-size: 15px;
+    padding: 0;
+  }
+
+  .tabsNavigation--mlmOrdersHistory div {
+    padding: 0 38px;
+    width: auto;
+    margin: 0;
+  }
+
+  .tabsNavigation--mlmOrdersHistory div:last-child div:last-child {
+    margin-right: 0;
+  }
+
+  .mlmOrdersHistory__header {
+    padding: 30px 30px 10px 30px;
+  }
+
+  .mlmOrdersHistory__filters {
+    margin-top: 15px;
+  }
+
+  .mlmOrdersHistory__wrapper {
+    margin-top: 0;
+    flex-grow: 0;
+  }
+
+  .pagination {
+    padding: 0 30px 30px;
+  }
+
+  .pagination .pagination__nav {
+    width: auto;
+  }
+
+  .mlmOrdersHistory__contacts {
+    margin-top: 20px;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .wrapper {
+    box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.1);
+  }
+}

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/profile/BodyParams.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/profile/BodyParams.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component, PropTypes } from 'react'
+import moment from 'moment'
+import { connect } from 'react-redux'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem';
+import Modal from 'boron/FadeModal'
+import {dataHeight} from '../../utils/data'
+import { api, domen } from '../../config.js'
+import cookie from 'react-cookie'
+import CSSModules from 'react-css-modules'
+import styles from './bodyParams.css'
+import weight from './imgs/weight.png'
+import chest from './imgs/chest.png'
+import thigh from './imgs/thigh.png'
+import waist from './imgs/waist.png'
+import hips from './imgs/hips.png'
+import ReactTooltip from 'react-tooltip'
+
+const contentStyle = {
+  borderRadius: '18px',
+  padding: '30px'
+}
+/**
+ *  Компонент BodyParams.
+ *  Используется параметров тела в профиле
+ *
+ */
+class BodyParams extends Component {
+  /**
+   * @memberof BodyParams
+   * @prop {object} propTypes - the props that are passed to this component
+   * @prop {object} propTypes.bodyMeasure Сохранение параметров
+   * @prop {array} propTypes.bodyParams Параметры для рендеринга
+   * */
+
+  static propTypes = {
+    bodyMeasure: PropTypes.array,
+    bodyParams: PropTypes.array.isRequired
+  }
+
+  state = {
+    height: ''
+  }
+
+  componentWillMount(){
+    const {dispatch, bodyMeasures} = this.props
+    console.log('bodyyy-will')
+    console.log(this.props)
+    if (bodyMeasures) {
+      dispatch({
+        type: 'SAVE_BODY_PARAMS',
+        bodyMeasures
+      })
+    }
+  }
+  componentDidMount(){
+    const select = document.querySelector('.heightSelect')
+    const button = select.querySelector('button')
+    const divs = select.querySelectorAll('div')
+    divs[4].style.lineHeight = '43px'
+    button.style.display = 'none'
+  }
+
+  onChangeHeight(event, index, value) {
+    this.setState({ height: value});
+  }
+
+  render() {
+    const { bodyParams, dispatch } = this.props
+    console.log('bodyyy')
+    console.log(this.props)
+    return (
+      &lt;div className={styles.stageBoxBigPadding}>
+        &lt;div className={styles.stageBoxHeaderTodayme}>
+         {/* &lt;img className={styles.stageBoxHeaderLogo} src={logo} alt="Ясегодня"/>*/}
+          &lt;svg className={styles.svgIconYsLogoWeb}>
+            &lt;use xlinkHref="#ys-logo-web">&lt;/use>
+          &lt;/svg>
+       &lt;/div>
+
+        &lt;div className={styles.stageBoxInner}>
+
+          &lt;h3 className={styles.h2}>Ваши параметры&lt;/h3>
+
+          &lt;div className={styles.baseTableScroll}>
+            &lt;table className={styles.baseTableStats}>
+              &lt;tbody>
+              &lt;tr>
+                &lt;td className={styles.textLeft}>Подсказка&lt;/td>
+                &lt;td>
+                  {/*   &lt;div className={styles.tips} data-tooltip="&lt;img class='tips__img' src='tmp/tip-for-stats.png'>">
+                        &lt;svg className={styles.svgIconFormHelp}>
+                          &lt;use xlinkHref="#ico-form-help">&lt;/use>
+                        &lt;/svg>
+                      &lt;/div>*/}
+                &lt;/td>
+                &lt;td>
+                  &lt;div className={styles.tips} data-tip data-for='tooltip-weight'>
+                    &lt;svg className={styles.svgIconFormHelp}>
+                      &lt;use xlinkHref="#ico-form-help">&lt;/use>
+                    &lt;/svg>
+                    &lt;ReactTooltip
+                      className='tooltip'
+                      place="bottom"
+                      type="light"
+                      effect="solid"
+                      id='tooltip-weight'
+                    >
+                      &lt;img className={styles.tipsImg} src={weight} />
+                    &lt;/ReactTooltip>
+                  &lt;/div>
+                &lt;/td>
+                &lt;td>
+                  &lt;div className={styles.tips} data-tip data-for='tooltip-chest'>
+                    &lt;svg className={styles.svgIconFormHelp}>
+                      &lt;use xlinkHref="#ico-form-help">&lt;/use>
+                    &lt;/svg>
+                    &lt;ReactTooltip
+                      className='tooltip'
+                      place="bottom"
+                      type="light"
+                      effect="solid"
+                      id='tooltip-chest'
+                    >
+                      &lt;img className={styles.tipsImg} src={chest} />
+                    &lt;/ReactTooltip>
+                  &lt;/div>
+                &lt;/td>
+                &lt;td>
+                  &lt;div className={styles.tips} data-tip data-for='tooltip-waist'>
+                    &lt;svg className={styles.svgIconFormHelp}>
+                      &lt;use xlinkHref="#ico-form-help">&lt;/use>
+                    &lt;/svg>
+                    &lt;ReactTooltip
+                      className='tooltip'
+                      place="bottom"
+                      type="light"
+                      effect="solid"
+                      id='tooltip-waist'
+                    >
+                      &lt;img className={styles.tipsImg} src={waist} />
+                    &lt;/ReactTooltip>
+                  &lt;/div>
+                &lt;/td>
+                &lt;td>
+                  &lt;div className={styles.tips} data-tip data-for='tooltip-hips'>
+                    &lt;svg className={styles.svgIconFormHelp}>
+                      &lt;use xlinkHref="#ico-form-help">&lt;/use>
+                    &lt;/svg>
+                    &lt;ReactTooltip
+                      className='tooltip'
+                      place="bottom"
+                      type="light"
+                      effect="solid"
+                      id='tooltip-hips'
+                    >
+                      &lt;img className={styles.tipsImg} src={hips} />
+                    &lt;/ReactTooltip>
+                  &lt;/div>
+                &lt;/td>
+                &lt;td>
+                  &lt;div className={styles.tips} data-tip data-for='tooltip-thigh'>
+                    &lt;svg className={styles.svgIconFormHelp}>
+                      &lt;use xlinkHref="#ico-form-help">&lt;/use>
+                    &lt;/svg>
+                    &lt;ReactTooltip
+                      className='tooltip'
+                      place="bottom"
+                      type="light"
+                      effect="solid"
+                      id='tooltip-thigh'
+                    >
+                      &lt;img className={styles.tipsImg} src={thigh} />
+                    &lt;/ReactTooltip>
+                  &lt;/div>
+                &lt;/td>
+                {bodyParams.length ? &lt;td>&lt;/td> : null}
+              &lt;/tr>
+              &lt;tr>
+                &lt;th className={styles.textLeft}>Дата&lt;/th>
+                &lt;th className={styles.baseTableStatsTh}>Рост, см&lt;/th>
+                &lt;th className={styles.baseTableStatsTh}>Вес, см&lt;/th>
+                &lt;th className={styles.baseTableStatsTh}>Грудь, см&lt;/th>
+                &lt;th className={styles.baseTableStatsTh}>Талия, см&lt;/th>
+                &lt;th className={styles.baseTableStatsTh}>Бедра, см&lt;/th>
+                &lt;th className={styles.baseTableStatsTh}>Обхват бедра, см&lt;/th>
+                {bodyParams.length ? &lt;th>&lt;/th> : null}
+              &lt;/tr>
+              {bodyParams.map((param, index) => (
+                &lt;tr key={index}>
+                  &lt;td className={styles.baseTableDateLeft}>{moment(param.date).format('YYYY-MM-DD')}&lt;/td>
+                  &lt;td>{param.height}&lt;/td>
+                  &lt;td>{param.weight}&lt;/td>
+                  &lt;td>{param.chest}&lt;/td>
+                  &lt;td>{param.waist}&lt;/td>
+                  &lt;td>{param.hips}&lt;/td>
+                  &lt;td>{param.thigh}&lt;/td>
+                  &lt;td>
+                    &lt;span className={styles.baseTableBtnDel} onClick={e => {
+                      dispatch({ id: param.id, type: 'REMOVE_BODY_PARAM' })
+
+                      const payload = {
+                        authToken: cookie.load('token'),
+                        data: { id: param.id }
+                      }
+
+                      return fetch(`${api}/user/bodyMeasure-delete`, {
+                        headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json'
+                        },
+                        method: 'POST',
+                        body: JSON.stringify(payload)
+                      })
+                        .then(response => response.json())
+                        .then(json => {
+                        })
+                    }}>
+                      &lt;svg className={styles.svgIcoTrash}>
+                        &lt;use xlinkHref="#ico-trash">&lt;/use>
+                      &lt;/svg>
+                    &lt;/span>
+                  &lt;/td>
+                &lt;/tr>
+              ))}
+
+              &lt;tr>
+                &lt;td className={styles.baseTableDateLeft}>{moment().format('YYYY-MM-DD')}&lt;/td>
+                &lt;td className='heightTd'>
+                  &lt;SelectField
+                    value={this.state.height}
+                    onChange={this.onChangeHeight.bind(this)}
+                    /* hintText="Рост"*/
+                    className="heightSelect"
+                    style={{
+                      width: '70px',
+                      borderRadius:'8px',
+                      display: 'inline-block',
+                     /* left: '0px',
+                      top: '13px',*/
+                      verticalAlign: 'middle',
+                      border: '1px solid #ced9eb',
+                      height: '37px',
+                      background: '#fff'
+                    }}
+                    hintStyle={{
+                      bottom: '4px',
+                      left: '17px'
+                    }}
+                    labelStyle={{
+                      paddingRight: 0
+                    }}
+                    listStyle={{
+                      maxHeight: '250px',
+                      width: '52px'
+                    }}
+                    underlineStyle ={{display: 'none'}}
+                  >
+                    {dataHeight.map((item, i) => {
+                      return (
+                        &lt;MenuItem key={i} value={i} primaryText={'' +item} />
+                      )
+                    })}
+                  &lt;/SelectField>
+                &lt;/td>
+                &lt;td>
+                  &lt;input ref="weight" type="text" className={styles.baseTableInput}/>
+                &lt;/td>
+                &lt;td>&lt;input ref="chest" type="text" className={styles.baseTableInput}/>&lt;/td>
+                &lt;td>&lt;input ref="waist" type="text" className={styles.baseTableInput}/>&lt;/td>
+                &lt;td>&lt;input ref="hips" type="text" className={styles.baseTableInput}/>&lt;/td>
+                &lt;td>&lt;input ref="thigh" type="text" className={styles.baseTableInput}/>&lt;/td>
+                {bodyParams.length ? &lt;td>&lt;/td> : null}
+              &lt;/tr>
+              &lt;/tbody>
+            &lt;/table>
+          &lt;/div>
+
+          &lt;div className={styles.textCenter}>
+            &lt;div onClick={() => {
+              let emptyData = false
+              let height = '' + dataHeight[this.state.height]
+              let validData = [
+                height, this.refs.weight.value,
+                this.refs.chest.value, this.refs.waist.value,
+                this.refs.hips.value, this.refs.thigh.value
+              ].filter(value => {
+                if (!value) {
+                  emptyData = true
+                }
+                return /^[0-9.,]{1,100}$/.test(value)
+              })
+              validData = validData.map(d => {
+                return d.replace(/,/, '.')
+              })
+
+              if (validData.length === 6 &amp;&amp; !emptyData) {
+                this.refs.loadingModal.show()
+                const data = {
+                  date: moment().format('YYYY-MM-DD'),
+                  height: validData[0],
+                  weight: validData[1],
+                  chest: validData[2],
+                  waist: validData[3],
+                  hips: validData[4],
+                  thigh: validData[5]
+                }
+
+                this.state.height = ''
+                this.refs.weight.value = ''
+                this.refs.chest.value = ''
+                this.refs.waist.value = ''
+                this.refs.hips.value = ''
+                this.refs.thigh.value = ''
+
+                const payload = {
+                  authToken: cookie.load('token'),
+                  data
+                }
+
+                return fetch(`${api}/user/bodyMeasure-create`, {
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  method: 'POST',
+                  body: JSON.stringify(payload)
+                })
+                  .then(response => response.json())
+                  .then(json => {
+                    console.log('createeeeeeeee')
+                    console.log(json)
+                    this.refs.loadingModal.hide()
+                    if (json.errorCode === 1 &amp;&amp; json.data) {
+                      dispatch({ ...data, type: 'ADD_BODY_PARAM' })
+                      this.refs.successModal.show()
+                    } else {
+                      this.refs.failModal.show()
+                    }
+                  })
+              } else {
+                if (emptyData) {
+                  this.refs.failValidationEmptyModal.show()
+                } else {
+                  this.refs.failValidationModal.show()
+                }
+              }
+            }} className={styles.btnPrimary}>
+              Добавить
+            &lt;/div>
+
+            &lt;Modal ref='loadingModal' contentStyle={contentStyle} backdrop={false}>
+              &lt;div className={styles.entryHeader}>
+                &lt;h2 className={styles.entryTitleCenter}>Загружается...&lt;/h2>
+              &lt;/div>
+              &lt;div className={styles.textCenter}>
+                &lt;div className={styles.loaderMain}>&lt;/div>
+              &lt;/div>
+            &lt;/Modal>
+            &lt;Modal ref='failValidationModal' contentStyle={contentStyle}>
+              &lt;h2>Данные могут содержать только цифры с точкой&lt;/h2>
+              &lt;br/>
+              &lt;div className={styles.btnAction} onClick={() => this.refs.failValidationModal.hide()}>
+                Продолжить
+              &lt;/div>
+            &lt;/Modal>
+            &lt;Modal ref='failValidationEmptyModal' contentStyle={contentStyle}>
+              &lt;h2>Некоторые данные не заполнены!&lt;/h2>
+              &lt;br/>
+              &lt;div className={styles.btnAction} onClick={() => this.refs.failValidationEmptyModal.hide()}>
+                Продолжить
+              &lt;/div>
+            &lt;/Modal>
+            &lt;Modal ref='failModal' contentStyle={contentStyle}>
+              &lt;h2>Что-то пошло не так, поробуйте снова&lt;/h2>
+              &lt;br/>
+              &lt;div className={styles.btnAction} onClick={() => this.refs.failModal.hide()}>
+                Продолжить
+              &lt;/div>
+            &lt;/Modal>
+            &lt;Modal ref='submitFailModal' contentStyle={contentStyle}>
+              &lt;h2>Одно или несколько полей были заполнены не правильно, проверьте вашу анкету еще раз&lt;/h2>
+              &lt;br/>
+              &lt;div className={styles.btnAction} onClick={() => this.refs.submitFailModal.hide()}>
+                Продолжить
+              &lt;/div>
+            &lt;/Modal>
+            &lt;Modal ref='successModal' contentStyle={contentStyle}>
+              &lt;h2>Данные добавлены!&lt;/h2>
+              &lt;br/>
+              &lt;div className={styles.btnAction} onClick={() => this.refs.successModal.hide()}>
+                Продолжить
+              &lt;/div>
+            &lt;/Modal>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    )
+  }
+}
+const mapStateToProps = state => {
+  const { bodyParams} = state
+
+  return {
+    bodyParams
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  dispatch
+})
+
+BodyParams = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BodyParams)
+
+export default CSSModules(BodyParams, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

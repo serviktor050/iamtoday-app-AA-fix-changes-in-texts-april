@@ -1,0 +1,12 @@
+.itd-fontsize-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.itd-fontsize-dropdown {
+  min-width: 40px;
+}
+.itd-fontsize-option {
+  display: flex;
+  justify-content: center;
+}

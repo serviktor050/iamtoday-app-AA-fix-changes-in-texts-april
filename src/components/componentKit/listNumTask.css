@@ -1,0 +1,15 @@
+.numListItem {
+  composes: num-list__item from '../../index.css';
+}
+
+.numListNumber {
+  composes: num-list__number from '../../index.css';
+}
+
+.numListTitle {
+  composes: num-list__title from '../../index.css';
+}
+
+.numListDescription {
+  composes: num-list__description from '../../index.css';
+}

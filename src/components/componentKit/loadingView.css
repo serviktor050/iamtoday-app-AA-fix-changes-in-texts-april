@@ -1,0 +1,174 @@
+.layoutEntry {
+  composes: layout from '../../index.css';
+  composes: layout--entry from '../../index.css';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gridEntryHeader {
+  composes: grid from '../../index.css';
+  composes: entry-header from '../../index.css';
+  margin-bottom: 30px;
+}
+
+.gridCellTodaymeLogo {
+  composes: grid__cell from '../../index.css';
+  composes: todayme-logo from '../../index.css';
+  display: flex;
+  justify-content: center;
+}
+
+.svgIconLogoWeb {
+  composes: svg-icon from '../../index.css';
+  composes: ys_logo_web from '../../index.css';
+}
+
+.entryMin {
+  composes: entry from '../../index.css';
+  composes: entry--min from '../../index.css';
+  height: auto;
+  width:470px;
+}
+
+.entryInner {
+  composes: entry__inner from '../../index.css';
+}
+
+.entryHeader {
+  composes: entry__header from '../../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+}
+.entryTitleCenterAlfa {
+  composes: entryTitleCenter;
+  color: #fe2f1d;
+}
+.entryBox {
+  composes: entry__box from '../../index.css';
+}
+.entryNavMtb20 {
+  composes: entry-nav from '../../index.css';
+  composes: mtb20 from '../../index.css';
+}
+.entryNavItem {
+  composes: entry-nav__item from '../../index.css';
+}
+
+.textCenterMb10 {
+  composes: text-center from '../../index.css';
+  composes: mb10 from '../../index.css';
+}
+.socialSignin {
+  composes: social-signin from '../../index.css';
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--fb from '../../index.css';
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--vk from '../../index.css';
+}
+.socialSigninItemOk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--odnoklassniki from '../../index.css';
+}
+.svgIconFb {
+  composes: svg-icon from '../../index.css';
+  composes: ico-fb from '../../index.css';
+}
+
+.svgIconVk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-vk from '../../index.css';
+}
+.svgIconOk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-odnoklassniki from '../../index.css';
+}
+.entryBg {
+  composes: entry__bg from '../../index.css';
+  background: #21ACE1;
+}
+
+.buttonSecondaryWide {
+  composes: btn from '../../index.css';
+  composes: btn--secondary  from '../../index.css';
+  composes: wide  from '../../index.css';
+}
+
+.buttonActionWide {
+  composes: btn from '../../index.css';
+  composes: btn--action  from '../../index.css';
+  composes: wide  from '../../index.css';
+}
+.loaderMain {
+  composes: loader from '../../index.css';
+  composes: loader--main from '../../index.css';
+  background-color: #39961e;
+}
+.loaderMainAlfa {
+  composes: loaderMain;
+}
+.loaderMain:before,
+.loaderMain:after{
+  background-color: #39961e;
+}
+.textCenter {
+  composes: text-center from '../../index.css';
+}
+
+.buttonPrimaryWide{
+  composes: btn from '../../index.css';
+  composes: btn--primary  from '../../index.css';
+  composes: wide  from '../../index.css';
+}
+.uniproLogo{
+  width: 100px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: none;
+}
+.apple {
+  width: 250px;
+  height: 100px;
+  margin-bottom: 65px;
+}
+.aboveLogo {
+  color: #7b7979;
+  text-transform: uppercase;
+  font-size:14px;
+  text-align: left;
+}
+.alfa{
+  background-color: #fe2f1d;
+}
+.alfa:before,
+.alfa:after {
+  background-color: #fe2f1d;
+}
+.alfaBg{
+  max-width: 100%;
+  width:100%;
+  height:100%;
+}
+.alfaLogo{
+  width: 140px;
+  margin-top: 13px;
+}
+.uniproLogo{
+  margin-top: 13px;
+  width: 250px;
+}
+@media screen and (min-width: 768px) {
+  .gridEntryHeader {
+    margin-bottom:0;
+  }
+}

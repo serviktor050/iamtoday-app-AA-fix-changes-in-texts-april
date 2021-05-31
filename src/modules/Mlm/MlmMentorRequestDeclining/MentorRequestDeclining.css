@@ -1,0 +1,151 @@
+.MentorRequestDeclining {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.RequestsContainer {
+  margin-bottom: 30px;
+}
+
+.header {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.textareaWrapper {
+  margin-top: 15px;
+  background: #f0f6ff;
+  border-radius: 2px;
+  width: 100%;
+  padding: 20px;
+}
+
+.textarea {
+  all: unset;
+  padding: 15px;
+  resize: none;
+  width: 100%;
+  height: 121px;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
+.buttonsBlock {
+  margin-top: 24px;
+  display: flex;
+}
+
+.button {
+  all: unset;
+  padding: 10px 20px;
+  border-radius: 2px;
+  background: #4da2d6;
+  border: 1px solid #4da2d6;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  text-align: center;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #377da8;
+}
+
+.button:last-child {
+  background: #fff;
+  color: #4da2d6;
+  margin-right: 0;
+}
+
+.button:last-child:hover {
+  background: #c6e2f3;
+}
+
+.declinedWindowWrapper {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.exclamationBlock {
+  display: flex;
+  text-align: left;
+}
+
+.exclamation {
+  display: block;
+  width: 80px;
+  min-width: 80px;
+  height: 80px;
+  background: url("../../../assets/img/svg/error2.svg") center/cover no-repeat;
+  margin-right: 25px;
+}
+
+.headline {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.helpBlock {
+  display: flex;
+  background: #f0f6ff;
+  border-radius: 2px;
+  padding: 10px 0 10px 10px;
+  margin-top: 10px;
+}
+
+.helpBlockText {
+  font-size: 15px;
+  line-height: 18px;
+  color: #1f6d9c;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.helpBlockText::before {
+  content: "";
+  display: block;
+  width: 12px;
+  min-width: 12px;
+  height: 12px;
+  background: url("../../../assets/img/svg-symbols/ico-info.svg") center/cover
+    no-repeat;
+  filter: brightness(0) saturate(100%) invert(34%) sepia(90%) saturate(421%)
+    hue-rotate(159deg) brightness(91%) contrast(95%);
+  margin-right: 10px;
+}
+
+.helpBlockButton {
+  all: unset;
+  padding: 10px 25px;
+  background: #4da2d6;
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  margin: -10px 0px -10px;
+  cursor: pointer;
+}

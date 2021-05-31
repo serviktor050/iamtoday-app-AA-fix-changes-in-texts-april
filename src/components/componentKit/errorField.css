@@ -1,0 +1,3 @@
+.textCenter {
+  composes: text-center from '../../index.css';
+}

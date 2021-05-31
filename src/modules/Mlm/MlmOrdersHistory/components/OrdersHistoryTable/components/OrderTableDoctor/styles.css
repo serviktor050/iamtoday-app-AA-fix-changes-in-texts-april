@@ -1,0 +1,219 @@
+.orderTableDoctor {
+  width: 100%;
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 10px;
+  color: #2c2f33;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: #ffffff;
+}
+
+.orderTableDoctor:last-child {
+  margin-bottom: 0;
+}
+
+.orderTableDoctor__head {
+  background-color: #f4f8fe;
+  cursor: pointer;
+}
+
+.orderTableDoctor__th {
+  font-weight: 400;
+  padding: 9px 5px;
+}
+
+.orderTableDoctor__th--td {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  color: #b5b5b5;
+}
+
+.orderTableDoctor__th--100 {
+  width: 100%;
+}
+
+.orderTableDoctor__th:first-child,
+.orderTableDoctor__td:first-child {
+  padding-left: 8px;
+}
+
+.orderTableDoctor__th:last-child {
+  padding-right: 8px;
+}
+
+.orderTableDoctor__cellData--price {
+  width: 95px;
+  word-break: break-word;
+}
+
+.orderTableDoctor__cellData--quantity {
+  width: 22px;
+  margin: 0 auto;
+}
+
+.orderTableDoctor__date {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.orderTableDoctor__id {
+  font-weight: 300;
+}
+
+.orderTableDoctor__date,
+.orderTableDoctor__id {
+  color: #4e4e4e;
+}
+
+.orderTableDoctor__totalPrice {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 17px;
+  color: #39961e;
+}
+
+.orderTableDoctor__totalPriceRub {
+  color: rgba(57, 150, 30, 0.5);
+}
+
+.orderTableDoctor__productPrice {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+}
+
+.orderTableDoctor__productPriceRub {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.orderTableDoctor__button {
+  width: 11px;
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  vertical-align: middle;
+  cursor: pointer;
+  color: rgba(99, 167, 214, 0.65);
+  font-weight: 700;
+  text-align: center;
+}
+
+.orderTableDoctor__button svg {
+  width: 11px;
+  height: 11px;
+  color: #4da2d6;
+  fill: none;
+  transform: rotate(180deg);
+}
+
+.orderTableDoctor__button--productsVisible svg {
+  transform: none;
+}
+
+.orderTableDoctor__title {
+  border-bottom: 1px solid rgba(196, 196, 196, 0.2);
+}
+
+.orderTableDoctor__td {
+  padding: 8px 5px;
+  word-break: break-word;
+}
+
+.orderTableDoctor__td--quantity {
+  text-align: center;
+}
+
+.orderTableDoctor__td--hider:first-child {
+  padding: 0;
+}
+
+.orderTableDoctor__hideButton {
+  border: none;
+  margin: 12px 0 20px 0;
+  padding: 10px 10px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+  color: #4da2d6;
+  background-color: #daeff2;
+  font-weight: 700;
+  height: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .orderTableDoctor--productsVisible {
+    margin-bottom: 15px;
+  }
+
+  .orderTableDoctor__th {
+    padding: 10px 5px;
+  }
+
+  .orderTableDoctor__th:first-child,
+  .orderTableDoctor__td:first-child {
+    padding-left: 15px;
+  }
+
+  .orderTableDoctor__th:last-child {
+    width: 70px;
+    padding-right: 15px;
+  }
+
+  .orderTableDoctor__cellData--quantity {
+    width: 120px;
+    margin: 0;
+  }
+
+  .orderTableDoctor__th--td,
+  .orderTableDoctor__date,
+  .orderTableDoctor__id,
+  .orderTableDoctor__totalPrice,
+  .orderTableDoctor__productPrice {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .orderTableDoctor__totalPriceRub {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .orderTableDoctor__productPrice {
+    color: #000000;
+  }
+
+  .orderTableDoctor__body {
+    box-shadow: 0 4px 4px #ecf6fd;
+  }
+
+  .orderTableDoctor__button {
+    width: 80px;
+  }
+
+  .orderTableDoctor__title {
+    background-color: rgba(244, 248, 254, 0.5);
+    border-bottom: none;
+  }
+
+  .orderTableDoctor__tr {
+    border-bottom: 1px solid rgba(77, 162, 214, 0.1);
+  }
+
+  .orderTableDoctor__tr:last-child {
+    border-bottom: none;
+  }
+
+  .orderTableDoctor__td {
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+
+  .orderTableDoctor__td--quantity {
+    text-align: left;
+  }
+}

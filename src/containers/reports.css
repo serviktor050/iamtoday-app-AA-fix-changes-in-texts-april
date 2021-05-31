@@ -1,0 +1,207 @@
+.layout {
+  composes: layout from '../index.css';
+}
+
+.layoutInner {
+  composes: layout__inner from '../index.css';
+}
+
+.accordionItem {
+  composes: accordion__item from '../index2.css';
+}
+
+.accordionItemActive {
+  composes: accordion__item from '../index2.css';
+  composes: accordion__item--active from '../index2.css';
+}
+
+.accordionHeader {
+  composes: accordion__header from '../index2.css';
+}
+
+.accordionDate {
+  composes: accordion__date from '../index.css';
+}
+
+.accordionName {
+  composes: accordion__name from '../index.css';
+}
+
+.accordionBtn {
+  composes: accordion__btn from '../index.css';
+}
+
+.accordionBtnTitle {
+  composes: accordion__btn-title from '../index.css';
+}
+
+.svgIcoArrowAccordion {
+  composes: svg-icon from '../index.css';
+  composes: ico-arrow-accordion from '../index.css';
+}
+
+.accordionContent {
+  composes: accordion__content from '../index2.css';
+}
+
+.chatContent {
+  composes: chat-content from '../index.css';
+}
+
+.chatMsgSomeone {
+  composes: chat-msg from '../index.css';
+  composes: chat-msg--someone from '../index.css';
+}
+
+.chatMsgContent {
+  composes: chat-msg__content from '../index.css';
+}
+
+.chatMsgName {
+  composes: chat-msg__name from '../index.css';
+}
+
+.chatMsgText {
+  composes: chat-msg__text from '../index.css';
+}
+
+.chatMsgYouSystem {
+  composes: chat-msg from '../index.css';
+  composes: chat-msg--you from '../index.css';
+  composes: chat-msg--system from '../index.css';
+}
+
+.stageBoxNoPadding {
+  composes: stage-box from '../index.css';
+  composes: stage-box--no-padding from '../index.css';
+}
+
+.accordionReports {
+  composes: accordion from '../index.css';
+  composes: accordion--reports from '../index.css';
+}
+
+.stageBoxReport {
+  composes: stage-box from '../index.css';
+  composes: stage-box__report from '../index.css';
+}
+
+.menuMobBottom {
+  composes: menu-mob-bottom from '../index.css';
+}
+
+.menuMobBottomItem {
+  composes: menu-mob-bottom__item from '../index.css';
+}
+
+.menuMobBottomItemInner {
+  composes: menu-mob-bottom__item-inner from '../index.css';
+}
+
+.menuMobBottomIco {
+  composes: menu-mob-bottom__ico from '../index.css';
+}
+
+.svgIcoTasksMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-tasks from '../index.css';
+}
+
+.svgIcoBookMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-book from '../index.css';
+}
+
+.svgIcoFoodMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-food from '../index.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-faq from '../index.css';
+}
+
+.menuMobBottomTitle {
+  composes: menu-mob-bottom__title from '../index.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-faq from '../index.css';
+}
+
+.svgIcoPhoto {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-photo from '../index.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from '../index.css';
+  composes: layout__menu from '../index.css';
+}
+
+.gridLayoutMenuInner {
+  composes: grid from '../index.css';
+  composes: layout__menu-inner from '../index.css';
+}
+
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../index.css';
+  /*composes: 1/1--pocket from '../index.css';*/
+}
+
+.h1 {
+  composes: h1 from '../index.css';
+}
+
+.accordionStateDone {
+  composes: accordion__state from '../index.css';
+  composes: accordion__state--done from '../index.css';
+}
+
+.accordionStateCross {
+  composes: accordion__state from '../index.css';
+  composes: accordion__state--cross from '../index.css';
+}
+
+.accordionStateWaiting {
+  composes: accordion__state from '../index.css';
+  composes: accordion__state--waiting from '../index.css';
+}
+
+.btnTitle{
+  composes: btn__title from '../index2.css';
+}
+
+.btnIco{
+  composes: btn__ico from '../index2.css';
+}
+
+.svgIconBoldArrowDown{
+  composes: svg-icon from '../index2.css';
+  composes: ico-bold-arrow-down from '../index2.css';
+}
+
+
+
+.btnBase{
+  composes: btn from '../index2.css';
+  composes: btn--base from '../index2.css';
+}
+@media screen and (max-width: 600px) {
+  .btnBase{
+    margin: 15px auto 0;
+  }
+}

@@ -1,0 +1,121 @@
+.stageBoxBigPaddingBoxStyle2 {
+  composes: stage-box from '../../index2.css';
+  composes: stage-box--big-padding from '../../index2.css';
+  composes: box-style-2 from '../../index2.css';
+}
+
+.stageBoxInner {
+  composes: stage-box__inner from '../../index2.css';
+  padding:30px 20px !important;
+}
+.h1Mb10TextCenter {
+  composes: h1 from '../../index2.css';
+  composes: mb10 from '../../index2.css';
+  composes: text-center from '../../index2.css';
+}
+
+.anchor {
+  composes: anchor from '../../index2.css';
+}
+
+.subTitle {
+  composes: sub-title from '../../index2.css';
+}
+
+.gridMb30 {
+  composes: grid from '../../index2.css';
+  composes: mb30 from '../../index2.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width50 {
+    width: 50%;
+  }
+
+  .stageBoxInner {
+    padding:30px 80px !important;
+  }
+}
+
+.gridCellDesk50 {
+  composes: width50;
+  composes: grid__cell from '../../index2.css';
+}
+
+.textareaMb20 {
+  composes: textarea from '../../index2.css';
+  composes: mb20 from '../../index2.css';
+}
+
+.reportTextareaField {
+  composes: report__textarea from '../../index2.css';
+  composes: textarea__field from '../../index2.css';
+}
+
+.inputBtn {
+  composes: input from '../../index2.css';
+  composes: input--btn from '../../index2.css';
+}
+
+.inputFieldWrap {
+  composes: input__field-wrap from '../../index2.css';
+}
+
+.inputField {
+  composes: input__field from '../../index2.css';
+  width:100%;
+  border-right: 1px solid #ced9eb;
+}
+
+.btnBase {
+  composes: btn from '../../index2.css';
+  composes: btn--base from '../../index2.css';
+}
+
+.inputAlert {
+  composes: input__alert from '../../index2.css';
+  position: static;
+  left:0;
+}
+
+.textCenter {
+  composes: text-center from '../../index2.css';
+}
+
+.yourCondition {
+  composes: your-condition from '../../index2.css';
+}
+
+.btnSecondaryMb10 {
+  composes: btn from '../../index2.css';
+  composes: btn--secondary from '../../index2.css';
+  composes: mb10 from '../../index2.css';
+  background-color: #ef3125;
+  padding: 16px 20px 17px;
+  border-radius: 4px;
+  text-transform: none;
+  font-size: 16px;
+}
+.btnSecondaryDisMb10 {
+  composes:btnSecondaryMb10;
+  background-color: #ef31254a !important;
+  cursor: default;
+}
+.yourConditionIco1 {
+  composes: your-condition__ico from '../../index2.css';
+  composes: ico-condition-1 from '../../index2.css';
+}
+
+.yourConditionIco2 {
+  composes: your-condition__ico from '../../index2.css';
+  composes: ico-condition-2 from '../../index2.css';
+}
+
+.yourConditionIco3 {
+  composes: your-condition__ico from '../../index2.css';
+  composes: ico-condition-3 from '../../index2.css';
+}
+.error {
+  font-size: 12px;
+  color: red;
+}

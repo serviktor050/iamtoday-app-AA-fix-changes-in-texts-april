@@ -1,0 +1,26 @@
+.entryHeader {
+  composes: entry__header from '../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../index.css';
+  composes: text-center from '../index.css';
+}
+
+.textCenter {
+  composes: text-center from '../index.css';
+}
+
+.loaderMain {
+  composes: loader from '../index.css';
+  composes: loader--main from '../index.css';
+}
+.buttonAction {
+  composes: btn from '../index.css';
+  composes: btn--action  from '../index.css';
+}
+
+.tele2Logo{
+  width: 215px;
+  margin-top: 8px;
+}

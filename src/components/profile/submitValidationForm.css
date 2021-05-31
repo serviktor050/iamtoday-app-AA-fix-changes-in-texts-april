@@ -1,0 +1,1063 @@
+.mlmRegistrationHeader {
+  composes: mlmRegistrationHeader from "./contactsValidationForm.css";
+}
+
+.mlmRegistrationHeader__step {
+  composes: mlmRegistrationHeader__step from "./contactsValidationForm.css";
+}
+.mlmRegistrationHeader__stepOf {
+  composes: mlmRegistrationHeader__stepOf from "./contactsValidationForm.css";
+}
+.title {
+  composes: title from "./contactsValidationForm.css";
+}
+
+.stageBoxInner h3 {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: #4da2d6;
+}
+
+.footer-actions {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.info-blue {
+  composes: info-blue from "../../modules/Mlm/MlmRegistration/styles.css";
+}
+.expand-regForm-i {
+  composes: expand-regForm-i from "../../modules/Mlm/MlmRegistration/styles.css";
+}
+
+.footer-actions .info-blue {
+  background-color: transparent;
+  max-width: 50%;
+  padding: 0 20px;
+  margin-top: 0;
+}
+.gridCell33 {
+  composes: gridCell33 from "./contactsValidationForm.css";
+}
+
+.gridCell66 {
+  composes: gridCell66 from "../../modules/Mlm/MlmRegistration/styles.css";
+}
+
+.bigHr {
+  composes: bigHr from "./contactsValidationForm.css";
+}
+
+.entryHeader {
+  composes: entry__header from "../../index.css";
+}
+
+.entryTitleCenter {
+  composes: entry__title from "../../index.css";
+  composes: text-center from "../../index.css";
+}
+
+.layout {
+  composes: layout from "../../index.css";
+}
+.layoutAlfa {
+  composes: layout;
+  background-color: #fff;
+}
+.layoutInnerProfile {
+  composes: layout__inner from "../../index.css";
+  composes: layout__inner--profile from "../../index.css";
+}
+.layoutInner {
+  composes: layout__inner from "../../index.css";
+}
+
+.uploadFileAvatar {
+  composes: upload-file from "../../index.css";
+  composes: avatar--upload from "../../index.css";
+}
+
+.avatarImgWrap {
+  composes: avatar__img-wrap from "../../index.css";
+}
+
+.btnSocialProfile {
+  composes: btn-social from "../../index.css";
+  composes: btn-social--profile from "../../index.css";
+}
+
+.btnSocialItemOk {
+  composes: btn-social__item from "../../index.css";
+  composes: btn-social__item--odnoklassniki from "../../index.css";
+}
+
+.btnSocialTitle {
+  composes: btn-social__title from "../../index.css";
+}
+
+.btnSocialItemFb {
+  composes: btn-social__item from "../../index.css";
+  composes: btn-social__item--fb from "../../index.css";
+}
+
+.gender {
+  composes: gender from "../../index.css";
+}
+
+.baseTableScroll {
+  composes: base-table-scroll from "../../index.css";
+}
+
+.baseTable {
+  composes: base-table from "../../index.css";
+}
+
+.baseTableBtnDel {
+  composes: base-table__btn-del from "../../index.css";
+}
+
+.svgIcoTrash {
+  composes: svg-icon from "../../index.css";
+  composes: ico-trash from "../../index.css";
+}
+
+.baseTableInput {
+  composes: base-table__input from "../../index.css";
+}
+.baseTableInputHeight {
+  composes: baseTableInput;
+  max-width: 77px;
+}
+.baseTableInputHeight .Select-arrow-zone {
+  display: none;
+}
+.gridMb30 {
+  composes: grid from "../../index.css";
+  composes: mb30 from "../../index.css";
+}
+.gridMt30 {
+  composes: grid from "../../index.css";
+}
+
+.checkboxesItem {
+  composes: checkboxes__item from "../../index2.css";
+}
+.checkboxes {
+  composes: checkboxes__item from "../../index2.css";
+}
+.checkboxField {
+  composes: checkbox__field from "../../index.css";
+}
+
+.baseRapagTextCenter {
+  composes: base-rapag from "../../index.css";
+  composes: text-center from "../../index.css";
+}
+
+.avatarImg {
+  composes: avatar__img from "../../index.css";
+}
+
+.grid {
+  composes: grid from "../../index.css";
+  margin-left: 0;
+}
+
+.blockTeam {
+  display: flex;
+  color: #8b9bb4;
+}
+.blockTeamTitle {
+  width: 50%;
+  color: #222;
+  font-weight: bold;
+}
+.blockTeamList {
+  width: 50%;
+}
+.blockTeamItem {
+  padding: 1px 0;
+}
+.inputColor {
+  color: #908a8a;
+  font-size: 14px;
+}
+.note {
+  font-size: 14px;
+}
+.noteLink {
+  color: #4da2d6;
+}
+@media screen and (min-width: 1025px) {
+  .width50 {
+    width: 50%;
+  }
+  .width25 {
+    width: 25%;
+  }
+  .width33 {
+    width: 33%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 420px) {
+  .blockTeam {
+    flex-direction: column;
+  }
+  .blockTeamList {
+    width: 100%;
+  }
+  .blockTeamTitle {
+    width: 100%;
+  }
+}
+.deskGridCell12Mb30 {
+  composes: width50;
+  composes: grid__cell from "../../index.css";
+  composes: mb30 from "../../index.css";
+}
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from "../../index.css";
+  composes: layout__menu from "../../index.css";
+}
+.deskGridCell12 {
+  composes: width50;
+  composes: grid__cell from "../../index.css";
+}
+
+.textCenter {
+  composes: text-center from "../../index.css";
+}
+
+.uploadFileInput {
+  composes: upload-file__input from "../../index.css";
+}
+
+.svgIcoOk {
+  composes: svg-icon from "../../index.css";
+  composes: ico-odnoklassniki from "../../index.css";
+}
+
+.svgIcoFb {
+  composes: svg-icon from "../../index.css";
+  composes: ico-fb from "../../index.css";
+}
+
+.genderTitle {
+  composes: gender__title from "../../index.css";
+}
+
+.h3 {
+  composes: h3 from "../../index.css";
+}
+
+.h1 {
+  composes: h1 from "../../index.css";
+  text-align-last: left;
+  margin-bottom: 10px;
+}
+
+.btnPrimary {
+  composes: btn from "../../index2.css";
+  composes: btn--primary from "../../index2.css";
+  background-color: #ef3125;
+  padding: 16px 20px 17px;
+  border-radius: 4px;
+}
+.btnPrimaryTele2 {
+  composes: btnPrimary;
+  background-color: #ff6633;
+}
+.btnPrimaryCenter {
+  composes: btn from "../../index2.css";
+  composes: btn--primary from "../../index2.css";
+  margin: 0 auto;
+  background-color: #39961e;
+  padding: 16px 20px 17px;
+  border-radius: 4px;
+}
+.btnPrimaryCenter:hover {
+  background-color: #2f8d14;
+}
+.profileText {
+  color: #39961e;
+  font-weight: bold;
+  font-size: 20px;
+}
+.profileNote {
+  font-size: 14px;
+  color: #b5b5b5;
+}
+.btnAdd {
+  composes: btnPrimary;
+  background-color: #4da2d6;
+}
+.btnAdd:hover {
+  background-color: #2a86be;
+}
+
+.btnPrimarySave {
+  composes: btnPrimaryCenter;
+  width: fit-content;
+}
+.btnSide {
+  composes: btnPrimary;
+  background-color: #b5b5b5;
+}
+.btnSide:hover {
+  background-color: #9d9d9d;
+}
+.baseParag {
+  composes: base-parag from "../../index.css";
+}
+
+.checkbox {
+  composes: checkbox from "../../index2.css";
+}
+
+.checkboxLabel {
+  composes: checkbox__label from "../../index2.css";
+}
+
+.checkboxesTitle {
+  composes: checkbox__title from "../../index2.css";
+}
+
+.checkboxPh {
+  composes: checkbox__ph from "../../index2.css";
+}
+
+.svgIcoTick {
+  composes: svg-icon from "../../index.css";
+  composes: ico-tick from "../../index.css";
+}
+
+.checkboxTitle {
+  composes: checkbox__title from "../../index2.css";
+}
+
+.subTitle {
+  composes: sub-title from "../../index2.css";
+}
+
+.basePragTextCenter {
+  composes: base-parag from "../../index.css";
+  composes: text-center from "../../index.css";
+}
+
+.optionsWhiteMtd30 {
+  composes: options from "../../index.css";
+  composes: options--white from "../../index.css";
+  composes: mtb30 from "../../index.css";
+}
+
+.optionsItemIsActive {
+  composes: options__item from "../../index2.css";
+  composes: is-active from "../../index2.css";
+  color: #fff;
+  background-color: #70cffe;
+  border: 1px solid #70cffe;
+}
+
+.optionsItem {
+  composes: options__item from "../../index.css";
+}
+
+.stageBoxSmallPadding {
+  composes: stage-box from "../../index.css";
+  composes: stage-box--small-padding from "../../index.css";
+}
+.btnAction {
+  composes: btn from "../../index.css";
+  composes: btn--action from "../../index.css";
+  background: #ef3125;
+}
+
+.btnPrimary {
+  composes: btn from "../../index.css";
+  composes: btn--primary from "../../index.css";
+}
+.svgIconCalendar {
+  width: 20px;
+  height: 20px;
+  color: #39961e;
+  margin-top: 3px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+.svgIconFile {
+  width: 20px;
+  height: 20px;
+  color: #39961e;
+  margin-top: 3px;
+  position: absolute;
+  top: 10px;
+  left: 12px;
+}
+
+/***********2.0************/
+@media screen and (min-width: 1025px) {
+  .stageBoxInner {
+    padding: 30px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .stageBoxInner {
+    padding: 0 20px;
+    box-shadow: none;
+  }
+  .stageBoxInner:first-child {
+    padding-top: 50px;
+  }
+
+  .stageBoxInner:last-child {
+    padding-bottom: 20px;
+  }
+}
+.baseParag {
+  composes: base-parag from "../../index2.css";
+}
+.h1 {
+  composes: h1 from "../../index2.css";
+  margin-bottom: 10px;
+}
+.h1M {
+  composes: h1;
+  margin-bottom: 10px;
+  margin-top: 45px;
+}
+.h2 {
+  composes: h2 from "../../index2.css";
+  color: #4da2d6;
+  font-size: 16px;
+  font-weight: bold;
+}
+.h2D {
+  composes: h2;
+}
+.agreed {
+  color: #4da2d6;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.gridCell12Mb30 {
+  composes: width50;
+  composes: grid__cell from "../../index2.css";
+  composes: mb30 from "../../index2.css";
+}
+.gridCell12 {
+  composes: width50;
+  composes: grid__cell from "../../index2.css";
+  padding-left: 0;
+}
+.gridCell12:first-child {
+  padding-right: 15px;
+}
+.gridCell12:last-child {
+  padding-left: 15px;
+}
+
+.avatarWrap {
+  composes: avatar-wrap from "../../index2.css";
+  composes: text-center from "../../index2.css";
+}
+
+.avatarProfile {
+  composes: avatar from "../../index2.css";
+  composes: avatar--profile from "../../index2.css";
+}
+
+.avatarUpload {
+  cursor: pointer;
+  composes: avatar--upload from "../../index2.css";
+}
+
+.uploadFileInput {
+  display: none;
+}
+.avatarImgWrap {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  cursor: pointer;
+}
+
+.avatarImg {
+  max-width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+.avatarText {
+  position: absolute;
+  color: #fff;
+  margin-top: 37px;
+  font-family: "Exo 2", Arial, Tahoma, sans-serif;
+  font-weight: 700;
+}
+/*.avatarImgWrap::before {
+  display: -ms-flexbox;
+  display: flex;
+  content: "Загрузи фотографию";
+  position: absolute;
+  left: 0;
+  top: 0;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-family: "Exo 2", Arial, Tahoma, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}*/
+
+.pr15 {
+  padding-right: 0px;
+}
+.pl15 {
+  padding-left: 0px;
+}
+.socialSignin {
+  composes: social-signin from "../../index2.css";
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from "../../index2.css";
+  composes: social-signin__item--fb from "../../index2.css";
+}
+.socialSigninItemVk {
+  composes: social-signin__item from "../../index2.css";
+  composes: social-signin__item--vk from "../../index2.css";
+}
+.socialSigninItemOk {
+  composes: social-signin__item from "../../index2.css";
+  composes: social-signin__item--odnoklassniki from "../../index2.css";
+}
+.socialSigninItemIn {
+  composes: social-signin__item from "../../index2.css";
+  composes: social-signin__item--vk from "../../index2.css";
+  background-color: #222;
+}
+.socialSigninItemGp {
+  composes: social-signin__item from "../../index2.css";
+  composes: social-signin__item--vk from "../../index2.css";
+  background-color: #f95858;
+}
+.svgIconFb {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-fb from "../../index2.css";
+  fill: #fff;
+}
+.svgIconVk {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-vk from "../../index2.css";
+  fill: #fff;
+}
+.svgIconOk {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-odnoklassniki from "../../index2.css";
+  fill: #fff;
+}
+.svgIconGp {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-vk from "../../index2.css";
+  fill: #fff;
+  width: 25px;
+  height: 22px;
+}
+.svgIconIn {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-vk from "../../index2.css";
+  fill: #fff;
+  height: 20px;
+}
+
+.checkboxMb10Mt10 {
+  composes: checkbox from "../../index2.css";
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.svgIconTick {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-tick from "../../index2.css";
+}
+.svgIconTickActive {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-tick from "../../index2.css";
+  fill: #70cffe !important;
+}
+/*
+input input--required input--success*/
+
+.input {
+  composes: input from "../../index2.css";
+  margin-bottom: 15px;
+}
+.inputBtn {
+  composes: input from "../../index2.css";
+  composes: input--btn from "../../index2.css";
+}
+
+.label {
+  composes: label from "../../index2.css";
+}
+
+.labelTitle {
+  composes: label__title from "../../index2.css";
+}
+.labelSubTitle {
+  composes: label__sub-title from "../../index2.css";
+}
+.options {
+  color: #1f447b;
+  display: flex;
+  list-style: none;
+  margin: 0 -5px;
+}
+.optionsItem {
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  line-height: 1;
+  font-family: "Exo 2", Arial, Tahoma, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  min-width: 80px;
+  margin-bottom: 10px;
+  border: 1px solid #ced9eb;
+  margin-right: 10px;
+  width: 100%;
+  transition: 0.2s;
+  display: block;
+  border-radius: 3px;
+  padding: 11px 5px;
+}
+.optionsItemRadio {
+  width: 100%;
+  max-width: 60px;
+  min-width: 40px;
+  padding: 15px 5px;
+}
+.optionsItemRadio48 {
+  width: 48%;
+  min-width: 80px;
+  padding: 0 5px;
+}
+.optionsItem:hover {
+  background-color: #f3f6f8;
+}
+.optionsItemActive {
+  composes: options__item from "../../index2.css";
+  color: #fff;
+  padding: 11px 5px;
+  margin-right: 10px;
+  width: 100%;
+  background-color: #203349;
+  border: 1px solid #203349;
+  display: block;
+}
+.optionsItemNumbers {
+  composes: optionsItem;
+  font-size: 1.5rem;
+  width: 100%;
+  min-width: 40px !important;
+  padding: 15px 5px;
+  display: block;
+}
+.optionsItemNumbersActive {
+  composes: optionsItemNumbers;
+  background-color: #70cffe;
+  border: 1px solid #70cffe;
+  color: #fff;
+}
+.optionsItemNumbersActive:hover {
+  background-color: #70cffe;
+}
+.optionsRadioInput {
+  position: absolute;
+  visibility: hidden;
+}
+.select {
+  cursor: pointer;
+  composes: select from "../../index2.css";
+}
+
+.selectField {
+  composes: select__field from "../../index2.css";
+}
+.svgIconFormHelp {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-form-help from "../../index2.css";
+}
+
+.inputIco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 46px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.svgIconAccordion {
+  composes: svg-icon from "../../index2.css";
+  z-index: 0;
+  width: 9px;
+  height: 8px;
+  position: absolute;
+  bottom: 17px;
+  right: 15px;
+  pointer-events: none;
+  stroke: #696868;
+}
+
+.inputFieldWrap {
+  composes: input__field-wrap from "../../index2.css";
+}
+
+.btnBase {
+  composes: btn from "../../index2.css";
+  composes: btn--base from "../../index2.css";
+}
+
+.profileBtnsSave {
+  composes: profile-btns-save from "../../index2.css";
+  display: flex;
+  align-items: center;
+}
+
+.profileSuccessBtns {
+  padding: 35px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profileTextDanger {
+  composes: profileText;
+  color: #f97b7c;
+}
+.profileTextWaiting {
+  composes: profileText;
+  color: #BEA10A;
+}
+
+.groupDanger {
+  border: 1px solid #f27576;
+  background: #d2929214;
+  margin: 20px -25px;
+  padding: 30px 25px 10px;
+  border-radius: 3px;
+  border-left-width: 5px;
+}
+
+/*.stageBoxHeaderTodayme{
+  composes: stage-box__header from '../../index2.css';
+  composes: stage-box__header--todayme from '../../index2.css';
+  background-color: #222;
+  background-image: none;
+}
+.stageBoxHeaderLogo{
+  composes: stage-box__header-logo from '../../index2.css';
+}
+.baseTableScroll{
+  composes: base-table-scroll from '../../index2.css';
+}
+
+.baseTableStats{
+  composes: base-table from '../../index2.css';
+  composes: base-table--stats from '../../index2.css';
+}*/
+
+.textLeft {
+  composes: text-left from "../../index2.css";
+}
+.tips {
+  composes: tips from "../../index2.css";
+}
+
+.svgIconFormHelp {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-form-help from "../../index2.css";
+}
+
+.baseTableStatsTh {
+  composes: base-table__stats from "../../index2.css";
+  text-align: left;
+  padding: 1%;
+  font-size: 1.4rem;
+}
+.baseTableDateLeft {
+  composes: base-table__date from "../../index2.css";
+  composes: text-left from "../../index2.css";
+}
+
+.baseTableBtnDel {
+  composes: base-table__btn-del from "../../index2.css";
+}
+.svgIconTrash {
+  composes: svg-icon from "../../index2.css";
+  composes: ico-trash from "../../index2.css";
+}
+.baseTableInput {
+  composes: base-table__input from "../../index2.css";
+}
+.textCenter {
+  composes: text-center from "../../index2.css";
+}
+.stageBoxBigPadding {
+  composes: stage-box from "../../index2.css";
+  composes: stage-box--big-padding from "../../index2.css";
+  border: none;
+  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.2);
+}
+
+.stageBoxHeaderAlpha {
+  composes: stage-box__header from "../../index2.css";
+  composes: stage-box__header--alpha from "../../index2.css";
+}
+.gridCell13 {
+  composes: width33;
+  composes: grid__cell from "../../index2.css";
+}
+.gridCell {
+  composes: grid__cell from "../../index2.css";
+}
+.gridMb20 {
+  composes: grid from "../../index2.css";
+  composes: mb20 from "../../index2.css";
+}
+.hr2 {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-style: inset;
+  height: 1px;
+  border: none;
+  background-color: #ced9eb;
+}
+
+.textareaField {
+  border-radius: 5px;
+  border: 1px solid #ced9eb;
+  padding: 12px;
+  transition: 0.2s;
+  height: 120px;
+  width: 100%;
+}
+
+.staticField {
+  margin-top: -10px;
+  position: relative;
+}
+.staticFieldProgramLine {
+  line-height: 40px;
+  border-top: 1px solid #eaecec;
+  padding: 0 12px;
+}
+.staticFieldProgramLine:last-child {
+  border-bottom: 1px solid #eaecec;
+}
+.staticFieldProgram {
+  position: absolute;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 2px 5px;
+  width: 100%;
+  display: block;
+  z-index: 1;
+}
+.staticFieldProgramHide {
+  composes: staticFieldProgram;
+  display: none;
+}
+.staticFieldProgramItem {
+  display: inline-block;
+  width: 40%;
+}
+.staticFieldProgramItem60 {
+  composes: staticFieldProgramItem;
+  width: 60%;
+}
+.staticFieldValue {
+  padding: 12px 13px;
+  border-radius: 5px;
+  /*background: #f3f6f8;*/
+  -webkit-text-fill-color: #696d7d;
+  color: #b3b9bd;
+  border: 1px solid #ced9eb;
+}
+
+.staticFieldValueProgram {
+  composes: staticFieldValue;
+  background: #f3f6f8;
+}
+.staticFieldValueProgram:after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 46px;
+  background-color: #ced9eb;
+  position: absolute;
+  bottom: 0;
+  right: 46px;
+}
+
+.staticFieldName {
+  font-size: 14px;
+  color: #6c7175;
+}
+.hide {
+  display: none;
+}
+.form {
+  display: block;
+}
+.textareaMt20 {
+  composes: textarea from "../../index2.css";
+  margin-top: 20px;
+}
+
+.alfaLogo {
+  width: 140px;
+  margin-top: 5px;
+}
+
+.mtb30 {
+  margin: 30px 0;
+}
+
+.mtb20 {
+  margin: 20px 0;
+}
+
+.mtb10 {
+  margin: 10px 0;
+}
+
+.mb0 {
+  margin-bottom: 0;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.mb60 {
+  margin-bottom: 60px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mt40 {
+  margin-top: 40px;
+}
+
+.btnSaveData {
+  composes: btnSaveData from "./contactsValidationForm.css";
+  width: fit-content;
+  margin-right: 15px;
+}
+.btnAddVerify {
+  composes: btnSaveData;
+  background-color: #4da2d6;
+  margin-right: 15px;
+}
+.btnAddVerify:hover {
+  background-color: #2a86be;
+}
+
+@media screen and (min-width: 1025px) {
+  .h1 {
+    margin-left: -40px;
+  }
+  .h1M {
+    margin-left: -40px;
+  }
+  .pr15 {
+    padding-right: 15px;
+  }
+  .pl15 {
+    padding-left: 15px;
+  }
+  .h2D {
+    margin-left: -40px;
+  }
+}
+.textNote {
+  color: #5a5454;
+  font-size: 12px;
+}
+.profileBtnsSaveItem {
+  width: 100%;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 768px) {
+  .hr2 {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+  .profileSuccessBtns {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+@media screen and (max-width: 767px) {
+  .svgIconFile {
+    display: none;
+  }
+  .footer-actions {
+    flex-wrap: wrap;
+  }
+  .footer-actions .info-blue {
+    order: 1;
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+  .profileBtnsSave {
+    order: 2;
+  }
+}

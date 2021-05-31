@@ -1,0 +1,9 @@
+.buttonSecondaryWide {
+  composes: btn from '../../index.css';
+  composes: btn--secondary  from '../../index.css';
+  composes: wide  from '../../index.css';
+}
+
+.entryBox {
+  composes: entry__box from '../../index.css';
+}

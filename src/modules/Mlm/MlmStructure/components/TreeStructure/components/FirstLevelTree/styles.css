@@ -1,0 +1,27 @@
+.treeBlock {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    position: relative;
+}
+
+.treeBlock::before {    
+    content: '';
+    position: absolute;
+    width: 2px;
+    left: 10px;
+    bottom: 35px;
+    height: 100%;
+    background-color: #D3EEFF;
+}
+
+.treeBlock:last-child::before {
+    bottom: 36px;
+    height: 75px;    
+}
+
+.treeBlock:only-of-type::before {
+    bottom: auto;
+    height: 48px;    
+}
+

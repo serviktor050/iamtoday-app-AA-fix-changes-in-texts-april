@@ -1,0 +1,51 @@
+.AcceptDeclineButtons {
+  position: relative;
+  display: flex;
+  margin-left: auto;
+  width: fit-content;
+  margin-top: 25px;
+}
+
+.AcceptDeclineButtons .ADbutton {
+  all: unset;
+  /* width: 174px;
+  height: 47px; */
+  padding: 15px 25px;
+  background: #79c330;
+  border: 1px solid #79c330;
+  color: #fff;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.AcceptDeclineButtons .ADbutton:hover {
+  background: #5f9e1f;
+}
+
+.AcceptDeclineButtons .ADbutton:nth-child(2) {
+  background: #fff;
+  color: #79c330;
+}
+
+.AcceptDeclineButtons .ADbutton:nth-child(2):hover {
+  background: #def7c5;
+}
+
+.label {
+  background: #FFEBD8;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  color: #CD6400;
+  padding: 10px 15px;
+  display: block;
+  position: absolute;
+  top: calc(-100% - 10px);
+  left: 0;
+}

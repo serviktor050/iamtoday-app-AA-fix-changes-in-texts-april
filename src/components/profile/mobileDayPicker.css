@@ -1,0 +1,54 @@
+.datepickerWrapperValue {
+  composes: datepicker-wrapper__value from '../../index.css';
+  margin-bottom:0 !important;
+}
+.selectBtn {
+  composes: select-btn from '../../index.css';
+}
+.datepickerWrapper {
+  composes: datepicker-wrapper from '../../index.css';
+}
+.inputField{
+  composes: input__field from '../../index2.css';
+}
+.inputFieldError{
+  composes: inputField;
+  border:1px solid #f97b7c !important;
+}
+.inputIcoRequired{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f97b7c;
+}
+.inputIcoRequiredSucceess{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #56daa1;
+}
+.inputName {
+  font-size: 14px;
+  position: absolute;
+  top: 13px;
+  background: transparent;
+  padding: 0 7px;
+  left: 5px;
+  color: hsl(0,0%,50%);
+  letter-spacing: 0.5px;
+  z-index:-1;
+  transition:all .3s ease;
+}
+.inputNameShow {
+  z-index: 2;
+  top: -10px;
+  background: #fff;
+  left: 14px;
+  font-size: 12px;
+}

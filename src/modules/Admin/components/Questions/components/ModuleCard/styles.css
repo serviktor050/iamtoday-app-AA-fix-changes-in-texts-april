@@ -1,0 +1,73 @@
+.module__card {
+  margin-top: 20px;
+}
+
+.module__header {
+  padding: 15px 20px;
+  background: #F0F6FF;
+  border-radius: 2px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module__name {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  max-width: 90%;
+}
+
+.module__btn {
+  all: unset;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.module__btn-hide::before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 2px;
+  height: 20px;
+  background-color: #4DA2D6;
+  transform: rotate(45deg);
+}
+.module__btn-hide::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 2px;
+  height: 20px;
+  background-color: #4DA2D6;
+  transform: rotate(-45deg);
+}
+
+.module__btn-expand::before {
+  position: absolute;
+  left: 31%;
+  bottom: 43%;
+  content: "";
+  display: block;
+  width: 2px;
+  height: 10px;
+  background-color: #4DA2D6;
+  transform: rotate(-45deg);
+}
+.module__btn-expand::after {
+  position: absolute;
+  right: 31%;
+  bottom: 43%;
+  content: "";
+  display: block;
+  width: 2px;
+  height: 10px;
+  background-color: #4DA2D6;
+  transform: rotate(45deg);
+}

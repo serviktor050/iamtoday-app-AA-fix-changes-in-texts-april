@@ -1,0 +1,14 @@
+.itd-list-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.itd-list-dropdown {
+  width: 50px;
+  z-index: 90;
+}
+.itd-list-dropdownOption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}

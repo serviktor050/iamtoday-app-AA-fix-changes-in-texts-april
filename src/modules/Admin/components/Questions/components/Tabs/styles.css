@@ -1,0 +1,36 @@
+.tabs {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.tab {
+    width: fit-content;
+    margin-right: 10px;
+}
+
+.tab__label {
+    all: unset;
+    display: block;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    background: #DAEFF2;
+    color: #4DA2D6;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.tab__input {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+.tab__label-active {
+    background: #4DA2D6;
+    color: #FFFFFF;
+}

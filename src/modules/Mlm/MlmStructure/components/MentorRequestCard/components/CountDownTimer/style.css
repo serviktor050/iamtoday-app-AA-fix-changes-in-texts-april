@@ -1,0 +1,93 @@
+.timerWrapper {
+  display: flex;
+}
+
+.CountDownTimer {
+  padding: 5px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1;
+  color: white;
+}
+
+.CountDownTimer::before {
+  content: "";
+  display: block;
+  width: 1em;
+  min-width: 1em;
+  height: 1em;
+  background: url("../../../../../../../assets/img/svg-symbols/clock2.svg")
+    center/cover no-repeat;
+  filter: brightness(0) saturate(100%) invert(95%) sepia(0%) saturate(7500%)
+    hue-rotate(264deg) brightness(106%) contrast(100%);
+  margin-right: 5px;
+  margin-top: 1px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.tooltipSvgContainer {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4da2d6;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.tooltipSVG {
+  min-width: 34px;
+  min-height: 34px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%)
+    hue-rotate(190deg) brightness(105%) contrast(101%);
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #ffffff;
+  text-align: left;
+  padding: 6px 10px;
+  font-size: 10px;
+  line-height: 12px;
+  color: #4DA2D6;
+  border-radius: 2px;
+  max-height: 38px;
+  width: 30rem;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  margin-right: -10px;
+  transform: translate(100%, 0%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  transform: rotate(90deg) translate(0, 50%);
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

@@ -1,0 +1,100 @@
+.timersItem{
+    color: #FFF;
+    padding: 6px 15px;
+    height: 60px;
+    cursor: pointer;
+    width:175px;
+}
+
+.timersItem:last-child{
+    background-color: #0c4c7ca8;
+    border-radius:0 0 5px 5px
+}
+.db{
+    display: block;
+}
+.timersBlock{
+    height: 60px;
+    margin-right:100px;
+    justify-self: center;
+    width: 42%;
+    display: flex;
+    min-width: 155px;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow-y: hidden;
+}
+.timersBlockShow{
+    composes: timersBlock;
+    overflow: visible;
+}
+.name{
+    text-transform: uppercase;
+    font-size: 9px;
+}
+.time{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    margin-top: -3px;
+}
+.timeItem{
+    display: inline-block;
+    width: 32px;
+    text-align: center;
+}
+.timeItem:first-child{
+    width: auto;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.timeItemDesc{
+    font-size: 10px;
+    margin-top: -6px;
+    font-weight: normal;
+}
+.timeItemNum{
+    font-size: 22px;
+    letter-spacing: 3px;
+    width: 31px;
+}
+.timeItemH{
+    margin-right: 3px;
+}
+@media screen and (max-width: 1025px) {
+    .timersItem{
+        padding: 3px 10px;
+        height: 48px;
+        width:160px;
+    }
+    .timersBlock{
+        height: 48px;
+    }
+    .timersBlock{
+        margin-right:0;
+    }
+    .timeItemNum{
+        font-size: 18px;
+        letter-spacing: 3px;
+        width:27px;
+    }
+    .timeItemH{
+        margin-right: 2px;
+    }
+    .time{
+        margin-top:-5px;
+    }
+    .timeItemH{
+
+    }
+}
+@media screen and (max-width: 1025px) {
+    .timersBlock{
+        width: 165px;
+    }
+}

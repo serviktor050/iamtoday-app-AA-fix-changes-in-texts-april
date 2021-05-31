@@ -1,0 +1,12 @@
+.css-ico-link {
+	background: url("../img/svg-sprite.svg") 100% 0 no-repeat;
+	width: 25px;
+	height: 25px;
+}
+
+.css-ico-notify {
+	background: url("../img/svg-sprite.svg") 0 0 no-repeat;
+	width: 28px;
+	height: 31px;
+}
+

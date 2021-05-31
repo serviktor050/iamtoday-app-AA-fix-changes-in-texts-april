@@ -1,0 +1,174 @@
+.task {
+  background: #203349;
+  padding: 30px;
+  color: #fff;
+  margin-bottom: 40px;
+}
+.title{
+  font-size:18px;
+  padding-bottom:6px;
+  font-weight: bold;
+}
+.desc {
+  font-size: 12px;
+  padding: 7px 0;
+  line-height: 15px;
+}
+.contentTitle {
+  font-weight: bold;
+}
+.info {
+  display: flex;
+}
+.infoItem {
+  margin-right: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+  width:120px;
+  position: relative;
+}
+.amount {
+  width:70px;
+  height:70px;
+  border-radius: 50%;
+  background: #ef3124;
+  font-size:20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 5px 2px #222;
+  z-index:2;
+}
+.shadow {
+  width:70px;
+  height:70px;
+  background: #ef3124;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 40px;
+}
+.text {
+  font-size: 12px;
+  text-align: center;
+  padding-top: 20px;
+}
+.input {
+  font-size:12px;
+  color: #203349;
+  border-radius: 2px;
+  border:none;
+  padding: 10px 17px;
+  width:80%;
+}
+.notice {
+  font-size:12px;
+  padding:10px 0;
+  opacity: 0.75;
+}
+.btn {
+  font-size: 14px;
+  color: #fff;
+  background: #ef3124;
+  border: none;
+  padding: 9px 17px;
+  border-radius: 2px;
+  margin-left: 5px;
+  width: 19%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover {
+  background: #ec5e55;
+}
+.avas {
+  display: flex;
+  padding-top:15px;
+}
+.avasText {
+  font-size: 14px;
+  width: 195px;
+  padding-right: 25px;
+}
+.avasList {
+  display: flex;
+  padding-left:20px;
+}
+.avasItem {
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left:-20px;
+}
+.avasItem img{
+  width:50px;
+  height:50px;
+}
+.status {
+  display: flex;
+  padding:25px 0;
+}
+.statusImg {
+  width:70px;
+  height:70px;
+  border-radius: 50%;
+  background: #ffd200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 5px 2px #222;
+  font-size: 30px;
+}
+.statusInfo{
+  display: flex;
+  padding-left:25px;
+  flex-direction: column;
+  justify-content: center;
+}
+.statusDesc{
+  font-weight: bold;
+  font-size:18px;
+  padding-right:5px;
+}
+.statusComment {
+  font-size:12px;
+  padding: 8px 0 0 0;
+}
+.statusComment span {
+  padding-right:5px;
+}
+.done{
+  background-color: #10c469;
+}
+.done svg {
+  fill: #fff;
+  width:25px;
+  height:25px;
+}
+.missed {
+  background-color: #ef3125;
+}
+.btnLarge{
+  composes: btn;
+  margin-left:0;
+  width:auto;
+}
+
+@media screen and (max-width: 767px) {
+  .input {
+    width:100%;
+  }
+
+  .btn {
+    width:100%;
+    margin-left:0;
+    margin-top:15px;
+  }
+}

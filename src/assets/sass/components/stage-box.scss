@@ -1,0 +1,126 @@
+.stage-box {
+  position: relative;
+  padding: 35px 0;
+  @extend %stage-box;
+
+  @include av-mq(desk) {
+    margin-bottom: 40px;
+  }
+  @include av-mq(portable) {
+    &:not([class*="box-style-"]):not(.stage-box--expand) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &--big-padding {
+    .stage-box__inner {
+      @include av-mq(portable) {
+        padding: 0 20px;
+        box-shadow: none;
+      }
+      @include av-mq(desk) {
+        padding: 0 80px;
+      }
+    }
+  }
+
+  &--small-padding {
+    .stage-box__inner {
+      @include av-mq(portable) {
+        padding: 0 20px;
+        box-shadow: none;
+      }
+      @include av-mq(desk) {
+        padding: 0 40px;
+      }
+    }
+  }
+
+  &--expand {
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+  }
+
+  &--smm{
+    padding: 20px 0 0;
+    border: 1px solid #ced9eb;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    @include av-mq(portable) {
+      margin-bottom: 15px !important;
+    }
+  }
+
+  &__header {
+    margin-bottom: 40px;
+
+    @include av-mq(portable) {
+      text-align: center;
+    }
+
+    @include av-mq(desk) {
+      border-radius: 5px 5px 0 0;
+    }
+
+    &--todayme {
+      background-color: $c-secondary;
+      background-image: url($bg-img-path + "/logo-border.svg");
+      background-repeat: no-repeat;
+      background-position: 90% bottom;
+      padding: 20px 85px;
+
+      // @include av-mq(portable) {
+      //   padding: 30px 85px;
+      // }
+
+      // @include av-mq(desk) {
+      //   padding: 60px 85px;
+      // }
+
+      .stage-box__header-logo {
+        width: 161px;
+        height: 58px;
+      }
+    }
+
+    &--alpha {
+      background-color: #ea2041;
+      background-image: url($bg-img-path + "/box-headers/bg-alpha.svg");
+      background-repeat: no-repeat;
+      background-position: 90% 73%;
+      padding: 20px 85px;
+
+      // @include av-mq(portable) {
+      //   padding: 30px 85px;
+      // }
+
+      // @include av-mq(desk) {
+        
+      // }
+
+    }
+  }
+
+  &__header-logo {
+  }
+
+  &__btn-expand {
+    @extend %btn;
+    border: 1px solid $c-border;
+    background-color: #fff;
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $c-secondary;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $c-l-gray;
+    }
+
+    &:active {
+      background-color: darken($c-l-gray, 3%);
+    }
+  }
+}

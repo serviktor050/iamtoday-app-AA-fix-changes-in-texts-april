@@ -1,0 +1,464 @@
+.layoutEntry {
+  composes: layout from '../../index2.css';
+  composes: layout--entry from '../../index2.css';
+}
+
+.gridEntryHeader {
+  composes: grid from '../../index2.css';
+  composes: entry-header from '../../index2.css';
+}
+
+.gridCellTodaymeLogo {
+  composes: grid__cell from '../../index2.css';
+  composes: todayme-logo from '../../index2.css';
+}
+.alfaBgc{
+  background-color: #fe2f1d;;
+}
+.entryMin {
+  composes: entry from '../../index2.css';
+  composes: entry--min from '../../index2.css';
+}
+
+.entryInner {
+  composes: entry__inner from '../../index2.css';
+  max-width: 500px !important;
+  padding-bottom:30px;
+}
+.entryHeader {
+  composes: entry__header from '../../index2.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+  color: #fff;
+}
+
+.entryBox {
+  composes: entry__box from '../../index2.css';
+}
+
+.entryIcoBox {
+  composes: entry-ico-box from '../../index2.css';
+}
+
+.entryIcoBoxImg {
+  composes: entry-ico-box__img from '../../index2.css';
+}
+
+.entryIcoBoxTitle {
+  composes: entry-ico-box__title from '../../index2.css';
+}
+
+.entryNavMtb20 {
+  composes: entry-nav from '../../index2.css';
+  composes: mtb20 from '../../index2.css';
+}
+
+.entryNavItem {
+  composes: entry-nav__item from '../../index2.css';
+}
+
+.textCenterMb10 {
+  composes: text-center from '../../index2.css';
+  composes: mb10 from '../../index2.css';
+}
+
+.socialSignin {
+  composes: social-signin from '../../index2.css';
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from '../../index2.css';
+  composes: social-signin__item--fb from '../../index2.css';
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../../index2.css';
+  composes: social-signin__item--vk from '../../index2.css';
+}
+
+.socialSigninItemOk {
+  composes: social-signin__item from '../../index2.css';
+  composes: social-signin__item--odnoklassniki from '../../index2.css';
+}
+
+.svgIconFb {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-fb from '../../index2.css';
+}
+
+.svgIconVk {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-vk from '../../index2.css';
+}
+
+.svgIconOk {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-odnoklassniki from '../../index2.css';
+}
+
+.entryBg {
+  composes: entry__bg from '../../index2.css';
+  background: #21ACE1;
+}
+
+.entryIcoBox{
+  text-align: center;
+}
+.entryIcoBoxTitle{
+  padding: 30px 0 30px;
+  text-align: center;
+  font-family: "Exo 2", Arial, Tahoma, sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+}
+.entryProgramPriceHighlightMd30{
+  padding: 30px 0 30px;
+  text-align: center;
+  font-family: "Exo 2", Arial, Tahoma, sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.buttonSecondaryWide {
+  composes: btn from '../../index2.css';
+  composes: btn--secondary  from '../../index2.css';
+  composes: wide  from '../../index2.css';
+}
+
+.entryWide {
+  composes: entry from '../../index2.css';
+  composes: entry--wide from '../../index2.css';
+}
+
+.notifyFormMb30 {
+  composes: notify from '../../index2.css';
+  composes: notify--form  from '../../index2.css';
+  composes: mb30  from '../../index2.css';
+}
+
+.notifyItemSuccess {
+  composes: notify__item from '../../index2.css';
+  composes: notify__item--success from '../../index2.css';
+}
+
+.notifyDesc {
+  composes: notify__desc from '../../index2.css';
+}
+
+.notifyNum {
+  composes: notify__num from '../../index2.css';
+  margin-right:12px;
+}
+
+.notifyDescSub {
+  composes: notify__desc-sub from '../../index2.css';
+}
+
+.btnActionMb20 {
+  composes: btn from '../../index2.css';
+  composes: btn--action from '../../index2.css';
+  composes: mb20 from '../../index2.css';
+}
+
+.promoTable {
+  composes: promo-table from '../../index2.css';
+}
+
+.promoTableItemColor1 {
+  composes: promo-table__item from '../../index2.css';
+  composes: promo-table__item--color-1 from '../../index2.css';
+}
+
+.promoTableDiscount {
+  composes: promo-table__discount from '../../index2.css';
+}
+
+.promoTableTitle {
+  composes: promo-table__title from '../../index2.css';
+}
+
+.promoTablePromoCodeWrap {
+  composes: promo-table__promo-code-wrap from '../../index2.css';
+}
+
+.promoTablePromoCode {
+  composes: promo-table__promo-code from '../../index2.css';
+}
+
+.promoTableCode {
+  composes: promo-table__code from '../../index2.css';
+}
+
+.promoTableBtns {
+  composes: promo-table__btns from '../../index2.css';
+}
+
+.btnSimple {
+  composes: btn-simple from '../../index2.css';
+}
+
+.btnSimpleIco {
+  composes: btn-simple__ico from '../../index2.css';
+}
+
+.svgIcoCopy {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-copy from '../../index2.css';
+}
+
+.btnSimpleTitle {
+  composes: btn-simple__title from '../../index2.css';
+}
+
+.svgIcoShare {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-share from '../../index2.css';
+}
+
+.socialShare {
+  composes: social-share from '../../index2.css';
+}
+
+.demoSocialShare {
+  composes: Demo__some-network__share-button from '../../index2.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width50 {
+    width: 50%;
+  }
+}
+
+.deskGridCellTodaymeLogo14 {
+  composes: width25;
+  composes: grid__cell from '../../index2.css';
+  composes: todayme-logo from '../../index2.css';
+}
+
+.deskGridCellTextCenter24 {
+  composes: width50;
+  composes: grid__cell from '../../index2.css';
+  composes: text-center from '../../index2.css';
+}
+
+.entryStep {
+  composes: entry-step from '../../index2.css';
+}
+.entryStepTele2 {
+  composes: entryStep;
+  color: #000;
+}
+.entryStepTitle {
+  composes: entry-step__title from '../../index2.css';
+}
+
+.entryStepNo {
+  composes: entry-step__no from '../../index2.css';
+}
+
+.entryStepGoto {
+  composes: entry-step__go-to from '../../index2.css';
+}
+.entryPackageName {
+  composes: entry-packet-name from '../../index2.css';
+}
+.btnSecondary {
+  composes: btn from '../../index2.css';
+  composes: btn--secondary from '../../index2.css';
+}
+.btnTele2 {
+  composes: btn from '../../index2.css';
+  composes: btn--secondary from '../../index2.css';
+  background: #ff6633;
+}
+
+.textCenter {
+  composes: text-center from '../../index2.css';
+}
+.btnBlock{
+  text-align: center;
+  margin-top:15px;
+}
+.btnPrimary {
+  composes: btn from '../../index2.css';
+  composes: btn--primary from '../../index2.css';
+}
+.svgIconFb {
+  composes: svg-icon from '../../index2.css';
+  composes: ico-fb from '../../index2.css';
+}
+.svgIcoOk{
+  width:19px;
+  height:19px;
+}
+.socialSignin{
+  justify-content: center;
+  display: none;
+}
+.socialSigninShow{
+  display: flex;
+  justify-content: center;
+}
+.socialSigninItem{
+  margin-right:22px;
+  cursor: pointer;
+}
+.socialSigninItemLast{
+  cursor: pointer;
+}
+.btnSimpleActive{
+  display: none;
+}
+.entryProgramPriceHighlightMd30 {
+  composes: entry-program-price from '../../index2.css';
+  composes: price-highlight-1 from '../../index2.css';
+  composes: mb30 from '../../index2.css';
+}
+
+.alfaBlock{
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 40px;
+  padding: 0 33px;
+}
+
+.mb30{
+    margin-bottom:30px;
+}
+.alfaBg{
+  max-width: 100%;
+  /*height: 100%;*/
+  width:100%;
+  height:100%;
+}
+.colorHeader {
+  composes: entry__header from '../../index.css';
+  composes: entry__header--colorful from '../../index.css';
+}
+.entryHeaderHero {
+  composes: colorHeader;
+  background-image: radial-gradient(at 70% 120%, #762FB3 3%, #261DB4 100%);
+  border-radius: 17px 17px 0 0;
+}
+
+.entryHeaderMother {
+  composes: colorHeader;
+  background-image: radial-gradient(at 70% 120%, #ffe799 -14%, #42b0ba 72%);
+  border-radius: 17px 17px 0 0;
+}
+
+.entryHeaderExtreme {
+  composes: colorHeader;
+  background-image: linear-gradient(-44deg, #5bffe2 0%, #005fff 51%, #ee0652 100%, #ff0045 100%);
+  border-radius: 17px 17px 0 0;
+}
+
+.entryHeaderTomorrow {
+  composes: colorHeader;
+  background-image: radial-gradient(at 70% 120%, #ef9227 0%, #e5522b 83%);
+  border-radius: 17px 17px 0 0;
+}
+.alfa .entryPackageName {
+  color: #fff;
+  font-family: "StyreneBLC-Thin" , Arial, Tahoma, sans-serif;
+  border-bottom: 1px solid #fff;
+  width: 230px;
+  margin: 0 auto 50px;
+}
+.alfa .entryInner {
+  background-color: transparent;
+  max-width: 800px !important;
+  width:70%;
+}
+.alfa .gridEntryHeader {
+  display: flex;
+  justify-content: center;
+}
+.alfa .notifyFormMb30 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.alfa .notifyFormMb30 li {
+  background: transparent;
+  width:50%;
+  margin-bottom: 40px;
+  padding:0 0;
+  display: flex;
+  justify-content: center;
+}
+.alfa .notifyFormMb30 li:nth-child(2n) {
+  padding-left:100px;
+}
+.alfa .notifyDesc {
+  position: relative;
+  padding-right:0;
+  display: flex;
+  align-items: center;
+}
+
+.alfa .notifyNum {
+  border-radius: 50%;
+  width: 105px;
+  height: 105px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  margin-right:0;
+  position: static;
+  left: 0;
+  top:0;
+  font-family: "StyreneBLC-Regular" , Arial, Tahoma, sans-serif;
+  transform: none;
+}
+.alfa .notifyText{
+  width: 300px;
+  display: block;
+  color: #fff;
+  font-family: "StyreneBLC-Regular" , Arial, Tahoma, sans-serif;
+  padding-left: 25px;
+  font-size: 18px;
+}
+.alfa .btnSecondary {
+  width: 230px;
+  border-radius: 4px;
+}
+.alfa .deskGridCellTextCenter24 {
+  display: none;
+}
+.alfa .deskGridCellTodaymeLogo14 {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+   .alfa .notifyNum {
+     width: 100px;
+     height: 100px;
+  }
+  .alfa .notifyFormMb30 li {
+    width:100%;
+    padding:0 5px;
+  }
+  .alfa .notifyText{
+    max-width: 190px;
+  }
+  .alfa .notifyFormMb30 li:nth-child(2n) {
+    padding-left:0;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .alfa .layoutEntry {
+    background-color: #213349;
+  }
+    .alfa .notifyText{
+        width:220px;
+    }
+}

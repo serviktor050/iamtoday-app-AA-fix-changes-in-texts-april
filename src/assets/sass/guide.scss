@@ -1,0 +1,32 @@
+.guide {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 30px;
+
+  &__title {
+    font-size: $fz-h1;
+    padding-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  &__block {
+    margin-bottom: 40px;
+  }
+
+  p {
+  }
+
+  h2,
+  h3 {
+    text-align: left;
+  }
+
+  &__buttions {
+  }
+}
+
+code {
+  background-color: $c-secondary;
+  color: #fff;
+  padding: 4px 6px;
+}

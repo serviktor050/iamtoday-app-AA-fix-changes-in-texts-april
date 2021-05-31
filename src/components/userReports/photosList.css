@@ -1,0 +1,19 @@
+.pendingProfilesItem {
+  composes: pending-profiles__item from '../../index.css';
+}
+
+.pendingProfilesItemLink {
+  composes: pending-profiles__item-link from '../../index.css';
+}
+
+.pendingProfilesItemName {
+  composes: pending-profiles__item-name from '../../index.css';
+}
+
+.pendingProfilesItemTimestamp {
+  composes: pending-profiles__item-timestamp from '../../index.css';
+}
+
+.pendingProfiles {
+  composes: pending-profiles from '../../index.css';
+}

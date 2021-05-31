@@ -1,0 +1,11 @@
+.entryInner {
+  composes: entry__inner from '../index.css';
+}
+
+.layout {
+  composes: layout from '../index2.css';
+}
+
+.headerPh {
+  composes: header-ph from '../index2.css';
+}

@@ -1,0 +1,272 @@
+.entryInner {
+  composes: entry__inner from '../index.css';
+}
+
+.entryHeader {
+  composes: entry__header from '../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../index.css';
+  composes: text-center from '../index.css';
+}
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width50 {
+    width: 50%;
+  }
+  .width75 {
+    width: 75%;
+  }
+
+  .stageBoxInner{
+    padding: 0 80px;
+  }
+  .stageBoxInner:first-child{
+    padding-top: 40px;
+  }
+}
+.layout {
+  composes: layout from '../index.css';
+  height:auto;
+  background: url(/assets/img/antiage/pt.png);
+}
+.layoutAlfa {
+  composes: layout from '../index.css';
+}
+.layoutInner {
+  composes: layout__inner from '../index.css';
+  padding-top:90px !important;
+}
+.layoutInnerAlfa {
+  composes: layoutInner;
+  height:100%;
+}
+@media screen and (max-width: 1024px) {
+  .layoutInner {
+    padding-top:14px !important;
+  }
+}
+.grid {
+  composes: grid from '../index.css';
+}
+
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from '../index.css';
+  composes: layout__menu from '../index.css';
+  position: relative;
+}
+.gridCellLayoutMenu14::before {
+  content: "Заполните личные данные и получите доступ к данному функционалу.";
+  opacity: 0;
+  text-align: center;
+  max-width: 200px;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  transition: opacity 0.4s;
+}
+
+.gridLayoutMenuInner {
+  composes: grid from '../index.css';
+  composes: layout__menu-inner from '../index.css';
+  pointer-events: none;
+  transition: opacity 0.4s;
+  opacity: 0.35;
+}
+
+.hide {
+  display: none;
+}
+
+.gridCellLayoutMenu14Show{
+  composes: width25;
+  composes: grid__cell from '../index.css';
+  composes: layout__menu from '../index.css';
+  position: relative;
+}
+.gridLayoutMenuInnerShow{
+  composes: grid from '../index.css';
+  composes: layout__menu-inner from '../index.css';
+  transition: opacity 0.4s;
+}
+
+@media screen and (min-width: 1025px) {
+    .gridLayoutMenuInner {
+        position: fixed;
+        width: 25%;
+        max-width: 281px;
+    }
+    .gridLayoutMenuInnerShow{
+        position: fixed;
+        width: 25%;
+        max-width: 281px;
+    }
+}
+.gridCellLayoutMenu14:hover .gridLayoutMenuInner {
+  opacity: 0;
+}
+.gridCellLayoutMenu14:hover::before {
+  opacity: 1;
+}
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../index2.css';
+  composes: layout__content from '../index2.css';
+  /*composes: 1/1--pocket from '../../index.css';*/
+}
+
+.stageBoxBigPadding{
+  composes: stage-box from '../index2.css';
+  composes: stage-box--big-padding from '../index2.css';
+}
+
+.baseParag{
+  composes: base-parag from '../index2.css';
+}
+
+.h1{
+  composes: h1 from '../index2.css';
+}
+.h2{
+  composes: h2 from '../index2.css';
+}
+
+.gridCell12Mb30{
+  composes: width50;
+  composes: grid__cell from '../index2.css';
+  composes: mb30 from '../index2.css';
+
+}
+.gridCell12{
+  composes: width50;
+  composes: grid__cell from '../index2.css';
+}
+
+.avatarWrap{
+  composes: avatar-wrap from '../index2.css';
+  composes: text-center from '../index2.css';
+ }
+
+.avatarProfile{
+  composes: avatar from '../index2.css';
+  composes: avatar--profile from '../index2.css';
+}
+
+
+.avatarUpload{
+  cursor: pointer;
+  composes: avatar--upload from '../index2.css';
+}
+
+.uploadFileInput{
+  display: none;
+}
+.avatarImgWrap{
+  position: relative;
+  width: 132px;
+  height: 132px;
+}
+
+.avatarImg{
+  max-width: 100%;
+}
+.avatarImgWrap::before {
+  display: -ms-flexbox;
+  display: flex;
+  content: "Загрузи фотографию";
+  position: absolute;
+  left: 0;
+  top: 0;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-family: "Exo 2", Arial, Tahoma, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+
+
+
+.menuMobBottom {
+  composes: menu-mob-bottom from '../index.css';
+}
+
+.menuMobBottomItem {
+  composes: menu-mob-bottom__item from '../index.css';
+}
+
+.menuMobBottomItemInner {
+  composes: menu-mob-bottom__item-inner from '../index.css';
+}
+
+.menuMobBottomIco {
+  composes: menu-mob-bottom__ico from '../index.css';
+}
+
+.svgIcoTasksMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-tasks from '../index.css';
+}
+
+.svgIcoBookMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-book from '../index.css';
+}
+
+.svgIcoFoodMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-food from '../index.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-faq from '../index.css';
+}
+
+.menuMobBottomTitle {
+  composes: menu-mob-bottom__title from '../index.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-faq from '../index.css';
+}
+
+.svgIcoPhoto {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-photo from '../index.css';
+}
+
+.btnPrimary{
+  composes: btn from '../index.css';
+  composes: btn--primary from '../index.css';
+  background-color: #213349;
+}
+
+.btnAction{
+  composes: btn from '../index.css';
+  composes: btn--action from '../index.css';
+  background-color: #2f8d14;
+}
+.profileTextSuccess {
+  color: #2f8d14;
+  margin-bottom: 9px;
+}
+.containerAlfa{
+  background-color: #f9f0f0;
+}
+
+.pr15 {
+  padding-right: 15px;
+}

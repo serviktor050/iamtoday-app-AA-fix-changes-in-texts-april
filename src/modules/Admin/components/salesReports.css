@@ -1,0 +1,370 @@
+.searchInputBox {
+  position: relative;
+}
+
+.svgIconFile {
+  width: 16px;
+  height: 16px;
+  color: #39961e;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+.selectBoxSelect {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background-image: url("assets/img/ico-arrow-down.svg");
+  background-position: 98% 70%;
+  background-repeat: no-repeat;
+  outline: none;
+  padding-right: 15px;
+}
+
+.selectBox select {
+  border: 0;
+  color: #4da2d6;
+}
+
+.selectBoxSelect option {
+}
+
+.selectBoxLabel {
+  padding-right: 3px;
+  color: #2c2f33;
+}
+
+.salesReportHeader .title {
+  font-weight: bold;
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+hr {
+  padding: 0;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.salesReport {
+  padding: 40px 30px 50px 40px;
+  background: #fff;
+}
+
+/*table*/
+.table {
+  display: table;
+  width: 100%;
+  font-size: 12px;
+}
+
+.heading {
+  display: table-header-group;
+  height: 50px;
+  font-size: 12px;
+  background: #f4f8fe;
+}
+
+.heading .cell.sort {
+  cursor: pointer;
+}
+
+.row {
+  display: table-row;
+}
+
+.row button {
+  outline: none;
+  border: none;
+  background-color: inherit;
+  text-align: left;
+}
+
+.emptyInfo {
+  padding-top: 20px;
+}
+
+.structureTable {
+  padding-top: 20px;
+  width: 100%;
+  position: relative;
+}
+
+.structureTable_summary {
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.contentList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell,
+.head {
+  display: table-cell;
+  padding: 10px 5px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #b5b5b5;
+  vertical-align: middle;
+}
+
+.body {
+  display: table-row-group;
+  font-size: 12px;
+}
+
+.body .row {
+  box-shadow: 0 4px 4px #ecf6fd;
+  height: 50px;
+}
+
+.body .cell {
+  vertical-align: middle;
+  color: #2c2f33;
+}
+
+.info {
+  background: linear-gradient(99.06deg, #eef5f6 38.23%, #f3fded 56.88%);
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  font-family: "Proxima Nova", serif;
+  line-height: 18px;
+  color: #4da2d6;
+  padding: 15px;
+  margin-right: 10px;
+}
+
+.inputColor {
+  color: #908a8a;
+  font-size: 14px;
+}
+
+.filterForm {
+  /*padding-top: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #E4F2DC;
+    font-size: 12px;
+    display: inline-block;
+    width: 100%;*/
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterGroup {
+  /*display: inline-block;*/
+}
+
+.filterGroup .input {
+  /* margin-left: 20px;*/
+}
+
+.leftFilterPart {
+  /* width: 30%;
+    display: inline-block;*/
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.leftFilterPart .input {
+  display: flex;
+  align-items: center;
+  /*width: 100%;*/
+}
+
+.rightFilterPart {
+  /*width: 70%;
+    text-align: right;
+    display: inline-block;*/
+  display: flex;
+  align-items: center;
+}
+
+.filters {
+  /*padding-top: 5px;
+    padding-bottom: 20px;*/
+}
+.filter {
+  padding: 0px 5px 5px 0px;
+}
+
+.moduleFilterForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  width: 100%;
+  padding: 5px;
+}
+
+.moduleFilterLabel {
+  padding-right: 10px;
+}
+
+.moduleSelectBox {
+  width: 70%;
+  padding: 10px;
+  font-size: 12px;
+}
+.moduleSelectBoxLabel {
+  padding: 0px 10px;
+}
+.moduleSelectBoxSelect {
+  width: 80%;
+  padding: 0px 10px;
+}
+
+.chart {
+  padding: 50px 0px;
+}
+
+.inputValue {
+  color: #4da2d6;
+  font-size: 12px;
+}
+
+.searchInputBox input {
+  padding-left: 20px;
+  display: inline-block;
+  font-size: 12px;
+  border: 0;
+  width: 100%;
+}
+
+.searchInputBox input:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.input {
+  /*text-align: right;
+  display: inline-block;*/
+}
+
+.selectIcon {
+  vertical-align: middle;
+  width: 5px;
+  height: 15px;
+  margin-left: 2px;
+}
+
+.partnerInfoModal {
+  position: relative;
+}
+
+.cell.cellLink {
+  color: #4da2d6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cell.value.phone {
+  color: #4da2d6;
+}
+
+.cell.value.email {
+  color: #39961e;
+}
+
+.pointTypeFilters {
+  float: right;
+  white-space: nowrap;
+}
+
+.toggleButton {
+  text-align: right;
+  background: #eeffe9;
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  font-size: 10px;
+  color: #39961e;
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.toggleButton.active,
+.toggleButton:hover {
+  color: white;
+  background: #39961e;
+}
+
+.pagination__container-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.pagination__container {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.pagination__link-active{
+  background: #4DA2D6;
+  font-weight: bold;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.pagination__link-wrapper {
+  border-radius: 2px;
+  color: #4DA2D6;
+  background: #E6EFF4;
+}
+
+.pagination__link-wrapper a {
+  color: #2C2F33;
+}
+
+.pagination__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  line-height: 10px;
+  text-align: center;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  cursor: pointer;
+}
+
+.pagination__link-move {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  line-height: 10px;
+  text-align: center;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #4DA2D6;
+  background: #E6EFF4;
+}
+
+.excelIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}

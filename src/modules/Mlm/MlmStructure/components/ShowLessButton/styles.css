@@ -1,0 +1,37 @@
+.lessButtonContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 45px;
+}
+
+.lessButtonContainer:before {
+  content: "";
+  width: 33px;   
+  border-left: 2px solid #D3EEFF;
+  border-bottom: 2px solid #D3EEFF;
+  position: absolute;
+  left: -35px;
+  top: -45px;
+  height: 55px;
+}
+
+.lessButton {
+  all:unset;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 18px;
+  text-decoration-line: underline;
+  color: #4DA2D6;
+  margin-left: 10px;
+}
+
+.chevronDown {
+  background: url("../../../../../assets/img/svg-symbols/chevron-up.svg")
+    center/cover no-repeat;
+    filter: invert(81%) sepia(33%) saturate(5719%) hue-rotate(174deg) brightness(87%) contrast(93%);
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin-left: 5px;
+}

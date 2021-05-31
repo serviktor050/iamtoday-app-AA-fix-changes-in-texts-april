@@ -1,0 +1,327 @@
+.chatContent {
+  composes: chat-content from "../../index.css";
+  overflow-y: auto;
+  height: calc(100vh - 300px);
+  display: none;
+  transition: all 1s;
+}
+
+.chatContentActive {
+  display: block;
+}
+.visible {
+  opacity: 1 !important;
+}
+.chatMessages {
+  padding: 10px;
+  /*opacity:0;*/
+}
+.chatMessagesMini {
+  padding: 40px 15px 40px !important;
+  opacity: 0;
+}
+.chatMsgNewWrapper {
+  position: relative;
+  text-align: center;
+}
+.chatMsgNewLine {
+  background: #ccc;
+  height: 1px;
+  position: absolute;
+  width: 100%;
+  top: 23px;
+}
+.chatMsgNew {
+  font-size: 14px;
+  color: #ccc;
+  background: #fff;
+  padding: 0 5px;
+  text-align: center;
+  margin: 12px 0;
+  display: inline-block;
+  position: relative;
+}
+.smallChatHeigth {
+  height: 245px !important;
+}
+.border {
+  border: 1px solid #ccc;
+  border-bottom: none;
+}
+.chatMsgText.stickers img {
+  max-width: 200px;
+  width: 100%;
+}
+.chatMsgText.stickers {
+  background-color: #fff !important;
+}
+.quoteBlock.stickers {
+}
+.quoteBlock.stickers img {
+  max-width: 40px;
+  width: 100%;
+}
+.chatMsgSomeone .chatMsgContent {
+  background-color: #f4ffe9 !important;
+}
+
+.chat__notFound {
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 100px 10px;
+}
+
+@media screen and (min-width: 1025px) {
+  .chatMessages {
+    padding: 40px;
+  }
+}
+.chatMsg {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+.chatMsg:not(:last-child) {
+  margin-bottom: 20px;
+}
+.chatMsgSystem {
+  composes: chatMsg;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 8px 0;
+}
+.chatMessagesMini .chatMsg {
+  margin-bottom: 0 !important;
+}
+.chatMsgYou {
+  composes: chatMsg;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.chatMsgSomeone {
+  composes: chatMsg;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 8px 0;
+}
+.chatMsgSomeone .chatMsgContent {
+  background-color: #f4ffe9 !important;
+}
+.chatMessagesMini .chatMsgYou,
+.chatMessagesMini .chatMsgSomeone {
+  padding: 6px 0 !important;
+}
+.chatMsgContent {
+  margin: 0 20px;
+}
+.chatMsgContentMini {
+  margin: 0 0 0 20px;
+  text-align: left;
+}
+
+.chatMsgTime {
+  composes: chat-msg__time from "../../index.css";
+}
+
+.chatMsgName {
+  composes: chat-msg__name from "../../index2.css";
+}
+
+.chatMsgText {
+  composes: chat-msg__text from "../../index2.css";
+  font-size: 14px;
+  padding: 8px 22px 8px 8px !important;
+  color: #363636 !important;
+  width: 100%;
+  max-width: 365px;
+  transition: all 0.3s;
+  border-radius: 4px 0px 4px 4px;
+}
+
+.toggle {
+  position: absolute;
+  right: 3px;
+  top: 6px;
+  display: none;
+  cursor: pointer;
+}
+.toggle svg {
+  width: 15px;
+  height: 15px;
+  fill: #666;
+}
+.chatMsgText:hover .toggle {
+  display: block;
+}
+.actions {
+  padding: 5px 17px;
+  box-shadow: 2px 2px 6px #ced9eb;
+  border-radius: 4px;
+  text-align: center;
+  position: absolute;
+  right: -40px;
+  top: 30px;
+  font-size: 14px;
+  background: #fff;
+  z-index: 1;
+  cursor: pointer;
+}
+.chatMsgTextMini {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+.msg {
+  text-align: left;
+  word-break: break-word;
+  }
+.msg:after {
+  content: "";
+  margin-right: 40px;
+  display: inline;
+}
+.chatMsgTextSomeone {
+  composes: chatMsgText;
+  margin-top: 18px;
+  background-color: #ebf7ff;
+}
+.bgMini {
+  background-color: #f1f7ff !important;
+  color: #696d7d !important;
+}
+
+.chatMsgYou .chatMsgText:before {
+  border-color: transparent transparent transparent #e3e7ea !important;
+}
+.miniChatContent {
+  width: 600px;
+}
+.chatMsgYou .chatMsgText {
+  background-color: #ebf7ff !important;
+}
+.chatMsgYou .chatMsgName {
+  display: none;
+}
+
+.chatMsgYou .chatMsgText:before {
+  right: -9px;
+  top: 0;
+  border-width: 9px 0 0 9px;
+  border-color: transparent transparent transparent #70cffe;
+}
+
+.chatMsgSomeone .chatMsgText {
+  background-color: #f4ffe9 !important;
+  color: #696d7d;
+}
+
+.chatMsgSomeone .chatMsgText:before {
+  left: -9px;
+  top: 0;
+  border-width: 0 0 9px 9px;
+  border-color: transparent transparent #e3e7ea transparent;
+}
+
+.chatMsgSomeone .chatMsgTextMini {
+  color: #70cffe;
+}
+
+.chatMsgSystem .chatMsgText {
+  color: #928227;
+  background-color: #fffbca;
+  border-radius: 12px 0px 12px 12px;
+}
+
+.chatMsgSystem .chatMsgText:before {
+  border-color: transparent transparent transparent #928227;
+  right: -6px;
+  top: 0;
+  border-width: 7px 0 0 7px;
+}
+
+.chatMsgAva {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.chatMsgYou .chatMsgAva {
+  margin-left: 2%;
+}
+
+.chatMsgAvaImg {
+  max-width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+.date {
+  float: right;
+  color: #31313178;
+}
+
+.dateSystem {
+  top: -23px;
+  right: 30px;
+}
+
+.dateSomeone {
+  right: auto;
+}
+
+.data {
+  text-align: center;
+  color: #9c9999;
+}
+.quote {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #deecff;
+  margin-bottom: 12px;
+  border-left: 4px solid #1d89e4;
+  cursor: pointer;
+}
+.quoteName {
+  color: #70cffe;
+}
+.btnMore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnMore button {
+  border: none;
+  background: transparent;
+  color: #928585;
+  cursor: pointer;
+}
+.btnMore button:hover {
+  color: #928585b8;
+}
+
+@media screen and (min-width: 768px) {
+  
+  .chatMsgAva {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.backButton {
+  outline: none;
+  border: none;
+  color: #39961e;
+  background-color: white;
+  padding: 20px;
+}
+.backButton:hover:active {
+  color: #79c330;
+}
+

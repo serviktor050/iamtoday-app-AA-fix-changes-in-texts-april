@@ -1,0 +1,197 @@
+.createChatBlock {
+  padding: 10px;
+}
+
+.createChatBlock_title {
+  font-size: 18px;
+  color: #4da2d6;
+  padding: 10px 10px 10px 30px;
+}
+.avatarBlock {
+  padding: 10px 10px 10px 30px;
+}
+.avatarWrap {
+  composes: avatar-wrap from "../index2.css";
+  composes: text-center from "../index2.css";
+  display: flex;
+  background-color: #f0f6ff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.avatarIcon {
+  background: url("../assets/img/svg-symbols/file.svg") center/cover no-repeat;
+  filter: brightness(0) saturate(100%) invert(72%) sepia(17%) saturate(4214%)
+    hue-rotate(174deg) brightness(86%) contrast(93%);
+  width: 30px;
+  height: 30px;
+  margin: auto;
+}
+
+.avatarImg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.avatarUpload {
+  height: 100%;
+  cursor: pointer;
+  composes: avatar--upload from "../index2.css";
+}
+
+.uploadFileInput {
+  display: none;
+}
+
+.avatarBlock {
+  font-size: 14px;
+}
+
+.chatName {
+  display: flex;
+  align-items: center;
+}
+.inputWrapper {
+  width: 80%;
+}
+.chatName_input {
+  color: black;
+}
+.searchInputBox {
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  padding: 10px 10px 10px 0px;
+  border-bottom: 1px solid #e0edff;
+  width: 94%;
+}
+
+.svgIconFile {
+  width: 16px;
+  height: 16px;
+}
+.searchIcon {
+  background: url("../assets/img/svg-symbols/ico-input-search.svg") center/cover
+    no-repeat;
+  filter: brightness(0) saturate(100%) invert(72%) sepia(17%) saturate(4214%)
+    hue-rotate(174deg) brightness(86%) contrast(93%);
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  margin-right: 10px;
+}
+.searchInput {
+  width: 90%;
+  border: none;
+}
+.listItem {
+  font-size: 15px;
+  line-height: 18px;
+  width: 94%;
+  color: #4da2d6;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0edff;
+  padding: 10px 10px 10px 0px;
+}
+.listItem:active {
+  background: #f0f6ff;
+  border-radius: 2px;
+}
+.listAvatar {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 40px;
+}
+.listAvatarWrap {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.membersContainer {
+  padding: 0px 0px 0px 30px;
+  position: relative;
+}
+.createChatAction {
+  padding: 20px 0px 0px 30px;
+}
+.approveButton,
+.cancelButton {
+  outline: none;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 2px;
+  margin-right: 10px;
+  width: 130px;
+}
+.approveButton {
+  background: #4da2d6;
+  border: none;
+  color: white;
+}
+.approveButton:active {
+  background: #4da2d6;
+  color: #ffffff;
+}
+
+.cancelButton {
+  border: 1px solid #4da2d6;
+  color: #4da2d6;
+  background-color: white;
+}
+
+.suggestionList {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 100%;
+  max-width: 750px;
+}
+.deleteAction {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  color: #ff543e;
+  font-size: 15px;
+  line-height: 18px;
+}
+.deleteAction_cross {
+  color: white;
+  width: 20px;
+  height: 20px;
+  background: #ff543e;
+  border-radius: 50%;
+  margin-right: 5px;
+  padding: 2px;
+  text-align: center;
+}
+@media screen and (max-width: 500px) {
+  .approveButton,
+  .cancelButton {
+    width: 100%;
+    margin: 5px;
+  }
+  .createChatBlock_title,
+  .chatName,
+  .membersContainer,
+  .createChatAction {
+    padding: 10px 0px;
+  }
+  .avatarBlock {
+    padding: 10px;
+  }
+  .deleteAction_text {
+    display: none;
+  }
+}

@@ -1,0 +1,91 @@
+.quizIntro {
+    padding: 40px 40px 50px 40px;
+    background: #fff;
+}
+
+.quizIntro .info p {
+    font-size: 17px;
+    padding-bottom: 20px;
+}
+
+.quizIntroHeader .title {
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 20px
+}
+
+.quizIntroHeader hr {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.greenLink {
+    cursor: pointer;
+    color: green;
+}
+
+.rightPart h3 {
+    padding-bottom: 30px;
+    font-size: 22px;
+}
+
+.note {
+    margin-top: 10px;
+    background: linear-gradient(90deg, rgba(238, 245, 246, 1) 0%, rgba(243, 253, 237, 1) 49%);
+    padding: 40px 10px 50px 0;
+}
+
+.note .leftPart {
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    vertical-align: center;
+}
+
+.note .rightPart {
+    display: inline-block;
+    width: 75%;
+    vertical-align: top;
+}
+
+.note .leftPart .icon {
+    width: 50%;
+    color: #fdd34c;
+}
+
+.note .rightPart .actions {
+    padding-top: 20px;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    flex: 1;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.note .rightPart p {
+    font-size: 17px;
+}
+
+.note .rightPart .action {
+    font-size: 13px;
+    white-space: nowrap;
+    margin-right: 5%;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 10px;
+}
+
+.estimatedTime {
+    color: #0a66b7;
+}
+
+@media screen and (min-width: 768px) {
+    .note .rightPart .actions {
+        flex-direction: row;
+    }
+    .note .rightPart .action {
+        font-size: 16px;
+    }
+}

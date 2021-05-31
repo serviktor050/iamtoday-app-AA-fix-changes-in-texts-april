@@ -1,0 +1,211 @@
+.layout {
+  composes: layout from '../index.css';
+}
+
+.layoutInner {
+  composes: layout__inner from '../index.css';
+}
+
+.accordion {
+  composes: accordion from '../index2.css';
+}
+
+.accordionItem {
+  composes: accordion__item from '../index2.css';
+}
+
+.accordionItemActive {
+  composes: accordion__item from '../index2.css';
+  composes: accordion__item--active from '../index2.css';
+  background: rgb(238,245,246);
+  background: linear-gradient(90deg, rgba(238,245,246,1) 0%, rgba(243,253,237,1) 49%);
+  cursor: pointer;
+}
+
+.h3AccordionHeaderTitle {
+  composes: accordion__header-title from '../index2.css';
+  color: #08a5d8;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+  padding: 25px;
+}
+
+.numList {
+  composes: num-list from '../index2.css';
+}
+
+.numListItem {
+  composes: num-list__item from '../index2.css';
+}
+
+.numListNumber {
+  composes: num-list__number from '../index2.css';
+  color: #08a5d8;
+}
+
+.numListTitle {
+  composes: num-list__title from '../index2.css';
+  color: #08a5d8;
+}
+
+.numListDescription {
+  composes: num-list__description from '../index2.css';
+}
+.numListDescriptionEmpty {
+  padding:4px 0;
+}
+.layout {
+  composes: layout from '../index.css';
+}
+
+.layoutInner {
+  composes: layout__inner from '../index.css';
+}
+
+.grid {
+  composes: grid from '../index.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width75 {
+    width: 75%;
+  }
+}
+
+.gridCellLayoutMenu14 {
+  composes: width25;
+  composes: grid__cell from '../index.css';
+  composes: layout__menu from '../index.css';
+}
+
+.gridLayoutMenuInner {
+  composes: grid from '../index.css';
+  composes: layout__menu-inner from '../index.css';
+}
+
+.gridCellLayoutContentPocket34 {
+  composes: width75;
+  composes: grid__cell from '../index2.css';
+  /*composes: 1/1--pocket from '../index.css';*/
+}
+
+.stageBoxSmallPadding {
+  composes: stage-box from '../index2.css';
+  composes: stage-box--small-padding from '../index2.css';
+  border: none;
+}
+.h1 {
+  composes: h1 from '../index2.css';
+}
+
+.h2 {
+  composes: h2 from '../index2.css';
+  margin-bottom:30px;
+}
+
+.svgIcoTasksMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-tasks from '../index.css';
+}
+
+.svgIcoBookMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-book from '../index.css';
+}
+
+.svgIcoFoodMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-food from '../index.css';
+}
+
+.svgIcoFaqMobile {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-faq from '../index.css';
+}
+
+.menuMobBottomTitle {
+  composes: menu-mob-bottom__title from '../index.css';
+}
+
+.accordionHeader {
+  composes: accordion__header from '../index2.css';
+  cursor: pointer;
+  justify-content: flex-start;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.accordionHeader:hover {
+  background: rgb(238,245,246);
+  background: linear-gradient(90deg, rgba(238,245,246,1) 0%, rgba(243,253,237,1) 49%);
+}
+.accordionIcon {
+  margin-right: 16px;
+  margin-left: -11px;
+  padding-top: 4px;
+}
+.accordionVideo{
+  display: block;
+  margin: 20px 0;
+}
+
+.accordionContent {
+  composes: accordion__content from '../index2.css';
+}
+
+.svgIcoPhoto {
+  composes: svg-icon from '../index.css';
+  composes: ico-m-photo from '../index.css';
+}
+.stageBoxInner{
+  composes: stage-box__inner from '../index2.css';
+}
+.svgIconList {
+  width:24px;
+  height:24px;
+  color: #39961e;
+}
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width75 {
+    width: 75%;
+  }
+
+  .stageBoxInner:first-child{
+    padding-top: 40px;
+  }
+  .stageBoxInner:last-child{
+    padding-bottom: 25px;
+  }
+}
+.btnTitle{
+/*  composes: btn__title from '../index2.css';*/
+}
+
+.btnIco{
+  composes: btn__ico from '../index2.css';
+}
+
+.svgIconBoldArrowDown{
+  composes: svg-icon from '../index2.css';
+  composes: ico-bold-arrow-down from '../index2.css';
+}
+
+.btnBase{
+  composes: btn from '../index2.css';
+  composes: btn--base from '../index2.css';
+  background-color: #ef3124;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .accordionIcon {
+    padding-top: 10px;
+  }
+}

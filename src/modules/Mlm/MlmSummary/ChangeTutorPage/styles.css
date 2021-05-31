@@ -1,0 +1,303 @@
+.layout {
+  padding: 30px;
+  background: #fff;
+}
+
+.mentorsPage__header {
+  display: flex;
+  align-items: flex-start;
+  margin: 30px 0 64px;
+}
+
+.mentorsPage__avatarButtonsWrapper {
+  width: 40%;
+  max-width: 263px;
+  padding-right: 50px;
+}
+
+.mentorsPage__ava {
+  width: 100%;
+  max-width: 213px;
+  height: auto;
+  max-height: 213px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.mentorsPage__mainInfo {
+  flex: 1;
+}
+
+.mentorsPage__name {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 138.3%;
+}
+
+.mentorsPage__specialisation {
+  font-size: 15px;
+  line-height: 138.3%;
+  color: #79c330;
+}
+
+.mentorsPage__table {
+  margin-top: 15px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mentorsPage__table-row {
+  width: 100%;
+}
+
+.mentorsPage__table-row:nth-child(2n + 1) {
+  background-color: #f4f8fe;
+}
+
+.mentorsPage__table-cell {
+  padding: 15px 10px 15px 24px;
+  text-align: left;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.mentorsPage__table-cell:nth-child(1) {
+  width: 65%;
+  font-weight: bold;
+  color: #b5b5b5;
+}
+
+.mentorsPage__table-cell:nth-child(2) {
+  width: 35%;
+}
+
+.mentorsPage__actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mentorsPage__actions .mentorsPage__button {
+  all: unset;
+  padding: 10px 20px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #4da2d6;
+  cursor: pointer;
+}
+
+.mentorsPage__actions .mentorsPage__btn-recommend {
+  background: #4da2d6;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.mentorsPage__actions .mentorsPage__btn-recommend:hover {
+  background: #418ebe;
+}
+
+.mentorsPage__actions .mentorsPage__btn-writeToMentor {
+  background: transparent;
+  color: #4da2d6;
+}
+
+.mentorsPage__actions .mentorsPage__btn-writeToMentor::before {
+  content: "";
+  display: block;
+  width: 14px;
+  min-width: 14px;
+  height: 14px;
+  background: url("../../../../assets/img/svg-symbols/ico-message.svg")
+    center/cover no-repeat;
+  margin-right: 15px;
+}
+
+.mentorsPage__actions .mentorsPage__btn-writeToMentor:hover {
+  background: #d5ecfc;
+}
+
+.mentorsPage__body {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.mentorsPage__quote {
+  position: relative;
+  width: 100%;
+  padding: 35px 15px 35px 120px;
+  background-color: #f4f8fe;
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 15px;
+}
+
+.mentorsPage__quote::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  transform: translate(0, -40%);
+  width: 74px;
+  min-width: 74px;
+  height: 64px;
+  background: url("../../../../assets/img/svg/quote.svg") center/cover
+    no-repeat;
+}
+
+.mentorsPage__quote-text {
+  margin-bottom: 25px;
+}
+
+.mentorsPage__quote-author {
+  width: 100%;
+  font-size: 15px;
+  line-height: 18px;
+  color: #4da2d6;
+  text-align: left;
+}
+
+.mentorsPage__about-header {
+  font-size: 24px;
+  margin: 15px 0;
+}
+
+.changeTutor__subheader {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.changeTutor__messageContainer {
+  background: #F0F6FF;
+  border-radius: 2px;
+  padding: 20px 20px 30px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.changeTutor__textarea {
+  all: unset;
+  background: #FFFFFF;
+  border: 1px solid #E6EFF4;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 15px;
+  width: 100%;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  all: unset;
+  padding: 10px 20px;
+  border: 1px solid #4DA2D6;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.btn-blue {
+  background: #4DA2D6;
+  color: #FFFFFF;
+  margin-right: 10px;
+}
+
+.btn-blue:hover {
+  background: #3c88b8;
+}
+
+.btn-blueOutline {
+  color: #4DA2D6;
+  background: #ffffff;
+}
+
+.btn-blueOutline:hover {
+  background: #d5eefd;
+}
+
+.declinedWindowWrapper {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.exclamationBlock {
+  display: flex;
+  text-align: left;
+}
+
+.exclamation {
+  display: block;
+  width: 80px;
+  min-width: 80px;
+  height: 80px;
+  background: url("../../../../assets/img/svg/error2.svg") center/cover no-repeat;
+  margin-right: 25px;
+}
+
+.headline {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.helpBlock {
+  display: flex;
+  background: #f0f6ff;
+  border-radius: 2px;
+  padding: 10px 0 10px 10px;
+  margin-top: 10px;
+}
+
+.helpBlockText {
+  font-size: 15px;
+  line-height: 18px;
+  color: #1f6d9c;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.helpBlockText::before {
+  content: "";
+  display: block;
+  width: 12px;
+  min-width: 12px;
+  height: 12px;
+  background: url("../../../../assets/img/svg-symbols/ico-info.svg") center/cover
+    no-repeat;
+  filter: brightness(0) saturate(100%) invert(34%) sepia(90%) saturate(421%)
+    hue-rotate(159deg) brightness(91%) contrast(95%);
+  margin-right: 10px;
+}
+
+.helpBlockButton {
+  all: unset;
+  padding: 10px 25px;
+  background: #4da2d6;
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  margin: -10px 0px -10px;
+  cursor: pointer;
+}

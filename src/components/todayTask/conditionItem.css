@@ -1,0 +1,20 @@
+.conditionInput {
+  composes: condition__input from '../../index.css';
+}
+
+.yourConditionIco {
+  composes: your-condition__ico from '../../index.css';
+}
+
+.yourConditionTitle {
+  composes: your-condition__title from '../../index2.css';
+}
+
+.yourConditionItem {
+  composes: your-condition__item from '../../index2.css';
+}
+
+.yourConditionItemActive {
+  composes: your-condition__item from '../../index2.css';
+  composes: your-condition__item--active from '../../index2.css';
+}

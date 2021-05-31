@@ -1,0 +1,107 @@
+.dateRangePicker {
+  position: relative;
+  font-size: 12px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 297px;
+}
+
+.dateRangePicker__valueLabel {
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+.dateRangePicker__valueWrapper {
+  display: flex;
+  width: 100%;
+  color: #4da2d6;
+  cursor: pointer;
+}
+
+.dateRangePicker__valueWrapper:hover .dateRangePicker__value,
+.dateRangePicker__valueWrapper:hover .dateRangePicker__calendarButton {
+  background-color: #eeeeee;
+}
+
+.dateRangePicker__value {
+  padding: 8px 0;
+  max-width: 198px;
+  width: 100%;
+  text-align: center;
+  background-color: #daeff2;
+  border-radius: 2px 0 0 2px;
+  margin-right: 1px;
+}
+
+.dateRangePicker__calendarButton {
+  padding: 8px 0;
+  border: none;
+  background-color: #daeff2;
+  border-radius: 0 2px 2px 0;
+  width: 32px;
+  cursor: pointer;
+}
+
+.dateRangePicker__calendarButton svg {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+.dateRangePicker__calendar {
+  top: 40px;
+  position: absolute;
+  background-color: #ffffff;
+  z-index: 12;
+}
+
+.dateRangePicker__calendar > div {
+  text-align: center;
+  background-color: #ffffff;
+  margin: 0;
+  padding-bottom: 10px;
+  border: 1px solid silver;
+  border-radius: 2px;
+}
+
+.dateRangePicker__calendar > div > div + div,
+.dateRangePicker__calendar > div > div + div + div {
+  margin: 0 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .dateRangePicker__calendar > div {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dateRangePicker {
+    font-size: 10px;
+    line-height: 12px;
+    flex-grow: 0;
+    max-width: none;
+  }
+
+  .dateRangePicker__valueLabel {
+    margin-right: 5px;
+  }
+
+  .dateRangePicker__value {
+    width: 122px;
+    padding: 5px 0;
+  }
+
+  .dateRangePicker__calendarButton {
+    width: 22px;
+    padding: 5px 0;
+  }
+
+  .dateRangePicker__calendarButton svg {
+    width: 10px;
+    height: 10px;
+  }
+}

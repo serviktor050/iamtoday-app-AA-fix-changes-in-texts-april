@@ -1,0 +1,192 @@
+.contentItem {
+  font-family: "Proxima Nova", serif;
+  width: 100%;
+  padding-right: 15px;
+}
+
+.contentItem100 {
+  width: 100%;
+  padding-right: 0;
+}
+.creditWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.currentPointsWrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  margin-right: 15px;
+}
+.currentPointsWrapper::before {
+  content: "";
+  display: block;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  background-image: url("../../../assets/img/svg/cash.svg");
+}
+.currentPointsContent {
+  display: block;
+  margin-left: 15px;
+  min-width: 62px;
+}
+.currentPoints {
+  display: block;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 10px;
+  color: #2c2f33;
+}
+.currentPointsNumber {
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 1;
+  color: #79c330;
+}
+.infoCreditWrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+.infoCreditWrapper::before {
+  content: "";
+  display: block;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  background-image: url("../../../assets/img/svg/credit.svg");
+}
+.infoCreditWrapperDenied {
+  composes: infoCreditWrapper;
+}
+.infoCreditWrapperDenied::before {
+  content: "";
+  display: block;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  background-image: url("../../../assets/img/svg/credit.svg");
+}
+
+.infoCreditWrapperGet {
+  composes: infoCreditWrapper;
+  position: relative;
+  margin-right: 10px;
+}
+
+.infoCreditWrapperGet::before {
+  content: "";
+  display: block;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  background-image: url("../../../assets/img/svg/credit.svg");
+}
+
+.infoCreditWrapperGet::after {
+  content: "!";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  position: absolute;
+  left: 34px;
+  top: 7px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  background-color: #ff9f43;
+}
+
+.infoCredit {
+  display: inline-block;
+  margin-left: 12px;
+  max-width: 150px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: #2c2f33;
+}
+
+.infoCreditDenied {
+  composes: infoCredit;
+  font-size: 12px;
+}
+
+.infoCreditDeniedGreen {
+  composes: infoCreditDenied;
+  color: #79c330;
+  font-weight: bold;
+  margin-left: 0px;
+}
+
+.infoCreditBold {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 37px;
+
+  color: #79c330;
+}
+
+.infoCreditPoints {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: #2c2f33;
+}
+
+.creditButtons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.creditButton {
+  min-width: initial;
+  max-width: 180px;
+  background: #4da2d6;
+  box-shadow: 0px 4px 8px rgba(54, 123, 245, 0.24);
+  border-radius: 4px;
+  padding: 12px 20px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.creditButtonGreen {
+  composes: creditButton;
+  background-color: #79c330;
+  margin-right: 15px;
+}
+
+@media screen and (min-width: 1024px) {
+  .creditWrapper {
+    flex-wrap: nowrap;
+  }
+  .creditButtons {
+    margin-top: 0;
+  }
+  .creditButton {
+    min-width: 150px;
+  }
+}

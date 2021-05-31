@@ -1,0 +1,8 @@
+.inputBox {
+  composes: input from '../../index.css';
+  composes: input--box  from '../../index.css';
+}
+
+.inputField {
+  composes: input__field from '../../index.css';
+}

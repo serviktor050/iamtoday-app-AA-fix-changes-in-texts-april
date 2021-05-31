@@ -1,0 +1,64 @@
+.timer {
+  composes: timer from '../../index2.css';
+}
+.timerWrap{
+  composes: timer__wrap from '../../index2.css';
+  background-color: transparent;
+  border: 1px solid #ddd;
+  max-width: 100%;
+  border-radius: 5px;
+  padding: 3px;
+  height: 45px;
+}
+.timerDisplay{
+  composes: timer__display from '../../index2.css';
+  border: none;
+  max-width: 100%;
+  width:40%;
+  color: #203349;
+  height:auto;
+  font-size:20px;
+}
+.timerDisplay:before,
+.timerDisplay:after {
+  display: none;
+}
+.timerMin {
+  composes: timer__min from '../../index2.css';
+  color: #203349;
+}
+
+.timerSec {
+  composes: timer__sec from '../../index2.css';
+  color: #203349;
+}
+.timerDots {
+  composes: timer__dots from '../../index2.css';
+}
+
+.btnBaseTimer{
+  composes: btn from '../../index2.css';
+  composes: btn--base from '../../index2.css';
+  composes: timer__btn from '../../index2.css';
+  position: static;
+  left:0;
+  top:0;
+  width:60%;
+  height: 100%;
+  padding: 0;
+  background-color: #203349;
+  border-radius: 3px;
+}
+.btnBaseTimerActive{
+  composes: btnBaseTimer;
+  background-color: #ef3125;
+}
+.textCenterMb30 {
+  composes: text-center from '../../index.css';
+  composes: mb30 from '../../index.css';
+}
+
+.btnSecondary {
+  composes: btn from '../../index.css';
+  composes: btn--secondary  from '../../index.css';
+}

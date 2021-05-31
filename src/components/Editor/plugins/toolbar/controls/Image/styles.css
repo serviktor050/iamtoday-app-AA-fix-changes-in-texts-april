@@ -1,0 +1,126 @@
+.itd-image-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  position: relative;
+}
+.itd-image-modal {
+  position: absolute;
+  top: 35px;
+  left: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 235px;
+  height: 200px;
+  border: 1px solid #F1F1F1;
+  padding: 15px;
+  border-radius: 2px;
+  z-index: 100;
+  background: white;
+  box-shadow: 3px 3px 5px #BFBDBD;
+}
+.itd-image-modal-header {
+  font-size: 15px;
+  margin: 10px 0;
+  display: flex;
+}
+.itd-image-modal-header-option {
+  width: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.itd-image-modal-header-label {
+  width: 80px;
+  background: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  margin-top: 5px;
+}
+.itd-image-modal-header-label-highlighted {
+  background: #6EB8D4;
+  border-bottom: 2px solid #0a66b7;
+}
+.itd-image-modal-upload-option {
+  height: 65px;
+  width: 100%;
+  color: gray;
+  cursor: pointer;
+  display: flex;
+  border: none;
+  font-size: 15px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  outline: 2px dashed gray;
+  outline-offset: -10px;
+  margin: 10px 0;
+}
+.itd-image-modal-upload-option-highlighted {
+  outline: 2px dashed #0a66b7;
+}
+.itd-image-modal-upload-option-label {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.itd-image-modal-upload-option-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.itd-image-modal-url-section {
+  display: flex;
+}
+.itd-image-modal-url-input {
+  width: 95%;
+  height: 35px;
+  margin: 0px 0 5px;
+  border: 1px solid #F1F1F1;
+  border-radius: 2px;
+  font-size: 15px;
+  padding: 0 5px;
+}
+.itd-image-modal-btn-section {
+  margin: 10px auto 0;
+}
+.itd-image-modal-url-input:focus {
+  outline: none;
+}
+.itd-image-modal-btn {
+  margin: 0 5px;
+  width: 75px;
+  height: 30px;
+  border: 1px solid #F1F1F1;
+  border-radius: 2px;
+  cursor: pointer;
+  background: white;
+  text-transform: capitalize;
+}
+.itd-image-modal-btn:hover {
+  box-shadow: 1px 1px 0px #BFBDBD;
+}
+.itd-image-modal-btn:active {
+  box-shadow: 1px 1px 0px #BFBDBD inset;
+}
+.itd-image-modal-btn:focus {
+  outline: none !important;
+}
+.itd-image-modal-btn:disabled {
+  background: #ece9e9;
+}
+.itd-image-modal-spinner {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}

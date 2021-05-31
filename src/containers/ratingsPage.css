@@ -1,0 +1,134 @@
+.block{
+  background: #fff;
+  padding: 10px 30px;
+  margin-bottom: 22px;
+  border-radius: 4px;
+}
+
+.title{
+  composes: block;
+  height: 60px;
+  font-size: 22px;
+}
+
+.rank{
+  display: flex;
+}
+.infoPosition{
+  display: flex;
+}
+.ranlItem{
+  composes: block;
+  padding: 25px;
+  width: 50%;
+  margin-right: 15px;
+}
+.ranlItem:last-child{
+  margin-right: 0;
+  margin-left: 15px;
+}
+
+.photoImg{
+  width: 70px;
+  height: 70px;
+}
+
+.top{
+  display: flex;
+}
+.user{
+  width: 100%;
+  padding-left: 20px;
+}
+.userName,
+.userTeam {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 22px;
+}
+.userStatus{
+  color: #1d89e4;
+  margin-top: 3px;
+  font-size: 14px;
+}
+.userProgram{
+  color: #ff6633;
+  font-size: 14px;
+  margin-top: 9px;
+}
+
+.position{
+  color: #ff6633;
+  font-size: 22px;
+  margin: 0 7px;
+}
+.reportTitle{
+  color: #1d89e4;
+  font-size: 18px;
+}
+
+.report{
+  border-top: 1px solid #ced9eb;
+  padding: 20px 0;
+}
+.infoBlock{
+  display: flex;
+  padding: 12px 0;
+}
+
+.tabNav{
+  composes: block;
+  height: 55px;
+  display: flex;
+}
+
+.tabNavList{
+  display: flex;
+}
+
+.tabNavItem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b3b3b3;
+  padding: 0 25px;
+  cursor: pointer;
+}
+
+.myPosition{
+  padding: 0 20px;
+  color: #1d89e4;
+  cursor: pointer;
+}
+.search{
+  padding: 0 20px;
+}
+
+.searchInput{
+  border: none;
+  color: #d0dbec;
+}
+
+.tabContent{
+  composes: block;
+  padding: 0;
+}
+
+.table{
+  display: table;
+}
+.tableHead{
+  display: table-header-group;
+}
+.tableBody{
+  display: table-row-group;
+}
+.tableRow{
+  display: table-row;
+}
+.th{
+  display: table-cell;
+  width: 12%;
+  border-bottom: 1px solid #ced9eb;
+  padding: 15px 0;
+}

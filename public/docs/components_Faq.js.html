@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Faq.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Faq.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
+import { bindActionCreators } from 'redux'
+import Loader from '../components/componentKit/Loader'
+import {
+  Entity,
+  Editor,
+  EditorState,
+  convertFromRaw,
+  CompositeDecorator
+} from 'draft-js'
+import {getCustomStyleMap} from 'draftjs-utils'
+import CSSModules from 'react-css-modules'
+import styles from './faq.css'
+import Layout from '../components/componentKit2/Layout'
+
+const customStyleMap = getCustomStyleMap()
+
+const offset = { left: '-45px' }
+const decorator = new CompositeDecorator([
+  {
+    strategy: (contentBlock, callback) => {
+      contentBlock.findEntityRanges(
+        (character) => {
+          const entityKey = character.getEntity()
+          return (
+            entityKey !== null &amp;&amp;
+            Entity.get(entityKey).getType() === 'LINK'
+          )
+        },
+        callback
+      )
+    },
+    component: (props) => {
+      const {url} = Entity.get(props.entityKey).getData()
+      return (
+        &lt;a href={url}>
+          {props.children}
+        &lt;/a>
+      )
+    }
+  }
+])
+
+const Image = (props) => {
+  return &lt;img role="presentation" src={props.src} style={{
+    maxWidth: '100%',
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto' }}/>
+}
+
+const Atomic = (props) => {
+  const entity = Entity.get(props.block.getEntityAt(0))
+  const {src} = entity.getData()
+  const type = entity.getType()
+
+  let media
+  if (type === 'IMAGE') {
+    media = &lt;Image src={src} />
+  }
+
+  return media
+}
+
+function mediaBlockRenderer(block) {
+  if (block.getType() === 'atomic') {
+    return {
+      component: Atomic,
+      editable: false
+    }
+  }
+
+  return null
+}
+/**
+ *  Контейнер Faq
+ *  Используется для страницы Вопросы и ответы (/faq)
+ *
+ */
+class Faq extends Component {
+  /**
+   * @memberof Faq
+   * @prop {func} propTypes.fetchFaq Получение данныз с сервера
+   * @prop {object} propTypes.faq Объет для рендеринга
+   *
+   * */
+  static propTypes = {
+    fetchFaq: PropTypes.func.isRequired,
+    faq: PropTypes.object.isRequired
+  }
+  componentWillMount(){
+    const {fetchFaq, faq} = this.props
+    if(faq.data.faqs){
+      return;
+    }
+    fetchFaq()
+  }
+  componentDidMount() {
+    window.location.hash = window.decodeURIComponent(window.location.hash)
+    const scrollToAnchor = () => {
+      const hashParts = window.location.hash.split('#')
+      if (hashParts.length > 2) {
+        const hash = hashParts.slice(-1)[0]
+        document.querySelector(`#${hash}`).scrollIntoView()
+      }
+    }
+    scrollToAnchor()
+    window.onhashchange = scrollToAnchor
+  }
+
+  render () {
+    const { location: hash, dispatch, faq} = this.props
+    const {activeAccordionFaqItems, data, isFetching, isLoad, isError} = faq
+
+    const checkIsActive = item => (activeAccordionFaqItems.indexOf(item) !== -1)
+    const activeItem = (e, item) => {
+      let id = e.target.getAttribute('data-id')
+
+      if (checkIsActive(item)) {
+        dispatch({ type: 'DELETE_ACCORDION_FAQ_ITEM', item })
+        window.location.hash = ''
+      } else {
+        dispatch({ type: 'ADD_ACCORDION_FAQ_ITEM', item })
+        window.location.hash = '#' + id
+
+      }
+    }
+
+    return (
+      &lt;Layout pageNumber={3}>
+        {!faq.isLoad
+          ? (faq.isFetching
+            ? &lt;Loader/>
+            : &lt;div>&lt;p>Если вы видите это окно, значит мы делаем личный кабинет для вас удобнее! Напишите нам в чат тех подержки (внизу справа) или на почту sb@todayme.ru&lt;/p>&lt;/div>)
+          :
+        &lt;div className={styles.stageBoxSmallPadding}>
+
+            &lt;div className={styles.stageBoxInner}>
+              &lt;h1 className={styles.h2}>Вопросы/Ответы&lt;/h1>
+            &lt;/div>
+
+            &lt;ul className={styles.accordion}>
+              {!isFetching &amp;&amp; isLoad &amp;&amp; data.faqs.map((item, index)=> {
+                let render, video
+                if(!item.editor){
+                  console.log('iff')
+                  console.log(data)
+                  render = item.list.map(it => {
+                    let  link, ans
+                    link = it.link ? 'block' : 'none'
+                    ans = it.ans ? it.ans.map((line, index) => (
+                      &lt;p key={index} className={styles.numListDescription}>
+                        {line}
+                      &lt;/p>
+                    )) : null
+
+                    return (&lt;li key={item.id + it.id} className={styles.numListItem}>
+                      &lt;span className={styles.numListNumber}>{it.id}&lt;/span>
+                      &lt;h6 className={styles.numListTitle}>{it.qs}&lt;/h6>
+                      {ans}
+                      &lt;p className={styles.numListDescription} style={{display:{link}}}>
+                        &lt;span>{it.ans1}&lt;/span>
+                        &lt;a href={it.href}>{it.link}&lt;/a>
+                        &lt;span>{it.ans2}&lt;/span>
+                      &lt;/p>
+                    &lt;/li>)
+                  })
+                } else {
+                  const editorState = data.editorAns[item.id] ? EditorState.createWithContent(convertFromRaw(data.editorAns[item.id]), decorator) : EditorState.createEmpty()
+                  render = &lt;Editor
+                    readOnly={true}
+                    customStyleMap={customStyleMap}
+                    editorState={editorState}
+                    blockRendererFn={mediaBlockRenderer}
+                  />
+                  video = item.video.map((vid, index )=> (
+                    &lt;iframe key={'video' + index} className={styles.accordionVideo} src={vid} frameBorder="0" allowFullScreen>&lt;/iframe>
+                    ))
+                }
+
+              return (&lt;li id={item.id} key ={item.id} className={checkIsActive(index) || hash.hash === '#' + item.id ? styles.accordionItemActive : styles.accordionItem } >
+                &lt;div  className={styles.accordionHeader}>
+                  &lt;p   className={styles.h3AccordionHeaderTitle}>{item.title}&lt;/p>
+                  &lt;span data-id={item.id} className={styles.btnBase} onClick={(e) => activeItem(e, index)}>
+                        &lt;span data-id={item.id} className={styles.btnTitle}>Показать&lt;/span>
+
+                        &lt;span data-id={item.id} className={styles.btnIco}>
+                          &lt;svg data-id={item.id} className={styles.svgIconBoldArrowDown}>
+                            &lt;use xlinkHref="#ico-bold-arrow-down">&lt;/use>
+                          &lt;/svg>
+                        &lt;/span>
+                    &lt;/span>
+                &lt;/div>
+                &lt;div className={styles.accordionContent}>
+                  &lt;ul className={styles.numList}>
+                    {render}
+                    {video}
+                  &lt;/ul>
+                &lt;/div>
+              &lt;/li>)
+            })}
+
+            &lt;/ul>
+              &lt;/div>}
+      &lt;/Layout>
+
+    )
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  fetchFaq: bindActionCreators(actions.fetchFaq, dispatch),
+  dispatch
+})
+const mapStateToProps = state => {
+  const { faq} = state
+  return {
+    faq
+  }
+}
+
+Faq = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Faq)
+
+export default CSSModules(Faq, styles)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BodyParams.html">BodyParams</a></li><li><a href="CalendarList.html">CalendarList</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBlock.html">ChatBlock</a></li><li><a href="ChatContent.html">ChatContent</a></li><li><a href="ChatPage.html">ChatPage</a></li><li><a href="DayEditor.html">DayEditor</a></li><li><a href="DayEditorValidationForm.html">DayEditorValidationForm</a></li><li><a href="ErrorReport.html">ErrorReport</a></li><li><a href="Faq.html">Faq</a></li><li><a href="Food.html">Food</a></li><li><a href="FoodEditorValidationForm.html">FoodEditorValidationForm</a></li><li><a href="Insurance.html">Insurance</a></li><li><a href="Layout.html">Layout</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Partners.html">Partners</a></li><li><a href="PendingEvents.html">PendingEvents</a></li><li><a href="PendingMinionChats.html">PendingMinionChats</a></li><li><a href="PendingPhotos.html">PendingPhotos</a></li><li><a href="Photos.html">Photos</a></li><li><a href="PhotosIntro.html">PhotosIntro</a></li><li><a href="ProfileCreate.html">ProfileCreate</a></li><li><a href="ProfileLogin.html">ProfileLogin</a></li><li><a href="ProfilePasswordForget.html">ProfilePasswordForget</a></li><li><a href="ProfilePasswordRestore.html">ProfilePasswordRestore</a></li><li><a href="ProfilePay.html">ProfilePay</a></li><li><a href="ProfileSignup.html">ProfileSignup</a></li><li><a href="ProfileSignupParams.html">ProfileSignupParams</a></li><li><a href="Reports.html">Reports</a></li><li><a href="Seasons.html">Seasons</a></li><li><a href="SeasonSignupParams.html">SeasonSignupParams</a></li><li><a href="SendReport.html">SendReport</a></li><li><a href="SubmitValidationForm.html">SubmitValidationForm</a></li><li><a href="SuccessProfile.html">SuccessProfile</a></li><li><a href="TodayTask.html">TodayTask</a></li><li><a href="UserReports.html">UserReports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 02 2018 11:43:51 GMT+0300 (RTZ 2 (зима))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+// These are the styles to make some of the templates look extra nice.
+// Feel free to remove these styles for production!
+
+// Body Styles 
+body,
+html, 
+.body {
+  background: #f9f9f9 !important;
+}
+
+hr {
+  background-color: #ddd;
+  height: 1px;
+  border: 0;
+}
+
+.container.header {
+  background: #f3f3f3;
+}
+
+.body-drip {
+  border-top: 8px solid #663399;
+}
+
+// Full Width Headers
+.header {
+  // background: #8a8a8a;
+}
+
+.header .columns {
+  padding-bottom: 0;
+}
+
+.header p {
+  color: #fff;
+  padding-top: 15px;
+}
+
+.header .wrapper-inner {
+  padding: 20px;
+}
+
+.header .container {
+  background: transparent;
+}
+
+// Social Media
+table.button.facebook table td {
+  background: #3B5998 !important;
+  border-color: #3B5998;
+}
+
+table.button.twitter table td {
+  background: #1daced !important;
+  border-color: #1daced;
+}
+
+table.button.google table td {
+  background: #DB4A39 !important;
+  border-color: #DB4A39;
+}
+
+.wrapper.secondary {
+  background: #f9f9f9;
+}
+
+
+.logo_yasegodnya {
+  width: 147px; height: 65px;
+}
+.logo-hero {
+  width: 125px; height: 65px;
+}
+.logo-tomorrow-man {
+  width: 186px; height: 65px;
+}
+.logo-mother-can {
+  width: 200px; height: 65px;
+}
+.logo-extreme-drying {
+  width: 288px; height: 65px;
+}
+
+.main-tel {
+  color: #1f447b;
+  font-size: 28px;
+}
+
+table.menu td.social-item, table.menu th.social-item {
+  padding: 5px; padding-right: 5px;
+}

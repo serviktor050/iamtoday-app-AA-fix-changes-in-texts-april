@@ -1,0 +1,80 @@
+.listNav{
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #efefef;
+    position: relative;
+}
+
+.currentValue {
+    align-items: center;
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 24px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #4EA3D9;
+    width: 100%;
+    display: inline-block;
+}
+
+.icon {
+    fill: #4EA3D9;
+}
+
+.iconChevron {
+    float: right;
+    width: 24px;
+    height: 24px;
+    margin-right: 2px;
+    margin-top: 2px;
+}
+
+.iconTick {
+    float: right;
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+}
+
+
+.arrow{
+    float: right;
+    position: relative;
+ }
+
+.dropdown {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 65px;
+    display: none;
+}
+
+.dropdown.show {
+    display: inline-block;
+    z-index: 90;
+}
+
+.dropdownBlock {
+    border: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #fff;
+    box-shadow: 0 7px 5px 5px rgba(221, 221, 221, .6);
+    min-width: 200px;
+    z-index: 90;
+}
+
+.item{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+}
+.item:hover{
+    color: #4EA3D9;
+}
+.item:last-child { border-bottom: none; }

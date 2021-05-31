@@ -1,0 +1,65 @@
+.modalContainer--modalOrderCancel {
+  min-width: auto;
+  max-width: none;
+  width: 304px;
+  bottom: 30px;
+  padding: 20px;
+}
+
+.modalContainer--modalOrderCancel > div {
+  padding: 0;
+  align-items: normal;
+}
+
+.modalContainer--modalOrderCancel > button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modalOrderCancel {
+  width: 100%;
+  padding-top: 108px;
+  background-image: url("../../../../../assets/img/svg/cross2.svg");
+  background-repeat: no-repeat;
+  background-position: center 0;
+}
+
+.modalOrderCancel__text {
+  font-size: 15px;
+  line-height: 18px;
+  color: #2c2f33;
+  margin-bottom: 10px;
+}
+
+.modalOrderCancel__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modalOrderCancel__button {
+  display: inline-flex;
+  font-size: 15px;
+  line-height: 18px;
+  border: 1px solid #4da2d6;
+  background-color: transparent;
+  justify-content: center;
+  color: #4da2d6;
+  width: 125px;
+  padding: 10px 5px;
+  border-radius: 2px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modalOrderCancel__button--cancel {
+  border-color: transparent;
+  background-color: #4da2d6;
+  color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .modalContainer--modalOrderCancel {
+    bottom: auto;
+  }
+}

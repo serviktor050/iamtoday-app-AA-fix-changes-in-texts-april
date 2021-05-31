@@ -1,0 +1,10 @@
+.cell {
+    position: relative;
+    display: block;
+    height: 50px;
+    border-bottom: 1px dashed #E0EDFF;
+}
+
+.cell:last-child {
+    border-bottom: 1px dashed transparent;
+}

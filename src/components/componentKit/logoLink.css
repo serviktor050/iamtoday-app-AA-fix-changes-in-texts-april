@@ -1,0 +1,56 @@
+.root {
+    display: flex;
+}
+.svgIconLogoWeb {
+  composes: svg-icon from '../../index.css';
+  composes: ys_logo_web from '../../index.css';
+}
+
+.alfaLogo{
+  width: 140px;
+  margin-top: 13px;
+  cursor: pointer;
+}
+.uniproLogo{
+  cursor: pointer;
+  float: left;
+  width: 250px;
+}
+.tele2Logo{
+  width: 150px;
+  margin-top: 13px;
+  cursor: pointer;
+}
+.uniproLogoMobile{
+    display: none;
+    width: 250px;
+}
+.alfaLogo{
+    width:255px;
+    margin-left:0;
+    float: none;
+    margin-top:50px;
+}
+.apple {
+    height:70px;
+}
+.text {
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 4px;
+}
+@media screen and (max-width: 1480px) {
+}
+@media screen and (max-width: 1300px) {
+}
+@media screen and (max-width: 1180px) {
+}
+@media screen and (max-width: 1024px) {
+    .uniproLogo{
+        float: none;
+        display: none;
+    }
+    .uniproLogoMobile{
+        display: block;
+    }
+}

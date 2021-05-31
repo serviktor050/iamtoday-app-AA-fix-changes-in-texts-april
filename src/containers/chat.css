@@ -1,0 +1,58 @@
+.h1 {
+  composes: h1 from "../index.css";
+}
+.chat {
+  border-radius: 5px;
+  background-color: #fff;
+  position: relative;
+}
+@media screen and (min-width: 1025px) {
+  .chat {
+    margin-bottom: 40px;
+  }
+}
+.chatWindow {
+  composes: chat from "../index.css";
+  composes: chat_window from "../index.css";
+}
+
+.chatFetching {
+  composes: chat from "../index.css";
+  /*composes: chat_fetching from '../index.css';*/
+}
+.chatMini {
+  border: none;
+  margin-bottom: 0;
+}
+.chatForwarding {
+  composes: chat from "../index.css";
+  composes: chat_forwarding from "../index.css";
+}
+
+.minionChatCloseIcon {
+  composes: minion-chat__close from "../index.css";
+  composes: svg-icon from "../index.css";
+  composes: ico-close from "../index.css";
+}
+
+.chatAdminPanel {
+  composes: chat__admin-panel from "../index.css";
+}
+
+.chatAdminPanelBtnSecondary {
+  composes: chat__admin-panel-button from "../index.css";
+  composes: btn from "../index.css";
+  composes: btn--secondary from "../index.css";
+}
+
+.chatAdminPanelBtnAction {
+  composes: chat__admin-panel-button from "../index.css";
+  composes: btn from "../index.css";
+  composes: btn--action from "../index.css";
+}
+
+.minionChatButtonForwardPrimary {
+  composes: minion-chat__button-forward from "../index.css";
+  composes: btn from "../index.css";
+  composes: btn--primary from "../index.css";
+}

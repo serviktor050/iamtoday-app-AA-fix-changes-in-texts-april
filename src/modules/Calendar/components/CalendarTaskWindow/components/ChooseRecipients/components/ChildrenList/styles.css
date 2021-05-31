@@ -1,0 +1,112 @@
+.childrenList {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  max-width: 450px;
+}
+
+.childrenList__contractor {
+  display: flex;
+  align-items: center;
+  background: #F0F6FF;
+  border-radius: 2px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.childrenList__contractor_name {
+  font-size: 12px;
+  line-height: 15px;
+  color: #1F6D9C;
+  margin-right: 10px;
+}
+
+.childrenList__addMore {
+  all: unset;
+  padding: 10px 20px;
+  height: min-content;
+  background: #79C330;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.childrenList__addMore:hover {
+  background: #6ca830;
+}
+
+.childrenList__contractor_removeButton {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+}
+
+.childrenList__contractor_removeButton::before {
+  content: '';
+  display: block;
+  position: absolute;
+  border-radius: 1px;
+  width: 1px;
+  height: 12px;
+  background-color: #1F6D9C;
+  transform: rotate(-45deg);
+}
+
+.childrenList__contractor_removeButton::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-radius: 1px;
+  width: 1px;
+  height: 12px;
+  background-color: #1F6D9C;
+  transform: rotate(45deg);
+}
+
+.childrenList__contractors_wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.childrenList__contractors_hood {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 41.75%);
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.childrenList__contractors_expand {
+  all: unset;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 15px;
+  color: #4DA2D6;
+  cursor: pointer;
+}
+
+.childrenList__contractors_expand::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: url('../../../../../../../../assets/img/svg-symbols/chevron-down.svg') center/cover no-repeat;
+  filter: invert(67%) sepia(19%) saturate(1233%) hue-rotate(163deg) brightness(83%) contrast(101%);
+  margin-left: 5px;
+}

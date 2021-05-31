@@ -1,0 +1,31 @@
+.inputBox {
+  composes: input from '../../index.css';
+  composes: input--box  from '../../index.css';
+}
+
+.inputField {
+  composes: input__field from '../../index2.css';
+}
+.inputIcoRequired{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f97b7c;
+}
+.inputIcoRequiredSucceess{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #56daa1;
+}
+
+.inputFieldError{
+  composes: input__field from '../../index2.css';
+  border-color: #f97b7c;
+}

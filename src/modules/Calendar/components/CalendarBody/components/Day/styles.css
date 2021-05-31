@@ -1,0 +1,8 @@
+.day {
+    flex: 1;
+    border-right: 1px solid #E0EDFF;
+}
+
+.day:last-child {
+    border-right: 1px solid transparent;
+}

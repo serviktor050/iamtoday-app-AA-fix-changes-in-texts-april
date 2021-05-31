@@ -1,0 +1,109 @@
+.AcceptModal {
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.QuestionModal {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.QuestionModalText {
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  /* margin-bottom: 40px; */
+  max-width: 300px;
+}
+
+.AcceptedModal {
+  background-color: red;
+  width: 707px;
+  height: 283px;
+}
+
+.buttonsBlock {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.button {
+  all: unset;
+  padding: 10px 25px;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px #4da2d6 solid;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.buttonOk {
+  composes: button;
+  color: #ffffff;
+  background: #4da2d6;
+  margin-right: 20px;
+}
+
+.buttonCancel {
+  composes: button;
+  color: #4da2d6;
+  background: #fff;
+}
+
+.mdiv {
+  width: 15px;
+  height: 15px;
+}
+
+.mdiv2 {
+  height: 15px;
+  width: 2px;
+  margin-left: 12px;
+  background-color: #c4c4c4;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+.md {
+  height: 15px;
+  width: 2px;
+  background-color: #c4c4c4;
+  transform: rotate(90deg);
+  z-index: 2;
+}
+
+.crossButton {
+  all: unset;
+  margin-left: auto;
+  margin-right: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.modalContainer {
+  position: absolute;
+  padding: 10px;
+  background-color: white;
+  min-width: 395px;
+  min-height: 181px;
+  border-radius: 4px;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.25);
+  z-index: 10px;
+}

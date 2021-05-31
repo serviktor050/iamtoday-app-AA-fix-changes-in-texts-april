@@ -1,0 +1,320 @@
+.bottom{
+  height:60px;
+  border-top:1px solid #ccc;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.editorWrap{
+  padding:0 20px;
+}
+.editorWrap figure{
+  margin: 20px 0;
+}
+.btns{
+  display: flex;
+  color: #1f447b;
+}
+.btnsText{
+  margin:0 7px;
+}
+.more {
+  text-align: right;
+  margin-bottom: 18px;
+  color: #4DA2D6;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.more:hover {
+  text-decoration: none;
+}
+.btnsTextComment{
+  margin:0 7px;
+  display: none;
+}
+.btnsItem{
+  margin-right:15px;
+  padding: 8px 5px;
+  font-size: 14px;
+  color: #1f447b;
+  background: #fff;
+  transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btnsItemLike {
+  composes: btnsItem;
+}
+.btnsItemLikeDisable{
+  composes: btnsItemLike;
+  cursor: no-drop;
+}
+.btnsItem .svgIcon{
+  fill: #1f447b;
+}
+.stageBox {
+  padding: 20px 0 0;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background: #fff;
+  position: relative;
+  box-shadow: 1px 1px 9px rgba(0,0,0,0.2);
+}
+.likeNumbers{
+  margin:0 7px;
+  width:20px;
+}
+/*.btnsItem:hover{
+  color: #fff;
+  background: #869bb8;
+  border: 1px solid #869bb8;
+}*/
+/*.btnsItem:hover .svgIcon{
+  fill: #fff;
+}*/
+.svgIcon{
+  composes: svg-icon from '../../index.css';
+  width: 20px;
+  height:20px;
+}
+.svgIconLiked{
+  composes: svgIcon;
+  fill: #ff241aab !important;
+}
+.liked{
+  color: #ff241aab;
+}
+.blockComment{
+  border-top: 1px solid #ccc
+}
+.blockCommentItem{
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 15px 20px;
+  font-size:14px;
+}
+.blockCommentItem:last-child{
+  border-bottom:none;
+}
+.blockCommentAva{
+  width: 46px;
+  min-width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12px;
+}
+.blockCommentAvaImg{
+  max-width: 100%;
+}
+.blockCommentBottom{
+  display: flex;
+}
+.blockCommentDate{
+  margin-right:10px;
+  color: #808080;
+}
+.blockCommentWrap{
+  padding: 15px 0 0;
+}
+.blockCommentTitle{
+  composes:btnsItem;
+  justify-content: center;
+  background: #e1eaf6;
+  margin:0 20px !important;
+}
+.blockCommentTitle:hover{
+  background: #1f447b;
+}
+.blockCommentName {
+  color: #1f447b;
+  font-weight:bold;
+}
+.blockCommentText{
+  color: #2e2e2e;
+  word-break: normal;
+}
+.blockCommentAdd{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  height:70px;
+  position: relative;
+}
+
+.entryHeader {
+  composes: entry__header from '../../index.css';
+}
+.entryTitleCenter {
+  composes: entry__title from '../../index.css';
+  composes: text-center from '../../index.css';
+}
+.textCenter {
+  composes: text-center from '../../index.css';
+}
+
+.loaderMain {
+  composes: loader from '../../index.css';
+  composes: loader--main from '../../index.css';
+}
+.buttonAction {
+  composes: btn from '../../index.css';
+  composes: btn--action  from '../../index.css';
+  margin-right:15px;
+}
+.blockCommentTextArea{
+  margin-left: 78px;
+  border: 1px solid #fff;
+  resize: none;
+  margin-top: 18px;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  height: 45px;
+  padding-right: 40px;
+}
+.blockCommentSubmit{
+  position: absolute;
+  right:20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  top: 2px;
+}
+.blockCommentSubmit svg {
+  transform: rotate(45deg);
+  width:20px;
+  height:20px;
+}
+.chatEmoji{
+  position: absolute;
+  top: -222px;
+  left: 0;
+  z-index:2;
+}
+.chatEmoji .emoji-mart-bar,
+.chatEmoji .emoji-mart-search,
+.chatEmoji .emoji-mart-category-label {
+  display: none;
+}
+
+.chatEmojiButton {
+  composes: chat__emoji-button from '../../index.css';
+  position: absolute;
+  left: 24px;
+  font-size: 22px;
+  border-right:none !important;
+  height:100%;
+  bottom: 2px;
+}
+
+.view{
+  display: flex;
+  align-items: center;
+  color: #ccc;
+}
+.view .svgIcon{
+  fill: #ccc;
+}
+.view .btnsText{
+  font-size:14px;
+}
+.blockCommentAnswer{
+  color: #1f447b;
+  cursor: pointer;
+}
+
+.logoBlock{
+  display: flex;
+  margin-bottom:7px;
+}
+
+.logoBlockLogo{
+  /*width:60px;*/
+  /*height:60px;*/
+
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-right: 12px;
+}
+.logoBlockLogo img {
+  width: auto;
+  height:40px;
+}
+.logoBlockTitle{
+  color: #39961e;
+  font-size: 18px;
+  font-family: "Exo 2";
+  font-weight: bold;
+}
+.logoBlockDate{
+  color: #8a8a8a;
+  font-size: 14px;
+}
+.btnsModal{
+  margin-top:15px;
+  text-align: center;
+}
+.svgIconLogo{
+  composes: svg-icon from '../../index2.css';
+  width: 127px;
+  height: 33px;
+  fill: #fff;
+  position: absolute;
+  top: 13px;
+  left: 0;
+}
+.alfa .logoBlockLogo {
+  background-color: #ef3124;
+}
+.alfa .btnsItem {
+  margin-right: 5px;
+}
+.alfa .view {
+  margin-left: -15px;
+}
+.alfa .buttonAction{
+  background-color: #ef3124;
+}
+.layoutWrapItem{
+  width: 100%;
+}
+
+.blockCommentText.sticker img{
+  max-width: 150px;
+  width: 100%;
+}
+@media screen and (max-width: 1025px) {
+  .buttonAction{
+    margin-bottom: 15px;
+    min-width: 165px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .btnsItem {
+    margin-right: 2px;
+  }
+  .alfa .view {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .btnsTextComment{
+    display: block;
+  }
+  .layoutWrapItem{
+    padding-right: 15px;
+  }
+}
+
+
+

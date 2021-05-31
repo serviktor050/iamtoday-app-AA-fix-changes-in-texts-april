@@ -1,0 +1,45 @@
+.newTask__input_wrapper {
+  position: relative;
+  padding-top: 15px;
+}
+
+.newTask__validationError {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 8px;
+  color: red;
+  text-align: right;
+}
+
+.newTask__title_input {
+  font-size: 16px;
+  line-height: 19px;
+  color: #2C2F33;
+  width: 100%;
+  border: 1px solid #E6EFF4;
+  padding-left: 20px;
+}
+
+.newTask__input {
+  margin-bottom: 10px;
+}
+
+.newTask__input-error {
+  border-color: red;
+  border-radius: 7px;
+}
+
+.newTask__textarea {
+  all: unset;
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 19px;
+  color: #2C2F33;
+  background: #FFFFFF;
+  border: 1px solid #E6EFF4;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}

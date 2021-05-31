@@ -1,0 +1,82 @@
+.filter__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.filter__tabs {
+    display: flex;
+    padding: 5px 0;
+}
+
+.tab__container {
+    margin-right: 10px;
+}
+
+.tab__container:last-child {
+    margin-right: 0px;
+}
+
+.tab__input {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+.tab__label {
+    all: unset;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #DAEFF2;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #4DA2D6;
+    cursor: pointer;
+}
+
+.tab__input:checked + .tab__label {
+    background: #4DA2D6;
+    color: #FFFFFF;
+}
+
+.filter__currentPeriod {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #4DA2D6;
+}
+
+.filter__currentPeriod_btn {
+    all: unset;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: url('../../../../assets/img/svg-symbols/ico-arrow-left.svg') center/14px no-repeat;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.filter__currentPeriod_btnNext {
+    transform: rotate(180deg);
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.filter__input {
+    margin-bottom: -5px;
+}
+
+.searchInput__placeholder {
+    margin-right: 234px;
+}

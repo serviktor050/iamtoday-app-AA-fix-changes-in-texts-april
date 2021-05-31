@@ -1,0 +1,81 @@
+.iconBoxItem {
+  composes: icon-box__item from '../../index.css';
+}
+
+.iconBox {
+  composes: icon-box from '../../index.css';
+}
+
+.inputBox {
+  composes: input from '../../index.css';
+  composes: input--box  from '../../index.css';
+  margin-bottom:20px;
+}
+
+.inputField {
+  composes: input__field from '../../index2.css';
+  /*padding-right: 42px;*/
+  color: #fff;
+  padding: 10px 12px 8px !important;
+}
+.inputFieldError{
+  composes: input__field from '../../index2.css';
+  border-color: #f97b7c;
+}
+.inputIcoRequired{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f97b7c;
+}
+.inputIcoRequiredSucceess{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #56daa1;
+}
+.colorWhite{
+  color: #fff;
+}
+.inputName {
+  font-size: 14px;
+  position: absolute;
+  top: 13px;
+  background: transparent;
+  padding: 0 7px;
+  left: 5px;
+  color: hsl(0,0%,50%);
+  letter-spacing: 0.5px;
+  z-index:-1;
+  transition:all .3s ease;
+}
+.inputNameShow {
+  z-index: 2;
+  top: -10px;
+  background: #fff;
+  left: 14px;
+  font-size: 12px;
+}
+
+.inputNameShowDis {
+  background: #f3f6f8;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}
+
+@media screen and (max-width: 500px) {
+	.inputNameShow{
+		font-size: 7px;
+		top: -3px;
+	}
+}

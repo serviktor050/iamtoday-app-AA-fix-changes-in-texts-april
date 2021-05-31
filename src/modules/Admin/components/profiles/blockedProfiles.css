@@ -1,0 +1,244 @@
+.mlmSummary {
+    padding: 40px 30px 50px 40px;
+    background: #fff;
+}
+
+.mlmSummaryHeader .title {
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 20px
+}
+
+.mlmSummaryHeader hr {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.contentList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.info {
+    font-family: 'Proxima Nova', serif;;
+    background: linear-gradient(99.06deg, #EEF5F6 38.23%, #F3FDED 56.88%);
+    border-radius: 2px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #4DA2D6;
+    padding: 15px;
+    margin-right: 10px;
+}
+
+.contentItem {
+    font-family: 'Proxima Nova', serif;;
+    width: 100%;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+.cardItem {
+    display: inline-block;
+    font-size: 15px;
+    width: 100%;
+    padding: 5px 0 5px 5px;
+
+}
+
+.cardAction {
+    text-align: right;
+    display: inline-block;
+    width: 100%;
+}
+
+.cardItem .label {
+    display: inline-block;
+    width: 75%;
+    text-align: left;
+    font-weight: 400;
+    color: #2C2F33;
+}
+
+.cardItem .valueBold {
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+    font-weight: 700;
+    color: #4DA2D6;
+}
+
+.cardItem .value {
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+    font-weight: 400;
+    color: #4DA2D6;
+    font-size: 15px;
+}
+
+
+.infoCardLinkLabel {
+    margin-top: 30px;
+    font-size: 15px;
+    line-height: 21px;
+    color: #B5B5B5;
+}
+
+.infoCardLink {
+    margin-top: 4px;
+    font-size: 15px;
+    color: #79C330;
+}
+
+.infoCardAction {
+    color: white;
+    background: #79C330;
+    border-radius: 2px;
+    font-size: 12px;
+    width: 214px;
+    height: 30px;
+    margin-top: 26px;
+    float: right;
+}
+
+.infoCardAction_done {
+    background: #4DA2D6; 
+    border-radius: 2px;
+    font-size: 12px;
+    width: 214px;
+    height: 30px;
+    margin-top: 26px;
+    float: right;
+}
+
+.structureCardAction {
+    color: white;
+    background: #4DA2D6;
+    border-radius: 2px;
+    font-size: 12px;
+    width: 214px;
+    height: 30px;
+    margin-top: 26px;
+    float: right;
+}
+
+.rewardActionReward {
+    background: #FF6B6B;
+    color: white;
+    border-radius: 2px;
+    font-size: 12px;
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 30px;
+    margin-top: 26px;
+    float: right;
+
+}
+
+.rewardActionHistory {
+    background: #4DA2D6;
+    color: white;
+    border-radius: 2px;
+    font-size: 12px;
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 30px;
+    margin-top: 26px;
+    float: right;
+    margin-left: 20px;
+}
+
+.help {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 12px;
+    padding: 10px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    font-weight: 400;
+    font-size: 10px;
+    color: #4DA2D6;
+}
+
+.mentor {
+    margin: 0;
+}
+
+.imageItem {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 25px;
+}
+
+.imageDescription {
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+.surname {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    color: #2C2F33;
+}
+
+.contact {
+    margin-top: 15px;
+}
+
+.firstName {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #B5B5B5;
+}
+
+.contactPhone {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #2C2F33;
+    vertical-align: middle;
+
+}
+
+.icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 12px;
+}
+
+.contactEmail a {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 5px;
+    color: #39961E;
+    text-underline: none;
+}
+
+.imageItem {
+    width: 92px;
+    height: 92px;
+}
+
+.imageItem img {
+    width: 92px;
+    height: 92px;
+}
+
+@media screen and (min-width: 1100px) {
+    .contentItem {
+        width: 50%;
+    }
+}

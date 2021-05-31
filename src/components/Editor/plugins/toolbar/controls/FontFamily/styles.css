@@ -1,0 +1,17 @@
+.itd-fontfamily-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.itd-fontfamily-dropdown {
+  width: 115px;
+}
+.itd-fontfamily-placeholder {
+  white-space: nowrap;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.itd-fontfamily-optionwrapper {
+  width: 140px;
+}

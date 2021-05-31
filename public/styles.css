@@ -1,0 +1,494 @@
+/*custom styles*/
+
+/*.entry--min {
+  height: 100%;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}*/
+
+/*.entry__inner {
+  height: 100%;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}*/
+
+/*#root {
+  height: 100%;
+}*/
+/*div[data-reactroot]{*/
+  /*height:100%;*/
+/*}*/
+#root > div[data-reactroot] {
+  height:100%;
+}
+.low {
+  margin: 7px;
+}
+
+div {
+  outline: 0
+}
+
+button {
+  outline: 0
+}
+
+.chat__emoji {
+  margin-top: 100px;
+}
+
+#hoverplace {
+  cursor: pointer;
+  -webkit-filter: opacity(.4);
+}
+
+#hoverplace:hover {
+  -webkit-filter: opacity(.8);
+}
+
+#pay-free {
+  width: 300px;
+}
+
+#payment-entry {
+  height: 780px;
+}
+
+.divider {
+  width: 5px;
+  height: auto;
+  display:inline-block;
+}
+
+#carrotquest-messenger-collapsed {
+  padding-bottom: 0px;
+  margin-bottom: 50px;
+}
+
+.seasonImage {
+  width: 180px;
+  cursor: pointer;
+}
+
+/*react-paginate*/
+
+.pagination ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.pagination li {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.pagination .break a {
+    cursor: default;
+}
+
+.pagination .active a {
+    color: #FF8858;
+}
+
+/*react-draft-wysiwyg styles*/
+
+.home-root {
+  width: 100%;
+  display: flex;
+  font-family: Roboto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.home-list {
+  margin-top: 20px;
+}
+.home-listItem {
+  margin-bottom: 10px;
+}
+.home-wrapper {
+  margin-top: 10px;
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+.home-editor {
+  border: 1px solid #F1F1F1;
+  padding: 5px;
+  max-height:300px !important;
+  border-radius: 2px;
+}
+.home-toolbar {
+  width: 100%;
+}
+
+.DayPicker-Month {
+  width: 100%;
+  margin: -10px 0rem !important;
+}
+
+.ya-share2__item_service_odnoklassniki .ya-share2__badge{
+  width: 47px;
+  height: 47px;
+  padding: 4px 6px;
+  border-radius:50%;
+}
+.ya-share2__container_size_m .ya-share2__icon {
+  height: 36px !important;
+  width: 36px !important;
+  background-size: 36px 36px !important;
+}
+
+.popup_box_container{
+   min-width: 360px !important;
+   width: 360px !important;
+ }
+
+/*.heightTd .Select-arrow-zone,*/
+/*.heightTd .Select-clear-zone {*/
+    /*display: none;*/
+/*}*/
+
+/*.heightTd .Select-value-label{*/
+    /*margin-left: 5px;*/
+/*}*/
+/*.heightTd .Select-menu-outer{*/
+    /*display: block;*/
+    /*position: absolute;*/
+/*}*/
+/*tooltip*/
+.__react_component_tooltip.show{
+    opacity: 1 !important;
+}
+/*.select .Select-control{*/
+  /*height: 44px;*/
+  /*border:none;*/
+/*}*/
+/*.select .Select-menu-outer{*/
+/*}*/
+/*.select .Select-clear{*/
+  /*display: none;*/
+/*}*/
+/*.select .Select-arrow-zone{*/
+  /*width: 36px;*/
+/*}*/
+/*.select .Select-placeholder,*/
+/*.select .Select-value-label{*/
+  /*line-height:44px;*/
+/*}*/
+/*.select .Select-placeholder{*/
+  /*color: #8b9bb4;*/
+/*}*/
+/*.Select-arrow-zone {*/
+  /*display: none !important;*/
+/*}*/
+/*.Select-input input {*/
+  /*opacity:0;*/
+/*}*/
+:root {
+  --default-bg: #f7f7f7;
+  --default-color: color(var(--default-bg) contrast(50%));
+  --default-disabled-color: color(var(--default-color) blend(var(--default-bg) 70%));
+  --default-theme: #4eccc4;
+
+  --dark-bg: #263238;
+  --dark-color: color(var(--dark-bg) contrast(50%));
+  --dark-disabled-color: color(var(--dark-color) blend(var(--dark-bg) 70%));
+  --dark-theme: #50ccc4;
+
+  --ios-bg: #f7f7f7;
+  --ios-color: color(var(--ios-bg) contrast(50%));
+  --ios-disabled-color: color(var(--ios-color) blend(var(--ios-bg) 70%));
+  --ios-theme: #dbdbdb;
+
+  --android-bg: #f5f5f5;
+  --android-color: color(var(--android-bg) contrast(50%));
+  --android-disabled-color: color(var(--android-color) blend(var(--android-bg) 70%));
+  --android-theme: #31b6e7;
+
+  --android-dark-bg: #292829;
+  --android-dark-color: color(var(--android-dark-bg) contrast(50%));
+  --android-dark-disabled-color: color(var(--android-dark-color) blend(var(--android-dark-bg) 70%));
+}
+
+.mobile-picker {
+  overflow-y: hidden;
+  position: relative;
+}
+
+.datepicker-modal {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.6);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.datepicker {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  font-size: 16px;
+  text-align: center;
+  font-family: arial, verdana, sans-serif;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+.datepicker .datepicker-header {
+  padding: 0 .5em;
+  min-height: 2em;
+  line-height: 2em;
+  font-size: 1.125em;
+  display: none;
+}
+
+
+.datepicker .datepicker-navbar {
+  padding: 0 .5em .5em .5em;
+  overflow: hidden;
+}
+
+.datepicker .datepicker-navbar-btn {
+  height: 2.5em;
+  line-height: 2.5em;
+  float: right;
+  padding: 0 1em;
+  cursor: pointer;
+}
+
+.datepicker .datepicker-content {
+  display: flex;
+  padding: .5em .25em;
+}
+
+.datepicker .datepicker-col-1 {
+  flex: 1;
+  margin: 0 .25em;
+}
+.datepicker .datepicker-viewport {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.datepicker .datepicker-viewport::after {
+   content: '';
+   position: absolute;
+   z-index: 2;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   pointer-events: none;
+}
+.select:after{
+  display: none;
+}
+.datepicker .datepicker-wheel {
+  position: absolute;
+  height: 40px;
+  top: 50%;
+  margin-top: -20px;
+  width: 100%;
+}
+.datepicker .datepicker-scroll {
+  list-style-type: none;
+  padding: 0;
+}
+.datepicker .datepicker-scroll > li{
+   height: 40px;
+   line-height: 40px;
+   font-size: 1.375em;
+   cursor: pointer;
+ }
+.Select-input > input {
+  line-height: 24px !important;
+}
+
+/* default */
+.datepicker.default {
+  background-color: #fff;
+}
+.datepicker.default .datepicker-header {
+  color: var(--default-theme);
+}
+.datepicker.default .datepicker-wheel {
+  border-top: 1px solid var(--default-theme);
+  border-bottom: 1px solid var(--default-theme);
+}
+.datepicker.default .datepicker-scroll li {
+  color: var(--default-color);
+}
+
+.datepicker.default .datepicker-scroll li.disabled {
+  color: var(--default-disabled-color);
+}
+.datepicker.default .datepicker-navbar-btn {
+  color: var(--default-theme);
+}
+
+.datepicker.default .datepicker-scroll li {
+  color: #222;
+  font-size: 20px;
+}
+
+.datepicker.default .datepicker-navbar-btn {
+  color: #70CFFE;
+}
+
+.datepicker.default .datepicker-wheel {
+  border-top: 1px solid #70CFFE;
+  border-bottom: 1px solid #70CFFE;
+}
+/* dark */
+.datepicker.dark {
+  background-color: var(--dark-bg);
+}
+.datepicker.dark .datepicker-header {
+  color: var(--dark-theme);
+}
+.datepicker.dark .datepicker-wheel {
+  border-top: 1px solid var(--dark-theme);
+  border-bottom: 1px solid var(--dark-theme);
+}
+.datepicker.dark .datepicker-scroll li{
+  color: var(--dark-color);
+}
+
+.datepicker.dark .datepicker-scroll li.disabled {
+  color: var(--dark-disabled-color);
+}
+.datepicker.dark .datepicker-navbar-btn {
+  color: var(--dark-theme);
+}
+
+/* ios */
+.datepicker.ios {
+  background-color: var(--ios-bg);
+}
+.datepicker.ios .datepicker-col-1 {margin: 0}
+
+.datepicker.ios .datepicker-header {
+  color: var(--ios-color);
+  padding: 0 3.5em;
+}
+.datepicker.ios .datepicker-viewport::after {
+   background: linear-gradient(#f7f7f7,rgba(245,245,245,0)52%,rgba(245,245,245,0)48%,#f7f7f7);
+}
+.datepicker.ios .datepicker-wheel {
+  border-top: 1px solid var(--ios-theme);
+  border-bottom: 1px solid var(--ios-theme);
+}
+.datepicker.ios .datepicker-scroll li {
+  color: var(--ios-color);
+}
+
+.datepicker.ios .datepicker-scroll li.disabled {
+  color: var(--ios-disabled-color);
+}
+
+.datepicker.ios .datepicker-navbar {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  border-bottom: 1px solid #acacac;
+}
+.datepicker.ios .datepicker-navbar-btn {
+  color: #007aff;
+}
+.datepicker.ios .datepicker-navbar-btn:nth-child(2) {
+   float: left;
+ }
+.datepicker.ios .datepicker-content {
+  padding-top: 48px;
+}
+
+.datepicker.ios .datepicker-header + .datepicker-content {
+  padding-top: 0;
+}
+
+
+/* android */
+.datepicker.android, .datepicker.android-dark {
+  background-color: var(--android-bg);
+}
+.datepicker.android, .datepicker.android-dark .datepicker-header {
+  color: var(--android-theme);
+  border-bottom: 2px solid var(--android-theme);
+}
+.datepicker.android, .datepicker.android-dark .datepicker-col-1 {margin: 0 .625em}
+.datepicker.android, .datepicker.android-dark .datepicker-viewport::after {
+   background-image: linear-gradient(#f5f5f5,rgba(245,245,245,0)52%,rgba(245,245,245,0)48%,#f5f5f5);
+}
+.datepicker.android, .datepicker.android-dark .datepicker-wheel {
+  border-top: 2px solid var(--android-theme);
+  border-bottom: 2px solid var(--android-theme);
+}
+
+.datepicker.android, .datepicker.android-dark .datepicker-scroll li {
+  font-size: 1.125em;
+  color: var(--android-color);
+}
+
+.datepicker.android, .datepicker.android-dark .datepicker-scroll li.disabled {
+  color: var(--android-disabled-color);
+}
+
+.datepicker.android, .datepicker.android-dark .datepicker-navbar {
+  display: flex;
+  border-top: 1px solid #d9d4d4;
+  padding: 0;
+}
+.datepicker.android, .datepicker.android-dark .datepicker-navbar-btn {
+  padding: 0;
+  color: #000;
+  flex: 1;
+}
+.datepicker.android, .datepicker.android-dark .datepicker-navbar-btn:nth-child(2) {
+   border-left: 1px solid #d9d4d4;
+ }
+/* android-dark */
+.datepicker.android-dark {
+   background-color: var(--android-dark-bg);
+}
+.datepicker .datepicker-viewport::after {
+   background-image: linear-gradient(#282828,rgba(40,40,40,0)52%,rgba(40,40,40,0)48%,#282828);
+}
+.datepicker .datepicker-scroll li {
+  color: var(--android-dark-color);
+}
+
+.datepicker .datepicker-scroll li.disabled {
+  color: var(--android-dark-disabled-color);
+}
+.datepicker .datepicker-navbar { border-color: #424542}
+.datepicker .datepicker-navbar-btn {
+  color: #fff;
+}
+.datepicker .datepicker-navbar-btn:nth-child(2) {
+   border-color: #424542;
+}
+.iti {
+  width:100%;
+}

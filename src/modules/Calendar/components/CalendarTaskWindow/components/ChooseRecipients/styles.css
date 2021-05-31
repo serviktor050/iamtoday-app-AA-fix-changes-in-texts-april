@@ -1,0 +1,10 @@
+.chooseRecipient {
+  margin: 15px 0;
+}
+
+.chooseRecipient__title {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2C2F33;
+}

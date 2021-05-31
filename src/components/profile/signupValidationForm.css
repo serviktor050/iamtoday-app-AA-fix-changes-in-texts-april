@@ -1,0 +1,261 @@
+.buttonSecondaryWide {
+  composes: btn from '../../index.css';
+  composes: btn--secondary  from '../../index.css';
+  composes: wide  from '../../index.css';
+  text-transform: none;
+  color: #FFF4F4;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
+  background: linear-gradient(86.91deg, #2BB6A3 2.8%, #069ED2 94.68%)
+}
+.buttonActionWide {
+  composes: btn from '../../index.css';
+  composes: btn--action  from '../../index.css';
+  composes: wide  from '../../index.css';
+}
+.buttonTele2Wide {
+  composes: btn from '../../index.css';
+  background: #ff6633;
+  composes: wide  from '../../index.css';
+  color: #fff;
+}
+.checkboxes {
+  composes: checkboxes from '../../index.css';
+  margin-top:15px;
+}
+.checkbox {
+  composes: checkbox from '../../index2.css';
+}
+.inputCustom {
+  margin-top: 5px;
+}
+
+.inputSelect {
+  margin-top: 5px;
+  position: absolute;
+  bottom: -150%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 10;
+}
+.inputCustom:focus {
+  border-bottom: 1px solid #fff;
+}
+.alfaBg{
+  background-color: #fe2f1d;
+  font-family: "StyreneBLC-Regular";
+  height:100%;
+}
+.entryNavMtb20 {
+  composes: entry-nav from '../../index.css';
+  composes: mtb20 from '../../index.css';
+}
+.svgIconAccordion{
+  composes: svg-icon from '../../index2.css';
+  z-index: 0;
+  width: 9px;
+  height: 8px;
+  position: absolute;
+  bottom: 17px;
+  right: 15px;
+  pointer-events: none;
+  stroke: #696868;
+}
+.textCenterMb10 {
+  composes: text-center from '../../index.css';
+  composes: mb10 from '../../index.css';
+}
+
+.socialSignin {
+  composes: social-signin from '../../index.css';
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--fb from '../../index.css';
+}
+
+.svgIcoFb {
+  composes: svg-icon from '../../index.css';
+  composes: ico-fb from '../../index.css';
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--vk from '../../index.css';
+}
+
+.svgIcoVk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-vk from '../../index.css';
+}
+
+.socialSigninItemOk {
+  composes: social-signin__item from '../../index.css';
+  composes: social-signin__item--odnoklassniki from '../../index.css';
+}
+
+.svgIcoOk {
+  composes: svg-icon from '../../index.css';
+  composes: ico-odnoklassniki from '../../index.css';
+}
+
+.entryBox{
+  composes: entry__box from '../../index.css';
+  padding: 0 45px;
+}
+.genderAuth {
+  composes: gender from '../../index.css';
+  composes: gender__auth from '../../index.css';
+  margin-bottom:15px;
+  position: relative;
+}
+.genderTitle {
+  composes: gender__title from '../../index.css';
+}
+.genderHr {
+  composes: gender__hr from '../../index.css';
+}
+.entryNavItem{
+  composes: entry-nav__item from '../../index.css';
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+}
+
+.entryNavItem p {
+  margin-right: 10px;
+}
+
+.note a{
+  color: black;
+  font-weight: bold;
+}
+/*.entryNavItem:first-child:before {*/
+  /*content: '';*/
+  /*position: absolute;*/
+  /*right: -1px;*/
+  /*top: 9px;*/
+  /*width: 1px;*/
+  /*height: 15px;*/
+  /*background: #fff;*/
+/*}*/
+.errorGender{
+  color: #F97B7C;
+  font-size:1.2rem;
+}
+.entryNavLink{
+  color: #15ACC7;
+  text-decoration: none;
+  font-weight: bold;
+}
+.entryNavLink:hover{
+  text-decoration: underline;
+}
+.inputIco{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 46px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.svgIconFormHelp{
+  composes: svg-icon from '../../index2.css';
+  composes: ico-form-help from '../../index2.css';
+}
+
+.input{
+  composes: input from '../../index2.css';
+  margin-bottom:20px;
+}
+
+.input p {
+  white-space: nowrap;
+}
+
+.input  input::placeholder {
+  font-size: 14px;
+}
+
+.input label {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.user{
+  position: relative;
+}
+.userClose{
+  position: absolute;
+  right: 0;
+  top: 16px;
+  color: #b3b9bd;
+  cursor: pointer;
+}
+.hrUser{
+  margin: 30px 15px 15px 0;
+  color: #b3b9bd;
+}
+.genderTitle{
+  margin-right: 15px;
+  margin-bottom: 5px;
+  color: #b3b9bd;
+}
+.entryNav {
+  text-align: center;
+  margin: 20px 0;
+}
+.alfa .genderTitle {
+  width:100%;
+}
+.alfa .genderAuth {
+  flex-wrap: wrap;
+}
+.alfa .entryNavLink {
+  color: #fff;
+}
+.alfa .offert{
+  margin:50px 0;
+}
+.alfa .offertText{
+  color: #bcb9b9;
+  font-size: 10px;
+}
+.alfa .offertLink {
+  font-size: 10px;
+  color: #fff;
+  padding: 0 5px;
+}
+.alfa .offertText:first-child {
+  margin-bottom: -7px;
+}
+.alfa .genderAuth {
+  margin-bottom: 25px;
+}
+.alfa .genderTitle {
+  margin-bottom: 12px;
+}
+.alfa .entryHeaderTitle {
+  margin-left:0;
+}
+.alfa .entryNav {
+  margin-top:8px;
+}
+
+.selectTrans,
+.selectTrans .Select,
+.selectTrans .Select-control{
+  background-color: transparent;
+}
+
+/*
+.alfa .genderAuth .radioField:checked ~ .radioPh:before {
+  background-color: #fe2f1d;
+}*/

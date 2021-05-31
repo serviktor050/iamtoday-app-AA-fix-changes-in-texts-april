@@ -1,0 +1,148 @@
+.purchases {
+    padding:30px;
+    background: #fff;
+}
+.title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom:30px;
+}
+.product{
+    padding: 30px;
+    display: flex;
+    background: #fff;
+    margin-bottom:30px;
+    box-shadow: 0 0 5px -3px rgba(0,0,0,0.1), 0 0 5px 1px rgba(0,0,0,0.1), 0 0 10px 2px rgba(0,0,0,0.1);
+    flex-direction: column;
+}
+.product.chat{
+    box-shadow: none;
+    background: #eef5f6;
+    background: linear-gradient(90deg,#eef5f6,#f3fded 49%);
+}
+.img{
+    width:145px;
+    margin-bottom:20px;
+}
+.action {
+    color: #c8c8c8;
+    display: flex;
+    align-items: center;
+}
+.action .icon {
+    fill: #c8c8c8;
+}
+.action.paid{
+    cursor: pointer;
+    color: #4da2d6;
+}
+
+.action.paid .icon {
+    fill: #4da2d6;
+}
+.icon{
+    width:18px;
+    height:18px;
+    margin-right: 13px;
+}
+.thumbnail {
+    width:100%;
+}
+.picture {
+    width: 100%;
+}
+.info {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-top:10px;
+}
+.name{
+    color: #4da2d6;
+    font-weight: bold;
+    font-size:18px;
+    width: 100%;
+}
+.price {
+    color: #39961e;
+    margin: 0 5px;
+    margin-top: 16px;
+
+}
+.desc {
+    padding: 5px 0;
+}
+.access-info {
+    display: flex;
+    border-top: 1px solid #fff;
+    padding-top:12px;
+    padding-right: 15px;
+    font-size: 12px;
+    justify-content: flex-end;
+    margin-bottom:25px;
+    flex-direction: column;
+}
+.access-info.module{
+    flex-direction: column;
+    border-top: 1px solid #c8c8c8;
+    margin-right: inherit;
+}
+.access-info.module .date{
+    margin-bottom:15px;
+}
+.value {
+    margin: 0 5px;
+    color: #39961e;
+}
+.value.expired {
+    color: #f44336;
+}
+.btn{
+    width:100%;
+    margin-left: auto;
+    margin-top: auto;
+}
+.note {
+    margin:0 4px;
+}
+@media screen and (min-width: 768px) {
+    .value {
+        margin: 0 0;
+    }
+    .price {
+        margin-top:0;
+    }
+    .picture {
+        width: 20%;
+    }
+    .thumbnail {
+        width:165px;
+    }
+    .product{
+        flex-direction: row;
+    }
+    .info {
+        padding-left: 60px;
+        width: 80%;
+    }
+    .btn {
+        width: 230px;
+    }
+    .header {
+        padding-top:0;
+        flex-direction: row;
+    }
+    .name{
+        width: 75%;
+    }
+    .access-info {
+        margin-right:50px;
+        flex-direction: row;
+    }
+}

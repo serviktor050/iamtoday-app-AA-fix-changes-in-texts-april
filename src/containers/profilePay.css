@@ -1,0 +1,274 @@
+.layoutEntry {
+  composes: layout from '../index.css';
+  composes: layout--entry from '../index.css';
+}
+
+.gridEntryHeader {
+  composes: grid from '../index.css';
+  composes: entry-header from '../index.css';
+}
+
+.gridCellTodaymeLogo {
+  composes: grid__cell from '../index.css';
+  composes: todayme-logo from '../index.css';
+}
+
+.entryMin {
+  composes: entry from '../index.css';
+  composes: entry--min from '../index.css';
+}
+
+.entryInner {
+  composes: entry__inner from '../index.css';
+}
+
+.entryHeader {
+  composes: entry__header from '../index.css';
+}
+
+.entryTitleCenter {
+  composes: entry__title from '../index.css';
+  composes: text-center from '../index.css';
+  color: #fff;
+}
+
+.entryBox {
+  composes: entry__box from '../index.css';
+}
+
+.entryNavMtb20 {
+  composes: entry-nav from '../index.css';
+  composes: mtb20 from '../index.css';
+}
+
+.entryNavItem {
+  composes: entry-nav__item from '../index.css';
+}
+
+.textCenterMb10 {
+  composes: text-center from '../index.css';
+  composes: mb10 from '../index.css';
+}
+
+.socialSignin {
+  composes: social-signin from '../index.css';
+}
+
+.socialSigninItemFb {
+  composes: social-signin__item from '../index.css';
+  composes: social-signin__item--fb from '../index.css';
+}
+
+.socialSigninItemVk {
+  composes: social-signin__item from '../index.css';
+  composes: social-signin__item--vk from '../index.css';
+}
+
+.socialSigninItemOk {
+  composes: social-signin__item from '../index.css';
+  composes: social-signin__item--odnoklassniki from '../index.css';
+}
+
+.svgIconFb {
+  composes: svg-icon from '../index.css';
+  composes: ico-fb from '../index.css';
+}
+
+.svgIconVk {
+  composes: svg-icon from '../index.css';
+  composes: ico-vk from '../index.css';
+}
+
+.svgIconOk {
+  composes: svg-icon from '../index.css';
+  composes: ico-odnoklassniki from '../index.css';
+}
+
+.entryBg {
+  composes: entry__bg from '../index.css';
+}
+
+.buttonSecondaryWide {
+  composes: btn from '../index.css';
+  composes: btn--secondary  from '../index.css';
+  composes: wide  from '../index.css';
+}
+
+.layoutRegistration {
+  composes: layout from '../index.css';
+  composes: layout--registration from '../index.css';
+}
+
+.entryStep {
+  composes: entry-step from '../index.css';
+}
+
+.entryStepTitle {
+  composes: entry-step__title from '../index.css';
+}
+
+.entryStepNo {
+  composes: entry-step__no from '../index.css';
+}
+
+.entryStepGoto {
+  composes: entry-step__go-to from '../index.css';
+}
+
+.entryPackageName {
+  composes: entry-packet-name from '../index.css';
+}
+
+.entryProgramPriceHighlightMd30 {
+  composes: entry-program-price from '../index.css';
+  composes: price-highlight-1 from '../index.css';
+  composes: mb30 from '../index.css';
+}
+
+.textCenterMd20 {
+  composes: text-center from '../index.css';
+  composes: mb20 from '../index.css';
+}
+
+.entryPaymentSystemMb20 {
+  composes: entry__payment-system from '../index.css';
+  composes: mb20 from '../index.css';
+}
+
+.entryBox {
+  composes: entry__box from '../index.css';
+}
+
+.entryIcoBox {
+  composes: entry-ico-box from '../index.css';
+}
+
+.entryIcoBoxImg {
+  composes: entry-ico-box__img from '../index.css';
+}
+
+.entryIcoBoxTitle {
+  composes: entry-ico-box__title from '../index.css';
+}
+
+.optionsWithImgWideMb20 {
+  composes: options from '../index.css';
+  composes: options--with-img from '../index.css';
+  composes: wide from '../index.css';
+  composes: mb20 from '../index.css';
+}
+
+.optionsItem {
+  composes: options__item from '../index.css';
+}
+
+.icoYandexkassa {
+  composes: ico-yandexkassa from '../index.css';
+}
+
+.icoRobokassa {
+  composes: ico-robokassa from '../index.css';
+}
+
+.icoPaymo {
+  composes: ico-paymo from '../index.css';
+}
+
+.entryNav {
+  composes: entry-nav from '../index.css';
+}
+
+.entryNavItem {
+  composes: entry-nav__item from '../index.css';
+}
+
+@media screen and (min-width: 1025px) {
+  .width25 {
+    width: 25%;
+  }
+  .width50 {
+    width: 50%;
+  }
+}
+
+.deskGridCellTodaymeLogo14 {
+  composes: width25;
+  composes: grid__cell from '../index.css';
+  composes: todayme-logo from '../index.css';
+}
+
+.deskGridCellTextCenter24 {
+  composes: width50;
+  composes: grid__cell from '../index.css';
+  composes: text-center from '../index.css';
+}
+
+.entryHeaderColorfulHero {
+  composes: entry__header from '../index.css';
+  composes: entry__header--colorful from '../index.css';
+  composes: g-hero from '../index.css';
+}
+
+.entryHeaderColorfulMother {
+  composes: entry__header from '../index.css';
+  composes: entry__header--colorful from '../index.css';
+  composes: g-mather from '../index.css';
+}
+
+.entryHeaderColorfulExtreme {
+  composes: entry__header from '../index.css';
+  composes: entry__header--colorful from '../index.css';
+  composes: g-extereme from '../index.css';
+}
+
+.entryHeaderColorfulTomorrow {
+  composes: entry__header from '../index.css';
+  composes: entry__header--colorful from '../index.css';
+  composes: g-tomorrow from '../index.css';
+}
+.entryPricePay{
+  padding:10px 40px;
+  background-color: #E8FFF5;
+  margin-bottom:30px;
+}
+.entryPricePayFlex{
+  padding:10px 40px;
+  background-color: #E8FFF5;
+  display: flex;
+}
+.entryPricePayItem{
+  composes: entry-program-price from '../index.css';
+  display: flex;
+  width:50%;
+}
+.entryProgramPrice {
+   composes: entry-program-price from '../index.css';
+ }
+.entryHeaderColorfulExtereme{
+  composes: entry__header from '../index.css';
+  composes: entry__header--colorful from '../index.css';
+  composes: g-extreme from '../index.css';
+}
+.notify{
+  margin-bottom: 30px;
+}
+.notifyItem{
+  background: #56daa1;
+  position: relative;
+  padding: 20px 60px;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.notifyClose{
+  position: absolute;
+  right:26px;
+}
+.notifyCloseIcon{
+  fill:#fff;
+  height: 30px;
+  width: 20px;
+  cursor: pointer;
+}
+.notifyItemLink{
+  color: #fff;
+}

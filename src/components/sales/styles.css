@@ -1,0 +1,211 @@
+.mlmStructure {
+    padding: 40px 30px 50px 40px;
+    background: #fff;
+}
+
+.mlmStructureHeader .title {
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 20px
+}
+
+.mlmStructureHeader hr {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.heading .cell.sort {
+    cursor: pointer;
+}
+
+.emptyInfo {
+    padding-top: 20px;
+}
+
+.contentList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.table {
+    display: table;
+    width: 100%;
+    font-size: 12px;
+}
+
+.row {
+    display: table-row;
+}
+
+.heading {
+    display: table-header-group;
+    height: 50px;
+    font-size: 12px;
+    background: #F4F8FE;
+}
+
+.cell, .head {
+    display: table-cell;
+    padding: 10px 5px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #B5B5B5;
+    vertical-align: middle
+}
+
+.body {
+    display: table-row-group;
+    font-size: 12px;
+}
+
+.body .row {
+    box-shadow: 0 4px 4px #ECF6FD;
+    height: 50px;
+}
+
+.body .cell {
+    vertical-align: middle;
+    color: #2C2F33;
+}
+
+.info {
+    background: linear-gradient(99.06deg, #EEF5F6 38.23%, #F3FDED 56.88%);
+    border-radius: 2px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    font-family: 'Proxima Nova', serif;;
+    line-height: 18px;
+    color: #4DA2D6;
+    padding: 15px;
+    margin-right: 10px;
+}
+
+.structureTable {
+    padding-top: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.inputColor {
+    color: #908a8a;
+    font-size: 14px;
+}
+
+.searchInputBox {
+    position: relative;
+}
+
+.selectBox select {
+    border: 0;
+    color: #4DA2D6;
+}
+
+.selectBoxLabel {
+    padding-right: 3px;
+    color: #2C2F33;
+}
+
+.inputValue {
+    color: #4DA2D6;
+    font-size: 12px;
+}
+
+.searchInputBox input {
+    padding-left: 20px;
+    display: inline-block;
+    font-size: 12px;
+    border: 0;
+    width: 100%;
+
+}
+
+.searchInputBox input:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.leftFilterPart .input {
+    width: 100%;
+}
+
+.svgIconFile {
+    width: 16px;
+    height: 16px;
+    color: #39961e;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+.input {
+    text-align: right;
+    display: inline-block;
+}
+
+.leftFilterPart {
+    width: 30%;
+}
+
+.rightFilterPart {
+    width: 70%;
+    text-align: right;
+}
+
+.filterGroup {
+    display: inline-block;
+}
+
+.filterGroup .input {
+    margin-left: 20px;
+}
+
+.selectIcon {
+    vertical-align: middle;
+    width: 5px;
+    height: 15px;
+    margin-left: 2px;
+}
+
+.selectBoxSelect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    background-image: url('assets/img/ico-arrow-down.svg');
+    background-position: 98% 70%;
+    background-repeat: no-repeat;
+    outline: none;
+    padding-right: 15px;
+}
+
+.partnerInfoModal{
+    position: relative;
+}
+
+.cell.cellLink {
+    color: #4DA2D6;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.filterForm {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #E4F2DC;
+    font-size: 12px;
+    display: inline-block;
+    width: 100%;
+}
+.cell.value.phone {
+    color: #4DA2D6;
+}
+
+.cell.value.email {
+    color: #39961E;
+}

@@ -1,0 +1,22 @@
+.mlmOrdersHistory__ordersHistoryTable {
+  padding: 0 8px 25px;
+}
+
+.mlmOrdersHistory__ordersHistoryTable--doctor {
+  background-color: #ffffff;
+}
+
+.mlmOrdersHistory__ordersHistoryTable--patient {
+  background-image: url('../../../../../../public/assets/img/antiage/pt.png');
+}
+
+@media screen and (min-width: 768px) {
+  .mlmOrdersHistory__ordersHistoryTable {
+    padding: 0 30px 30px;
+  }
+
+  .mlmOrdersHistory__ordersHistoryTable--patient {
+    background-image: none;
+    background-color: #ffffff;
+  }
+}

@@ -1,0 +1,61 @@
+.inputBoxError {
+  composes: input from '../../index.css';
+  composes: input--box  from '../../index.css';
+  composes: input--error  from '../../index.css';
+}
+
+.inputBox {
+  composes: input from '../../index.css';
+  composes: input--box  from '../../index.css';
+}
+
+.iconBox {
+  composes: icon-box  from '../../index.css';
+}
+
+.inputAlert {
+  composes: input__alert  from '../../index.css';
+}
+
+.inputField {
+  composes: input__field from '../../index.css';
+  padding:0 12px !important;
+  line-height:50px;
+}
+.inputBoxSmm{
+  margin-bottom:12px;
+}
+.colorWhite{
+  color: #fff;
+}
+.alfa .inputBoxSmm{
+  margin-bottom:20px;
+}
+.inputName {
+  font-size: 14px;
+  position: absolute;
+  top: 13px;
+  background: transparent;
+  padding: 0 7px;
+  left: 5px;
+  color: hsl(0,0%,50%);
+  letter-spacing: 0.5px;
+  z-index:-1;
+  transition:all .3s ease;
+}
+.inputNameShow {
+  z-index: 2;
+  top: -10px;
+  background: #fff;
+  left: 14px;
+  font-size: 12px;
+}
+.inputNameShowDis {
+  background: #f3f6f8;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}

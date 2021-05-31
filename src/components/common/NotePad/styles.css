@@ -1,0 +1,10 @@
+.rteToolbar{
+
+}
+.rteEditor{
+    min-height: 300px;
+    word-break: break-word;
+}
+.root {
+    width: 100%; 
+}

@@ -1,0 +1,47 @@
+.stickersBtn {
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 30px;
+}
+.stickersBtn.mini {
+  right: auto;
+  left: -6px;
+  top:31px;
+}
+.stickersBtn.smm {
+  right: auto;
+  left: 27px;
+  display: none;
+}
+.stickersAva {
+  width:35px;
+  height:35px;
+}
+.stickerList {
+  display: flex;
+  flex-wrap: wrap;
+  height:180px;
+  justify-content: space-around;
+}
+.stickerItem img {
+  width:90px;
+  height:90px;
+  cursor: pointer;
+}
+.stickersBlock {
+  position: absolute;
+  right:0;
+  bottom: 76px;
+  width: 255px;
+  overflow: auto;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 2px 15px rgba(0,0,0,0.1);
+  border-radius: 2px;
+  padding: 12px 0;
+}
+.stickersBlock.smm{
+  right: auto;
+  left: 0;
+  bottom: 70px;
+}

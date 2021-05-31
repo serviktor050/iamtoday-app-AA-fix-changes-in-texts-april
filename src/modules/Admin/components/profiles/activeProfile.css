@@ -1,0 +1,116 @@
+.profileBody {
+}
+
+.mainInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userAvatar {
+  min-height: 117px;
+  min-width: 117px;
+  max-width: 117px;
+  max-height: 117px;
+  margin: 0px 12px;
+  object-fit: cover;
+}
+
+.userInfoList {
+  width: calc(100% - 117px - 24px);
+  border: none;
+  border-collapse: collapse;
+}
+
+.userInfoList_item {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: #2c2f33;
+  border: none;
+}
+
+.userInfoList_item:nth-child(2n) {
+  background-color: #f4f8fe;
+}
+
+.userInfoList_item > td {
+  padding: 16px 0;
+  border: none;
+}
+
+.userInfoList_item > td:first-child {
+  min-width: 40%;
+  max-width: 40%;
+  padding-left: 29px;
+  color: #b5b5b5;
+}
+
+.userInfoList_item > td:nth-child(2) {
+  min-width: 60%;
+  max-width: 60%;
+  width: 60%;
+}
+
+
+.input {
+  composes: input from "../../../../index2.css";
+  margin-bottom: 15px;
+}
+
+.input50 {
+  composes: input;
+  width: 48%;
+}
+
+.document_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.document_wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 65%;
+}
+
+.error {
+  color: #FF543E;
+}
+
+.document_icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url("../../../../assets/img/svg/file.svg");
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.document_name {
+  text-decoration: underline;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #39961e;
+  max-width: calc(100% - 28px);
+}
+
+.note {
+  font-size: 14px;
+  color: #4da2d6;
+}
+
+.education {
+  margin-bottom: 15px;
+}
+
+.education:last-child {
+  margin-bottom: 30px;
+}

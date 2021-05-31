@@ -1,0 +1,22 @@
+.selectFilter {
+  font-weight: bold;
+}
+
+.selectFilter__menu {
+  appearance: none;
+  background-image: url("../../../../../../public/assets/img/ico-arrow-down.svg");
+  background-position: 96% center;
+  background-repeat: no-repeat;
+  outline: none;
+  padding-right: 15px;
+  border: 0;
+  color: #4da2d6;
+  background-color: white;
+  margin-left: 3px;
+}
+
+@media screen and (min-width: 780px) {
+  .selectFilter {
+    margin-right: 10px;
+  }
+}

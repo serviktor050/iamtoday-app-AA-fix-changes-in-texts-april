@@ -1,0 +1,10 @@
+
+.quizTimer div {
+    text-align: right;
+}
+
+.quizTimer div {
+    width: 95px;
+    display: inline-block;
+    text-align: left;
+}

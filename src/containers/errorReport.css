@@ -1,0 +1,131 @@
+.svgIcoDone{
+  width:22px;
+  height:22px;
+  position: relative;
+}
+.trash{
+  margin:0 6px;
+  cursor: pointer;
+}
+.btnBase {
+  color: #fff;
+  cursor: pointer;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  background: #b5b5b5;
+  align-items: center;
+  min-width: 150px;
+  border: none;
+  outline: none;
+}
+.btnPrimary {
+  margin: 0 auto;
+  background: #39961e;
+  padding:0 20px;
+  border-radius: 4px;
+  max-width: 250px;
+  font-size: 14px;
+  height: 40px;
+  color: #fff;
+  border:none;
+  outline: none;
+  cursor: pointer;
+}
+.btnPrimary:hover {
+  background: #2f8d14;
+}
+.doneList{
+  margin:15px 0;
+  padding-left: 4px;
+}
+.listName{
+  margin-right:6px;
+}
+.listNameIcons{
+  position: relative;
+  top: 5px;
+}
+
+.entryHeader {
+  composes: entry__header from '../index.css';
+}
+.entryTitleCenter {
+  composes: entry__title from '../index.css';
+  composes: text-center from '../index.css';
+}
+.textCenter {
+  composes: text-center from '../index.css';
+}
+.loaderMain {
+  composes: loader from '../index.css';
+  composes: loader--main from '../index.css';
+}
+.btnAction {
+  composes: btn from '../index.css';
+  composes: btn--action from '../index.css';
+}
+
+.btnBase{
+  composes: btn from '../index.css';
+  composes: btn--base from '../index.css';
+  z-index:2;
+}
+.inputField{
+  composes: input__field from '../index.css';
+  z-index:1;
+  position: absolute;
+  background:#fff;
+}
+.inputText{
+  composes: input__text from '../index.css';
+  z-index:2;
+  position: relative;
+  background: #fff;
+}
+.top{
+  padding:20px 0;
+  border-bottom:1px solid #B9B9B9;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.main{
+  padding:20px 0;
+}
+.topInfo{
+  margin-bottom:20px;
+}
+.topBtn{
+  width:40%;
+}
+.topInfo{
+  width:100%;
+}
+.topBtn button{
+  width:100%;
+}
+.title{
+  margin-bottom:20px;
+  font-size:20px;
+}
+.bold{
+  font-weight: bold;
+}
+.header{
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .topInfo{
+    width:75%;
+    margin-bottom:0;
+  }
+  .topBtn{
+    width:25%;
+  }
+  .top{
+    flex-direction: row;
+  }
+}

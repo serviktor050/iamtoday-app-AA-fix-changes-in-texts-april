@@ -1,0 +1,496 @@
+.layout {
+  padding: 30px;
+  background: #fff;
+}
+
+.main-title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 145.2%;
+}
+
+.content {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.card {
+  display: flex;
+  margin: 15px 0 30px;
+}
+
+.card__title {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #39961e;
+  display: block;
+}
+
+.card__title-tutor {
+  color: #4da2d6;
+}
+
+.card__student {
+  width: 30%;
+  background: #f8fff1;
+  border-radius: 2px 0px 0px 2px;
+  padding: 10px;
+}
+
+.card__tutor {
+  width: 65%;
+  background: #f0f6ff;
+  border-radius: 0px 2px 2px 0px;
+  padding: 10px;
+  display: flex;
+}
+
+.card__separator-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 28px;
+  min-width: 28px;
+  z-index: 2;
+}
+
+.card__separator-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.card__separator {
+  display: block;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  background: url("../../../../../assets/img/svg-symbols/arrow-right4.svg")
+    center/cover no-repeat;
+}
+
+.tutorCard {
+}
+
+.tutorCard__header {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tutorCard__specialties {
+  font-size: 12px;
+  line-height: 15px;
+  color: #79c330;
+  margin-bottom: 10px;
+}
+
+.card__close-container {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.card__close-btn {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card__close-btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background-color: #4da2d6;
+  transform: rotate(45deg);
+}
+
+.card__close-btn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background-color: #4da2d6;
+  transform: rotate(-45deg);
+}
+
+.recommendedTutors {
+  margin-top: 20px;
+}
+
+.recommendedTutors__title {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.recommendedTutors__list {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recommendedTutors__card {
+  position: relative;
+  width: 28%;
+  margin-right: 8%;
+  background: #f0f6ff;
+  border-radius: 2px;
+  padding: 10px 15px 10px 10px;
+}
+
+.recommendedTutors__card-placeholder {
+  background: #FFFFFF;
+  border: 2px dashed #4DA2D6;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.recommendedTutor__addNew {
+  display: flex;
+  align-items: center;
+}
+
+.recommendedTutor__plusIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #F0F6FF;
+  margin-right: 10px;
+}
+
+.recommendedTutor__plusIcon::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #4DA2D6;
+}
+
+.recommendedTutor__plusIcon::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  border-radius: 2px;
+  background-color: #4DA2D6;
+}
+
+.recommendedTutor__addNew-text {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 100.8%;
+  color: #4DA2D6;
+}
+
+.recommendedTutors__card:nth-child(3n) {
+  margin-right: 0;
+}
+
+.recommendedTutors .recommendedTutorsBtn {
+  padding: 10px 40px;
+  background: #79c330;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #ffffff;
+  max-width: 195px;
+}
+
+.recommendedTutors .recommendedTutorsBtn:hover {
+  background-color: #66ac21;
+}
+
+.card__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card__body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.card__userName {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.card__specialities {
+  font-size: 12px;
+  line-height: 15px;
+  color: #79c330;
+  margin-bottom: 10px;
+}
+
+.card__location {
+  display: flex;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 10px 0;
+}
+
+.svg-icon {
+  display: block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.card__phone {
+  display: flex;
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 15px;
+}
+
+.card__svgIco {
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+
+.phone-ico {
+  background: url("../../../../../assets/img/svg-symbols/ico-phone.svg")
+    center/cover no-repeat;
+  margin-right: 5px;
+}
+
+.whatsapp-ico {
+  background: url("../../../../../assets/img/svg-symbols/ico-whatsapp.svg")
+    center/cover no-repeat;
+  margin-right: 5px;
+}
+.card__action {
+  all: unset;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 15px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card__action-student {
+  padding: 10px 0;
+  width: 100%;
+  background: #79c330;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.card__action-tutor {
+  display: flex;
+  padding: 10px;
+  background: #ffffff;
+  color: #4da2d6;
+}
+
+.card__action-tutor-hidden {
+  display: flex;
+  padding: 10px;
+  background-color: #f0f6ff;
+  color: #f0f6ff;
+}
+
+.card__action-tutor::before {
+  content: "";
+  display: block;
+  width: 11px;
+  min-width: 11px;
+  height: 11px;
+  background: url("../../../../../assets/img/svg-symbols/ico-message.svg")
+    center/cover no-repeat;
+  margin-right: 10px;
+}
+
+.card__answer {
+  padding-left: 10px;
+  border-left: 1px solid #dcdcdc;
+  width: 60%;
+}
+
+.card__tutor-cardWrapper {
+  display: flex;
+  padding-right: 10px;
+}
+
+.card__reason-titleWrapper {
+  margin-bottom: 10px;
+}
+
+.card__reason-title {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 100.8%;
+}
+
+.card__reason-description {
+  display: block;
+  height: calc(100% - 30px);
+  width: calc(100%);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.answerToStudent__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.answerToStudent__form-title {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 15px;
+}
+
+.answerToStudent__inputWrapper {
+  display: flex;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.answerToStudent__inputWrapper label {
+  font-size: 12px;
+  line-height: 15px;
+  color: #b5b5b5;
+}
+
+.answerToStudent__inputWrapper input {
+  all: unset;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #4da2d6;
+}
+
+.answerToStudent__textarea-wrapper {
+  width: 100%;
+  padding: 20px;
+  background: #f8fff1;
+  border-radius: 2px;
+}
+
+.answerToStudent__textarea {
+  width: 100%;
+  border: 1px dashed #eeffdd;
+  box-sizing: border-box;
+  border-radius: 2px;
+  resize: none;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.answerToStudent__mentorsTable-hud {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.answerToStudent__mentorsTable-hud:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.05));
+}
+
+.answerToStudent__actions {
+  display: flex;
+  justify-content: center;
+}
+
+.answerToStudent__actions .answerToStudent__btn {
+  all: unset;
+  padding: 15px 25px;
+  width: fit-content;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.answerToStudent__actions .answerToStudent__btn-show {
+  margin-right: 20px;
+  color: #fff;
+  background: #4da2d6;
+}
+
+.answerToStudent__actions .answerToStudent__btn-show:hover {
+  background: #3e91c5;
+}
+
+.answerToStudent__actions .answerToStudent__btn-back {
+  background: #eeeeee;
+  color: #2c2f33;
+}
+
+.answerToStudent__actions .answerToStudent__btn-back:hover {
+  background: #b1b8bd;
+}
+
+.mentorsTable__title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+}

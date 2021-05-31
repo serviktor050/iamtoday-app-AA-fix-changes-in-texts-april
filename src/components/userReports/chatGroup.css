@@ -1,0 +1,23 @@
+.chatGroup {
+  composes: chat-group from '../../index.css';
+}
+
+.chatGroupHeader {
+  composes: chat-group__header from '../../index.css';
+}
+
+.chatGroupName {
+  composes: chat-group__name from '../../index.css';
+}
+
+.chatGroupBody {
+  composes: chat-group__body from '../../index.css';
+}
+
+.chatGroupCounter {
+  composes: chat-group__counter from '../../index.css';
+}
+
+.chatGroupUnread {
+  composes: chat-group__unread from '../../index.css';
+}

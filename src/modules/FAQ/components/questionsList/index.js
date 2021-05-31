@@ -54,17 +54,34 @@ class QuestionsBlock extends Component {
   };
 
   render() {
-    const { questions } = this.props;
+    const { questions, tags } = this.props;
     const { editQuestionId, newQuestions } = this.state;
     const allQuestions = questions.concat(newQuestions);
 
-    console.log(this.props);
+    const filteredQuestions = allQuestions.filter((q) => {
+      if (tags.length !== 0 && q.tags !== null) {
+        return q.tags.find((element) => {
+          return element.name === tags[0].name;
+        });
+      } else {
+        return;
+      }
+    });
 
     return (
       <div className={styles.questionsList}>
         {this.renderHeader()}
         <ul>
+          {filteredQuestions.length !== 0 &&
+            filteredQuestions.map((item) => {
+              if (item.id === editQuestionId) {
+                return this.renderEditableQuestionItem(item);
+              } else {
+                return this.renderQuestionItem(item);
+              }
+            })}
           {Boolean(allQuestions.length) &&
+            filteredQuestions.length === 0 &&
             allQuestions.map((item) => {
               if (item.id === editQuestionId) {
                 return this.renderEditableQuestionItem(item);

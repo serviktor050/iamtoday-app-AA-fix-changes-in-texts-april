@@ -26,6 +26,7 @@ class FAQ extends Component {
     chosenCategory: {},
     questionsList: [],
     totalQuestions: 0,
+    tags: [],
   };
 
   componentDidMount() {
@@ -59,12 +60,11 @@ class FAQ extends Component {
   };
 
   handleTagFilter = (tag) => {
-    console.log(tag);
     getFaqCategory({ tags: [tag] }).then((res) => {
-      console.log(res.data.data);
       this.setState({ categoriesList: res.data.data });
       this.getCategoryQuestions(res.data.data[0].id);
       this.setState({ chosenCategory: res.data.data[0] });
+      this.setState({ tags: [tag] });
     });
     //getFaqQuestions({ tags: [tag] }).then((res) => this.setState({ questionsList: res.data.data, totalQuestions: res.data.itemsCounter }))
   };
@@ -81,6 +81,7 @@ class FAQ extends Component {
       chosenCategory,
       questionsList,
       totalQuestions,
+      tags,
     } = this.state;
     const { lang } = this.props;
     const i18n = dict[lang];
@@ -113,6 +114,7 @@ class FAQ extends Component {
                 category={chosenCategory}
                 questions={questionsList}
                 questionsNumber={totalQuestions}
+                tags={tags}
               />
             )}
           </div>

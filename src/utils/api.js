@@ -1,5 +1,5 @@
 import axios from "axios";
-import cookie from 'react-cookie'
+import cookie from "react-cookie";
 import { api as url } from "config";
 
 const token = cookie.load("token");
@@ -19,16 +19,17 @@ const instance = (options = {}) => {
 
 const api = instance();
 
-
-
-
-const injectItemsCounter = ({ data: { data: innerData, itemsCounter, ...innerRest }, ...rest }) => ({
-  data: { ...innerRest, data: { data: innerData, itemsCounter } }, ...rest,
+const injectItemsCounter = ({
+  data: { data: innerData, itemsCounter, ...innerRest },
+  ...rest
+}) => ({
+  data: { ...innerRest, data: { data: innerData, itemsCounter } },
+  ...rest,
 });
 
 export default {
   getMineOrdersHistory(data) {
-    return api.post("/mlm/order-get", data).then(injectItemsCounter)
+    return api.post("/mlm/order-get", data).then(injectItemsCounter);
   },
   getTutorFilter(data) {
     return api.post("/mlm/tutor-get-filters", data);
@@ -204,7 +205,9 @@ export default {
   },
 
   getUserOutcommingRequest: function (data) {
-    return api.post('/mlm/userTutorRequestOutcoming-get', data).then(result => result)
+    return api
+      .post("/mlm/userTutorRequestOutcoming-get", data)
+      .then((result) => result);
   },
   getTutorInfo: function (data) {
     return api.post("mlm/tutor-get", data).then((result) => {
@@ -212,88 +215,100 @@ export default {
     });
   },
   getUserInfo: function (data) {
-    return api.post('user/user-getByIdAdmin', data).then((result) => {
-      return result
-    })
+    return api.post("user/user-getByIdAdmin", data).then((result) => {
+      return result;
+    });
   },
   chooseNewTutor: function (data) {
-    return api.post('mlm/userTutorRequest-create', data).then((result) => {
-      return result
-    })
+    return api.post("mlm/userTutorRequest-create", data).then((result) => {
+      return result;
+    });
   },
   deleteRequest: function (data) {
-    return api.post('mlm/userTutorRequest-delete', data).then((result) => {
-      return result
-    })
+    return api.post("mlm/userTutorRequest-delete", data).then((result) => {
+      return result;
+    });
   },
   calendarGetTasks: function (data) {
-    return api.post('calendar/calendarTask-get', data).then(result => result)
+    return api.post("calendar/calendarTask-get", data).then((result) => result);
   },
   calendarGetTaskById: function (data) {
-    return api.post('calendar/calendarTask-getById', data).then(result => result)
+    return api
+      .post("calendar/calendarTask-getById", data)
+      .then((result) => result);
   },
   calendarCreateTask: function (data) {
-    return api.post('calendar/calendarTask-create', data).then(result => result)
+    return api
+      .post("calendar/calendarTask-create", data)
+      .then((result) => result);
   },
   calendarUpdateTask: function (data) {
-    return api.post('calendar/calendarTask-update', data).then(result => result)
+    return api
+      .post("calendar/calendarTask-update", data)
+      .then((result) => result);
   },
   calendarDeleteTask: function (data) {
-    return api.post('calendar/calendarTask-delete', data).then(result => result)
+    return api
+      .post("calendar/calendarTask-delete", data)
+      .then((result) => result);
   },
   getUserSuggestions: function (data) {
-    return api.post('user/getUserSuggestions', data).then(result => result)
+    return api.post("user/getUserSuggestions", data).then((result) => result);
   },
   setVideoRating: function (data) {
-    return api.post('video/exerciseDescription-setRating', data).then(result => result)
+    return api
+      .post("video/exerciseDescription-setRating", data)
+      .then((result) => result);
   },
   setPlaylistRating: function (data) {
-    return api.post('video/exercisePlaylist-setRating', data).then(result => result)
+    return api
+      .post("video/exercisePlaylist-setRating", data)
+      .then((result) => result);
   },
   sendNewQuestion: function (data) {
-    return api.post('user/chatmessage-create', data).then(result => result)
+    return api.post("user/chatmessage-create", data).then((result) => result);
   },
   getQuestionsAdmin: function (data) {
-    return api.post('modules/modulePlaylistChats-get', data).then(result => result)
+    return api
+      .post("modules/modulePlaylistChats-get", data)
+      .then((result) => result);
   },
   sendAnswer: function (data) {
-    return api.post('user/chatmessage-create', data).then(result => result)
+    return api.post("user/chatmessage-create", data).then((result) => result);
   },
   changeAnswer: function (data) {
-    return api.post('user/comment-update', data).then(result => result)
+    return api.post("user/comment-update", data).then((result) => result);
   },
   deleteAnswer: function (data) {
-    return api.post('user/comment-delete', data).then(result => result)
+    return api.post("user/comment-delete", data).then((result) => result);
   },
   getComments: function (data) {
-    return api.post('user/comment-get-info', data).then(result => result)
+    return api.post("user/comment-get-info", data).then((result) => result);
   },
   getProfiles: function (data) {
-    return api.post('user/user-get-notVerified', data).then(result => result)
+    return api.post("user/user-get-notVerified", data).then((result) => result);
   },
   setUserVerified: function (data) {
-    return api.post('user/user-set-verified', data).then(result => result)
+    return api.post("user/user-set-verified", data).then((result) => result);
   },
   /* TEMPORARY FOR EVENT IN FEBRUARY 2021 */
   userCreateWebinar: function (data) {
-    return api.post('/mlm/user-create-webinar', data).then((result) => {
+    return api.post("/mlm/user-create-webinar", data).then((result) => {
       return result;
     });
   },
   getTutorsList: function (data) {
-    return (
-      api
-        .post("/mlm/tutor-get", data)
-        .then(
-          ({
-            data: { data: innerData, itemsCounter, ...innerRest },
-            ...rest
-          }) => ({
-            data: { ...innerRest, data: { users: innerData, itemsCounter } },
-            ...rest,
-          })
-        )
-    );
+    return api
+      .post("/mlm/tutor-get", data)
+      .then(
+        ({
+          data: { data: innerData, itemsCounter, ...innerRest },
+          ...rest
+        }) => ({
+          data: { ...innerRest, data: { users: innerData, itemsCounter } },
+          ...rest,
+        })
+      );
   },
   recommendTutorToStudent: function (data) {
     return api.post("/mlm/userTutorRequest-create", data).then((result) => {
@@ -306,16 +321,16 @@ export default {
     });
   },
   sendEmail: function (data) {
-    return api.post('mlm/send-email', data).then((result) => {
-      return result
-    })
+    return api.post("mlm/send-email", data).then((result) => {
+      return result;
+    });
   },
   /* END OF TEMPORARY */
   getUserDiploms: function (data) {
-    return api.post('/mlm/diplomaUser-get', data).then(result => result)
+    return api.post("/mlm/diplomaUser-get", data).then((result) => result);
   },
   activateModule: function (data) {
-    return api.post('/modules/module-activate', data).then(result => result)
+    return api.post("/modules/module-activate", data).then((result) => result);
   },
 };
 
@@ -326,16 +341,23 @@ export default {
 }*/
 
 export const getAdminSalesReport = (data) => {
-  return api.post("/payment/paymentItemReport-get", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  });
+  return api
+    .post("/payment/paymentItemReport-get", {
+      authToken: token,
+      data: { ...data },
+    })
+    .then((result) => {
+      return result;
+    });
 };
 
 export const getAdminSalesReportExcel = (data) => {
-return api.get("/payment/paymentItemReport-get-excel", { params:{ ...data} }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .get("/payment/paymentItemReport-get-excel", { params: { ...data } })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const getAdminSalesPartners = (data) => {
   return api.post("/payment/paymentItemPartnersList", data).then((result) => {
@@ -374,66 +396,116 @@ export const getChatList = (data) => {
 //glossary
 
 export const getGlossaryByLetter = (data) => {
-  return api.post("/data/glossary-getByLetter", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  });
-}
+  return api
+    .post("/data/glossary-getByLetter", { authToken: token, data: { ...data } })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const getGlossaryById = (data) => {
-  return api.post("/data/glossary-getById", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .post("/data/glossary-getById", { authToken: token, data: { ...data } })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const glossarySearch = (data) => {
-  return api.post("/data/glossary-search", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  });
-}
+  return api
+    .post("/data/glossary-search", { authToken: token, data: { ...data } })
+    .then((result) => {
+      return result;
+    });
+};
 
 //new FAG
 
 export const createFaqCategory = (data) => {
-  return api.post("/richFaq/richFaqCategory-create", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .post("/richFaq/richFaqCategory-create", {
+      authToken: token,
+      data: { ...data },
+    })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const getFaqCategory = (data) => {
-  return api.post("/richFaq/richFaqCategory-get", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .post("/richFaq/richFaqCategory-get", {
+      authToken: token,
+      data: { ...data },
+    })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const deleteFaqCategory = (data) => {
-  return api.post("/richFaq/richFaqCategory-delete", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .post("/richFaq/richFaqCategory-delete", {
+      authToken: token,
+      data: { ...data },
+    })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const updateFaqCategory = (data) => {
-  return api.post("/richFaq/richFaqCategory-update", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .post("/richFaq/richFaqCategory-update", {
+      authToken: token,
+      data: { ...data },
+    })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const getFaqQuestions = (data) => {
-  return api.post("/richFaq/richFaqQuestion-get", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .post("/richFaq/richFaqQuestion-get", {
+      authToken: token,
+      data: { ...data },
+    })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const createFaqQuestion = (data) => {
-  return api.post("/richFaq/richFaqQuestion-create", { authToken: token, data: { ...data } }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .post("/richFaq/richFaqQuestion-create", {
+      authToken: token,
+      data: { ...data },
+    })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const getFaqPopularTags = () => {
-  return api.post("/richFaq/richFaqTag-getPopular", { authToken: token }).then((result) => {
-    return result;
-  })
-}
+  return api
+    .post("/richFaq/richFaqTag-getPopular", {
+      authToken: token,
+    })
+    .then((result) => {
+      return result;
+    });
+};
+
+export const getFaqTagsAll = () => {
+  return api
+    .post("/richFaq/richFaqTag-get", {
+      authToken: token,
+    })
+    .then((result) => {
+      return result;
+    });
+};
 
 export const getChatComments = (data) => {
   return api.post("/user/comment-get-info", data).then((result) => {
@@ -487,7 +559,8 @@ export const addUser = (data) => {
 
 //метод для загрузки левых картинок
 export const photoFileUpload = (file) => {
-  return api.post("/data/file-upload", {authtoken: token, data: {...file}})
-            .then(result =>  result.data)
-            .catch(error=> console.log(error))
-}
+  return api
+    .post("/data/file-upload", { authtoken: token, data: { ...file } })
+    .then((result) => result.data)
+    .catch((error) => console.log(error));
+};
